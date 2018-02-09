@@ -11,15 +11,18 @@ public class CastleWeapon_Ballista : CastleWeapon
     {
         base.Update();
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100f, mouseLayerMask))
+        if (usingWeapon)
         {
-            mouseObject.transform.position = hit.point;
-            mouseObject.transform.LookAt(rotatableWeapon.transform);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100f, mouseLayerMask))
+            {
+                mouseObject.transform.position = hit.point;
+                mouseObject.transform.LookAt(rotatableWeapon.transform);
 
-            // Constrain rotation here.
-            rotatableWeapon.transform.rotation = Quaternion.Euler(-mouseObject.transform.rotation.eulerAngles);
+                // Constrain rotation here.
+                rotatableWeapon.transform.rotation = Quaternion.Euler(-mouseObject.transform.rotation.eulerAngles);
+            }
         }
     }
 

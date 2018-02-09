@@ -258,7 +258,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1341045461662804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.08, y: 7.506, z: 0.554}
+  m_LocalPosition: {x: -29.7963, y: 6.678461, z: 1.0000008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4091096435971836}
@@ -345,7 +345,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1153211773157730}
   m_LocalRotation: {x: -0, y: -0.7071065, z: -0, w: 0.7071071}
-  m_LocalPosition: {x: -3, y: 0, z: 0}
+  m_LocalPosition: {x: -3.37, y: 0.3, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4675903183315864}
@@ -686,16 +686,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 0
+  weaponName: Ballista
+  weaponLevel: 1
   rotatableWeapon: {fileID: 4091096435971836}
   projectile: {fileID: 1024772973343442, guid: 6714d7ee2206ad2408a828f1ace35b81, type: 2}
   projectileSpawn: {fileID: 4975060811817530}
   damage:
-    baseValue: 0
-    currentValue: 0
+    baseValue: 30
+    currentValue: 30
     increaseValue: 0
   force:
-    baseValue: 10
-    currentValue: 800
+    baseValue: 1500
+    currentValue: 1500
     increaseValue: 0
   coolDown:
     baseValue: 0.5

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CastleBuildUpgradeManager : MonoBehaviour 
 {
@@ -16,6 +17,13 @@ public class CastleBuildUpgradeManager : MonoBehaviour
     public GameObject buildWeaponButton;
     public GameObject useWeaponButton;
     public GameObject upgradeWeaponButton;
+
+    [Header("Upgrade Panel")]
+    public TextMeshProUGUI weaponNameText;
+    public TextMeshProUGUI weaponDamageText;
+    public TextMeshProUGUI weaponForceText;
+    public TextMeshProUGUI weaponFireRateText;
+
 
     private void Awake()
     {
@@ -44,6 +52,11 @@ public class CastleBuildUpgradeManager : MonoBehaviour
 
     public void OpenUI(CastleBuilder selected)
     {
+        if (GameManager.instance.playerState == GameManager.PlayerState.UsingWeapon)
+        {
+            return;
+        }
+
         selectedBuild = selected;
 
         if (selectedBuild.myBuildedObject == null)
@@ -59,24 +72,32 @@ public class CastleBuildUpgradeManager : MonoBehaviour
             upgradeWeaponButton.SetActive(true);
         }
 
-        gameObject.transform.position = new Vector2(selected.transform.position.x, selected.transform.position.y + 2.5f);
+        gameObject.transform.position = new Vector2(selected.transform.position.x, selected.transform.position.y + 4f);
         gameObject.SetActive(true);
 
         selected.buildButton.SetActive(false);
     }
 
-    public void BuildWeaponButton()
+    public void OpenBuildUIButton()
     {
         buildUI.SetActive(true);
     }
 
     public void UseWeaponButton()
     {
+        selectedBuild.myBuildedObject.GetComponent<CastleWeapon>().StartUsing();
         CloseUIButton();
     }
 
-    public void UpgradeWeaponButton()
+    public void OpenUpgradeUIButton()
     {
+        CastleWeapon weaponComponent = selectedBuild.myBuildedObject.GetComponent<CastleWeapon>();
+
+        weaponNameText.text = "Level <color=green>" + weaponComponent.weaponLevel.ToString() + "</color> " + weaponComponent.weaponName;
+        weaponDamageText.text = "Damage: <color=green>" + weaponComponent.damage.currentValue.ToString() + "</color>";
+        weaponForceText.text = "Force: <color=green>" + weaponComponent.force.currentValue.ToString() + "</color>";
+        weaponFireRateText.text = "Fire Rate: <color=green>" + weaponComponent.coolDown.currentValue.ToString() + "</color>";
+
         upgradeUI.SetActive(true);
     }
 
@@ -116,6 +137,6 @@ public class CastleBuildUpgradeManager : MonoBehaviour
                 break;
         }
 
-        GetComponent<Animator>().SetTrigger("CloseUI");
+        CloseUIButton();
     }
 }

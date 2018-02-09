@@ -13,6 +13,9 @@ public class CastleWeapon : MonoBehaviour
     }
     public WeaponType weaponType;
 
+    public string weaponName;
+    public int weaponLevel;
+
     protected bool usingWeapon;
 
     public Transform rotatableWeapon;
@@ -40,10 +43,18 @@ public class CastleWeapon : MonoBehaviour
 
     public virtual void Update()
     {
-        if (Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire)
+        if (usingWeapon)
         {
-            nextTimeToFire = Time.time + coolDown.currentValue;
-            Shoot();
+            if (Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire)
+            {
+                nextTimeToFire = Time.time + coolDown.currentValue;
+                Shoot();
+            }
+
+            if (Input.GetButtonDown("Cancel"))
+            {
+                StopUsing();
+            }
         }
     }
 
@@ -55,10 +66,12 @@ public class CastleWeapon : MonoBehaviour
     public virtual void StartUsing()
     {
         usingWeapon = true;
+        GameManager.instance.StartUsingWeapon(this);
     }
 
     public virtual void StopUsing()
     {
         usingWeapon = false;
+        GameManager.instance.StopUsingWeapon();
     }
 }
