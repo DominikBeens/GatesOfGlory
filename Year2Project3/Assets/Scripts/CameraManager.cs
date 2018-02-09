@@ -21,15 +21,20 @@ public class CameraManager : MonoBehaviour
     private float startY;
 
     [Header("Zoom")]
+    public float zoomSensitivity;
     public float zoomSpeed;
     public float maxZoomIn;
     public float maxZoomOut;
+
+    private float fov;
 
     private void Awake()
     {
         startX = target.position.x;
         startY = target.position.y;
         offset = transform.position - target.position;
+
+        fov = Camera.main.fieldOfView;
 
         Keyframe[] speedKeys = speedCurveMultiplier.keys;
         speedKeys[0].time = startX - camMoveRangeX;
@@ -70,11 +75,13 @@ public class CameraManager : MonoBehaviour
     private void ZoomCam()
     {
         // Claming FOV.
-        float fov = Camera.main.fieldOfView;
-        fov -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
+        fov -= Input.GetAxis("Mouse ScrollWheel") * zoomSensitivity;
         fov = Mathf.Clamp(fov, maxZoomIn, maxZoomOut);
 
-        // Changing FOV.
-        Camera.main.fieldOfView = fov;
+        // Changing FOV (Choppy).
+        //Camera.main.fieldOfView = fov;
+
+        // Changing FOV (Smooth).
+        Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, fov, Time.deltaTime * zoomSpeed);
     }
 }
