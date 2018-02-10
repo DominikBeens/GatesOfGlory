@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CastleBuildUpgradeManager : MonoBehaviour 
+public class CastleWeaponUpgradeManager : MonoBehaviour 
 {
 
-    public static CastleBuildUpgradeManager instance;
+    public static CastleWeaponUpgradeManager instance;
 
     private static CastleBuilder selectedBuild;
 
@@ -57,6 +57,7 @@ public class CastleBuildUpgradeManager : MonoBehaviour
             return;
         }
 
+        UIManager.instance.OpenCastleUI(gameObject);
         selectedBuild = selected;
 
         if (selectedBuild.myBuildedObject == null)
@@ -117,6 +118,8 @@ public class CastleBuildUpgradeManager : MonoBehaviour
             selectedBuild.buildButton.SetActive(true);
             selectedBuild = null;
         }
+
+        UIManager.instance.CloseCastleUI(gameObject);
     }
 
     public void BuildWeapon(int type)

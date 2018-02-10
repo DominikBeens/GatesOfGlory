@@ -5,6 +5,13 @@ using UnityEngine;
 public class CastleBuilder : MonoBehaviour 
 {
 
+    public enum Type
+    {
+        Weapon,
+        Room
+    }
+    public Type type;
+
     public GameObject myBuildedObject;
 
     public List<GameObject> availableBuilds = new List<GameObject>();
@@ -15,7 +22,14 @@ public class CastleBuilder : MonoBehaviour
 
     public void InteractButton()
     {
-        CastleBuildUpgradeManager.instance.OpenUI(this);
+        if (type == Type.Weapon)
+        {
+            CastleWeaponUpgradeManager.instance.OpenUI(this);
+        }
+        else
+        {
+            CastleRoomUpgradeManager.instance.OpenUI(this);
+        }
     }
 
     public void BuildWeapon(CastleWeapon.WeaponType type)
@@ -23,6 +37,24 @@ public class CastleBuilder : MonoBehaviour
         for (int i = 0; i < availableBuilds.Count; i++)
         {
             if (availableBuilds[i].GetComponent<CastleWeapon>().weaponType == type)
+            {
+                GameObject newBuild = Instantiate(availableBuilds[i], transform.position, Quaternion.identity);
+                newBuild.transform.SetParent(transform);
+                myBuildedObject = newBuild;
+
+                buildButton.SetActive(false);
+                useButton.SetActive(true);
+
+                return;
+            }
+        }
+    }
+
+    public void BuildRoom(CastleRoom.RoomType type)
+    {
+        for (int i = 0; i < availableBuilds.Count; i++)
+        {
+            if (availableBuilds[i].GetComponent<CastleRoom>().roomType == type)
             {
                 GameObject newBuild = Instantiate(availableBuilds[i], transform.position, Quaternion.identity);
                 newBuild.transform.SetParent(transform);
