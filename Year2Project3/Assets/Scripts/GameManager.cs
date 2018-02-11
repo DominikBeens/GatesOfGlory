@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     }
     public PlayerState playerState;
 
-    private static CastleWeapon weaponInUse;
+    private CastleWeapon weaponInUse;
 
     private void Awake()
     {

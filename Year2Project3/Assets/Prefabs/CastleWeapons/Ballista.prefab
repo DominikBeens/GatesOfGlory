@@ -258,7 +258,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1341045461662804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.7963, y: 6.678461, z: 1.0000008}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4091096435971836}
@@ -686,25 +686,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 0
+  side: 0
   weaponName: Ballista
   weaponLevel: 1
+  buildCost: 0
+  upgradeCost:
+    baseValue: 150
+    currentValue: 150
+    increaseValue: 100
   rotatableWeapon: {fileID: 4091096435971836}
   projectile: {fileID: 1024772973343442, guid: 6714d7ee2206ad2408a828f1ace35b81, type: 2}
   projectileSpawn: {fileID: 4975060811817530}
   damage:
     baseValue: 30
     currentValue: 30
-    increaseValue: 0
+    increaseValue: 10
   force:
     baseValue: 1500
     currentValue: 1500
-    increaseValue: 0
+    increaseValue: 200
   coolDown:
     baseValue: 0.5
     currentValue: 0.5
-    increaseValue: 0
-  maxXRotation: -0.35
-  minXRotation: 0
+    increaseValue: 0.05
+  maxXRotation: 350
+  minXRotation: 280
   mouseLayerMask:
     serializedVersion: 2
     m_Bits: 256

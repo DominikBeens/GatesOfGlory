@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
 
     private static GameObject openedCastleUI;
 
+    public GameObject goldPopup;
+
     private void Awake()
     {
         if (instance == null)

@@ -22,14 +22,7 @@ public class CastleBuilder : MonoBehaviour
 
     public void InteractButton()
     {
-        if (type == Type.Weapon)
-        {
-            CastleWeaponUpgradeManager.instance.OpenUI(this);
-        }
-        else
-        {
-            CastleRoomUpgradeManager.instance.OpenUI(this);
-        }
+        CastleUpgradeManager.instance.OpenUI(this);
     }
 
     public void BuildWeapon(CastleWeapon.WeaponType type)
@@ -38,12 +31,19 @@ public class CastleBuilder : MonoBehaviour
         {
             if (availableBuilds[i].GetComponent<CastleWeapon>().weaponType == type)
             {
+                if (ResourceManager.gold < availableBuilds[i].GetComponent<CastleWeapon>().buildCost)
+                {
+                    return;
+                }
+
                 GameObject newBuild = Instantiate(availableBuilds[i], transform.position, Quaternion.identity);
                 newBuild.transform.SetParent(transform);
                 myBuildedObject = newBuild;
 
                 buildButton.SetActive(false);
                 useButton.SetActive(true);
+
+                CastleUpgradeManager.instance.CloseUIButton();
 
                 return;
             }
@@ -56,12 +56,19 @@ public class CastleBuilder : MonoBehaviour
         {
             if (availableBuilds[i].GetComponent<CastleRoom>().roomType == type)
             {
+                if (ResourceManager.gold < availableBuilds[i].GetComponent<CastleRoom>().buildCost)
+                {
+                    return;
+                }
+
                 GameObject newBuild = Instantiate(availableBuilds[i], transform.position, Quaternion.identity);
                 newBuild.transform.SetParent(transform);
                 myBuildedObject = newBuild;
 
                 buildButton.SetActive(false);
                 useButton.SetActive(true);
+
+                CastleUpgradeManager.instance.CloseUIButton();
 
                 return;
             }

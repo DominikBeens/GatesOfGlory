@@ -17,4 +17,21 @@ public class CastleRoom : MonoBehaviour
 
     public string roomName;
     public int roomLevel;
+    public int buildCost;
+    public Stat upgradeCost;
+
+    public virtual void Update()
+    {
+
+    }
+
+    public virtual void UseRoom()
+    {
+
+    }
+
+    public void Upgrade()
+    {
+
+    }
 }

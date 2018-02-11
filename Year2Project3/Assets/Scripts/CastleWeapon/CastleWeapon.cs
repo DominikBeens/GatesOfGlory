@@ -13,8 +13,17 @@ public class CastleWeapon : MonoBehaviour
     }
     public WeaponType weaponType;
 
+    public enum Side
+    {
+        Left,
+        Right
+    }
+    public Side side;
+
     public string weaponName;
     public int weaponLevel;
+    public int buildCost;
+    public Stat upgradeCost;
 
     protected bool usingWeapon;
 
@@ -59,6 +68,11 @@ public class CastleWeapon : MonoBehaviour
     }
 
     public virtual void Shoot()
+    {
+
+    }
+
+    public void Upgrade()
     {
 
     }

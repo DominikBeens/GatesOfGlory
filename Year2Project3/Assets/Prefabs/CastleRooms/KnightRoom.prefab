@@ -324,6 +324,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1911134033299260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4625714402741780}
+  m_Layer: 0
+  m_Name: KnightSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1932882074827712
 GameObject:
   m_ObjectHideFlags: 1
@@ -423,7 +438,7 @@ Transform:
   - {fileID: 4031164376553180}
   - {fileID: 4211001525638622}
   m_Father: {fileID: 4588080487813162}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4444454505740482
 Transform:
@@ -471,13 +486,27 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1258482574334662}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.62, y: 0.71, z: 3.13}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4625714402741780}
   - {fileID: 4711865009512302}
   - {fileID: 4320880631804270}
   - {fileID: 4988270716488384}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4625714402741780
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1911134033299260}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4588080487813162}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4711865009512302
@@ -496,7 +525,7 @@ Transform:
   - {fileID: 4873604227356706}
   - {fileID: 4101599421365002}
   m_Father: {fileID: 4588080487813162}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4726424111999576
 Transform:
@@ -605,7 +634,7 @@ Transform:
   - {fileID: 4444454505740482}
   - {fileID: 4268989100657276}
   m_Father: {fileID: 4588080487813162}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!23 &23034653370744596
 MeshRenderer:
@@ -1416,3 +1445,11 @@ MonoBehaviour:
   roomType: 0
   roomName: Knight Room
   roomLevel: 1
+  upgradeCost: 500
+  minionToSpawn: {fileID: 1647007564949236, guid: 21d90a57fc97a0940a6507c5fac16e20,
+    type: 2}
+  minionSpawnPoint: {fileID: 4625714402741780}
+  spawnCost: 100
+  amountToSpawnPerBuy: 5
+  spawnInterval: 0.35
+  spawnPointOffsetRandomizer: 1

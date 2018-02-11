@@ -20,8 +20,19 @@ public class CastleWeapon_Ballista : CastleWeapon
                 mouseObject.transform.position = hit.point;
                 mouseObject.transform.LookAt(rotatableWeapon.transform);
 
-                // Constrain rotation here.
-                rotatableWeapon.transform.rotation = Quaternion.Euler(-mouseObject.transform.rotation.eulerAngles);
+                Quaternion newRotation = Quaternion.Euler(-mouseObject.transform.rotation.eulerAngles);
+                newRotation = Quaternion.Euler(Mathf.Clamp(newRotation.eulerAngles.x, minXRotation, maxXRotation), -90, newRotation.eulerAngles.z);
+
+                if (side == Side.Left)
+                {
+                    if (-mouseObject.transform.rotation.eulerAngles.x + newRotation.eulerAngles.x > 1f)
+                    {
+                        if (mouseObject.transform.position.x < 0)
+                        {
+                            rotatableWeapon.transform.rotation = newRotation;
+                        }
+                    }
+                }
             }
         }
     }
