@@ -104,10 +104,13 @@ public class CastleWeaponUpgrader : MonoBehaviour
 
         weaponComponent.damage.currentValue += weaponComponent.damage.increaseValue;
         weaponComponent.force.currentValue += weaponComponent.force.increaseValue;
-        weaponComponent.coolDown.currentValue -= weaponComponent.coolDown.increaseValue;
+        weaponComponent.coolDown.currentValue += weaponComponent.coolDown.increaseValue;
+
+        ResourceManager.gold -= (int)weaponComponent.upgradeCost.currentValue;
 
         weaponComponent.upgradeCost.currentValue += weaponComponent.upgradeCost.increaseValue;
         weaponComponent.weaponLevel++;
+
 
         OpenUpgradeUIButton();
     }

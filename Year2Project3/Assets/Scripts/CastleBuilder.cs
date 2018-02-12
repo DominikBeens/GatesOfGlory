@@ -12,6 +12,13 @@ public class CastleBuilder : MonoBehaviour
     }
     public Type type;
 
+    public enum Side
+    {
+        Left,
+        Right
+    }
+    public Side side;
+
     public GameObject myBuildedObject;
 
     public List<GameObject> availableBuilds = new List<GameObject>();
@@ -40,6 +47,18 @@ public class CastleBuilder : MonoBehaviour
                 newBuild.transform.SetParent(transform);
                 myBuildedObject = newBuild;
 
+                switch (side)
+                {
+                    case Side.Left:
+
+                        myBuildedObject.GetComponent<CastleWeapon>().side = CastleWeapon.Side.Left;
+                        break;
+                    case Side.Right:
+
+                        myBuildedObject.GetComponent<CastleWeapon>().side = CastleWeapon.Side.Right;
+                        break;
+                }
+
                 buildButton.SetActive(false);
                 useButton.SetActive(true);
 
@@ -64,6 +83,18 @@ public class CastleBuilder : MonoBehaviour
                 GameObject newBuild = Instantiate(availableBuilds[i], transform.position, Quaternion.identity);
                 newBuild.transform.SetParent(transform);
                 myBuildedObject = newBuild;
+
+                switch (side)
+                {
+                    case Side.Left:
+
+                        myBuildedObject.GetComponent<CastleRoom>().side = CastleRoom.Side.Left;
+                        break;
+                    case Side.Right:
+
+                        myBuildedObject.GetComponent<CastleRoom>().side = CastleRoom.Side.Right;
+                        break;
+                }
 
                 buildButton.SetActive(false);
                 useButton.SetActive(true);

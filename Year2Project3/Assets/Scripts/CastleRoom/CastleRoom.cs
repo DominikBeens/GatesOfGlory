@@ -15,6 +15,13 @@ public class CastleRoom : MonoBehaviour
     }
     public RoomType roomType;
 
+    public enum Side
+    {
+        Left,
+        Right
+    }
+    public Side side;
+
     public string roomName;
     public int roomLevel;
     public int buildCost;

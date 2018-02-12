@@ -26,11 +26,15 @@ public class CastleWeapon : MonoBehaviour
     public Stat upgradeCost;
 
     protected bool usingWeapon;
+    protected bool shooting;
 
     public Transform rotatableWeapon;
     public GameObject projectile;
-    public Transform projectileSpawn;
+    public List<Transform> projectileSpawns = new List<Transform>();
+    public int amountOfProjectiles = 1;
     protected Transform mouseObject;
+
+    public GameObject useUI;
 
     [Header("Properties")]
     public Stat damage;
@@ -54,10 +58,19 @@ public class CastleWeapon : MonoBehaviour
     {
         if (usingWeapon)
         {
-            if (Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire)
+            //if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire)
+            //{
+            //    nextTimeToFire = Time.time + coolDown.currentValue;
+            //    Shoot();
+            //}
+
+            if (shooting)
             {
-                nextTimeToFire = Time.time + coolDown.currentValue;
-                Shoot();
+                if (Time.time >= nextTimeToFire)
+                {
+                    nextTimeToFire = Time.time + coolDown.currentValue;
+                    Shoot();
+                }
             }
 
             if (Input.GetButtonDown("Cancel"))
@@ -77,15 +90,26 @@ public class CastleWeapon : MonoBehaviour
 
     }
 
+    public void ToggleAutoShoot()
+    {
+        shooting = !shooting;
+    }
+
     public virtual void StartUsing()
     {
         usingWeapon = true;
         GameManager.instance.StartUsingWeapon(this);
+
+        useUI.SetActive(true);
     }
 
     public virtual void StopUsing()
     {
         usingWeapon = false;
         GameManager.instance.StopUsingWeapon();
+
+        shooting = false;
+
+        useUI.SetActive(false);
     }
 }
