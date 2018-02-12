@@ -8,8 +8,8 @@ public class CastleWeapon : MonoBehaviour
     public enum WeaponType
     {
         Ballista,
-        Catapult,
-        Canon
+        Canon,
+        Catapult
     }
     public WeaponType weaponType;
 

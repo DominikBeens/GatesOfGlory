@@ -64,7 +64,7 @@ public class CastleWeapon_Ballista : CastleWeapon
         {
             case 1:
 
-                GameObject newProjectile = Instantiate(projectile, projectileSpawns[1].position, projectileSpawns[1].rotation);
+                GameObject newProjectile = Instantiate(projectile, projectileSpawns[0].position, projectileSpawns[0].rotation);
                 newProjectiles.Add(newProjectile);
                 break;
             case 2:
