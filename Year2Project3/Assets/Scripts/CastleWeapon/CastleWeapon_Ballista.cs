@@ -9,10 +9,8 @@ public class CastleWeapon_Ballista : CastleWeapon
     public float rotationSpeed;
     public Slider rotationSlider;
 
-    public override void Awake()
+    public void Awake()
     {
-        base.Awake();
-
         rotationSlider.minValue = minXRotation;
         rotationSlider.maxValue = maxXRotation;
     }

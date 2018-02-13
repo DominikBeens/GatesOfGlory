@@ -13,7 +13,7 @@ public class CastleGate : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    private void OnMouseDown()
+    public void ToggleGate()
     {
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("GateOpen"))
         {

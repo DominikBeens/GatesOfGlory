@@ -32,7 +32,6 @@ public class CastleWeapon : MonoBehaviour
     public GameObject projectile;
     public List<Transform> projectileSpawns = new List<Transform>();
     public int amountOfProjectiles = 1;
-    protected Transform mouseObject;
 
     public GameObject useUI;
 
@@ -48,11 +47,6 @@ public class CastleWeapon : MonoBehaviour
     public float minXRotation;
     [Space(10)]
     public LayerMask mouseLayerMask;
-
-    public virtual void Awake()
-    {
-        mouseObject = GameObject.FindWithTag("MouseObject").transform;
-    }
 
     public virtual void Update()
     {

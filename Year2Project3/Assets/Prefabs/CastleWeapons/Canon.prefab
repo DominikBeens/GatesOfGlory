@@ -471,7 +471,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1364804042239550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -51.14504, y: 2.3523066, z: 0.27997494}
+  m_LocalPosition: {x: -26.537247, y: 0.5, z: 0.7650776}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4986650171935292}
@@ -1198,7 +1198,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114862023133857932}
         m_MethodName: ToggleAutoShoot
         m_Mode: 1
         m_Arguments:
@@ -1279,7 +1279,7 @@ MonoBehaviour:
   projectileSpawns:
   - {fileID: 4327984786120038}
   amountOfProjectiles: 1
-  useUI: {fileID: 0}
+  useUI: {fileID: 1522565143467558}
   damage:
     baseValue: 30
     currentValue: 30
@@ -1298,7 +1298,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   rotationSpeed: 100
-  rotationSlider: {fileID: 0}
+  rotationSlider: {fileID: 114462213101195302}
 --- !u!114 &114908650767097798
 MonoBehaviour:
   m_ObjectHideFlags: 1
