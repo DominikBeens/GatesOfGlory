@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - MouseObject
+  - Enemy
+  - Defense
   layers:
   - Default
   - TransparentFX
@@ -16,9 +18,9 @@ TagManager:
   - 
   - Mouse
   - Projectiles
-  - 
-  - 
-  - 
+  - CastleDefense
+  - Enemy
+  - Ally
   - 
   - 
   - 

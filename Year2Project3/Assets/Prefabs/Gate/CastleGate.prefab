@@ -30,6 +30,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1040986537754344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4142225992598118}
+  - component: {fileID: 65298544427796308}
+  - component: {fileID: 114657357410644796}
+  m_Layer: 10
+  m_Name: Gate Left
+  m_TagString: Defense
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1366775770765890
 GameObject:
   m_ObjectHideFlags: 1
@@ -44,6 +61,22 @@ GameObject:
   - component: {fileID: 65357907488470034}
   m_Layer: 0
   m_Name: MuurPoortLinks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1371132935936390
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4043296244601846}
+  - component: {fileID: 65282071535538932}
+  m_Layer: 10
+  m_Name: Gate Left inside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,6 +115,22 @@ GameObject:
   - component: {fileID: 114626436983711016}
   m_Layer: 0
   m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1653694493652606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4189673911792434}
+  - component: {fileID: 65410437218110824}
+  m_Layer: 10
+  m_Name: Gate Left Ally
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -183,6 +232,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4043296244601846
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1371132935936390}
+  m_LocalRotation: {x: -0, y: 0.0000014007092, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0.43}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4111732067252142}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!4 &4111732067252142
 Transform:
   m_ObjectHideFlags: 1
@@ -190,15 +252,31 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1926680437600602}
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: -20, y: 0, z: 0.5}
+  m_LocalPosition: {x: -20, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4800076857032958}
   - {fileID: 4593549959867176}
   - {fileID: 4411204789791208}
   - {fileID: 224213647903371470}
+  - {fileID: 4043296244601846}
+  - {fileID: 4189673911792434}
+  - {fileID: 4142225992598118}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
+--- !u!4 &4142225992598118
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1040986537754344}
+  m_LocalRotation: {x: -0, y: 0.0000014007092, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.5, z: -0.52}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4111732067252142}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!4 &4143548060550126
 Transform:
@@ -213,6 +291,19 @@ Transform:
   m_Father: {fileID: 4593549959867176}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 90.00001}
+--- !u!4 &4189673911792434
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1653694493652606}
+  m_LocalRotation: {x: -0, y: 0.0000014007092, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.5, z: -1.79}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4111732067252142}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!4 &4411204789791208
 Transform:
   m_ObjectHideFlags: 1
@@ -416,6 +507,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2.1422243, z: 5}
   m_Center: {x: -0.5040747, y: 0.44058466, z: -0.16626358}
+--- !u!65 &65282071535538932
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1371132935936390}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 0.06, z: 1.5}
+  m_Center: {x: 0, y: 0.03, z: 1}
+--- !u!65 &65298544427796308
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1040986537754344}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 0.06, z: 1.5}
+  m_Center: {x: 0, y: 0.03, z: -1}
 --- !u!65 &65357907488470034
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -428,6 +543,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.0000002, y: 4.024181, z: 1.021167}
   m_Center: {x: -0.5040747, y: -0.5003934, z: 1.8231529}
+--- !u!65 &65410437218110824
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1653694493652606}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 0.06, z: 2}
+  m_Center: {x: 0, y: 0.03, z: 0}
 --- !u!65 &65413088727912504
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -742,6 +869,28 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114657357410644796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1040986537754344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97f09e959b25e164e97bf798c25b4882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myStats:
+    health:
+      baseValue: 250
+      currentValue: 400
+      increaseValue: 0
+    damage:
+      baseValue: 0
+      currentValue: 0
+      increaseValue: 0
+  gateOpen: 1
+  attackingMe: []
 --- !u!222 &222124030289917814
 CanvasRenderer:
   m_ObjectHideFlags: 1

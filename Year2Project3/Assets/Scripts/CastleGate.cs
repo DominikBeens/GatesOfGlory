@@ -5,8 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class CastleGate : MonoBehaviour 
 {
-
+    public CastleDeffensePoint myDefensePoint;
     private Animator anim;
+    public bool locked;
+    public bool isOpen;
 
     private void Awake()
     {
@@ -25,8 +27,13 @@ public class CastleGate : MonoBehaviour
         }
     }
 
-    private void OpenGate()
+    public void OpenGate()
     {
+        if (locked)
+        {
+            return;
+        }
+
         float currentAnimationProgress = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
         if (currentAnimationProgress < 1)
@@ -39,8 +46,13 @@ public class CastleGate : MonoBehaviour
         }
     }
 
-    private void CloseGate()
+    public void CloseGate()
     {
+        if (locked)
+        {
+            return;
+        }
+
         float currentAnimationProgress = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
         if (currentAnimationProgress < 1)
@@ -51,5 +63,11 @@ public class CastleGate : MonoBehaviour
         {
             anim.Play("GateClose");
         }
+    }
+
+    public void AnimationEventGate()
+    {
+        isOpen = !isOpen;
+        myDefensePoint.ChangeGateOpen();
     }
 }
