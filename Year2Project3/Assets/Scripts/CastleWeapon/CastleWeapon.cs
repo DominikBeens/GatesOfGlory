@@ -105,6 +105,15 @@ public class CastleWeapon : MonoBehaviour
 
     public virtual void StopUsing()
     {
+        StartCoroutine(EventStopUsing());
+    }
+
+    public IEnumerator EventStopUsing()
+    {
+        useUI.GetComponent<Animator>().SetTrigger("CloseUI");
+
+        yield return new WaitForSeconds(0.5f);
+
         usingWeapon = false;
         GameManager.instance.StopUsingWeapon();
 
