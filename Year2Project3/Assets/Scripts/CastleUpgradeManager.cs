@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CastleUpgradeManager : MonoBehaviour 
 {
-
     public static CastleUpgradeManager instance;
 
     public static CastleBuilder selectedBuild;
+
+    public float uiScaleDivider;
 
     public GameObject castleWeaponUI;
     public GameObject castleRoomUI;
@@ -29,6 +30,7 @@ public class CastleUpgradeManager : MonoBehaviour
         if (selectedBuild != null)
         {
             gameObject.transform.LookAt(Camera.main.transform);
+            gameObject.transform.localScale = new Vector3(Camera.main.fieldOfView / uiScaleDivider, Camera.main.fieldOfView / uiScaleDivider);
 
             if (Input.GetButtonDown("Cancel"))
             {
@@ -52,15 +54,14 @@ public class CastleUpgradeManager : MonoBehaviour
         selectedBuild = selected;
 
         gameObject.SetActive(true);
+        gameObject.transform.position = new Vector2(selectedBuild.transform.position.x, selectedBuild.transform.position.y + 4f);
 
         if (selectedBuild.type == CastleBuilder.Type.Weapon)
         {
-            gameObject.transform.position = new Vector2(selectedBuild.transform.position.x, selectedBuild.transform.position.y + 4f);
             castleWeaponUI.GetComponent<CastleWeaponUpgrader>().OpenUI();
         }
         else
         {
-            gameObject.transform.position = new Vector3(selectedBuild.transform.position.x, selectedBuild.transform.position.y + 4f, selectedBuild.transform.position.z - 6f);
             castleRoomUI.GetComponent<CastleRoomUpgrader>().OpenUI();
         }
     }

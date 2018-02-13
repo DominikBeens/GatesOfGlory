@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Camera))]
 public class CameraManager : MonoBehaviour 
 {
+
+    private Camera cam;
 
     public Transform target;
 
@@ -30,6 +33,8 @@ public class CameraManager : MonoBehaviour
 
     private void Awake()
     {
+        cam = GetComponent<Camera>();
+
         startX = target.position.x;
         startY = target.position.y;
         offset = transform.position - target.position;
@@ -82,6 +87,6 @@ public class CameraManager : MonoBehaviour
         //Camera.main.fieldOfView = fov;
 
         // Changing FOV (Smooth).
-        Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, fov, Time.deltaTime * zoomSpeed);
+        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov, Time.deltaTime * zoomSpeed);
     }
 }
