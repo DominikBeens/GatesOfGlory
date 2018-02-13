@@ -13,6 +13,8 @@ public class CastleUpgradeManager : MonoBehaviour
     public GameObject castleWeaponUI;
     public GameObject castleRoomUI;
 
+    public bool test;
+
     public virtual void Awake()
     {
         if (instance == null)
@@ -29,8 +31,12 @@ public class CastleUpgradeManager : MonoBehaviour
     {
         if (selectedBuild != null)
         {
-            gameObject.transform.LookAt(Camera.main.transform);
-            gameObject.transform.localScale = new Vector3(Camera.main.fieldOfView / uiScaleDivider, Camera.main.fieldOfView / uiScaleDivider);
+            transform.parent.gameObject.transform.LookAt(Camera.main.transform);
+
+            if (test)
+            {
+                transform.parent.localScale = new Vector3(Camera.main.fieldOfView / uiScaleDivider * 1.1f, Camera.main.fieldOfView / uiScaleDivider * 1.1f);
+            }
 
             if (Input.GetButtonDown("Cancel"))
             {
@@ -54,7 +60,7 @@ public class CastleUpgradeManager : MonoBehaviour
         selectedBuild = selected;
 
         gameObject.SetActive(true);
-        gameObject.transform.position = new Vector2(selectedBuild.transform.position.x, selectedBuild.transform.position.y + 4f);
+        transform.parent.gameObject.transform.position = new Vector2(selectedBuild.transform.position.x, selectedBuild.transform.position.y + 4f);
 
         if (selectedBuild.type == CastleBuilder.Type.Weapon)
         {
