@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class CastleGate : MonoBehaviour 
 {
-    public CastleDeffensePoint myDefensePoint;
+    public Gate myDefensePoint;
     private Animator anim;
     public bool locked;
     public bool isOpen;

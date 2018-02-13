@@ -913,6 +913,12 @@ Transform:
   m_Father: {fileID: 226674427}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &576194676 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114641109949355968, guid: a9a3c6323ef8301449d65f018fafe2e7,
+    type: 2}
+  m_PrefabInternal: {fileID: 707690545}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &684476699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,7 +1052,13 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114023590533538300, guid: a9a3c6323ef8301449d65f018fafe2e7,
+        type: 2}
+      propertyPath: myDefensePoint
+      value: 
+      objectReference: {fileID: 1817851688}
+    m_RemovedComponents:
+    - {fileID: 114657357410644796, guid: a9a3c6323ef8301449d65f018fafe2e7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a9a3c6323ef8301449d65f018fafe2e7, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &707690546 stripped
@@ -1801,6 +1813,12 @@ Transform:
   m_Father: {fileID: 226674427}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1042094564 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114023590533538300, guid: a9a3c6323ef8301449d65f018fafe2e7,
+    type: 2}
+  m_PrefabInternal: {fileID: 707690545}
+  m_Script: {fileID: 11500000, guid: a0dc8aa187d99c64bb9bee890164320f, type: 3}
 --- !u!1 &1061862399
 GameObject:
   m_ObjectHideFlags: 0
@@ -3106,6 +3124,35 @@ MonoBehaviour:
   zoomSpeed: 5
   maxZoomIn: 10
   maxZoomOut: 60
+--- !u!1 &1817851687 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1040986537754344, guid: a9a3c6323ef8301449d65f018fafe2e7,
+    type: 2}
+  m_PrefabInternal: {fileID: 707690545}
+--- !u!114 &1817851688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1817851687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 604a546b46396d44e965144d34a1ebb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myStats:
+    health:
+      baseValue: 400
+      currentValue: 400
+      increaseValue: 0
+    damage:
+      baseValue: 0
+      currentValue: 0
+      increaseValue: 0
+  gateOpen: 0
+  attackingMe: []
+  myGate: {fileID: 1042094564}
+  healthbarFill: {fileID: 576194676}
 --- !u!1 &1925006798
 GameObject:
   m_ObjectHideFlags: 0
