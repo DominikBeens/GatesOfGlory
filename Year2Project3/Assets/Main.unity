@@ -2763,12 +2763,12 @@ Transform:
   - {fileID: 1185834816}
   - {fileID: 348576139}
   - {fileID: 1830132885}
-  - {fileID: 375980488}
-  - {fileID: 959821119}
-  - {fileID: 1737826348}
-  - {fileID: 1350729825}
   - {fileID: 1077216428}
+  - {fileID: 959821119}
   - {fileID: 1600803991}
+  - {fileID: 1350729825}
+  - {fileID: 1737826348}
+  - {fileID: 375980488}
   - {fileID: 801276358}
   - {fileID: 1058739333}
   m_Father: {fileID: 226674427}
@@ -3753,12 +3753,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soldierOffset: 0.5
-  gateRightInside: {fileID: 0}
+  gateRightInside: {fileID: 1291149411}
   gateLeftInside: {fileID: 707690548}
-  gateRight: {fileID: 0}
+  gateRight: {fileID: 1230835401}
   gateLeft: {fileID: 707690546}
   throne: {fileID: 1925006800}
-  gateRightAlly: {fileID: 0}
+  gateRightAlly: {fileID: 1426143280}
   GateLeftAlly: {fileID: 707690547}
   freeEnemys: []
 --- !u!4 &940826443 stripped
@@ -5065,7 +5065,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4111732067252142, guid: a9a3c6323ef8301449d65f018fafe2e7, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.70710576
+      value: -0.70710796
       objectReference: {fileID: 0}
     - target: {fileID: 4111732067252142, guid: a9a3c6323ef8301449d65f018fafe2e7, type: 2}
       propertyPath: m_LocalRotation.z
@@ -5073,7 +5073,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4111732067252142, guid: a9a3c6323ef8301449d65f018fafe2e7, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.70710784
+      value: 0.7071057
       objectReference: {fileID: 0}
     - target: {fileID: 4111732067252142, guid: a9a3c6323ef8301449d65f018fafe2e7, type: 2}
       propertyPath: m_RootOrder
@@ -5082,12 +5082,12 @@ Prefab:
     - target: {fileID: 114619455573233138, guid: a9a3c6323ef8301449d65f018fafe2e7,
         type: 2}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114619455573233138, guid: a9a3c6323ef8301449d65f018fafe2e7,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114023590533538300, guid: a9a3c6323ef8301449d65f018fafe2e7,
         type: 2}
@@ -5097,6 +5097,47 @@ Prefab:
     - target: {fileID: 1926680437600602, guid: a9a3c6323ef8301449d65f018fafe2e7, type: 2}
       propertyPath: m_Name
       value: CastleGate (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111732067252142, guid: a9a3c6323ef8301449d65f018fafe2e7, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 224213647903371470, guid: a9a3c6323ef8301449d65f018fafe2e7,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -4.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 224213647903371470, guid: a9a3c6323ef8301449d65f018fafe2e7,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071078
+      objectReference: {fileID: 0}
+    - target: {fileID: 224213647903371470, guid: a9a3c6323ef8301449d65f018fafe2e7,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224213647903371470, guid: a9a3c6323ef8301449d65f018fafe2e7,
+        type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 224213647903371470, guid: a9a3c6323ef8301449d65f018fafe2e7,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071059
+      objectReference: {fileID: 0}
+    - target: {fileID: 1371132935936390, guid: a9a3c6323ef8301449d65f018fafe2e7, type: 2}
+      propertyPath: m_Name
+      value: Gate Right inside
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653694493652606, guid: a9a3c6323ef8301449d65f018fafe2e7, type: 2}
+      propertyPath: m_Name
+      value: Gate Right Ally
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040986537754344, guid: a9a3c6323ef8301449d65f018fafe2e7, type: 2}
+      propertyPath: m_Name
+      value: Gate Right
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114657357410644796, guid: a9a3c6323ef8301449d65f018fafe2e7, type: 2}
@@ -5146,6 +5187,11 @@ MonoBehaviour:
 --- !u!4 &1230835400 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4111732067252142, guid: a9a3c6323ef8301449d65f018fafe2e7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1230835395}
+--- !u!4 &1230835401 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4142225992598118, guid: a9a3c6323ef8301449d65f018fafe2e7,
     type: 2}
   m_PrefabInternal: {fileID: 1230835395}
 --- !u!1001 &1267911106
@@ -5266,6 +5312,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4367926397482764, guid: c4a8b6e3a32e44646bc3c7c389a650bd,
     type: 2}
   m_PrefabInternal: {fileID: 1273753376}
+--- !u!4 &1291149411 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4043296244601846, guid: a9a3c6323ef8301449d65f018fafe2e7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1230835395}
 --- !u!1001 &1334124772
 Prefab:
   m_ObjectHideFlags: 0
@@ -5582,6 +5633,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1423920720}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1426143280 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4189673911792434, guid: a9a3c6323ef8301449d65f018fafe2e7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1230835395}
 --- !u!1 &1445762029
 GameObject:
   m_ObjectHideFlags: 0
