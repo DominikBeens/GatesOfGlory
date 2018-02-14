@@ -51,11 +51,11 @@ public class CastleBuilder : MonoBehaviour
                 {
                     case Side.Left:
 
-                        myBuildedObject.GetComponent<CastleWeapon>().side = CastleWeapon.Side.Left;
+                        myBuildedObject.GetComponent<CastleWeapon>().SetLeftSide();
                         break;
                     case Side.Right:
 
-                        myBuildedObject.GetComponent<CastleWeapon>().side = CastleWeapon.Side.Right;
+                        myBuildedObject.GetComponent<CastleWeapon>().SetRightSide();
                         break;
                 }
 

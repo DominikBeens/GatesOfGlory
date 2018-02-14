@@ -52,11 +52,7 @@ public class CastleWeapon : MonoBehaviour
     {
         if (usingWeapon)
         {
-            //if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire)
-            //{
-            //    nextTimeToFire = Time.time + coolDown.currentValue;
-            //    Shoot();
-            //}
+            useUI.transform.LookAt(Camera.main.transform);
 
             if (shooting)
             {
@@ -114,5 +110,17 @@ public class CastleWeapon : MonoBehaviour
         shooting = false;
 
         useUI.SetActive(false);
+    }
+
+    public void SetLeftSide()
+    {
+        side = Side.Left;
+    }
+
+    public void SetRightSide()
+    {
+        side = Side.Right;
+        transform.rotation = Quaternion.Euler(0, 180, 0);
+        useUI.transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 }

@@ -21,33 +21,17 @@ public class CastleWeapon_Ballista : CastleWeapon
 
         if (usingWeapon)
         {
-            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            //RaycastHit hit;
-            //if (Physics.Raycast(ray, out hit, 100f, mouseLayerMask))
-            //{
-            //    mouseObject.transform.position = hit.point;
-            //    mouseObject.transform.LookAt(rotatableWeapon.transform);
+            Quaternion newRotation;
 
-            //    Quaternion newRotation = Quaternion.Euler(-mouseObject.transform.rotation.eulerAngles);
-            //    //newRotation = Quaternion.Euler(Mathf.Clamp(newRotation.eulerAngles.x, minXRotation, maxXRotation), -90, newRotation.eulerAngles.z);
+            if (side == Side.Left)
+            {
+                newRotation = Quaternion.Euler(rotationSlider.value, -90, 0);
+            }
+            else
+            {
+                newRotation = Quaternion.Euler(rotationSlider.value, 90, 0);
+            }
 
-            //    if (side == Side.Left)
-            //    {
-            //        //if (-mouseObject.transform.rotation.eulerAngles.x + newRotation.eulerAngles.x > 1f)
-            //        //{
-            //        //    if (mouseObject.transform.position.x < 0)
-            //        //    {
-            //                rotatableWeapon.transform.rotation = newRotation;
-            //        //    }
-            //        //}
-            //    }
-            //    else
-            //    {
-
-            //    }
-            //}
-
-            Quaternion newRotation = Quaternion.Euler(rotationSlider.value, -90, 0);
             rotatableWeapon.transform.rotation = Quaternion.RotateTowards(rotatableWeapon.rotation, newRotation, Time.deltaTime * rotationSpeed);
         }
     }

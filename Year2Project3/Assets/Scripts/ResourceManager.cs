@@ -10,11 +10,11 @@ public class ResourceManager : MonoBehaviour
     [Header("Gold")]
     public static int gold;
     public const int goldPerPhysicalCoin = 10;
-    public GameObject goldPrefab;
     public Transform goldSpawn;
     public float goldSpawnInterval;
     private bool canSpawnGold = true;
     private int goldToSpawn;
+    private List<GameObject> goldPrefabsInScene = new List<GameObject>();
 
 
     private void Awake()
@@ -30,6 +30,10 @@ public class ResourceManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
             AddGold(1000);
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            RemoveGold(100);
         }
 
         if (goldToSpawn > 0)
@@ -51,11 +55,33 @@ public class ResourceManager : MonoBehaviour
     {
         canSpawnGold = false;
 
-        Instantiate(goldPrefab, goldSpawn.transform.position, Quaternion.Euler(Random.Range(-360, 360), Random.Range(-360, 360), Random.Range(-360, 360)));
+        GameObject newGold = ObjectPooler.instance.goldPool.Dequeue();
+
+        newGold.SetActive(true);
+        newGold.transform.position = goldSpawn.transform.position;
+        newGold.transform.rotation = Quaternion.Euler(Random.Range(-360, 360), Random.Range(-360, 360), Random.Range(-360, 360));
+
+        goldPrefabsInScene.Add(newGold);
+
+        ObjectPooler.instance.goldPool.Enqueue(newGold);
+
         goldToSpawn--;
 
         yield return new WaitForSeconds(goldSpawnInterval);
 
         canSpawnGold = true;
+    }
+
+    public void RemoveGold(int amount)
+    {
+        gold -= amount;
+
+        int goldPrefabsToDelete = (amount / goldPerPhysicalCoin);
+
+        for (int i = 0; i < goldPrefabsToDelete; i++)
+        {
+            goldPrefabsInScene[i].SetActive(false);
+            goldPrefabsInScene.RemoveAt(0);
+        }
     }
 }
