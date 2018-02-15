@@ -88,8 +88,6 @@ public class CastleWeapon : MonoBehaviour
     public virtual void StartUsing()
     {
         usingWeapon = true;
-        GameManager.instance.StartUsingWeapon(this);
-
         useUI.SetActive(true);
     }
 
@@ -105,8 +103,6 @@ public class CastleWeapon : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         usingWeapon = false;
-        GameManager.instance.StopUsingWeapon();
-
         shooting = false;
 
         useUI.SetActive(false);

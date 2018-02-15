@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23647418814774798}
   - component: {fileID: 65104283327236154}
   - component: {fileID: 65900480304583764}
+  - component: {fileID: 114851966250411924}
   m_Layer: 0
   m_Name: MuurPoortRechts
   m_TagString: Untagged
@@ -386,7 +387,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1058612530719952}
   m_LocalRotation: {x: 0.00000001545432, y: -0.7071064, z: -0.000000015454305, w: 0.7071072}
-  m_LocalPosition: {x: -0, y: 0.6, z: 0}
+  m_LocalPosition: {x: -0, y: 0.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4800076857032958}
@@ -399,7 +400,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1984224200076704}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: -0.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4731893608341052}
@@ -488,7 +489,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 24f0cded091315a44a66463377eda598, type: 2}
+  - {fileID: 2100000, guid: f9934edf1fe31514c9f22c760207c5c6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -984,6 +985,19 @@ MonoBehaviour:
   attackingMe: []
   myGate: {fileID: 114590900355932406}
   healthbarFill: {fileID: 114641109949355968}
+--- !u!114 &114851966250411924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1022547181022578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6823ad73c911d04dab01986a41c2e05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetAlpha: 200
+  fadeSpeed: 1
 --- !u!222 &222124030289917814
 CanvasRenderer:
   m_ObjectHideFlags: 1

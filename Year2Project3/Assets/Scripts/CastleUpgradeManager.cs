@@ -47,11 +47,6 @@ public class CastleUpgradeManager : MonoBehaviour
 
     public void OpenUI(CastleBuilder selected)
     {
-        if (GameManager.instance.playerState == GameManager.PlayerState.UsingWeapon)
-        {
-            return;
-        }
-
         if (selectedBuild != null)
         {
             AnimationEventCloseUI();

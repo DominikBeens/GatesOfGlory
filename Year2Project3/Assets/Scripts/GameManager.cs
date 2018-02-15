@@ -14,32 +14,11 @@ public class GameManager : MonoBehaviour
     }
     public GameState gameState;
 
-    public enum PlayerState
-    {
-        Idle,
-        UsingWeapon
-    }
-    public PlayerState playerState;
-
-    private CastleWeapon weaponInUse;
-
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
-    }
-
-    public void StartUsingWeapon(CastleWeapon weapon)
-    {
-        weaponInUse = weapon;
-        playerState = PlayerState.UsingWeapon;
-    }
-
-    public void StopUsingWeapon()
-    {
-        weaponInUse = null;
-        playerState = PlayerState.Idle;
     }
 }
