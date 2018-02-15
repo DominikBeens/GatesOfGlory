@@ -7,9 +7,10 @@ public class Projectile : MonoBehaviour
 
     private bool canRotate;
 
-    private void Awake()
+    private void OnEnable()
     {
         canRotate = true;
+        GetComponent<Rigidbody>().isKinematic = false;
     }
 
     private void Update()

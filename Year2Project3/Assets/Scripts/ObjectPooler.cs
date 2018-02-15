@@ -7,6 +7,8 @@ public class ObjectPooler : MonoBehaviour
 
     public static ObjectPooler instance;
 
+    private Dictionary<string, Queue<GameObject>> poolDictionary = new Dictionary<string, Queue<GameObject>>();
+
     [Header("Gold")]
     public int goldPoolSize;
     public GameObject goldPrefab;
@@ -22,6 +24,8 @@ public class ObjectPooler : MonoBehaviour
 
     private void Start()
     {
+        poolDictionary.Add("gold", goldPool);
+
         for (int i = 0; i < goldPoolSize; i++)
         {
             GameObject newGoldObject = Instantiate(goldPrefab);
@@ -29,5 +33,21 @@ public class ObjectPooler : MonoBehaviour
 
             goldPool.Enqueue(newGoldObject);
         }
+    }
+
+    public void GrabFromPool(string poolName, Vector3 position, Quaternion rotation)
+    {
+        GameObject toGrab = null;
+
+        if (poolName == "gold")
+        {
+            toGrab = goldPool.Dequeue();
+            goldPool.Enqueue(toGrab);
+        }
+
+        toGrab.transform.position = position;
+        toGrab.transform.rotation = rotation;
+
+        toGrab.SetActive(true);
     }
 }
