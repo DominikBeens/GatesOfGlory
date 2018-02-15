@@ -66,6 +66,7 @@ public class CastleWeapon_Ballista : CastleWeapon
 
         for (int i = 0; i < newProjectiles.Count; i++)
         {
+            newProjectiles[i].GetComponent<Projectile>().myDamage = damage.currentValue;
             newProjectiles[i].GetComponent<Rigidbody>().AddForce(newProjectiles[i].transform.forward * force.currentValue);
         }
     }

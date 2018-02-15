@@ -1,12 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : Soldier{
     public List<Allie> attackingSoldiers = new List<Allie>();
     public int maxAttacking;
     public bool attackingCastle;
     public Damagebles target;
+
+    [Header("Healthbar")]
+    public GameObject healthbar;
+    public Image healthbarFill;
+    public Animator healthbarAnim;
 
     void Start(){
         targetTransform = BattleManager.instance.EnemyGetTarget(transform.position.x);
@@ -17,6 +23,9 @@ public class Enemy : Soldier{
 
     void Update(){
         FindNewTarget();
+
+        //healthbar.transform.LookAt(Camera.main.transform);
+        //healthbarFill.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
     }
 
     public void RemoveCounter(Allie _attacking){
@@ -88,5 +97,16 @@ public class Enemy : Soldier{
             StartCoroutine(Attack());
             target.TakeDamage(myStats.damage.currentValue);
         }
+    }
+
+    public void ShowHealthbar()
+    {
+        healthbarAnim.ResetTrigger("Hide");
+        healthbarAnim.SetTrigger("Show");
+    }
+
+    public void HideHealthbar()
+    {
+        healthbarAnim.SetTrigger("Hide");
     }
 }

@@ -6,6 +6,9 @@ public class Projectile : MonoBehaviour
 {
 
     private bool canRotate;
+    private bool canDealDamage = true;
+
+    public float myDamage;
 
     private void OnEnable()
     {
@@ -25,5 +28,19 @@ public class Projectile : MonoBehaviour
     {
         canRotate = false;
         GetComponent<Rigidbody>().isKinematic = true;
+
+        if (!canDealDamage)
+        {
+            return;
+        }
+
+        Enemy enemy = collision.transform.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(myDamage);
+            Destroy(gameObject);
+        }
+
+        canDealDamage = false;
     }
 }
