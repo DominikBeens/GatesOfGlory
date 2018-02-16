@@ -9,6 +9,8 @@ public class CastleRoomUpgrader : MonoBehaviour
     public GameObject buildUI;
     public GameObject upgradeUI;
 
+    public TextMeshProUGUI selectRoomText;
+
     [Header("Buttons")]
     public GameObject buildRoomButton;
 
@@ -43,6 +45,26 @@ public class CastleRoomUpgrader : MonoBehaviour
     public void OpenBuildUIButton()
     {
         buildUI.SetActive(true);
+    }
+
+    public void SetSelectRoomText(int type)
+    {
+        switch (type)
+        {
+            case 0:
+
+                selectRoomText.text = "Knight Room";
+                break;
+            case 1:
+
+                selectRoomText.text = "Healing Room";
+                break;
+        }
+    }
+
+    public void ResetSelectRoomText()
+    {
+        selectRoomText.text = "Select A Room";
     }
 
     public void BuildRoom(int type)

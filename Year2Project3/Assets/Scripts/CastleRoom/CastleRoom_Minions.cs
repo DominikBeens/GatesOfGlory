@@ -19,6 +19,7 @@ public class CastleRoom_Minions : CastleRoom
     private int currentAmountToSpawn;
 
     [Header("UI")]
+    public TextMeshProUGUI roomTypeText;
     public TextMeshProUGUI roomMinionCostText;
 
     public override void Update()
@@ -38,6 +39,7 @@ public class CastleRoom_Minions : CastleRoom
     {
         base.SetupUI();
 
+        roomTypeText.text = "Type: <color=green>" + roomType + "</color>";
         roomMinionCostText.text = "Spawn Cost: " + spawnCost;
     }
 

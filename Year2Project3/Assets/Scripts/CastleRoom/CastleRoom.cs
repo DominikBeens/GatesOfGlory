@@ -26,7 +26,6 @@ public class CastleRoom : MonoBehaviour
 
     [Header("Upgrade Panel")]
     public TextMeshProUGUI roomNameText;
-    public TextMeshProUGUI roomTypeText;
 
     public GameObject useUI;
     private bool usingRoom;
@@ -57,7 +56,6 @@ public class CastleRoom : MonoBehaviour
     public virtual void SetupUI()
     {
         roomNameText.text = "Level <color=green>" + roomLevel.ToString() + "</color> " + roomName;
-        roomTypeText.text = "Type: <color=green>" + roomType + "</color>";
     }
 
     public virtual void StartUsing()

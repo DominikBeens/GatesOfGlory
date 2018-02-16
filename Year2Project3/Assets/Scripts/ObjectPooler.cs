@@ -5,14 +5,19 @@ using UnityEngine;
 public class ObjectPooler : MonoBehaviour 
 {
 
+    [System.Serializable]
+    public class ObjectPool
+    {
+        public string poolName;
+        public GameObject poolPrefab;
+        public int poolSize;
+        public Queue<GameObject> poolQueue = new Queue<GameObject>();
+    }
+
     public static ObjectPooler instance;
 
     private Dictionary<string, Queue<GameObject>> poolDictionary = new Dictionary<string, Queue<GameObject>>();
-
-    [Header("Gold")]
-    public int goldPoolSize;
-    public GameObject goldPrefab;
-    public Queue<GameObject> goldPool = new Queue<GameObject>();
+    public List<ObjectPool> pools = new List<ObjectPool>();
 
     private void Awake()
     {
@@ -24,14 +29,17 @@ public class ObjectPooler : MonoBehaviour
 
     private void Start()
     {
-        poolDictionary.Add("gold", goldPool);
-
-        for (int i = 0; i < goldPoolSize; i++)
+        for (int i = 0; i < pools.Count; i++)
         {
-            GameObject newGoldObject = Instantiate(goldPrefab);
-            newGoldObject.SetActive(false);
+            for (int ii = 0; ii < pools[i].poolSize; ii++)
+            {
+                GameObject newPooledObject = Instantiate(pools[i].poolPrefab);
+                newPooledObject.SetActive(false);
 
-            goldPool.Enqueue(newGoldObject);
+                pools[i].poolQueue.Enqueue(newPooledObject);
+            }
+
+            poolDictionary.Add(pools[i].poolName, pools[i].poolQueue);
         }
     }
 

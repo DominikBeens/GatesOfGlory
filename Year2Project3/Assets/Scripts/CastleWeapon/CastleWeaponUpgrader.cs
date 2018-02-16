@@ -11,6 +11,8 @@ public class CastleWeaponUpgrader : MonoBehaviour
     [Space(10)]
     public TextMeshProUGUI upgradeText;
 
+    public TextMeshProUGUI selectWeaponText;
+
     [Header("Buttons")]
     public GameObject buildWeaponButton;
     public GameObject useWeaponButton;
@@ -72,6 +74,26 @@ public class CastleWeaponUpgrader : MonoBehaviour
         upgradeText.text = "Upgrade\n" + weaponComponent.upgradeCost.currentValue + " Gold";
 
         upgradeUI.SetActive(true);
+    }
+
+    public void SetSelectWeaponText(int type)
+    {
+        switch (type)
+        {
+            case 0:
+
+                selectWeaponText.text = "Ballista";
+                break;
+            case 1:
+
+                selectWeaponText.text = "Canon";
+                break;
+        }
+    }
+
+    public void ResetSelectWeaponText()
+    {
+        selectWeaponText.text = "Select A Weapon";
     }
 
     public void BuildWeapon(int type)
