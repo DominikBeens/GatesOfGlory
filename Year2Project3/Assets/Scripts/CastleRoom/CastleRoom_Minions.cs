@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CastleRoom_Minions : CastleRoom 
 {
@@ -17,6 +18,9 @@ public class CastleRoom_Minions : CastleRoom
     private bool canSpawn = true;
     private int currentAmountToSpawn;
 
+    [Header("UI")]
+    public TextMeshProUGUI roomMinionCostText;
+
     public override void Update()
     {
         base.Update();
@@ -30,11 +34,21 @@ public class CastleRoom_Minions : CastleRoom
         }
     }
 
+    public override void SetupUI()
+    {
+        base.SetupUI();
+
+        roomMinionCostText.text = "Spawn Cost: " + spawnCost;
+    }
+
     public override void UseRoom()
     {
         base.UseRoom();
 
-        currentAmountToSpawn += amountToSpawnPerBuy;
+        if (ResourceManager.gold >= spawnCost)
+        {
+            currentAmountToSpawn += amountToSpawnPerBuy;
+        }
     }
 
     public IEnumerator SpawnMinions()
@@ -47,6 +61,8 @@ public class CastleRoom_Minions : CastleRoom
 
         GameObject newMinion = Instantiate(minionToSpawn, minionSpawnPoint.position, Quaternion.identity, minionSpawnPoint);
         newMinion.transform.position = Vector3.zero + spawnOffset;
+
+        WaveManager.instance.alliesInScene.Add(newMinion.GetComponent<Allie>());
 
         currentAmountToSpawn--;
 

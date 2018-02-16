@@ -12,11 +12,6 @@ public class CastleRoomUpgrader : MonoBehaviour
     [Header("Buttons")]
     public GameObject buildRoomButton;
 
-    [Header("Upgrade Panel")]
-    public TextMeshProUGUI roomNameText;
-    public TextMeshProUGUI roomTypeText;
-    public TextMeshProUGUI roomMinionCostText;
-
     private void Awake()
     {
         upgradeUI.SetActive(false);
@@ -28,24 +23,20 @@ public class CastleRoomUpgrader : MonoBehaviour
         if (CastleUpgradeManager.selectedBuild.myBuildedObject == null)
         {
             buildRoomButton.SetActive(true);
+            gameObject.SetActive(true);
         }
         else
         {
             buildRoomButton.SetActive(false);
         }
 
-        gameObject.SetActive(true);
 
         CastleUpgradeManager.selectedBuild.buildButton.SetActive(false);
 
         if (CastleUpgradeManager.selectedBuild.myBuildedObject != null)
         {
-            CastleRoom roomComponent = CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleRoom>();
-
-            roomNameText.text = "Level <color=green>" + roomComponent.roomLevel.ToString() + "</color> " + roomComponent.roomName;
-            roomTypeText.text = "Type: <color=green>" + roomComponent.roomType + "</color>";
-
-            upgradeUI.SetActive(true);
+            CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleRoom>().StartUsing();
+            CastleUpgradeManager.instance.CloseUIButton();
         }
     }
 
@@ -64,20 +55,14 @@ public class CastleRoomUpgrader : MonoBehaviour
                 break;
             case 1:
 
-                CastleUpgradeManager.selectedBuild.BuildRoom(CastleRoom.RoomType.Gold);
+                CastleUpgradeManager.selectedBuild.BuildRoom(CastleRoom.RoomType.Heal);
                 break;
         }
     }
 
     public void UseRoomButton()
     {
-        if (CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleRoom_Minions>() != null)
-        {
-            if (ResourceManager.gold >= CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleRoom_Minions>().spawnCost)
-            {
-                CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleRoom_Minions>().UseRoom();
-            }
-        }
+
     }
 
     public void UpgradeButton()

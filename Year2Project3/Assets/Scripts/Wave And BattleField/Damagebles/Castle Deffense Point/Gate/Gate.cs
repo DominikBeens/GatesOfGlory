@@ -7,6 +7,11 @@ public class Gate : CastleDeffensePoint{
 
     public override void TakeDamage(float damage)
     {
+        if (gateOpen)
+        {
+            return;
+        }
+
         myStats.health.currentValue -= damage;
         healthbarFill.fillAmount = myStats.health.currentValue / myStats.health.baseValue;
         if (myStats.health.currentValue < 0)

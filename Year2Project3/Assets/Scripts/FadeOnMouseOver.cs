@@ -16,7 +16,18 @@ public class FadeOnMouseOver : MonoBehaviour
     {
         Renderer myRenderer = GetComponent<Renderer>();
         myRenderer.material = new Material(myRenderer.material);
+
+        myRenderer.material.SetFloat("_Mode", 2.0f);
+        myRenderer.material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+        myRenderer.material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+        myRenderer.material.SetInt("_ZWrite", 0);
+        myRenderer.material.DisableKeyword("_ALPHATEST_ON");
+        myRenderer.material.EnableKeyword("_ALPHABLEND_ON");
+        myRenderer.material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+        myRenderer.material.renderQueue = 3000;
+
         myMat = myRenderer.material;
+
     }
 
     private void Update()

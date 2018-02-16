@@ -35,19 +35,16 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    public void GrabFromPool(string poolName, Vector3 position, Quaternion rotation)
+    public GameObject GrabFromPool(string poolName, Vector3 position, Quaternion rotation)
     {
-        GameObject toGrab = null;
-
-        if (poolName == "gold")
-        {
-            toGrab = goldPool.Dequeue();
-            goldPool.Enqueue(toGrab);
-        }
+        GameObject toGrab = poolDictionary[poolName].Dequeue();
+        poolDictionary[poolName].Enqueue(toGrab);
 
         toGrab.transform.position = position;
         toGrab.transform.rotation = rotation;
 
         toGrab.SetActive(true);
+
+        return toGrab;
     }
 }

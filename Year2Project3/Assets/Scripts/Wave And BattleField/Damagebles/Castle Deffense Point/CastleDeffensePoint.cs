@@ -11,5 +11,10 @@ public class CastleDeffensePoint : Damagebles {
 
     public override void TakeDamage(float damage){
         myStats.health.currentValue -= damage;
+
+        if (healthbarFill != null)
+        {
+            healthbarFill.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
+        }
     }
 }

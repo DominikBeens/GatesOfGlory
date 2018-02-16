@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour {
+
+    public static WaveManager instance;
+
     public List<Wave> Waves = new List<Wave>();
     int currentWave; 
     int currentStage;
@@ -12,6 +15,17 @@ public class WaveManager : MonoBehaviour {
     public float maxStageWait, minStageWait;
     public List<Transform> spwanPoints = new List<Transform>();
     public float SpawnsetOff;
+
+    public List<Enemy> enemiesInScene = new List<Enemy>();
+    public List<Allie> alliesInScene = new List<Allie>();
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     void Start(){
         StartCoroutine(StageTimer());
@@ -59,8 +73,9 @@ public class WaveManager : MonoBehaviour {
 
         if (currentSoldier < Waves[currentWave].atackStage[currentStage].soldiers.Count){
             int k = Random.Range(0,1);
-            Instantiate(Waves[currentWave].atackStage[currentStage].soldiers[currentSoldier], new Vector3(spwanPoints[k].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 0,Random.Range(-SpawnsetOff,SpawnsetOff)), spwanPoints[k].transform.rotation);
+            GameObject newEnemy = Instantiate(Waves[currentWave].atackStage[currentStage].soldiers[currentSoldier], new Vector3(spwanPoints[k].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 0,Random.Range(-SpawnsetOff,SpawnsetOff)), spwanPoints[k].transform.rotation);
             currentSoldier++;
+            enemiesInScene.Add(newEnemy.GetComponent<Enemy>());
             StartCoroutine(SoldierTimer());
         }
         else{

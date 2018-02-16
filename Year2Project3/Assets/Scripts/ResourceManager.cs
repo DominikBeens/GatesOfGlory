@@ -55,15 +55,9 @@ public class ResourceManager : MonoBehaviour
     {
         canSpawnGold = false;
 
-        GameObject newGold = ObjectPooler.instance.goldPool.Dequeue();
-
-        newGold.SetActive(true);
-        newGold.transform.position = goldSpawn.transform.position;
-        newGold.transform.rotation = Quaternion.Euler(Random.Range(-360, 360), Random.Range(-360, 360), Random.Range(-360, 360));
+        GameObject newGold = ObjectPooler.instance.GrabFromPool("gold", goldSpawn.transform.position, Quaternion.Euler(Random.Range(-360, 360), Random.Range(-360, 360), Random.Range(-360, 360)));
 
         goldPrefabsInScene.Add(newGold);
-
-        ObjectPooler.instance.goldPool.Enqueue(newGold);
 
         goldToSpawn--;
 

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class CastleRoom : MonoBehaviour 
+public class CastleRoom : MonoBehaviour
 {
 
 
@@ -11,7 +12,8 @@ public class CastleRoom : MonoBehaviour
         Knight,
         Ranger,
         Spearman,
-        Gold
+        Gold,
+        Heal
     }
     public RoomType roomType;
 
@@ -22,6 +24,13 @@ public class CastleRoom : MonoBehaviour
     }
     public Side side;
 
+    [Header("Upgrade Panel")]
+    public TextMeshProUGUI roomNameText;
+    public TextMeshProUGUI roomTypeText;
+
+    public GameObject useUI;
+    private bool usingRoom;
+
     public string roomName;
     public int roomLevel;
     public int buildCost;
@@ -29,7 +38,10 @@ public class CastleRoom : MonoBehaviour
 
     public virtual void Update()
     {
-
+        if (usingRoom)
+        {
+            useUI.transform.LookAt(Camera.main.transform);
+        }
     }
 
     public virtual void UseRoom()
@@ -40,5 +52,34 @@ public class CastleRoom : MonoBehaviour
     public void Upgrade()
     {
 
+    }
+
+    public virtual void SetupUI()
+    {
+        roomNameText.text = "Level <color=green>" + roomLevel.ToString() + "</color> " + roomName;
+        roomTypeText.text = "Type: <color=green>" + roomType + "</color>";
+    }
+
+    public virtual void StartUsing()
+    {
+        usingRoom = true;
+        SetupUI();
+        useUI.SetActive(true);
+    }
+
+    public virtual void StopUsing()
+    {
+        StartCoroutine(EventStopUsing());
+    }
+
+    public IEnumerator EventStopUsing()
+    {
+        useUI.GetComponent<Animator>().SetTrigger("CloseUI");
+
+        yield return new WaitForSeconds(0.5f);
+
+        usingRoom = false;
+
+        useUI.SetActive(false);
     }
 }
