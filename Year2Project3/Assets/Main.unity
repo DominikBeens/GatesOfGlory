@@ -5333,7 +5333,7 @@ Prefab:
     - target: {fileID: 224908919361642174, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -52.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224633295053828908, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -5353,7 +5353,7 @@ Prefab:
     - target: {fileID: 224633295053828908, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -52.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224066990894667990, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -5373,7 +5373,7 @@ Prefab:
     - target: {fileID: 224066990894667990, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -88.335
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224238493477248702, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -5393,7 +5393,7 @@ Prefab:
     - target: {fileID: 224238493477248702, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -88.335
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c304939f7dd57f54baea33fb78f101ad, type: 2}
@@ -6437,17 +6437,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 932536914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f17efc7f39ea474c8b6264918562547, type: 3}
+  m_Script: {fileID: 11500000, guid: 52e8ebd2766a9044e88e5f3d3ee9f24d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   soldierOffset: 0.5
-  gateRightInside: {fileID: 1291149411}
-  gateLeftInside: {fileID: 707690548}
-  gateRight: {fileID: 1230835401}
-  gateLeft: {fileID: 707690546}
+  newDeffensePoints:
+  - frontGate: {fileID: 707690547}
+    backGate: {fileID: 707690548}
+    gate: {fileID: 707690546}
+  - frontGate: {fileID: 1426143280}
+    backGate: {fileID: 1291149411}
+    gate: {fileID: 1230835401}
   throne: {fileID: 1925006800}
-  gateRightAlly: {fileID: 1426143280}
-  GateLeftAlly: {fileID: 707690547}
+  min: 0
+  max: 0
+  maxEnemySearch: 50
+  minEnemySearch: -50
   freeEnemys: []
 --- !u!1001 &935164452
 Prefab:
