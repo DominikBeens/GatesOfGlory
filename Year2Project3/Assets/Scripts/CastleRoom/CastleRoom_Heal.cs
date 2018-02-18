@@ -14,7 +14,7 @@ public class CastleRoom_Heal : CastleRoom
     public Image cooldownFill;
     public TextMeshProUGUI descriptionText;
 
-    private float currentCooldown;
+    private float currentCooldown = 0.95f;
 
     public override void SetupUI()
     {

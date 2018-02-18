@@ -59,6 +59,10 @@ public class CastleRoomUpgrader : MonoBehaviour
 
                 selectRoomText.text = "Healing Room";
                 break;
+            case 2:
+
+                selectRoomText.text = "Damage Room";
+                break;
         }
     }
 
@@ -78,6 +82,10 @@ public class CastleRoomUpgrader : MonoBehaviour
             case 1:
 
                 CastleUpgradeManager.selectedBuild.BuildRoom(CastleRoom.RoomType.Heal);
+                break;
+            case 2:
+
+                CastleUpgradeManager.selectedBuild.BuildRoom(CastleRoom.RoomType.Damage);
                 break;
         }
     }

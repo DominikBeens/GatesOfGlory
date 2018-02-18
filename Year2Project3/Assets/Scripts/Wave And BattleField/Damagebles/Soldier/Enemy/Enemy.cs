@@ -9,11 +9,6 @@ public class Enemy : Soldier{
     public bool attackingCastle;
     public Damagebles target;
 
-    [Header("Healthbar")]
-    public GameObject healthbar;
-    public Image healthbarFill;
-    public Animator healthbarAnim;
-
     void Start(){
         targetTransform = BattleManager.instance.EnemyGetTarget(transform.position.x);
         FindNewTarget();
@@ -21,11 +16,9 @@ public class Enemy : Soldier{
         BattleManager.instance.freeEnemys.Add(gameObject);
     }
 
-    void Update(){
+    public override void Update(){
+        base.Update();
         FindNewTarget();
-
-        //healthbar.transform.LookAt(Camera.main.transform);
-        //healthbarFill.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
     }
 
     public void RemoveCounter(Allie _attacking){
@@ -99,14 +92,8 @@ public class Enemy : Soldier{
         }
     }
 
-    public void ShowHealthbar()
+    private void OnDestroy()
     {
-        healthbarAnim.ResetTrigger("Hide");
-        healthbarAnim.SetTrigger("Show");
-    }
-
-    public void HideHealthbar()
-    {
-        healthbarAnim.SetTrigger("Hide");
+        WaveManager.instance.enemiesInScene.Remove(this);
     }
 }

@@ -28,7 +28,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1122779431515000
 GameObject:
   m_ObjectHideFlags: 1
@@ -138,7 +138,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385821130610866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.773935, y: 1.127, z: 0.15784788}
+  m_LocalPosition: {x: -4.08, y: 1.18, z: -0.28361607}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4210055967814444}
@@ -221,7 +221,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1103057645299090}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: fddf7275aa87a234580b7798879179a6, type: 2}
   m_CullingMode: 0
@@ -376,13 +376,13 @@ MonoBehaviour:
   attackCooldown: 2
   agent: {fileID: 195985851031835828}
   targetTransform: {fileID: 0}
+  healthbarCanvas: {fileID: 224742655499768670}
+  healthbarFill: {fileID: 114763347963810896}
+  healthbarAnim: {fileID: 95949403251999354}
   attackingSoldiers: []
   maxAttacking: 2
   attackingCastle: 0
   target: {fileID: 0}
-  healthbar: {fileID: 1103057645299090}
-  healthbarFill: {fileID: 114763347963810896}
-  healthbarAnim: {fileID: 95949403251999354}
 --- !u!114 &114763347963810896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
+  m_IgnoreReversedGraphics: 0
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2

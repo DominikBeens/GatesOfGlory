@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Allie : Soldier{
 
-    void Update(){
-        if(targetTransform == null){
+    public override void Update(){
+        base.Update();
+        if (targetTransform == null){
             targetTransform = BattleManager.instance.AllyGetTarget(transform.position.x,this);
             agent.SetDestination(targetTransform.position);
             agent.isStopped = false;
@@ -39,5 +40,10 @@ public class Allie : Soldier{
             //death Animation
             StartCoroutine(Attack());
         }
+    }
+
+    private void OnDestroy()
+    {
+        WaveManager.instance.alliesInScene.Remove(this);
     }
 }

@@ -63,6 +63,7 @@ public class CastleRoom_Minions : CastleRoom
 
         GameObject newMinion = Instantiate(minionToSpawn, minionSpawnPoint.position, Quaternion.identity, minionSpawnPoint);
         newMinion.transform.position = Vector3.zero + spawnOffset;
+        newMinion.transform.SetParent(null);
 
         WaveManager.instance.alliesInScene.Add(newMinion.GetComponent<Allie>());
 

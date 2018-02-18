@@ -13,7 +13,8 @@ public class CastleRoom : MonoBehaviour
         Ranger,
         Spearman,
         Gold,
-        Heal
+        Heal,
+        Damage
     }
     public RoomType roomType;
 
