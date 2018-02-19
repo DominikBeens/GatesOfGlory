@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class Knight : Allie
 {
-    void Start()
-    {
-        targetTransform = BattleManager.instance.AllyGetTarget(transform.position.x, this);
-        agent.SetDestination(targetTransform.position);
-    }
-
 
     void OnTriggerEnter(Collider other)
     {
