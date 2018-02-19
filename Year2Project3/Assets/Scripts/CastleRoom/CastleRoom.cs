@@ -25,6 +25,9 @@ public class CastleRoom : MonoBehaviour
     }
     public Side side;
 
+    [HideInInspector]
+    public CastleBuilder myBuilder;
+
     [Header("Upgrade Panel")]
     public GameObject upgradePanel;
     public TextMeshProUGUI upgradeStatsText;
@@ -100,6 +103,7 @@ public class CastleRoom : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         usingRoom = false;
+        myBuilder.useButton.SetActive(true);
 
         upgradePanel.SetActive(false);
         useUI.SetActive(false);

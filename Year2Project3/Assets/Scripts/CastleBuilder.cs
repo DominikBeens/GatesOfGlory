@@ -86,19 +86,22 @@ public class CastleBuilder : MonoBehaviour
                 newBuild.transform.SetParent(transform);
                 myBuildedObject = newBuild;
 
+                CastleRoom castleRoomComponent = myBuildedObject.GetComponent<CastleRoom>();
+                castleRoomComponent.myBuilder = this;
+
                 switch (side)
                 {
                     case Side.Left:
 
-                        myBuildedObject.GetComponent<CastleRoom>().side = CastleRoom.Side.Left;
+                        castleRoomComponent.side = CastleRoom.Side.Left;
                         break;
                     case Side.Right:
 
-                        myBuildedObject.GetComponent<CastleRoom>().side = CastleRoom.Side.Right;
+                        castleRoomComponent.side = CastleRoom.Side.Right;
                         break;
                 }
 
-                CastleUpgradeManager.instance.allBuiltRooms.Add(myBuildedObject.GetComponent<CastleRoom>());
+                CastleUpgradeManager.instance.allBuiltRooms.Add(castleRoomComponent);
 
                 buildButton.SetActive(false);
                 useButton.SetActive(true);

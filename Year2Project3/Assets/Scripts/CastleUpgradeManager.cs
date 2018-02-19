@@ -73,6 +73,8 @@ public class CastleUpgradeManager : MonoBehaviour
         {
             castleRoomUI.GetComponent<CastleRoomUpgrader>().OpenUI();
         }
+
+        selectedBuild.useButton.SetActive(false);
     }
 
     public virtual void AnimationEventCloseUI()
