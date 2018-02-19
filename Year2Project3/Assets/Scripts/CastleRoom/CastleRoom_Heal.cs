@@ -22,8 +22,8 @@ public class CastleRoom_Heal : CastleRoom
 
         descriptionText.text = "Heals all allies for <color=green>" + healAmount.currentValue + "</color> hp.";
 
-        upgradeStatsText.text = "Heal amount: " + healAmount.currentValue + " (<color=green>" + CheckPositiveOrNegative(healAmount.increaseValue) + "</color>)" + "\n" +
-                                "Cooldown: " + useCooldown .currentValue + " (<color=green>" + CheckPositiveOrNegative(useCooldown.increaseValue) + "</color>)";
+        upgradeStatsText.text = "Heal amount: " + healAmount.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(healAmount.increaseValue) + "</color>)" + "\n" +
+                                "Cooldown: " + useCooldown .currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(useCooldown.increaseValue) + "</color>)";
     }
 
     public override void Update()

@@ -129,20 +129,4 @@ public class CastleRoom : MonoBehaviour
 
         upgradePanel.SetActive(false);
     }
-
-    protected string CheckPositiveOrNegative(float stat)
-    {
-        string newStat = null;
-
-        if (stat > 0)
-        {
-            newStat = "+" + stat;
-        }
-        else
-        {
-            newStat = stat.ToString();
-        }
-
-        return newStat;
-    }
 }

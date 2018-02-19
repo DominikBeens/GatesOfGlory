@@ -44,14 +44,12 @@ public class CastleWeapon_Ballista : CastleWeapon
 
         switch (amountOfProjectiles)
         {
-            case 1:
+            case AmountOfProjectiles.One:
 
                 GameObject newProjectile = Instantiate(projectile, projectileSpawns[0].position, projectileSpawns[0].rotation);
                 newProjectiles.Add(newProjectile);
                 break;
-            case 2:
-                break;
-            case 3:
+            case AmountOfProjectiles.Three:
 
                 GameObject newProjectile1 = Instantiate(projectile, projectileSpawns[0].position, projectileSpawns[0].rotation);
                 newProjectiles.Add(newProjectile1);

@@ -31,9 +31,17 @@ public class CastleWeapon : MonoBehaviour
     public Transform rotatableWeapon;
     public GameObject projectile;
     public List<Transform> projectileSpawns = new List<Transform>();
-    public int amountOfProjectiles = 1;
+    public enum AmountOfProjectiles
+    {
+        One,
+        Three
+    }
+    public AmountOfProjectiles amountOfProjectiles;
 
     public GameObject useUI;
+
+    [HideInInspector]
+    public CastleBuilder myBuilder;
 
     [Header("Properties")]
     public Stat damage;
@@ -106,6 +114,8 @@ public class CastleWeapon : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.5f);
+
+        myBuilder.useButton.SetActive(true);
 
         usingWeapon = false;
         shooting = false;

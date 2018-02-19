@@ -23,9 +23,9 @@ public class CastleRoom_Damage : CastleRoom
 
         descriptionText.text = "Strikes <color=green>" + amountOfEnemiesToDamage.currentValue + "</color> enemies for <color=green>" + damageAmount.currentValue + "</color> hp.";
 
-        upgradeStatsText.text = "Damage amount: " + damageAmount.currentValue + " (<color=green>" + CheckPositiveOrNegative(damageAmount.increaseValue) + "</color>)" + "\n" +
-                                "Amount of targets: " + amountOfEnemiesToDamage.currentValue + " (<color=green>" + CheckPositiveOrNegative(amountOfEnemiesToDamage.increaseValue) + "</color>)" + "\n" +
-                                "Cooldown: " + useCooldown.currentValue + " (<color=green>" + CheckPositiveOrNegative(useCooldown.increaseValue) + "</color>)";
+        upgradeStatsText.text = "Damage amount: " + damageAmount.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(damageAmount.increaseValue) + "</color>)" + "\n" +
+                                "Amount of targets: " + amountOfEnemiesToDamage.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(amountOfEnemiesToDamage.increaseValue) + "</color>)" + "\n" +
+                                "Cooldown: " + useCooldown.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(useCooldown.increaseValue) + "</color>)";
     }
 
     public override void Update()

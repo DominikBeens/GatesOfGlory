@@ -2119,8 +2119,9 @@ MonoBehaviour:
   - {fileID: 4262480147398422}
   - {fileID: 4394690425985424}
   - {fileID: 4975060811817530}
-  amountOfProjectiles: 3
+  amountOfProjectiles: 1
   useUI: {fileID: 1863118061694664}
+  myBuilder: {fileID: 0}
   damage:
     baseValue: 30
     currentValue: 30

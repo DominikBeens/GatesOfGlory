@@ -155,4 +155,20 @@ public class CastleUpgradeManager : MonoBehaviour
             allBuiltRooms[i].StopUsing();
         }
     }
+
+    public string CheckPositiveOrNegative(float stat)
+    {
+        string newStat = null;
+
+        if (stat > 0)
+        {
+            newStat = "+" + stat;
+        }
+        else
+        {
+            newStat = stat.ToString();
+        }
+
+        return newStat;
+    }
 }
