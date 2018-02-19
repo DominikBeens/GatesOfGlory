@@ -38,7 +38,7 @@ public class CastleRoomUpgrader : MonoBehaviour
         if (CastleUpgradeManager.selectedBuild.myBuildedObject != null)
         {
             CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleRoom>().StartUsing();
-            CastleUpgradeManager.instance.CloseUIButton();
+            //CastleUpgradeManager.instance.CloseAllUI();
         }
     }
 

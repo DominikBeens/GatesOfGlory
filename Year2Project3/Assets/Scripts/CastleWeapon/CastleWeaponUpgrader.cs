@@ -58,7 +58,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
     public void UseWeaponButton()
     {
         CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleWeapon>().StartUsing();
-        CastleUpgradeManager.instance.CloseUIButton();
+        //CastleUpgradeManager.instance.CloseAllUI();
     }
 
     public void OpenUpgradeUIButton()

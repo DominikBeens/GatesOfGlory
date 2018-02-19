@@ -59,10 +59,12 @@ public class CastleBuilder : MonoBehaviour
                         break;
                 }
 
+                CastleUpgradeManager.instance.allBuiltWeapons.Add(myBuildedObject.GetComponent<CastleWeapon>());
+
                 buildButton.SetActive(false);
                 useButton.SetActive(true);
 
-                CastleUpgradeManager.instance.CloseUIButton();
+                CastleUpgradeManager.instance.CloseAllUI();
 
                 return;
             }
@@ -96,10 +98,12 @@ public class CastleBuilder : MonoBehaviour
                         break;
                 }
 
+                CastleUpgradeManager.instance.allBuiltRooms.Add(myBuildedObject.GetComponent<CastleRoom>());
+
                 buildButton.SetActive(false);
                 useButton.SetActive(true);
 
-                CastleUpgradeManager.instance.CloseUIButton();
+                CastleUpgradeManager.instance.CloseAllUI();
 
                 return;
             }

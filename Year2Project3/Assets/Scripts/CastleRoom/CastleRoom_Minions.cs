@@ -10,8 +10,8 @@ public class CastleRoom_Minions : CastleRoom
     public GameObject minionToSpawn;
     public Transform minionSpawnPoint;
     [Space(10)]
-    public int spawnCost;
-    public int amountToSpawnPerBuy;
+    public Stat spawnCost;
+    public Stat amountToSpawnPerBuy;
     public float spawnInterval;
     public float spawnPointOffsetRandomizer;
 
@@ -40,16 +40,19 @@ public class CastleRoom_Minions : CastleRoom
         base.SetupUI();
 
         roomTypeText.text = "Type: <color=green>" + roomType + "</color>";
-        roomMinionCostText.text = "Spawn Cost: " + spawnCost;
+        roomMinionCostText.text = "Spawn Cost: " + spawnCost.currentValue;
+
+        upgradeStatsText.text = "Spawn cost: " + spawnCost.currentValue + " (<color=green>" + CheckPositiveOrNegative(spawnCost.increaseValue) + "</color>)" + "\n" +
+                                "Spawns per buy: " + amountToSpawnPerBuy .currentValue + " (<color=green>" + CheckPositiveOrNegative(amountToSpawnPerBuy.increaseValue) + "</color>)";
     }
 
     public override void UseRoom()
     {
         base.UseRoom();
 
-        if (ResourceManager.gold >= spawnCost)
+        if (ResourceManager.gold >= spawnCost.currentValue)
         {
-            currentAmountToSpawn += amountToSpawnPerBuy;
+            currentAmountToSpawn += (int)amountToSpawnPerBuy.currentValue;
         }
     }
 
@@ -72,5 +75,15 @@ public class CastleRoom_Minions : CastleRoom
         yield return new WaitForSeconds(spawnInterval);
 
         canSpawn = true;
+    }
+
+    public override void Upgrade()
+    {
+        base.Upgrade();
+
+        spawnCost.currentValue += spawnCost.increaseValue;
+        amountToSpawnPerBuy.currentValue += amountToSpawnPerBuy.increaseValue;
+
+        SetupUI();
     }
 }

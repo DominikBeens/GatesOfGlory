@@ -26,6 +26,10 @@ public class CastleRoom : MonoBehaviour
     public Side side;
 
     [Header("Upgrade Panel")]
+    public GameObject upgradePanel;
+    public TextMeshProUGUI upgradeStatsText;
+    public TextMeshProUGUI upgradeDescriptionText;
+
     public TextMeshProUGUI roomNameText;
 
     public GameObject useUI;
@@ -35,6 +39,12 @@ public class CastleRoom : MonoBehaviour
     public int roomLevel;
     public int buildCost;
     public Stat upgradeCost;
+
+    private void Awake()
+    {
+        useUI.SetActive(false);
+        upgradePanel.SetActive(false);
+    }
 
     public virtual void Update()
     {
@@ -49,14 +59,21 @@ public class CastleRoom : MonoBehaviour
 
     }
 
-    public void Upgrade()
+    public virtual void Upgrade()
     {
+        if (ResourceManager.gold < upgradeCost.currentValue)
+        {
+            return;
+        }
 
+        roomLevel++;
+        upgradeCost.currentValue += upgradeCost.increaseValue;
     }
 
     public virtual void SetupUI()
     {
         roomNameText.text = "Level <color=green>" + roomLevel.ToString() + "</color> " + roomName;
+        upgradeDescriptionText.text = "Upgrading this room costs <color=yellow>" + upgradeCost.currentValue + "</color> gold.";
     }
 
     public virtual void StartUsing()
@@ -64,6 +81,8 @@ public class CastleRoom : MonoBehaviour
         usingRoom = true;
         SetupUI();
         useUI.SetActive(true);
+
+        CastleUpgradeManager.instance.CloseAllUI(this);
     }
 
     public virtual void StopUsing()
@@ -73,12 +92,53 @@ public class CastleRoom : MonoBehaviour
 
     public IEnumerator EventStopUsing()
     {
-        useUI.GetComponent<Animator>().SetTrigger("CloseUI");
+        if (useUI.activeInHierarchy)
+        {
+            useUI.GetComponent<Animator>().SetTrigger("CloseUI");
+        }
 
         yield return new WaitForSeconds(0.5f);
 
         usingRoom = false;
 
+        upgradePanel.SetActive(false);
         useUI.SetActive(false);
+    }
+
+    public virtual void ToggleUpgradePanelButton()
+    {
+        if (!upgradePanel.activeInHierarchy)
+        {
+            upgradePanel.SetActive(true);
+        }
+        else
+        {
+            StartCoroutine(CloseUpgradeUI());
+        }
+    }
+
+    private IEnumerator CloseUpgradeUI()
+    {
+        upgradePanel.GetComponent<Animator>().SetTrigger("CloseUI");
+
+        yield return new WaitForSeconds(0.5f);
+
+        upgradePanel.SetActive(false);
+    }
+
+    protected string CheckPositiveOrNegative(float stat)
+    {
+        string newStat = null;
+
+        if (stat > 0)
+        {
+            newStat = "+" + stat;
+        }
+        else
+        {
+            newStat = stat.ToString();
+        }
+
+        return newStat;
     }
 }

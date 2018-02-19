@@ -21,6 +21,9 @@ public class CastleRoom_Heal : CastleRoom
         base.SetupUI();
 
         descriptionText.text = "Heals all allies for <color=green>" + healAmount.currentValue + "</color> hp.";
+
+        upgradeStatsText.text = "Heal amount: " + healAmount.currentValue + " (<color=green>" + CheckPositiveOrNegative(healAmount.increaseValue) + "</color>)" + "\n" +
+                                "Cooldown: " + useCooldown .currentValue + " (<color=green>" + CheckPositiveOrNegative(useCooldown.increaseValue) + "</color>)";
     }
 
     public override void Update()
@@ -56,5 +59,15 @@ public class CastleRoom_Heal : CastleRoom
             Vector3 particleSpawn = new Vector3(WaveManager.instance.alliesInScene[i].transform.position.x, WaveManager.instance.alliesInScene[i].transform.position.y + 1.5f);
             Instantiate(healParticle, particleSpawn, Quaternion.identity);
         }
+    }
+
+    public override void Upgrade()
+    {
+        base.Upgrade();
+
+        useCooldown.currentValue += useCooldown.increaseValue;
+        healAmount.currentValue += healAmount.increaseValue;
+
+        SetupUI();
     }
 }

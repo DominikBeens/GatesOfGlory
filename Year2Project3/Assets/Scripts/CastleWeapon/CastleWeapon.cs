@@ -89,6 +89,8 @@ public class CastleWeapon : MonoBehaviour
     {
         usingWeapon = true;
         useUI.SetActive(true);
+
+        CastleUpgradeManager.instance.CloseAllUI(this);
     }
 
     public virtual void StopUsing()
@@ -98,7 +100,10 @@ public class CastleWeapon : MonoBehaviour
 
     public IEnumerator EventStopUsing()
     {
-        useUI.GetComponent<Animator>().SetTrigger("CloseUI");
+        if (useUI.activeInHierarchy)
+        {
+            useUI.GetComponent<Animator>().SetTrigger("CloseUI");
+        }
 
         yield return new WaitForSeconds(0.5f);
 

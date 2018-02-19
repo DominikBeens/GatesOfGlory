@@ -15,6 +15,9 @@ public class CastleUpgradeManager : MonoBehaviour
 
     public bool test;
 
+    public List<CastleWeapon> allBuiltWeapons = new List<CastleWeapon>();
+    public List<CastleRoom> allBuiltRooms = new List<CastleRoom>();
+
     public virtual void Awake()
     {
         if (instance == null)
@@ -40,7 +43,7 @@ public class CastleUpgradeManager : MonoBehaviour
 
             if (Input.GetButtonDown("Cancel"))
             {
-                CloseUIButton();
+                CloseAllUI();
             }
         }
     }
@@ -54,6 +57,11 @@ public class CastleUpgradeManager : MonoBehaviour
 
         selectedBuild = selected;
 
+        if (selectedBuild.myBuildedObject == null)
+        {
+            CloseAllOtherUI();
+        }
+
         gameObject.SetActive(true);
         transform.parent.gameObject.transform.position = new Vector2(selectedBuild.transform.position.x, selectedBuild.transform.position.y + 4f);
 
@@ -65,11 +73,6 @@ public class CastleUpgradeManager : MonoBehaviour
         {
             castleRoomUI.GetComponent<CastleRoomUpgrader>().OpenUI();
         }
-    }
-
-    public void CloseUIButton()
-    {
-        GetComponent<Animator>().SetTrigger("CloseUI");
     }
 
     public virtual void AnimationEventCloseUI()
@@ -85,5 +88,69 @@ public class CastleUpgradeManager : MonoBehaviour
         }
 
         selectedBuild = null;
+    }
+
+    public void CloseAllUI()
+    {
+        GetComponent<Animator>().SetTrigger("CloseUI");
+
+        for (int i = 0; i < allBuiltWeapons.Count; i++)
+        {
+            allBuiltWeapons[i].StopUsing();
+        }
+
+        for (int i = 0; i < allBuiltRooms.Count; i++)
+        {
+            allBuiltRooms[i].StopUsing();
+        }
+    }
+
+    public void CloseAllUI(CastleWeapon exception)
+    {
+        GetComponent<Animator>().SetTrigger("CloseUI");
+
+        for (int i = 0; i < allBuiltWeapons.Count; i++)
+        {
+            if (allBuiltWeapons[i] != exception)
+            {
+                allBuiltWeapons[i].StopUsing();
+            }
+        }
+
+        for (int i = 0; i < allBuiltRooms.Count; i++)
+        {
+            allBuiltRooms[i].StopUsing();
+        }
+    }
+
+    public void CloseAllUI(CastleRoom exception)
+    {
+        GetComponent<Animator>().SetTrigger("CloseUI");
+
+        for (int i = 0; i < allBuiltWeapons.Count; i++)
+        {
+            allBuiltWeapons[i].StopUsing();
+        }
+
+        for (int i = 0; i < allBuiltRooms.Count; i++)
+        {
+            if (allBuiltRooms[i] != exception)
+            {
+                allBuiltRooms[i].StopUsing();
+            }
+        }
+    }
+
+    public void CloseAllOtherUI()
+    {
+        for (int i = 0; i < allBuiltWeapons.Count; i++)
+        {
+            allBuiltWeapons[i].StopUsing();
+        }
+
+        for (int i = 0; i < allBuiltRooms.Count; i++)
+        {
+            allBuiltRooms[i].StopUsing();
+        }
     }
 }

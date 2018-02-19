@@ -22,6 +22,10 @@ public class CastleRoom_Damage : CastleRoom
         base.SetupUI();
 
         descriptionText.text = "Strikes <color=green>" + amountOfEnemiesToDamage.currentValue + "</color> enemies for <color=green>" + damageAmount.currentValue + "</color> hp.";
+
+        upgradeStatsText.text = "Damage amount: " + damageAmount.currentValue + " (<color=green>" + CheckPositiveOrNegative(damageAmount.increaseValue) + "</color>)" + "\n" +
+                                "Amount of targets: " + amountOfEnemiesToDamage.currentValue + " (<color=green>" + CheckPositiveOrNegative(amountOfEnemiesToDamage.increaseValue) + "</color>)" + "\n" +
+                                "Cooldown: " + useCooldown.currentValue + " (<color=green>" + CheckPositiveOrNegative(useCooldown.increaseValue) + "</color>)";
     }
 
     public override void Update()
@@ -78,5 +82,16 @@ public class CastleRoom_Damage : CastleRoom
             Vector3 particleSpawn = new Vector3(WaveManager.instance.enemiesInScene[i].transform.position.x, WaveManager.instance.enemiesInScene[i].transform.position.y + 1.5f);
             Instantiate(damageParticle, particleSpawn, Quaternion.identity);
         }
+    }
+
+    public override void Upgrade()
+    {
+        base.Upgrade();
+
+        useCooldown.currentValue += useCooldown.increaseValue;
+        damageAmount.currentValue += damageAmount.increaseValue;
+        amountOfEnemiesToDamage.currentValue += amountOfEnemiesToDamage.increaseValue;
+
+        SetupUI();
     }
 }
