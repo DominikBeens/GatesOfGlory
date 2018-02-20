@@ -100,7 +100,7 @@ public class BattleManager : MonoBehaviour
     }
 
     //finding a path to a enemy is there is none go to closest reachable gate
-    public Transform AllyGetTarget(float _myPosX, Allie _me)
+    public Transform AllyGetTarget(float _myPosX, Allie _me, Transform _myCurrentTarget)
     {
         Transform _bestGate = null;
         float _min = minEnemySearch;
@@ -219,7 +219,11 @@ public class BattleManager : MonoBehaviour
                 }
             }
         }
-        if (freeEnemys.Count > 0)
+        if (_myCurrentTarget != null && _myCurrentTarget.tag == "Enemy" && _myCurrentTarget.transform.position.x < _max && _myCurrentTarget.transform.position.x > _min)
+        {
+            return (_myCurrentTarget);
+        }
+        else if (freeEnemys.Count > 0)
         {
             GameObject _nextEnemt = GetClosest(_max, _min, _me);
             if (_nextEnemt != null)
@@ -239,11 +243,7 @@ public class BattleManager : MonoBehaviour
         GameObject closest = null;
         foreach (GameObject t in freeEnemys)
         {
-            if (t == null)
-            {
-                freeEnemys.Remove(t);
-            }
-            else if (t.transform.position.x < maxDistance && t.transform.position.x > minDistance)
+            if (t.transform.position.x < maxDistance && t.transform.position.x > minDistance)
             {
                 if (closest == null)
                 {

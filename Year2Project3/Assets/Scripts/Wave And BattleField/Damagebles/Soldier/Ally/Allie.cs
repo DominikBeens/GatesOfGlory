@@ -7,7 +7,7 @@ public class Allie : Soldier
 
     void Start()
     {
-        targetTransform = BattleManager.instance.AllyGetTarget(transform.position.x, this);
+        targetTransform = BattleManager.instance.AllyGetTarget(transform.position.x, this, targetTransform);
         agent.SetDestination(targetTransform.position);
     }
 
@@ -21,14 +21,15 @@ public class Allie : Soldier
     {
         if (targetTransform != null)
         {
-            Transform newTarget = BattleManager.instance.AllyGetTarget(transform.position.x, this); //
+            Transform newTarget = BattleManager.instance.AllyGetTarget(transform.position.x, this, targetTransform);
             if (newTarget != targetTransform)
             {
                 if (targetTransform.tag == "Enemy")
                 {
-                    if (newTarget.tag != "Enemy")
+                    if (newTarget.tag == "Enemy")
                     {
                         targetTransform.GetComponent<Enemy>().RemoveCounter(this);
+                        newTarget.GetComponent<Enemy>().AddCounter(this);
                         targetTransform = newTarget;
                         agent.SetDestination(targetTransform.position);
                         agent.isStopped = false;
@@ -56,7 +57,12 @@ public class Allie : Soldier
         }
         else
         {
-            targetTransform = BattleManager.instance.AllyGetTarget(transform.position.x, this); //
+            Transform newTarget = BattleManager.instance.AllyGetTarget(transform.position.x, this, targetTransform);
+            if (newTarget.tag == "Enemy")
+            {
+                newTarget.GetComponent<Enemy>().AddCounter(this);
+            }
+            targetTransform = newTarget;
             agent.SetDestination(targetTransform.position);
             agent.isStopped = false;
         }
@@ -65,12 +71,11 @@ public class Allie : Soldier
     public override void TakeDamage(float damage)
     {
         myStats.health.currentValue -= damage;
-        healthbarFill.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
         if (myStats.health.currentValue <= 0)
         {
-            if(targetTransform != null)
+            if (targetTransform != null)
             {
-            targetTransform.GetComponent<Enemy>().RemoveCounter(this);
+                targetTransform.GetComponent<Enemy>().RemoveCounter(this);
             }
             Destroy(gameObject);
         }
