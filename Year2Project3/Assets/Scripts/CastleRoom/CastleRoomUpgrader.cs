@@ -32,7 +32,6 @@ public class CastleRoomUpgrader : MonoBehaviour
             buildRoomButton.SetActive(false);
         }
 
-
         CastleUpgradeManager.selectedBuild.buildButton.SetActive(false);
 
         if (CastleUpgradeManager.selectedBuild.myBuildedObject != null)
