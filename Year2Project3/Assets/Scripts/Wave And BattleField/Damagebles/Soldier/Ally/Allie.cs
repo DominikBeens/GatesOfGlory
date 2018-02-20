@@ -65,6 +65,7 @@ public class Allie : Soldier
     public override void TakeDamage(float damage)
     {
         myStats.health.currentValue -= damage;
+        healthbarFill.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
         if (myStats.health.currentValue <= 0)
         {
             if(targetTransform != null)

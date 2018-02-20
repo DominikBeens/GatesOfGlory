@@ -10,6 +10,8 @@ public class CameraManager : MonoBehaviour
 
     private Vector3 offset;
 
+    public bool secondaryCamera;
+
     [Header("Speed")]
     public float smoothSpeed;
     public float moveSpeed;
@@ -51,7 +53,16 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
-        MoveCam();
+        if (secondaryCamera)
+        {
+            transform.position = Camera.main.transform.position;
+            transform.rotation = Camera.main.transform.rotation;
+        }
+        else
+        {
+            MoveCam();
+        }
+
         transform.LookAt(target);
 
         ZoomCam();
