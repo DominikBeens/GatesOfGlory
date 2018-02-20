@@ -29,5 +29,22 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            ToggleTimeScale();
+        }
+    }
+
+    private void ToggleTimeScale()
+    {
+        if (Time.timeScale == 1)
+        {
+            Time.timeScale = 4;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
 }

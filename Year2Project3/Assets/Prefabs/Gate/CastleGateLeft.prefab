@@ -928,6 +928,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6823ad73c911d04dab01986a41c2e05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectsToFade:
+  - {fileID: 1991407481013572}
   targetAlpha: 0.5
   fadeSpeed: 1
 --- !u!114 &114851533365104456
