@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 95553456693987836}
   - component: {fileID: 65201702405373260}
   - component: {fileID: 114288395011467132}
+  - component: {fileID: 208925746883595358}
   m_Layer: 10
   m_Name: Gate
   m_TagString: Untagged
@@ -113,7 +114,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1451891948700254
 GameObject:
@@ -230,7 +231,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1936432853776328
 GameObject:
@@ -521,14 +522,14 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1911294307000218}
-  m_Mesh: {fileID: 4300000, guid: 933418de676f1a547b08d4f453acaeb6, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 82e07b511764b094e9ad7ea7766c73cc, type: 3}
 --- !u!33 &33582600085857688
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1382056160544222}
-  m_Mesh: {fileID: 4300000, guid: 97ea2b3da84d5ce458685d9727191334, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 8e999865057d8434e81a4c179432538b, type: 3}
 --- !u!65 &65023300113349552
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -997,6 +998,21 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!208 &208925746883595358
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033679618585386}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 2.0070002, z: 1.9000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.9350001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!222 &222011298906860988
 CanvasRenderer:
   m_ObjectHideFlags: 1

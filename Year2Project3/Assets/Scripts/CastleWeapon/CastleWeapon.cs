@@ -60,7 +60,7 @@ public class CastleWeapon : MonoBehaviour
     {
         if (usingWeapon)
         {
-            useUI.transform.LookAt(Camera.main.transform);
+            useUI.transform.parent.parent.LookAt(Camera.main.transform);
 
             if (shooting)
             {
@@ -132,6 +132,6 @@ public class CastleWeapon : MonoBehaviour
     {
         side = Side.Right;
         transform.rotation = Quaternion.Euler(0, 180, 0);
-        useUI.transform.rotation = Quaternion.Euler(Vector3.zero);
+        useUI.transform.parent.parent.rotation = Quaternion.Euler(Vector3.zero);
     }
 }

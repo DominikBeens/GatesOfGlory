@@ -111,7 +111,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1460424808220580
 GameObject:
@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 95173574679361334}
   - component: {fileID: 65876775334412746}
   - component: {fileID: 114509442154516732}
+  - component: {fileID: 208520861440523468}
   m_Layer: 10
   m_Name: Gate
   m_TagString: Untagged
@@ -263,7 +264,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4307185954371124
 Transform:
@@ -520,14 +521,14 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1426233515601454}
-  m_Mesh: {fileID: 4300000, guid: 97ea2b3da84d5ce458685d9727191334, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 8e999865057d8434e81a4c179432538b, type: 3}
 --- !u!33 &33914445292946902
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1991407481013572}
-  m_Mesh: {fileID: 4300000, guid: 933418de676f1a547b08d4f453acaeb6, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 82e07b511764b094e9ad7ea7766c73cc, type: 3}
 --- !u!65 &65279897294841606
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -972,6 +973,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!208 &208520861440523468
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1460424808220580}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 2.0070002, z: 1.9000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.9350001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!222 &222335137307080220
 CanvasRenderer:
   m_ObjectHideFlags: 1

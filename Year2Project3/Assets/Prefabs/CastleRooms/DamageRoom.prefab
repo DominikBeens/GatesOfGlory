@@ -416,7 +416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1635684577590608
 GameObject:
   m_ObjectHideFlags: 1
@@ -527,14 +527,14 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4324845727266454}
-  - component: {fileID: 95265006859081622}
+  - component: {fileID: 114688418332348680}
   m_Layer: 5
   m_Name: UseUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1763692474237940
 GameObject:
   m_ObjectHideFlags: 1
@@ -847,7 +847,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1217051169553030}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -34.375225, y: 5.3774447, z: -0.3802514}
+  m_LocalPosition: {x: -39.500526, y: 1.573771, z: -0.3802514}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4527993904080164}
@@ -1487,23 +1487,6 @@ Animator:
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95265006859081622
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1723121095860742}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 903487e46822a6c47bc89a1ba92de559, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -2188,8 +2171,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2435,8 +2418,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 33
-  m_fontSizeBase: 33
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2828,6 +2811,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114688418332348680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1723121095860742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbdae0ea89a9dce458fc0a83e9ca0ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleDivider: 2750
 --- !u!114 &114751551170360140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3127,7 +3122,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Upgrading this room costs: 999 gold.'
+  m_text: 'Upgrade costs: 999 gold'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a372cddacb694c2489be188466a1d800, type: 2}
   m_sharedMaterial: {fileID: 21913952429635500, guid: a372cddacb694c2489be188466a1d800,
@@ -3155,8 +3150,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3173,7 +3168,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_enableKerning: 1
@@ -3195,10 +3190,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 114856677326258730}
-    characterCount: 36
+    characterCount: 23
     spriteCount: 0
-    spaceCount: 5
-    wordCount: 6
+    spaceCount: 3
+    wordCount: 4
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -3313,11 +3308,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomType: 5
   side: 0
+  myBuilder: {fileID: 0}
   upgradePanel: {fileID: 1631606290801342}
   upgradeStatsText: {fileID: 114344052158054120}
   upgradeDescriptionText: {fileID: 114856677326258730}
   roomNameText: {fileID: 114063834219647506}
-  useUI: {fileID: 1723121095860742}
+  useUI: {fileID: 1033886384500450}
   roomName: Damage Room
   roomLevel: 1
   buildCost: 0
@@ -10523,7 +10519,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1518899168020470}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.000078664}
+  m_LocalPosition: {x: 0, y: 0, z: -0.000078661}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224511779305591218}
@@ -10531,8 +10527,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.8, y: 71.1}
-  m_SizeDelta: {x: 357, y: 150}
+  m_AnchoredPosition: {x: 3.1004744, y: 58.65}
+  m_SizeDelta: {x: 458.4, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224142276568168900
 RectTransform:
@@ -10732,7 +10728,7 @@ RectTransform:
   m_GameObject: {fileID: 1033886384500450}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224913305847582134}
   - {fileID: 224570248740452128}
@@ -10757,7 +10753,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1421331521123326}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.000000012672}
+  m_LocalPosition: {x: 0, y: 0, z: 0.000000018489}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224636117915161672}
@@ -10765,7 +10761,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.0999546, y: 138}
+  m_AnchoredPosition: {x: 3.0999546, y: 146}
   m_SizeDelta: {x: 494.7, y: 63.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224710623393837908

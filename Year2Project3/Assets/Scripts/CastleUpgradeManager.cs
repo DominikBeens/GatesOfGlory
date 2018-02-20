@@ -13,8 +13,6 @@ public class CastleUpgradeManager : MonoBehaviour
     public GameObject castleWeaponUI;
     public GameObject castleRoomUI;
 
-    public bool test;
-
     public List<CastleWeapon> allBuiltWeapons = new List<CastleWeapon>();
     public List<CastleRoom> allBuiltRooms = new List<CastleRoom>();
 
@@ -35,11 +33,6 @@ public class CastleUpgradeManager : MonoBehaviour
         if (selectedBuild != null)
         {
             transform.parent.gameObject.transform.LookAt(Camera.main.transform);
-
-            if (test)
-            {
-                transform.parent.localScale = new Vector3(Camera.main.fieldOfView / uiScaleDivider * 1.1f, Camera.main.fieldOfView / uiScaleDivider * 1.1f);
-            }
 
             if (Input.GetButtonDown("Cancel"))
             {

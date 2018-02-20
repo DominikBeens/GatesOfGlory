@@ -53,7 +53,7 @@ public class CastleRoom : MonoBehaviour
     {
         if (usingRoom)
         {
-            useUI.transform.LookAt(Camera.main.transform);
+            useUI.transform.parent.parent.LookAt(Camera.main.transform);
         }
     }
 
@@ -76,7 +76,7 @@ public class CastleRoom : MonoBehaviour
     public virtual void SetupUI()
     {
         roomNameText.text = "Level <color=green>" + roomLevel.ToString() + "</color> " + roomName;
-        upgradeDescriptionText.text = "Upgrading this room costs <color=yellow>" + upgradeCost.currentValue + "</color> gold.";
+        upgradeDescriptionText.text = "Upgrade cost: <color=yellow>" + upgradeCost.currentValue + "</color> gold.";
     }
 
     public virtual void StartUsing()
