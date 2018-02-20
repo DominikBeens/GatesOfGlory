@@ -39,6 +39,7 @@ public class CastleWeapon : MonoBehaviour
     public AmountOfProjectiles amountOfProjectiles;
 
     public GameObject useUI;
+    public Animator anim;
 
     [HideInInspector]
     public CastleBuilder myBuilder;

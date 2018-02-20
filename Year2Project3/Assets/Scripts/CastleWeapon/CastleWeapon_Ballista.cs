@@ -40,6 +40,11 @@ public class CastleWeapon_Ballista : CastleWeapon
     {
         base.Shoot();
 
+        anim.SetTrigger("Fire");
+    }
+
+    public void FireProjectile()
+    {
         List<GameObject> newProjectiles = new List<GameObject>();
 
         switch (amountOfProjectiles)

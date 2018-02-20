@@ -68,7 +68,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
         weaponNameText.text = "Level <color=green>" + weaponComponent.weaponLevel.ToString() + "</color> " + weaponComponent.weaponName;
         weaponDamageText.text = "Damage: <color=green>" + weaponComponent.damage.currentValue + "</color>";
         weaponForceText.text = "Force: <color=green>" + weaponComponent.force.currentValue + "</color>";
-        weaponFireRateText.text = "Fire Rate: <color=green>" + weaponComponent.coolDown.currentValue + "</color>";
+        weaponFireRateText.text = "Fire Rate: <color=green>" + weaponComponent.coolDown.currentValue.ToString("f2") + "</color>";
 
         //upgradeText.text = "Upgrade\n<color=#FFF800FF>" + weaponComponent.upgradeCost.currentValue + "</color> Gold";
         upgradeText.text = "Upgrade\n" + weaponComponent.upgradeCost.currentValue + " Gold";
@@ -82,7 +82,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
 
         weaponDamageText.text = "Damage: " + weaponComponent.damage.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(weaponComponent.damage.increaseValue) + "</color>)";
         weaponForceText.text = "Force: " + weaponComponent.force.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(weaponComponent.force.increaseValue) + "</color>)";
-        weaponFireRateText.text = "Fire Rate: " + weaponComponent.coolDown.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(weaponComponent.coolDown.increaseValue) + "</color>)";
+        weaponFireRateText.text = "Fire Rate: " + weaponComponent.coolDown.currentValue.ToString("f2") + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(weaponComponent.coolDown.increaseValue) + "</color>)";
     }
 
     public void HideUpgradeBenefits()
@@ -141,6 +141,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
         weaponComponent.damage.currentValue += weaponComponent.damage.increaseValue;
         weaponComponent.force.currentValue += weaponComponent.force.increaseValue;
         weaponComponent.coolDown.currentValue += weaponComponent.coolDown.increaseValue;
+        weaponComponent.anim.speed = 1 / weaponComponent.coolDown.currentValue;
 
         ResourceManager.gold -= (int)weaponComponent.upgradeCost.currentValue;
 
