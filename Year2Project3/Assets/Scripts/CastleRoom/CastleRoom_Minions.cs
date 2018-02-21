@@ -6,10 +6,11 @@ using TMPro;
 public class CastleRoom_Minions : CastleRoom 
 {
 
-    [Space(10)]
+    [Header("Minion Room Setup")]
     public GameObject minionToSpawn;
     public Transform minionSpawnPoint;
-    [Space(10)]
+
+    [Header("Minion Room Stats")]
     public Stat spawnCost;
     public Stat amountToSpawnPerBuy;
     public float spawnInterval;
@@ -79,6 +80,11 @@ public class CastleRoom_Minions : CastleRoom
 
     public override void Upgrade()
     {
+        if (ResourceManager.gold < upgradeCost.currentValue || roomLevel >= maxRoomLevel)
+        {
+            return;
+        }
+
         base.Upgrade();
 
         spawnCost.currentValue += spawnCost.increaseValue;

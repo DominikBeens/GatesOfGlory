@@ -75,7 +75,7 @@ public class ResourceManager : MonoBehaviour
         for (int i = 0; i < goldPrefabsToDelete; i++)
         {
             goldPrefabsInScene[i].SetActive(false);
-            goldPrefabsInScene.RemoveAt(0);
+            goldPrefabsInScene.RemoveAt(i);
         }
     }
 }

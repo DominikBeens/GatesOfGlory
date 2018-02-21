@@ -20,14 +20,17 @@ public class CastleWeapon : MonoBehaviour
     }
     public Side side;
 
+    [Header("Basic Properties")]
     public string weaponName;
     public int weaponLevel;
+    public int weaponMaxLevel;
     public int buildCost;
     public Stat upgradeCost;
 
     protected bool usingWeapon;
     protected bool shooting;
 
+    [Header("Weapon Setup")]
     public Transform rotatableWeapon;
     public GameObject projectile;
     public List<Transform> projectileSpawns = new List<Transform>();
@@ -44,18 +47,20 @@ public class CastleWeapon : MonoBehaviour
     [HideInInspector]
     public CastleBuilder myBuilder;
 
-    [Header("Properties")]
+    [Header("Stats")]
     public Stat damage;
     public Stat force;
-    [Space(10)]
-    public Stat coolDown;
+    public Stat cooldown;
     private float nextTimeToFire;
 
-    [Header("Rotation")]
+    [Header("Rotation Options")]
     public float maxXRotation;
     public float minXRotation;
-    [Space(10)]
-    public LayerMask mouseLayerMask;
+
+    private void Awake()
+    {
+        useUI.SetActive(false);
+    }
 
     public virtual void Update()
     {
@@ -67,7 +72,7 @@ public class CastleWeapon : MonoBehaviour
             {
                 if (Time.time >= nextTimeToFire)
                 {
-                    nextTimeToFire = Time.time + coolDown.currentValue;
+                    nextTimeToFire = Time.time + cooldown.currentValue;
                     Shoot();
                 }
             }

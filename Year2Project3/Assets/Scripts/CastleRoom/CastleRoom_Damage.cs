@@ -7,10 +7,12 @@ using TMPro;
 public class CastleRoom_Damage : CastleRoom
 {
 
-    [Header("Properties")]
+    [Header("Stats")]
     public Stat useCooldown;
     public Stat damageAmount;
     public Stat amountOfEnemiesToDamage;
+
+    [Header("Damage Room Setup")]
     public GameObject damageParticle;
     public Image cooldownFill;
     public TextMeshProUGUI descriptionText;
@@ -80,12 +82,17 @@ public class CastleRoom_Damage : CastleRoom
             WaveManager.instance.enemiesInScene[i].TakeDamage(damageAmount.currentValue);
 
             Vector3 particleSpawn = new Vector3(WaveManager.instance.enemiesInScene[i].transform.position.x, WaveManager.instance.enemiesInScene[i].transform.position.y + 1.5f);
-            Instantiate(damageParticle, particleSpawn, Quaternion.identity);
+            ObjectPooler.instance.GrabFromPool("damage particle", particleSpawn, Quaternion.identity);
         }
     }
 
     public override void Upgrade()
     {
+        if (ResourceManager.gold < upgradeCost.currentValue || roomLevel >= maxRoomLevel)
+        {
+            return;
+        }
+
         base.Upgrade();
 
         useCooldown.currentValue += useCooldown.increaseValue;

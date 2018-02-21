@@ -847,7 +847,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1217051169553030}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -39.500526, y: 1.573771, z: -0.3802514}
+  m_LocalPosition: {x: -7.396313, y: 0.55, z: -1.227252}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4527993904080164}
@@ -3308,23 +3308,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomType: 5
   side: 0
-  myBuilder: {fileID: 0}
-  upgradePanel: {fileID: 1631606290801342}
-  upgradeStatsText: {fileID: 114344052158054120}
-  upgradeDescriptionText: {fileID: 114856677326258730}
-  roomNameText: {fileID: 114063834219647506}
-  useUI: {fileID: 1033886384500450}
   roomName: Damage Room
   roomLevel: 1
+  maxRoomLevel: 10
   buildCost: 0
   upgradeCost:
     baseValue: 150
     currentValue: 150
     increaseValue: 100
+  myBuilder: {fileID: 0}
+  upgradePanel: {fileID: 1631606290801342}
+  buyUpgradeButton: {fileID: 114991180945932294}
+  upgradeStatsText: {fileID: 114344052158054120}
+  upgradeDescriptionText: {fileID: 114856677326258730}
+  roomNameText: {fileID: 114063834219647506}
+  useUI: {fileID: 1033886384500450}
   useCooldown:
     baseValue: 15
     currentValue: 15
-    increaseValue: -2.5
+    increaseValue: -0.5
   damageAmount:
     baseValue: 45
     currentValue: 45

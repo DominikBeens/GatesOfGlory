@@ -17,6 +17,8 @@ public class CastleWeaponUpgrader : MonoBehaviour
     public GameObject buildWeaponButton;
     public GameObject useWeaponButton;
     public GameObject upgradeWeaponButton;
+    [Space(10)]
+    public GameObject buyUpgradeButton;
 
     [Header("Upgrade Panel")]
     public TextMeshProUGUI weaponNameText;
@@ -68,7 +70,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
         weaponNameText.text = "Level <color=green>" + weaponComponent.weaponLevel.ToString() + "</color> " + weaponComponent.weaponName;
         weaponDamageText.text = "Damage: <color=green>" + weaponComponent.damage.currentValue + "</color>";
         weaponForceText.text = "Force: <color=green>" + weaponComponent.force.currentValue + "</color>";
-        weaponFireRateText.text = "Fire Rate: <color=green>" + weaponComponent.coolDown.currentValue.ToString("f2") + "</color>";
+        weaponFireRateText.text = "Fire Rate: <color=green>" + weaponComponent.cooldown.currentValue.ToString("f2") + "</color>";
 
         //upgradeText.text = "Upgrade\n<color=#FFF800FF>" + weaponComponent.upgradeCost.currentValue + "</color> Gold";
         upgradeText.text = "Upgrade\n" + weaponComponent.upgradeCost.currentValue + " Gold";
@@ -80,9 +82,14 @@ public class CastleWeaponUpgrader : MonoBehaviour
     {
         CastleWeapon weaponComponent = CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleWeapon>();
 
+        if (weaponComponent.weaponLevel >= weaponComponent.weaponMaxLevel)
+        {
+            return;
+        }
+
         weaponDamageText.text = "Damage: " + weaponComponent.damage.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(weaponComponent.damage.increaseValue) + "</color>)";
         weaponForceText.text = "Force: " + weaponComponent.force.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(weaponComponent.force.increaseValue) + "</color>)";
-        weaponFireRateText.text = "Fire Rate: " + weaponComponent.coolDown.currentValue.ToString("f2") + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(weaponComponent.coolDown.increaseValue) + "</color>)";
+        weaponFireRateText.text = "Fire Rate: " + weaponComponent.cooldown.currentValue.ToString("f2") + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(weaponComponent.cooldown.increaseValue) + "</color>)";
     }
 
     public void HideUpgradeBenefits()
@@ -133,15 +140,15 @@ public class CastleWeaponUpgrader : MonoBehaviour
     {
         CastleWeapon weaponComponent = CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleWeapon>();
 
-        if (ResourceManager.gold < weaponComponent.upgradeCost.currentValue)
+        if (ResourceManager.gold < weaponComponent.upgradeCost.currentValue || weaponComponent.weaponLevel >= weaponComponent.weaponMaxLevel)
         {
             return;
         }
 
         weaponComponent.damage.currentValue += weaponComponent.damage.increaseValue;
         weaponComponent.force.currentValue += weaponComponent.force.increaseValue;
-        weaponComponent.coolDown.currentValue += weaponComponent.coolDown.increaseValue;
-        weaponComponent.anim.speed = 1 / weaponComponent.coolDown.currentValue;
+        weaponComponent.cooldown.currentValue += weaponComponent.cooldown.increaseValue;
+        weaponComponent.anim.speed = 1 / weaponComponent.cooldown.currentValue;
 
         ResourceManager.gold -= (int)weaponComponent.upgradeCost.currentValue;
 
@@ -150,6 +157,11 @@ public class CastleWeaponUpgrader : MonoBehaviour
 
         OpenUpgradeUIButton();
         ShowUpgradeBenefits();
+
+        if (weaponComponent.weaponLevel >= weaponComponent.weaponMaxLevel)
+        {
+            buyUpgradeButton.SetActive(false);
+        }
     }
 
     private void OnDisable()

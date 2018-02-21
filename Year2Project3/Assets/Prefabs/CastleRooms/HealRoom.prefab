@@ -961,7 +961,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1849405394902148}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -38.46496, y: 1.5526371, z: 0}
+  m_LocalPosition: {x: -6.624838, y: 0.55, z: 1.7610044}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4152737543681986}
@@ -2101,19 +2101,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomType: 4
   side: 0
-  myBuilder: {fileID: 0}
-  upgradePanel: {fileID: 1250480675617928}
-  upgradeStatsText: {fileID: 114447693631122330}
-  upgradeDescriptionText: {fileID: 114530787773635794}
-  roomNameText: {fileID: 114733270392880054}
-  useUI: {fileID: 1102115106772004}
   roomName: Healing Room
   roomLevel: 1
+  maxRoomLevel: 10
   buildCost: 0
   upgradeCost:
     baseValue: 150
     currentValue: 150
     increaseValue: 150
+  myBuilder: {fileID: 0}
+  upgradePanel: {fileID: 1250480675617928}
+  buyUpgradeButton: {fileID: 114792798014310044}
+  upgradeStatsText: {fileID: 114447693631122330}
+  upgradeDescriptionText: {fileID: 114530787773635794}
+  roomNameText: {fileID: 114733270392880054}
+  useUI: {fileID: 1102115106772004}
   useCooldown:
     baseValue: 15
     currentValue: 15

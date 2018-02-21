@@ -24,6 +24,11 @@ public class IntroManager : MonoBehaviour
         playButton.GetComponent<Animator>().SetTrigger("Pressed");
     }
 
+    public void AnimationEventStartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     public void AnimationEventQuitGame()
     {
         Application.Quit();

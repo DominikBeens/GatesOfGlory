@@ -1468,7 +1468,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1258482574334662}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.66555, y: 1.0461264, z: -1.3346572}
+  m_LocalPosition: {x: -6.4415417, y: 0.55, z: -1.4181824}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4516732796291038}
@@ -5033,19 +5033,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomType: 0
   side: 0
-  myBuilder: {fileID: 0}
-  upgradePanel: {fileID: 1651483591867090}
-  upgradeStatsText: {fileID: 114742955941147748}
-  upgradeDescriptionText: {fileID: 114333855464637488}
-  roomNameText: {fileID: 114771465130788118}
-  useUI: {fileID: 1544753736834150}
   roomName: Knight Room
   roomLevel: 1
+  maxRoomLevel: 10
   buildCost: 0
   upgradeCost:
     baseValue: 0
     currentValue: 0
     increaseValue: 0
+  myBuilder: {fileID: 0}
+  upgradePanel: {fileID: 1651483591867090}
+  buyUpgradeButton: {fileID: 114227261008610802}
+  upgradeStatsText: {fileID: 114742955941147748}
+  upgradeDescriptionText: {fileID: 114333855464637488}
+  roomNameText: {fileID: 114771465130788118}
+  useUI: {fileID: 1544753736834150}
   minionToSpawn: {fileID: 1357994592998048, guid: 7e060cdcf6fdaf643bcac33afd9a64b4,
     type: 2}
   minionSpawnPoint: {fileID: 4625714402741780}
@@ -12066,7 +12068,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -375490097
+  randomSeed: 666677829
   InitialModule:
     serializedVersion: 3
     enabled: 1

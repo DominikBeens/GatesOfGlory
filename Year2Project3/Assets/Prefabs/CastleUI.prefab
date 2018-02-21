@@ -2180,6 +2180,7 @@ MonoBehaviour:
   buildWeaponButton: {fileID: 1424910764089808}
   useWeaponButton: {fileID: 1718263470367802}
   upgradeWeaponButton: {fileID: 1991032406411648}
+  buyUpgradeButton: {fileID: 1091827488138510}
   weaponNameText: {fileID: 114542013262331836}
   weaponDamageText: {fileID: 114069506788278992}
   weaponForceText: {fileID: 114014213341904490}
@@ -3846,7 +3847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbdae0ea89a9dce458fc0a83e9ca0ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleDivider: 30
+  scaleDivider: 40
 --- !u!114 &114624712036855564
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -7,7 +7,7 @@ using TMPro;
 public class CastleRoom_Heal : CastleRoom 
 {
 
-    [Header("Properties")]
+    [Header("Stats")]
     public Stat useCooldown;
     public Stat healAmount;
     public GameObject healParticle;
@@ -57,12 +57,17 @@ public class CastleRoom_Heal : CastleRoom
             WaveManager.instance.alliesInScene[i].TakeDamage(-healAmount.currentValue);
 
             Vector3 particleSpawn = new Vector3(WaveManager.instance.alliesInScene[i].transform.position.x, WaveManager.instance.alliesInScene[i].transform.position.y + 1.5f);
-            Instantiate(healParticle, particleSpawn, Quaternion.identity);
+            ObjectPooler.instance.GrabFromPool("heal particle", particleSpawn, Quaternion.identity);
         }
     }
 
     public override void Upgrade()
     {
+        if (ResourceManager.gold < upgradeCost.currentValue || roomLevel >= maxRoomLevel)
+        {
+            return;
+        }
+
         base.Upgrade();
 
         useCooldown.currentValue += useCooldown.increaseValue;

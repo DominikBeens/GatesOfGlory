@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CastleWeapon_Ballista : CastleWeapon 
 {
 
+    [Header("Ballista Setup")]
     public float rotationSpeed;
     public Slider rotationSlider;
 

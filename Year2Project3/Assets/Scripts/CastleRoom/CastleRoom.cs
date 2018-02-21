@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class CastleRoom : MonoBehaviour
@@ -25,23 +26,26 @@ public class CastleRoom : MonoBehaviour
     }
     public Side side;
 
+    [Header("Basic Properties")]
+    public string roomName;
+    public int roomLevel;
+    public int maxRoomLevel;
+    public int buildCost;
+    public Stat upgradeCost;
+
     [HideInInspector]
     public CastleBuilder myBuilder;
 
     [Header("Upgrade Panel")]
     public GameObject upgradePanel;
+    public Button buyUpgradeButton;
     public TextMeshProUGUI upgradeStatsText;
     public TextMeshProUGUI upgradeDescriptionText;
-
     public TextMeshProUGUI roomNameText;
 
+    [Space(10)]
     public GameObject useUI;
     private bool usingRoom;
-
-    public string roomName;
-    public int roomLevel;
-    public int buildCost;
-    public Stat upgradeCost;
 
     private void Awake()
     {
@@ -64,13 +68,13 @@ public class CastleRoom : MonoBehaviour
 
     public virtual void Upgrade()
     {
-        if (ResourceManager.gold < upgradeCost.currentValue)
-        {
-            return;
-        }
-
         roomLevel++;
         upgradeCost.currentValue += upgradeCost.increaseValue;
+
+        if (roomLevel >= maxRoomLevel)
+        {
+            buyUpgradeButton.interactable = false;
+        }
     }
 
     public virtual void SetupUI()
