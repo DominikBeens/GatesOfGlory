@@ -9,7 +9,6 @@ public class Throne : CastleDeffensePoint
     {
         if (ResourceManager.gold >= damage)
         {
-            ResourceManager.gold -= Mathf.RoundToInt(damage);
             ResourceManager.instance.RemoveGold(Mathf.RoundToInt(damage));
         }
         else if(ResourceManager.gold > 0)
