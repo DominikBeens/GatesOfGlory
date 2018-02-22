@@ -12,8 +12,8 @@ public class ResourceManager : MonoBehaviour
     public const int goldPerPhysicalCoin = 10;
     public Transform goldSpawn;
     public float goldSpawnInterval;
-    private bool canSpawnGold = true;
-    private int goldToSpawn;
+    private bool canDumpGold = true;
+    private int goldToDump;
     private List<GameObject> goldPrefabsInScene = new List<GameObject>();
 
 
@@ -29,46 +29,63 @@ public class ResourceManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            AddGold(1000);
+            AddGold(100);
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
             RemoveGold(100);
+        }
+
+        if (goldToDump > 0)
+        {
+            if (canDumpGold)
+            {
+                StartCoroutine(DumpGold());
+            }
         }
     }
 
     private void AddGold(int amount)
     {
         gold += amount;
-        goldToSpawn += (amount / goldPerPhysicalCoin);
+        goldToDump += (amount / goldPerPhysicalCoin);
 
-        for (int i = 0; i < goldToSpawn; i++)
+        int extraGoldToSpawn = (amount / goldPerPhysicalCoin);
+
+        for (int i = 0; i < extraGoldToSpawn; i++)
         {
             GameObject newGold = ObjectPooler.instance.GrabFromPool("gold", goldSpawn.transform.position, Quaternion.Euler(Random.Range(-360, 360), Random.Range(-360, 360), Random.Range(-360, 360)));
             goldPrefabsInScene.Add(newGold);
         }
-
-        StartCoroutine(DumpGold());
     }
 
     private IEnumerator DumpGold()
     {
+        canDumpGold = false;
+
         for (int i = 0; i < goldPrefabsInScene.Count; i++)
         {
             Rigidbody rb = goldPrefabsInScene[i].GetComponent<Rigidbody>();
-            Collider col = goldPrefabsInScene[i].GetComponentInChildren<Collider>();
 
             if (rb.isKinematic)
             {
+                Collider col = goldPrefabsInScene[i].GetComponentInChildren<Collider>();
+
                 rb.isKinematic = false;
                 col.enabled = true;
+
+                goldToDump--;
+
                 yield return new WaitForSeconds(goldSpawnInterval);
             }
         }
+
+        canDumpGold = true;
     }
 
     public void RemoveGold(int amount)
     {
+        print(gold);
         if (gold < amount)
         {
             amount = gold;
@@ -76,12 +93,30 @@ public class ResourceManager : MonoBehaviour
 
         gold -= amount;
 
+        if (goldToDump > (amount / goldPerPhysicalCoin))
+        {
+            goldToDump -= (amount / goldPerPhysicalCoin);
+        }
+        else
+        {
+            if (goldToDump > 0)
+            {
+                goldToDump = 0;
+            }
+        }
+
         int goldPrefabsToDelete = (amount / goldPerPhysicalCoin);
 
         for (int i = 0; i < goldPrefabsToDelete; i++)
         {
-            goldPrefabsInScene[i].SetActive(false);
-            goldPrefabsInScene.RemoveAt(i);
+            Rigidbody rb = goldPrefabsInScene[goldPrefabsInScene.Count - 1].GetComponent<Rigidbody>();
+            Collider col = goldPrefabsInScene[goldPrefabsInScene.Count - 1].GetComponentInChildren<Collider>();
+
+            rb.isKinematic = true;
+            col.enabled = false;
+
+            ObjectPooler.instance.AddToPool("gold", goldPrefabsInScene[goldPrefabsInScene.Count - 1]);
+            goldPrefabsInScene.RemoveAt(goldPrefabsInScene.Count - 1);
         }
     }
 }

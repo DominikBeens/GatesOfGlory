@@ -86,6 +86,7 @@ public class ObjectPooler : MonoBehaviour
 
         if (!poolDictionary[poolName].Contains(obj))
         {
+            obj.SetActive(false);
             poolDictionary[poolName].Enqueue(obj);
         }
     }
