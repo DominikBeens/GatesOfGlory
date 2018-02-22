@@ -16,6 +16,16 @@ public class EnemyKnight : Enemy{
 
     }
 
+    public override void TakeDamage(float damage)
+    {
+        myStats.health.currentValue -= damage;
+        healthbarFill.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
+        if (myStats.health.currentValue <= 0)
+        {
+            ObjectPooler.instance.AddToPool("Enemy Knight",gameObject);
+        }
+    }
+
     void OnCollisionEnter(Collision collision){
         if (collision.transform == targetTransform){
             StartBattle(target);

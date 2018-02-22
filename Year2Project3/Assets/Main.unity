@@ -8260,6 +8260,42 @@ MonoBehaviour:
     poolSize: 20
     autoExpand: 1
     expansionAmount: 5
+  - poolName: Ally Knight
+    poolPrefab: {fileID: 1357994592998048, guid: 7e060cdcf6fdaf643bcac33afd9a64b4,
+      type: 2}
+    poolSize: 100
+    autoExpand: 1
+    expansionAmount: 20
+  - poolName: Ally Bowman
+    poolPrefab: {fileID: 1357994592998048, guid: 7e060cdcf6fdaf643bcac33afd9a64b4,
+      type: 2}
+    poolSize: 100
+    autoExpand: 1
+    expansionAmount: 20
+  - poolName: Ally Giant
+    poolPrefab: {fileID: 1357994592998048, guid: 7e060cdcf6fdaf643bcac33afd9a64b4,
+      type: 2}
+    poolSize: 100
+    autoExpand: 1
+    expansionAmount: 20
+  - poolName: Enemy Knight
+    poolPrefab: {fileID: 1385821130610866, guid: 8980cde9536a9d845a2f891c3ee3fe14,
+      type: 2}
+    poolSize: 200
+    autoExpand: 1
+    expansionAmount: 20
+  - poolName: Enemy Bowman
+    poolPrefab: {fileID: 1385821130610866, guid: 77a7a1734e5c0114892d0d9559a1c14d,
+      type: 2}
+    poolSize: 200
+    autoExpand: 1
+    expansionAmount: 20
+  - poolName: Enemy Giant
+    poolPrefab: {fileID: 1385821130610866, guid: 4f4738548f9f66a4c8202fb7ab9ce27c,
+      type: 2}
+    poolSize: 200
+    autoExpand: 1
+    expansionAmount: 20
 --- !u!1001 &828716376
 Prefab:
   m_ObjectHideFlags: 0
@@ -9559,23 +9595,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bab786d08c112d4f9fc27e27ec45218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Waves:
-  - {fileID: 11400000, guid: 5ae6eb14667f08349b11effb0bdd3038, type: 2}
-  - {fileID: 11400000, guid: 5ae6eb14667f08349b11effb0bdd3038, type: 2}
-  - {fileID: 11400000, guid: 5ae6eb14667f08349b11effb0bdd3038, type: 2}
-  - {fileID: 11400000, guid: 5ae6eb14667f08349b11effb0bdd3038, type: 2}
-  - {fileID: 11400000, guid: 5ae6eb14667f08349b11effb0bdd3038, type: 2}
-  - {fileID: 11400000, guid: 5ae6eb14667f08349b11effb0bdd3038, type: 2}
-  - {fileID: 11400000, guid: 5ae6eb14667f08349b11effb0bdd3038, type: 2}
-  - {fileID: 11400000, guid: 5ae6eb14667f08349b11effb0bdd3038, type: 2}
-  - {fileID: 11400000, guid: 5ae6eb14667f08349b11effb0bdd3038, type: 2}
-  - {fileID: 11400000, guid: 5ae6eb14667f08349b11effb0bdd3038, type: 2}
-  - {fileID: 11400000, guid: 5ae6eb14667f08349b11effb0bdd3038, type: 2}
-  - {fileID: 11400000, guid: 5ae6eb14667f08349b11effb0bdd3038, type: 2}
-  - {fileID: 11400000, guid: 5ae6eb14667f08349b11effb0bdd3038, type: 2}
-  - {fileID: 11400000, guid: 5ae6eb14667f08349b11effb0bdd3038, type: 2}
-  - {fileID: 11400000, guid: 5ae6eb14667f08349b11effb0bdd3038, type: 2}
-  wavePause: 30
+  enemyTypes:
+  - Enemy Knight
+  - Enemy Bowman
+  - Enemy Giant
+  thisWave: {fileID: 0}
+  waveSize: 10
+  minWaveMultiplier: 1.05
+  maxWaveMultiplier: 1.15
+  HealthMultiplier: 1.05
+  DamageMultiplier: 1.05
+  maxStageSize: 5
+  currentWave: 30
+  wavePause: 1
   maxSoldierWait: 0.2
   minSoldierWait: 0
   maxStageWait: 4

@@ -243,7 +243,7 @@ public class BattleManager : MonoBehaviour
         GameObject closest = null;
         foreach (GameObject t in freeEnemys)
         {
-            if (t.transform.position.x < maxDistance && t.transform.position.x > minDistance)
+            if (t != null && t.transform.position.x < maxDistance && t.transform.position.x > minDistance)
             {
                 if (closest == null)
                 {

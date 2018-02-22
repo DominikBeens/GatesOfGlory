@@ -4,5 +4,5 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Stage", menuName = "Waves/Stage")]
 public class Stage : ScriptableObject{
-    public List<GameObject> soldiers = new List<GameObject>();
+    public List<string> soldiers = new List<string>();
 }

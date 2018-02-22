@@ -116,7 +116,7 @@ public class Enemy : Soldier
         }
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         WaveManager.instance.enemiesInScene.Remove(this);
     }
