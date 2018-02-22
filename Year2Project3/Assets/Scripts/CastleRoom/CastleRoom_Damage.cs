@@ -13,7 +13,6 @@ public class CastleRoom_Damage : CastleRoom
     public Stat amountOfEnemiesToDamage;
 
     [Header("Damage Room Setup")]
-    public GameObject damageParticle;
     public Image cooldownFill;
     public TextMeshProUGUI descriptionText;
 

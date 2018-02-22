@@ -6,18 +6,16 @@ using UnityEngine;
 public class CastleGate : MonoBehaviour 
 {
     public Gate myDefensePoint;
-    private Animator anim;
+    public Animator gateAnim;
+    public Animator gateButtonAnim;
     public bool locked;
     public bool isOpen;
 
-    private void Awake()
-    {
-        anim = GetComponent<Animator>();
-    }
-
     public void ToggleGate()
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("GateOpen"))
+        gateButtonAnim.SetTrigger("Pressed");
+
+        if (gateAnim.GetCurrentAnimatorStateInfo(0).IsName("GateOpen"))
         {
             CloseGate();
         }
@@ -34,15 +32,15 @@ public class CastleGate : MonoBehaviour
             return;
         }
 
-        float currentAnimationProgress = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+        float currentAnimationProgress = gateAnim.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
         if (currentAnimationProgress < 1)
         {
-            anim.Play("GateOpen", 0, (1 - currentAnimationProgress));
+            gateAnim.Play("GateOpen", 0, (1 - currentAnimationProgress));
         }
         else
         {
-            anim.Play("GateOpen");
+            gateAnim.Play("GateOpen");
         }
     }
 
@@ -53,15 +51,15 @@ public class CastleGate : MonoBehaviour
             return;
         }
 
-        float currentAnimationProgress = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+        float currentAnimationProgress = gateAnim.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
         if (currentAnimationProgress < 1)
         {
-            anim.Play("GateClose", 0, (1- currentAnimationProgress));
+            gateAnim.Play("GateClose", 0, (1- currentAnimationProgress));
         }
         else
         {
-            anim.Play("GateClose");
+            gateAnim.Play("GateClose");
         }
     }
 

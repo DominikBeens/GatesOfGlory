@@ -10,7 +10,6 @@ public class CastleRoom_Heal : CastleRoom
     [Header("Stats")]
     public Stat useCooldown;
     public Stat healAmount;
-    public GameObject healParticle;
     public Image cooldownFill;
     public TextMeshProUGUI descriptionText;
 
