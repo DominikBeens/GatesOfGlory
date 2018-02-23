@@ -109,6 +109,10 @@ public class CastleWeaponUpgrader : MonoBehaviour
 
                 selectWeaponText.text = "Canon";
                 break;
+            case 2:
+
+                selectWeaponText.text = "Catapult";
+                break;
         }
     }
 

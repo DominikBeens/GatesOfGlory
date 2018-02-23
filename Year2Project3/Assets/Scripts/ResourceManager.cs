@@ -85,7 +85,8 @@ public class ResourceManager : MonoBehaviour
 
     public void RemoveGold(int amount)
     {
-        print(gold);
+        //print(gold);
+
         if (gold < amount)
         {
             amount = gold;

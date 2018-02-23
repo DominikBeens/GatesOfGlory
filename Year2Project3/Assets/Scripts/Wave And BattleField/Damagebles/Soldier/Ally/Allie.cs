@@ -19,6 +19,11 @@ public class Allie : Soldier
 
     public void GetNewTarget()
     {
+        if (targetTransform.gameObject.activeInHierarchy == false)
+        {
+            targetTransform = null;
+        }
+
         if (targetTransform != null)
         {
             Transform newTarget = BattleManager.instance.AllyGetTarget(transform.position.x, this, targetTransform);

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
+using TMPro;
 
 public class WaveManager : MonoBehaviour
 {
@@ -26,6 +28,15 @@ public class WaveManager : MonoBehaviour
     public List<Enemy> enemiesInScene = new List<Enemy>();
     public List<Allie> alliesInScene = new List<Allie>();
 
+    [Header("Scroll Animation")]
+    public Animator scrollAnim;
+    public TextMeshProUGUI waveText;
+
+    [Header("Wave Pause Animation")]
+    public Animator waveTimerAnim;
+    public Slider waveTimerSlider;
+    private bool skipWaiting;
+
     void Awake()
     {
         if (instance == null)
@@ -36,8 +47,7 @@ public class WaveManager : MonoBehaviour
 
     void Start()
     {
-        GeneradeWave();
-        StartCoroutine(StageTimer());
+        NextWave();
     }
 
     void Update()
@@ -50,8 +60,8 @@ public class WaveManager : MonoBehaviour
 
     public void NextWave()
     {
-        HealthMultiplier *= HealthMultiplier;
-        DamageMultiplier *= DamageMultiplier;
+        HealthMultiplier += 0.01f * waveSize;
+        DamageMultiplier += 0.01f * waveSize;
         GeneradeWave();
 
         currentWave++;
@@ -86,8 +96,28 @@ public class WaveManager : MonoBehaviour
 
     IEnumerator WaveTimer()
     {
+        waveTimerSlider.maxValue = wavePause;
+        waveTimerAnim.SetTrigger("Open");
 
-        yield return new WaitForSeconds(wavePause);
+        float timeToWait = wavePause;
+
+        while (timeToWait > 0)
+        {
+            waveTimerSlider.value = (waveTimerSlider.maxValue - timeToWait);
+            timeToWait -= Time.deltaTime;
+
+            if (skipWaiting)
+            {
+                timeToWait = 0;
+                skipWaiting = false;
+            }
+
+            yield return null;
+        }
+
+        waveTimerAnim.SetTrigger("Close");
+
+        ShowWaveNumber();
 
         StartCoroutine(StageTimer());
     }
@@ -128,5 +158,16 @@ public class WaveManager : MonoBehaviour
             currentSoldier = 0;
             NextStage();
         }
+    }
+
+    private void ShowWaveNumber()
+    {
+        waveText.text = "Wave\n" + currentWave;
+        scrollAnim.SetTrigger("Open");
+    }
+
+    public void SkipWaitingForNextWaveButton()
+    {
+        skipWaiting = true;
     }
 }
