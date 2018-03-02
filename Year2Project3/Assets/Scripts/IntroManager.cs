@@ -12,6 +12,11 @@ public class IntroManager : MonoBehaviour
     public Button playButton;
     public Button quitButton;
 
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
+
     public void StartGameButton()
     {
         mainCamAnim.SetTrigger("StartGame");

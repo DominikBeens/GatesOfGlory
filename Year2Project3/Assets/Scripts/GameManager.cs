@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+
+        Time.timeScale = 1;
     }
 
     private void Update()
@@ -33,6 +35,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             ToggleTimeScale();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            StartCoroutine(UIManager.instance.GameOver());
         }
     }
 

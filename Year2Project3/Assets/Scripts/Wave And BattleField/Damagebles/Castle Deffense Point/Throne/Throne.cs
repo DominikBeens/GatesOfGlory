@@ -20,6 +20,11 @@ public class Throne : CastleDeffensePoint
         else
         {
             myStats.health.currentValue -= damage;
+
+            if (myStats.health.currentValue <= 0)
+            {
+                StartCoroutine(UIManager.instance.GameOver());
+            }
         }
 
         if (healthbarFill != null)
