@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIManager : MonoBehaviour 
 {
@@ -12,6 +13,13 @@ public class UIManager : MonoBehaviour
     public GameObject gameOverPanel;
     public Animator gameOverAnimator;
     public Transform gameOverCamSpawn;
+
+    public GameObject pausePanel;
+
+    public TextMeshProUGUI waveText;
+
+    public Image waveHealthFill;
+    public TextMeshProUGUI waveHealthText;
 
     private void Awake()
     {
@@ -61,5 +69,19 @@ public class UIManager : MonoBehaviour
     public void MainMenuButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
+    }
+
+    public void PauseButton()
+    {
+        if (Time.timeScale == 1)
+        {
+            pausePanel.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            pausePanel.SetActive(false);
+            Time.timeScale = 1;
+        }
     }
 }
