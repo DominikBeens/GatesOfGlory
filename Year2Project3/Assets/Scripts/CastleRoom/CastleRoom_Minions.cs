@@ -67,8 +67,9 @@ public class CastleRoom_Minions : CastleRoom
                                           minionSpawnPoint.position.y,
                                           Random.Range(minionSpawnPoint.position.z - spawnPointOffsetRandomizer, minionSpawnPoint.position.z + spawnPointOffsetRandomizer));
 
-        GameObject newMinion = Instantiate(minionToSpawn, minionSpawnPoint.position, Quaternion.identity, minionSpawnPoint);
-        newMinion.transform.position = Vector3.zero + spawnOffset;
+        GameObject newMinion = ObjectPooler.instance.GrabFromPool("Ally Knight", Vector3.zero + spawnOffset,Quaternion.Euler(Vector3.zero));
+        newMinion.GetComponent<AudioSource>().pitch = Random.Range(0.75f, 1.25f);
+        newMinion.GetComponent<AudioSource>().volume = Random.Range(0.01f, 0.08f);
         newMinion.transform.SetParent(null);
 
         WaveManager.instance.alliesInScene.Add(newMinion.GetComponent<Allie>());

@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
-public class CameraManager : MonoBehaviour 
+public class CameraManager : MonoBehaviour
 {
+    public GameObject ear;
 
     private Camera cam;
 
@@ -84,7 +85,7 @@ public class CameraManager : MonoBehaviour
         float y = Input.GetAxis("Vertical") * (Time.deltaTime * speed);
 
         // Move target position while clamping its X and Y.
-        target.position = new Vector2(Mathf.Clamp(target.position.x + x, startX - camMoveRangeX, startX + camMoveRangeX), 
+        target.position = new Vector2(Mathf.Clamp(target.position.x + x, startX - camMoveRangeX, startX + camMoveRangeX),
                                       Mathf.Clamp(target.position.y + y, startY - camMoveRangeYDown, startY + camMoveRangeYUp));
     }
 
@@ -99,5 +100,6 @@ public class CameraManager : MonoBehaviour
 
         // Changing FOV (Smooth).
         cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov, Time.deltaTime * zoomSpeed);
+        ear.transform.localPosition = new Vector3(0, 0, -+(cam.fieldOfView / 90 * 21) + 21);
     }
 }

@@ -155,7 +155,9 @@ public class WaveManager : MonoBehaviour
             GameObject newEnemy = ObjectPooler.instance.GrabFromPool(thisWave.atackStage[currentStage].soldiers[currentSoldier], new Vector3(spwanPoints[k].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 0, Random.Range(-SpawnsetOff, SpawnsetOff)), spwanPoints[k].transform.rotation); //Instantiate(thisWave.atackStage[currentStage].soldiers[currentSoldier], new Vector3(spwanPoints[k].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 0, Random.Range(-SpawnsetOff, SpawnsetOff)), spwanPoints[k].transform.rotation);
             newEnemy.GetComponent<Enemy>().myStats.ChangeStats(HealthMultiplier, DamageMultiplier);
             newEnemy.GetComponent<NavMeshAgent>().speed = Random.Range(1.75f, 2.25f);
-            AddWaveCurrentHealth((int)newEnemy.GetComponent<Enemy>().myStats.health.currentValue);
+            newEnemy.GetComponent<AudioSource>().pitch = Random.Range(0.75f, 1.25f);
+            newEnemy.GetComponent<AudioSource>().volume = Random.Range(0.01f, 0.08f);
+            AddWaveCurrentHealth((int) newEnemy.GetComponent<Enemy>().myStats.health.currentValue);
             currentSoldier++;
             enemiesInScene.Add(newEnemy.GetComponent<Enemy>());
             StartCoroutine(SoldierTimer());
@@ -184,7 +186,7 @@ public class WaveManager : MonoBehaviour
         currentWaveTotalHealth += i;
         currentWaveHealth += i;
 
-        UIManager.instance.waveHealthFill.fillAmount = ((float)currentWaveHealth / currentWaveTotalHealth);
+        UIManager.instance.waveHealthFill.fillAmount = ((float) currentWaveHealth / currentWaveTotalHealth);
         UIManager.instance.waveHealthText.text = currentWaveHealth.ToString() + " / " + currentWaveTotalHealth.ToString();
     }
 
@@ -192,7 +194,7 @@ public class WaveManager : MonoBehaviour
     {
         currentWaveHealth -= i;
 
-        UIManager.instance.waveHealthFill.fillAmount = ((float)currentWaveHealth / currentWaveTotalHealth);
+        UIManager.instance.waveHealthFill.fillAmount = ((float) currentWaveHealth / currentWaveTotalHealth);
         UIManager.instance.waveHealthText.text = currentWaveHealth.ToString() + " / " + currentWaveTotalHealth.ToString();
     }
 }
