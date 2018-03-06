@@ -75,6 +75,15 @@ public class CastleWeaponUpgrader : MonoBehaviour
         //upgradeText.text = "Upgrade\n<color=#FFF800FF>" + weaponComponent.upgradeCost.currentValue + "</color> Gold";
         upgradeText.text = "Upgrade\n" + weaponComponent.upgradeCost.currentValue + " Gold";
 
+        if (weaponComponent.weaponLevel < weaponComponent.weaponMaxLevel)
+        {
+            buyUpgradeButton.SetActive(true);
+        }
+        else
+        {
+            buyUpgradeButton.SetActive(false);
+        }
+
         upgradeUI.SetActive(true);
     }
 
