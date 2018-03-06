@@ -1157,7 +1157,7 @@ MonoBehaviour:
   zoomSensitivity: 30
   zoomSpeed: 5
   maxZoomIn: 10
-  maxZoomOut: 60
+  maxZoomOut: 70
 --- !u!20 &78702205
 Camera:
   m_ObjectHideFlags: 0
@@ -8272,7 +8272,7 @@ Prefab:
     - target: {fileID: 224656619016983316, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -58
       objectReference: {fileID: 0}
     - target: {fileID: 224140296281992364, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -8292,7 +8292,7 @@ Prefab:
     - target: {fileID: 224140296281992364, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -58
       objectReference: {fileID: 0}
     - target: {fileID: 224459215591925368, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -8312,7 +8312,7 @@ Prefab:
     - target: {fileID: 224459215591925368, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -58
       objectReference: {fileID: 0}
     - target: {fileID: 224262890726514424, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -8332,7 +8332,7 @@ Prefab:
     - target: {fileID: 224262890726514424, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -88.335
       objectReference: {fileID: 0}
     - target: {fileID: 224116338220801424, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -8352,7 +8352,7 @@ Prefab:
     - target: {fileID: 224116338220801424, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -88.335
       objectReference: {fileID: 0}
     - target: {fileID: 224858097075426950, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -8372,7 +8372,7 @@ Prefab:
     - target: {fileID: 224858097075426950, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -88.335
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c304939f7dd57f54baea33fb78f101ad, type: 2}
@@ -19141,6 +19141,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8c6b0f8a5e77774c96eddda6dea0997, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &1556099249
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4758494092788204, guid: db1d1e1e2fb463944a129b3902d5af59, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758494092788204, guid: db1d1e1e2fb463944a129b3902d5af59, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758494092788204, guid: db1d1e1e2fb463944a129b3902d5af59, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758494092788204, guid: db1d1e1e2fb463944a129b3902d5af59, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758494092788204, guid: db1d1e1e2fb463944a129b3902d5af59, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758494092788204, guid: db1d1e1e2fb463944a129b3902d5af59, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758494092788204, guid: db1d1e1e2fb463944a129b3902d5af59, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758494092788204, guid: db1d1e1e2fb463944a129b3902d5af59, type: 2}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: db1d1e1e2fb463944a129b3902d5af59, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1566894429
 Prefab:
   m_ObjectHideFlags: 0
@@ -21445,7 +21487,7 @@ MonoBehaviour:
   zoomSensitivity: 30
   zoomSpeed: 5
   maxZoomIn: 10
-  maxZoomOut: 60
+  maxZoomOut: 70
 --- !u!114 &1789650936
 MonoBehaviour:
   m_ObjectHideFlags: 0
