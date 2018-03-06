@@ -87,7 +87,7 @@ public class CastleRoom_Damage : CastleRoom
 
     public override void Upgrade()
     {
-        if (ResourceManager.gold < upgradeCost.currentValue || roomLevel >= maxRoomLevel)
+        if (ResourceManager.instance.goldPrefabsInScene.Count < (upgradeCost.currentValue / ResourceManager.goldPerPhysicalCoin) || roomLevel >= maxRoomLevel)
         {
             return;
         }

@@ -8,13 +8,13 @@ public class ResourceManager : MonoBehaviour
     public static ResourceManager instance;
 
     [Header("Gold")]
-    public static int gold;
+    public int goldToStartWith;
     public const int goldPerPhysicalCoin = 10;
     public Transform goldSpawn;
     public float goldSpawnInterval;
     private bool canDumpGold = true;
     private int goldToDump;
-    private List<GameObject> goldPrefabsInScene = new List<GameObject>();
+    public List<GameObject> goldPrefabsInScene = new List<GameObject>();
 
 
     private void Awake()
@@ -23,6 +23,11 @@ public class ResourceManager : MonoBehaviour
         {
             instance = this;
         }
+    }
+
+    private void Start()
+    {
+        AddGold(goldToStartWith);
     }
 
     private void Update()
@@ -47,7 +52,6 @@ public class ResourceManager : MonoBehaviour
 
     private void AddGold(int amount)
     {
-        gold += amount;
         goldToDump += (amount / goldPerPhysicalCoin);
 
         int extraGoldToSpawn = (amount / goldPerPhysicalCoin);
@@ -85,18 +89,15 @@ public class ResourceManager : MonoBehaviour
 
     public void RemoveGold(int amount)
     {
-        //print(gold);
-
-        if (gold < amount)
+        if (goldPrefabsInScene.Count < (amount / goldPerPhysicalCoin))
         {
-            amount = gold;
+            return;
         }
 
-        gold -= amount;
-
-        if (goldToDump > (amount / goldPerPhysicalCoin))
+        if (goldToDump >= (amount / goldPerPhysicalCoin))
         {
             goldToDump -= (amount / goldPerPhysicalCoin);
+            return;
         }
         else
         {
