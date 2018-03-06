@@ -3311,11 +3311,11 @@ MonoBehaviour:
   roomName: Damage Room
   roomLevel: 1
   maxRoomLevel: 10
-  buildCost: 0
+  buildCost: 5
   upgradeCost:
-    baseValue: 150
-    currentValue: 150
-    increaseValue: 100
+    baseValue: 2
+    currentValue: 2
+    increaseValue: 1
   myBuilder: {fileID: 0}
   upgradePanel: {fileID: 1631606290801342}
   buyUpgradeButton: {fileID: 114991180945932294}
@@ -3335,8 +3335,6 @@ MonoBehaviour:
     baseValue: 2
     currentValue: 2
     increaseValue: 1
-  damageParticle: {fileID: 1825005088018312, guid: 20ce2286b30d0d14fbc934143a6251cb,
-    type: 2}
   cooldownFill: {fileID: 114235623512711220}
   descriptionText: {fileID: 114394253738101654}
 --- !u!114 &114991180945932294

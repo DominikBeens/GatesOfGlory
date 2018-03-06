@@ -9,13 +9,14 @@ public class ResourceManager : MonoBehaviour
 
     [Header("Gold")]
     public int goldToStartWith;
-    public const int goldPerPhysicalCoin = 10;
     public Transform goldSpawn;
     public float goldSpawnInterval;
     private bool canDumpGold = true;
     private int goldToDump;
     public List<GameObject> goldPrefabsInScene = new List<GameObject>();
 
+    [Header("Enemy Kill Rewards")]
+    public int normalEnemyGoldReward;
 
     private void Awake()
     {
@@ -50,11 +51,11 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
-    private void AddGold(int amount)
+    public void AddGold(int amount)
     {
-        goldToDump += (amount / goldPerPhysicalCoin);
+        goldToDump += amount;
 
-        int extraGoldToSpawn = (amount / goldPerPhysicalCoin);
+        int extraGoldToSpawn = amount;
 
         for (int i = 0; i < extraGoldToSpawn; i++)
         {
@@ -89,14 +90,14 @@ public class ResourceManager : MonoBehaviour
 
     public void RemoveGold(int amount)
     {
-        if (goldPrefabsInScene.Count < (amount / goldPerPhysicalCoin))
+        if (goldPrefabsInScene.Count < amount)
         {
             return;
         }
 
-        if (goldToDump >= (amount / goldPerPhysicalCoin))
+        if (goldToDump >= amount)
         {
-            goldToDump -= (amount / goldPerPhysicalCoin);
+            goldToDump -= amount;
             return;
         }
         else
@@ -107,7 +108,7 @@ public class ResourceManager : MonoBehaviour
             }
         }
 
-        int goldPrefabsToDelete = (amount / goldPerPhysicalCoin);
+        int goldPrefabsToDelete = amount;
 
         for (int i = 0; i < goldPrefabsToDelete; i++)
         {

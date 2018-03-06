@@ -38,7 +38,7 @@ public class CastleBuilder : MonoBehaviour
         {
             if (availableBuilds[i].GetComponent<CastleWeapon>().weaponType == type)
             {
-                if (ResourceManager.instance.goldPrefabsInScene.Count < (availableBuilds[i].GetComponent<CastleWeapon>().buildCost / ResourceManager.goldPerPhysicalCoin))
+                if (ResourceManager.instance.goldPrefabsInScene.Count < availableBuilds[i].GetComponent<CastleWeapon>().buildCost)
                 {
                     return;
                 }
@@ -69,6 +69,7 @@ public class CastleBuilder : MonoBehaviour
 
                 CastleUpgradeManager.instance.CloseAllUI();
 
+                ResourceManager.instance.RemoveGold(availableBuilds[i].GetComponent<CastleWeapon>().buildCost);
                 return;
             }
         }
@@ -80,7 +81,7 @@ public class CastleBuilder : MonoBehaviour
         {
             if (availableBuilds[i].GetComponent<CastleRoom>().roomType == type)
             {
-                if (ResourceManager.instance.goldPrefabsInScene.Count < (availableBuilds[i].GetComponent<CastleRoom>().buildCost / ResourceManager.goldPerPhysicalCoin))
+                if (ResourceManager.instance.goldPrefabsInScene.Count < availableBuilds[i].GetComponent<CastleRoom>().buildCost)
                 {
                     return;
                 }
@@ -111,6 +112,7 @@ public class CastleBuilder : MonoBehaviour
 
                 CastleUpgradeManager.instance.CloseAllUI();
 
+                ResourceManager.instance.RemoveGold(availableBuilds[i].GetComponent<CastleRoom>().buildCost);
                 return;
             }
         }

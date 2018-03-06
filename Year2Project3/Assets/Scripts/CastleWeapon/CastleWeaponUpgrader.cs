@@ -144,7 +144,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
     {
         CastleWeapon weaponComponent = CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleWeapon>();
 
-        if (ResourceManager.instance.goldPrefabsInScene.Count < (weaponComponent.upgradeCost.currentValue / ResourceManager.goldPerPhysicalCoin) || weaponComponent.weaponLevel >= weaponComponent.weaponMaxLevel)
+        if (ResourceManager.instance.goldPrefabsInScene.Count < weaponComponent.upgradeCost.currentValue || weaponComponent.weaponLevel >= weaponComponent.weaponMaxLevel)
         {
             return;
         }

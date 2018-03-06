@@ -2104,11 +2104,11 @@ MonoBehaviour:
   roomName: Healing Room
   roomLevel: 1
   maxRoomLevel: 10
-  buildCost: 0
+  buildCost: 5
   upgradeCost:
-    baseValue: 150
-    currentValue: 150
-    increaseValue: 150
+    baseValue: 2
+    currentValue: 2
+    increaseValue: 1
   myBuilder: {fileID: 0}
   upgradePanel: {fileID: 1250480675617928}
   buyUpgradeButton: {fileID: 114792798014310044}
@@ -2124,8 +2124,6 @@ MonoBehaviour:
     baseValue: 10
     currentValue: 10
     increaseValue: 2.5
-  healParticle: {fileID: 1169565690203310, guid: 60e9ef00abb384a4e8bb8ecbd9cc2514,
-    type: 2}
   cooldownFill: {fileID: 114171581577169908}
   descriptionText: {fileID: 114602665918961146}
 --- !u!114 &114289495823001136

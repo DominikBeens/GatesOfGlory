@@ -1269,17 +1269,19 @@ MonoBehaviour:
   side: 0
   weaponName: Canon
   weaponLevel: 1
-  buildCost: 0
+  weaponMaxLevel: 0
+  buildCost: 10
   upgradeCost:
-    baseValue: 150
-    currentValue: 150
-    increaseValue: 100
+    baseValue: 3
+    currentValue: 3
+    increaseValue: 2
   rotatableWeapon: {fileID: 4342353219132358}
   projectile: {fileID: 1816421631133504, guid: 1aacc76c6213b6c4c8dd01f45bbeb948, type: 2}
   projectileSpawns:
   - {fileID: 4327984786120038}
   amountOfProjectiles: 0
   useUI: {fileID: 1522565143467558}
+  anim: {fileID: 0}
   myBuilder: {fileID: 0}
   damage:
     baseValue: 30
@@ -1289,15 +1291,12 @@ MonoBehaviour:
     baseValue: 1500
     currentValue: 1500
     increaseValue: 200
-  coolDown:
-    baseValue: 0.5
-    currentValue: 1
-    increaseValue: -0.1
+  cooldown:
+    baseValue: 0
+    currentValue: 0
+    increaseValue: 0
   maxXRotation: 10
   minXRotation: -20
-  mouseLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
   rotationSpeed: 100
   rotationSlider: {fileID: 114462213101195302}
 --- !u!114 &114908650767097798

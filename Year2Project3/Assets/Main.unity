@@ -8160,7 +8160,7 @@ Prefab:
     - target: {fileID: 224656619016983316, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -58
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224140296281992364, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -8180,7 +8180,7 @@ Prefab:
     - target: {fileID: 224140296281992364, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -58
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224459215591925368, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -8200,7 +8200,7 @@ Prefab:
     - target: {fileID: 224459215591925368, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -58
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224262890726514424, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -8220,7 +8220,7 @@ Prefab:
     - target: {fileID: 224262890726514424, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -88.335
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224116338220801424, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -8240,7 +8240,7 @@ Prefab:
     - target: {fileID: 224116338220801424, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -88.335
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224858097075426950, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -8260,7 +8260,7 @@ Prefab:
     - target: {fileID: 224858097075426950, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -88.335
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c304939f7dd57f54baea33fb78f101ad, type: 2}
@@ -12931,10 +12931,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b7db592c89c71a48aef5bd30c1f5464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldToStartWith: 500
+  goldToStartWith: 25
   goldSpawn: {fileID: 710592216}
   goldSpawnInterval: 0.2
   goldPrefabsInScene: []
+  normalEnemyGoldReward: 1
 --- !u!4 &1042612777 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4128533078131388, guid: b8c6b0f8a5e77774c96eddda6dea0997,

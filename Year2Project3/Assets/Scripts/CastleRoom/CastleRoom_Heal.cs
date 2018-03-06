@@ -62,7 +62,7 @@ public class CastleRoom_Heal : CastleRoom
 
     public override void Upgrade()
     {
-        if (ResourceManager.instance.goldPrefabsInScene.Count < (upgradeCost.currentValue / ResourceManager.goldPerPhysicalCoin) || roomLevel >= maxRoomLevel)
+        if (ResourceManager.instance.goldPrefabsInScene.Count < upgradeCost.currentValue || roomLevel >= maxRoomLevel)
         {
             return;
         }

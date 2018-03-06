@@ -5036,11 +5036,11 @@ MonoBehaviour:
   roomName: Knight Room
   roomLevel: 1
   maxRoomLevel: 10
-  buildCost: 0
+  buildCost: 15
   upgradeCost:
-    baseValue: 0
-    currentValue: 0
-    increaseValue: 0
+    baseValue: 5
+    currentValue: 5
+    increaseValue: 3
   myBuilder: {fileID: 0}
   upgradePanel: {fileID: 1651483591867090}
   buyUpgradeButton: {fileID: 114227261008610802}
@@ -5052,9 +5052,9 @@ MonoBehaviour:
     type: 2}
   minionSpawnPoint: {fileID: 4625714402741780}
   spawnCost:
-    baseValue: 50
-    currentValue: 50
-    increaseValue: 15
+    baseValue: 5
+    currentValue: 5
+    increaseValue: 0
   amountToSpawnPerBuy:
     baseValue: 4
     currentValue: 4

@@ -51,9 +51,11 @@ public class CastleRoom_Minions : CastleRoom
     {
         base.UseRoom();
 
-        if (ResourceManager.instance.goldPrefabsInScene.Count >= (spawnCost.currentValue / ResourceManager.goldPerPhysicalCoin))
+        if (ResourceManager.instance.goldPrefabsInScene.Count >= spawnCost.currentValue)
         {
             currentAmountToSpawn += (int)amountToSpawnPerBuy.currentValue;
+
+            ResourceManager.instance.RemoveGold((int)spawnCost.currentValue);
         }
     }
 
@@ -80,7 +82,7 @@ public class CastleRoom_Minions : CastleRoom
 
     public override void Upgrade()
     {
-        if (ResourceManager.instance.goldPrefabsInScene.Count < (upgradeCost.currentValue / ResourceManager.goldPerPhysicalCoin) || roomLevel >= maxRoomLevel)
+        if (ResourceManager.instance.goldPrefabsInScene.Count < upgradeCost.currentValue || roomLevel >= maxRoomLevel)
         {
             return;
         }

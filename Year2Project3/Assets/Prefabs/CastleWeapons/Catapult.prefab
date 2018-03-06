@@ -1307,11 +1307,11 @@ MonoBehaviour:
   weaponName: Ballista
   weaponLevel: 1
   weaponMaxLevel: 15
-  buildCost: 0
+  buildCost: 10
   upgradeCost:
-    baseValue: 0
-    currentValue: 0
-    increaseValue: 0
+    baseValue: 3
+    currentValue: 3
+    increaseValue: 2
   rotatableWeapon: {fileID: 0}
   projectile: {fileID: 1548931330049792, guid: ec05609eb61512941a68e05ce93d33cf, type: 2}
   projectileSpawns:
