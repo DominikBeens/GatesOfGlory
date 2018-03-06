@@ -46,32 +46,27 @@ public class CastleWeapon_Ballista : CastleWeapon
 
     public void FireProjectile()
     {
-        List<GameObject> newProjectiles = new List<GameObject>();
+        GameObject newProjectile;
 
         switch (amountOfProjectiles)
         {
             case AmountOfProjectiles.One:
 
-                GameObject newProjectile = Instantiate(projectile, projectileSpawns[0].position, projectileSpawns[0].rotation);
-                newProjectiles.Add(newProjectile);
+                newProjectile = ObjectPooler.instance.GrabFromPool("ballista projectile", projectileSpawns[0].position, projectileSpawns[0].rotation);
+
+                newProjectile.GetComponent<Projectile>().myDamage = damage.currentValue;
+                newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * (force.currentValue + Random.Range(-15, 15)));
                 break;
             case AmountOfProjectiles.Three:
 
-                GameObject newProjectile1 = Instantiate(projectile, projectileSpawns[0].position, projectileSpawns[0].rotation);
-                newProjectiles.Add(newProjectile1);
+                for (int i = 0; i < projectileSpawns.Count; i++)
+                {
+                    newProjectile = ObjectPooler.instance.GrabFromPool("ballista projectile", projectileSpawns[i].position, projectileSpawns[i].rotation);
 
-                GameObject newProjectile2 = Instantiate(projectile, projectileSpawns[1].position, projectileSpawns[1].rotation);
-                newProjectiles.Add(newProjectile2);
-
-                GameObject newProjectile3 = Instantiate(projectile, projectileSpawns[2].position, projectileSpawns[2].rotation);
-                newProjectiles.Add(newProjectile3);
+                    newProjectile.GetComponent<Projectile>().myDamage = damage.currentValue;
+                    newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * (force.currentValue + Random.Range(-15, 15)));
+                }
                 break;
-        }
-
-        for (int i = 0; i < newProjectiles.Count; i++)
-        {
-            newProjectiles[i].GetComponent<Projectile>().myDamage = damage.currentValue;
-            newProjectiles[i].GetComponent<Rigidbody>().AddForce(newProjectiles[i].transform.forward * (force.currentValue + Random.Range(-15, 15)));
         }
     }
 }

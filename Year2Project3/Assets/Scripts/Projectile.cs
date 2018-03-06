@@ -5,8 +5,17 @@ using UnityEngine;
 public class Projectile : MonoBehaviour 
 {
 
+    private Rigidbody rb;
+
     private bool canRotate;
     private bool canDealDamage = true;
+
+    public enum Type
+    {
+        BallistaProjectile,
+        CatapultProjectile
+    }
+    public Type type;
 
     [HideInInspector]
     public float myDamage;
@@ -17,6 +26,8 @@ public class Projectile : MonoBehaviour
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
+
         Renderer myRenderer = transform.GetChild(0).GetComponent<Renderer>();
         myRenderer.material = new Material(myRenderer.material);
         myMat = myRenderer.material;
@@ -24,36 +35,41 @@ public class Projectile : MonoBehaviour
 
     private void OnEnable()
     {
+        myMat.color = new Color(myMat.color.r, myMat.color.g, myMat.color.b, 1);
+
         canRotate = true;
-        GetComponent<Rigidbody>().isKinematic = false;
+        rb.isKinematic = false;
+        canDealDamage = true;
     }
 
     private void Update()
     {
         if (canRotate)
         {
-            transform.rotation = Quaternion.LookRotation(GetComponent<Rigidbody>().velocity);
+            transform.rotation = Quaternion.LookRotation(rb.velocity);
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         canRotate = false;
-        GetComponent<Rigidbody>().isKinematic = true;
+        rb.isKinematic = true;
 
         if (!canDealDamage)
         {
             return;
         }
 
+        canDealDamage = false;
+
         Enemy enemy = collision.transform.GetComponent<Enemy>();
         if (enemy != null)
         {
             enemy.TakeDamage(myDamage);
-            Destroy(gameObject);
+            ReAddToPool();
+            return;
         }
 
-        canDealDamage = false;
         StartCoroutine(Destroy());
     }
 
@@ -67,6 +83,21 @@ public class Projectile : MonoBehaviour
             yield return null;
         }
 
-        Destroy(gameObject);
+        ReAddToPool();
+    }
+
+    private void ReAddToPool()
+    {
+        switch (type)
+        {
+            case Type.BallistaProjectile:
+
+                ObjectPooler.instance.AddToPool("ballista projectile", gameObject);
+                break;
+            case Type.CatapultProjectile:
+
+
+                break;
+        }
     }
 }

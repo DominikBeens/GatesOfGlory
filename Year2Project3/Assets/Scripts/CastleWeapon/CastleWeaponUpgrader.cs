@@ -144,7 +144,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
     {
         CastleWeapon weaponComponent = CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleWeapon>();
 
-        if (ResourceManager.gold < weaponComponent.upgradeCost.currentValue || weaponComponent.weaponLevel >= weaponComponent.weaponMaxLevel)
+        if (ResourceManager.instance.goldPrefabsInScene.Count < (weaponComponent.upgradeCost.currentValue / ResourceManager.goldPerPhysicalCoin) || weaponComponent.weaponLevel >= weaponComponent.weaponMaxLevel)
         {
             return;
         }
@@ -154,7 +154,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
         weaponComponent.cooldown.currentValue += weaponComponent.cooldown.increaseValue;
         weaponComponent.anim.speed = 1 / weaponComponent.cooldown.currentValue;
 
-        ResourceManager.gold -= (int)weaponComponent.upgradeCost.currentValue;
+        ResourceManager.instance.RemoveGold((int)weaponComponent.upgradeCost.currentValue);
 
         weaponComponent.upgradeCost.currentValue += weaponComponent.upgradeCost.increaseValue;
         weaponComponent.weaponLevel++;

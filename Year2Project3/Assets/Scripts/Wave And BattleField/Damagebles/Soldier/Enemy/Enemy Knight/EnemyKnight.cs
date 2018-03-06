@@ -18,8 +18,18 @@ public class EnemyKnight : Enemy{
 
     public override void TakeDamage(float damage)
     {
+        if (myStats.health.currentValue >= damage)
+        {
+            WaveManager.instance.DecreaseWaveCurrentHealth((int)damage);
+        }
+        else
+        {
+            WaveManager.instance.DecreaseWaveCurrentHealth((int)myStats.health.currentValue);
+        }
+
         myStats.health.currentValue -= damage;
         healthbarFill.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
+
         if (myStats.health.currentValue <= 0)
         {
             ObjectPooler.instance.AddToPool("Enemy Knight",gameObject);

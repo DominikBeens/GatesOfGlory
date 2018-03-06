@@ -38,7 +38,7 @@ public class CastleBuilder : MonoBehaviour
         {
             if (availableBuilds[i].GetComponent<CastleWeapon>().weaponType == type)
             {
-                if (ResourceManager.gold < availableBuilds[i].GetComponent<CastleWeapon>().buildCost)
+                if (ResourceManager.instance.goldPrefabsInScene.Count < (availableBuilds[i].GetComponent<CastleWeapon>().buildCost / ResourceManager.goldPerPhysicalCoin))
                 {
                     return;
                 }
@@ -80,7 +80,7 @@ public class CastleBuilder : MonoBehaviour
         {
             if (availableBuilds[i].GetComponent<CastleRoom>().roomType == type)
             {
-                if (ResourceManager.gold < availableBuilds[i].GetComponent<CastleRoom>().buildCost)
+                if (ResourceManager.instance.goldPrefabsInScene.Count < (availableBuilds[i].GetComponent<CastleRoom>().buildCost / ResourceManager.goldPerPhysicalCoin))
                 {
                     return;
                 }

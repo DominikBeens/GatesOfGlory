@@ -27,15 +27,15 @@ public class Soldier : Damagebles{
         healthbarCanvas.LookAt(Camera.main.transform);
     }
 
-    public void ShowHealthbar()
-    {
-        healthbarAnim.ResetTrigger("Hide");
-        healthbarAnim.SetTrigger("Show");
-    }
+    //public void ShowHealthbar()
+    //{
+    //    healthbarAnim.ResetTrigger("Hide");
+    //    healthbarAnim.SetTrigger("Show");
+    //}
 
-    public void HideHealthbar()
-    {
-        healthbarAnim.ResetTrigger("Show");
-        healthbarAnim.SetTrigger("Hide");
-    }
+    //public void HideHealthbar()
+    //{
+    //    healthbarAnim.ResetTrigger("Show");
+    //    healthbarAnim.SetTrigger("Hide");
+    //}
 }
