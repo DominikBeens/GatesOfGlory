@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceManager : MonoBehaviour 
+public class ResourceManager : MonoBehaviour
 {
 
     public static ResourceManager instance;
@@ -14,6 +14,7 @@ public class ResourceManager : MonoBehaviour
     private bool canDumpGold = true;
     private int goldToDump;
     public List<GameObject> goldPrefabsInScene = new List<GameObject>();
+    public Animator goldAnim;
 
     [Header("Enemy Kill Rewards")]
     public int normalEnemyGoldReward;
@@ -35,11 +36,11 @@ public class ResourceManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            AddGold(100);
+            AddGold(5);
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
-            RemoveGold(100);
+            RemoveGold(5);
         }
 
         if (goldToDump > 0)
@@ -48,6 +49,14 @@ public class ResourceManager : MonoBehaviour
             {
                 StartCoroutine(DumpGold());
             }
+
+            goldAnim.ResetTrigger("Close");
+            goldAnim.SetTrigger("Open");
+        }
+        else
+        {
+            goldAnim.ResetTrigger("Open");
+            goldAnim.SetTrigger("Close");
         }
     }
 
