@@ -68,6 +68,7 @@ public class UIManager : MonoBehaviour
 
         gameInfoPanel.SetActive(false);
         waveTimerPanel.SetActive(false);
+        Camera.main.fieldOfView = 60;
         gameOverAnimator.enabled = true;
 
         yield return new WaitForSeconds(gameOverAnimator.GetCurrentAnimatorStateInfo(0).length);

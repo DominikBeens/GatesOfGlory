@@ -46,6 +46,8 @@ public class CastleWeapon : MonoBehaviour
 
     [HideInInspector]
     public CastleBuilder myBuilder;
+    [HideInInspector]
+    public int goldSpentOnThisObject;
 
     [Header("Stats")]
     public Stat damage;
@@ -57,9 +59,11 @@ public class CastleWeapon : MonoBehaviour
     public float maxXRotation;
     public float minXRotation;
 
-    private void Awake()
+    public virtual void Awake()
     {
         useUI.SetActive(false);
+
+        goldSpentOnThisObject += buildCost;
     }
 
     public virtual void Update()
@@ -139,5 +143,10 @@ public class CastleWeapon : MonoBehaviour
         side = Side.Right;
         transform.rotation = Quaternion.Euler(0, 180, 0);
         useUI.transform.parent.parent.rotation = Quaternion.Euler(Vector3.zero);
+    }
+
+    private void OnDisable()
+    {
+        goldSpentOnThisObject = 0;
     }
 }

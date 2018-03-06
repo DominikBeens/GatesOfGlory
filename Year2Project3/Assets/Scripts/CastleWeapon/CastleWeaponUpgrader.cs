@@ -8,6 +8,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
 
     public GameObject buildUI;
     public GameObject upgradeUI;
+    public GameObject demolishUI;
     [Space(10)]
     public TextMeshProUGUI upgradeText;
 
@@ -17,6 +18,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
     public GameObject buildWeaponButton;
     public GameObject useWeaponButton;
     public GameObject upgradeWeaponButton;
+    public GameObject demolishWeaponButton;
     [Space(10)]
     public GameObject buyUpgradeButton;
 
@@ -30,6 +32,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
     {
         upgradeUI.SetActive(false);
         buildUI.SetActive(false);
+        demolishUI.SetActive(false);
     }
 
     public void OpenUI()
@@ -39,12 +42,14 @@ public class CastleWeaponUpgrader : MonoBehaviour
             buildWeaponButton.SetActive(true);
             useWeaponButton.SetActive(false);
             upgradeWeaponButton.SetActive(false);
+            demolishWeaponButton.SetActive(false);
         }
         else
         {
             buildWeaponButton.SetActive(false);
             useWeaponButton.SetActive(true);
             upgradeWeaponButton.SetActive(true);
+            demolishWeaponButton.SetActive(true);
         }
 
         gameObject.SetActive(true);
@@ -82,6 +87,12 @@ public class CastleWeaponUpgrader : MonoBehaviour
         else
         {
             buyUpgradeButton.SetActive(false);
+        }
+
+        if (demolishUI.activeInHierarchy)
+        {
+            demolishUI.GetComponent<Animator>().SetTrigger("CloseUI");
+            Invoke("DisableDemolishUI", demolishUI.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
         }
 
         upgradeUI.SetActive(true);
@@ -164,6 +175,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
         weaponComponent.anim.speed = 1 / weaponComponent.cooldown.currentValue;
 
         ResourceManager.instance.RemoveGold((int)weaponComponent.upgradeCost.currentValue);
+        weaponComponent.goldSpentOnThisObject += (int)weaponComponent.upgradeCost.currentValue;
 
         weaponComponent.upgradeCost.currentValue += weaponComponent.upgradeCost.increaseValue;
         weaponComponent.weaponLevel++;
@@ -177,9 +189,36 @@ public class CastleWeaponUpgrader : MonoBehaviour
         }
     }
 
+    public void OpenDemolishUIButton()
+    {
+        if (upgradeUI.activeInHierarchy)
+        {
+            upgradeUI.GetComponent<Animator>().SetTrigger("CloseUI");
+            Invoke("DisableUpgradeUI", upgradeUI.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+        }
+
+        demolishUI.SetActive(true);
+    }
+
+    public void DemolishButton()
+    {
+        CastleUpgradeManager.selectedBuild.Demolish();
+    }
+
     private void OnDisable()
     {
         upgradeUI.SetActive(false);
         buildUI.SetActive(false);
+        demolishUI.SetActive(false);
+    }
+
+    private void DisableUpgradeUI()
+    {
+        upgradeUI.SetActive(false);
+    }
+
+    private void DisableDemolishUI()
+    {
+        demolishUI.SetActive(false);
     }
 }

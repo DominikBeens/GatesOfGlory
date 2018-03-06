@@ -117,4 +117,27 @@ public class CastleBuilder : MonoBehaviour
             }
         }
     }
+
+    public void Demolish()
+    {
+        CastleWeapon weapon = myBuildedObject.GetComponent<CastleWeapon>();
+        CastleRoom room = myBuildedObject.GetComponent<CastleRoom>();
+        if (weapon != null)
+        {
+            CastleUpgradeManager.instance.allBuiltWeapons.Remove(weapon);
+            ResourceManager.instance.AddGold(weapon.goldSpentOnThisObject / 2);
+        }
+        else if (room != null)
+        {
+            CastleUpgradeManager.instance.allBuiltRooms.Add(room);
+            //ResourceManager.instance.AddGold(room.goldSpentOnThisObject / 2);
+        }
+
+        CastleUpgradeManager.instance.CloseAllUI();
+
+        Destroy(myBuildedObject);
+        myBuildedObject = null;
+
+        buildButton.SetActive(true);
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ResourceManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class ResourceManager : MonoBehaviour
     private int goldToDump;
     public List<GameObject> goldPrefabsInScene = new List<GameObject>();
     public Animator goldAnim;
+    public TextMeshProUGUI goldText;
 
     [Header("Enemy Kill Rewards")]
     public int normalEnemyGoldReward;
@@ -42,6 +44,8 @@ public class ResourceManager : MonoBehaviour
         {
             RemoveGold(5);
         }
+
+        goldText.text = goldPrefabsInScene.Count.ToString();
 
         if (goldToDump > 0)
         {

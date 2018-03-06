@@ -12,8 +12,10 @@ public class CastleWeapon_Catapult : CastleWeapon
     public float minForce;
     public float maxFloat;
 
-    public void Awake()
+    public override void Awake()
     {
+        base.Awake();
+
         forceSlider.minValue = minForce;
         forceSlider.maxValue = maxFloat;
     }
