@@ -27,6 +27,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
     public TextMeshProUGUI weaponDamageText;
     public TextMeshProUGUI weaponForceText;
     public TextMeshProUGUI weaponFireRateText;
+    public GameObject autoFireUpdateText;
 
     private void Awake()
     {
@@ -77,8 +78,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
         weaponForceText.text = "Force: <color=green>" + weaponComponent.force.currentValue + "</color>";
         weaponFireRateText.text = "Fire Rate: <color=green>" + weaponComponent.cooldown.currentValue.ToString("f2") + "</color>";
 
-        //upgradeText.text = "Upgrade\n<color=#FFF800FF>" + weaponComponent.upgradeCost.currentValue + "</color> Gold";
-        upgradeText.text = "Upgrade\n" + weaponComponent.upgradeCost.currentValue + " Gold";
+        upgradeText.text = "<color=#FFF800FF>" + weaponComponent.upgradeCost.currentValue + "</color>";
 
         if (weaponComponent.weaponLevel < weaponComponent.weaponMaxLevel)
         {
@@ -87,6 +87,24 @@ public class CastleWeaponUpgrader : MonoBehaviour
         else
         {
             buyUpgradeButton.SetActive(false);
+        }
+
+        if (weaponComponent.weaponLevel >= weaponComponent.autoFireLevelReq)
+        {
+            weaponComponent.autoFireToggle.SetActive(true);
+        }
+        else
+        {
+            weaponComponent.autoFireToggle.SetActive(false);
+        }
+
+        if (weaponComponent.weaponLevel == weaponComponent.autoFireLevelReq - 1)
+        {
+            autoFireUpdateText.SetActive(true);
+        }
+        else
+        {
+            autoFireUpdateText.SetActive(false);
         }
 
         if (demolishUI.activeInHierarchy)
@@ -186,6 +204,11 @@ public class CastleWeaponUpgrader : MonoBehaviour
         if (weaponComponent.weaponLevel >= weaponComponent.weaponMaxLevel)
         {
             buyUpgradeButton.SetActive(false);
+        }
+
+        if (weaponComponent.weaponLevel >= weaponComponent.autoFireLevelReq)
+        {
+            weaponComponent.autoFireToggle.SetActive(true);
         }
     }
 

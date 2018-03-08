@@ -26,9 +26,12 @@ public class CastleWeapon : MonoBehaviour
     public int weaponMaxLevel;
     public int buildCost;
     public Stat upgradeCost;
+    public int autoFireLevelReq;
+    public GameObject autoFireToggle;
 
     protected bool usingWeapon;
     protected bool shooting;
+    private bool autoFire;
 
     [Header("Weapon Setup")]
     public Transform rotatableWeapon;
@@ -68,11 +71,11 @@ public class CastleWeapon : MonoBehaviour
 
     public virtual void Update()
     {
-        if (usingWeapon)
+        if (usingWeapon || autoFire)
         {
             useUI.transform.parent.parent.LookAt(Camera.main.transform);
 
-            if (shooting)
+            if (shooting || autoFire)
             {
                 if (Time.time >= nextTimeToFire)
                 {
@@ -101,6 +104,11 @@ public class CastleWeapon : MonoBehaviour
     public void ToggleAutoShoot()
     {
         shooting = !shooting;
+    }
+
+    public void ToggleAutoFire()
+    {
+        autoFire = !autoFire;
     }
 
     public virtual void StartUsing()

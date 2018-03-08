@@ -3,6 +3,9 @@
 [RequireComponent(typeof(Camera))]
 public class CameraManager : MonoBehaviour
 {
+
+    public bool canMove = true;
+
     public GameObject ear;
 
     private Camera cam;
@@ -61,12 +64,18 @@ public class CameraManager : MonoBehaviour
         }
         else
         {
-            MoveCam();
+            if (canMove)
+            {
+                MoveCam();
+            }
         }
 
         transform.LookAt(target);
 
-        ZoomCam();
+        if (canMove)
+        {
+            ZoomCam();
+        }
     }
 
     private void LateUpdate()
@@ -85,8 +94,9 @@ public class CameraManager : MonoBehaviour
         float y = Input.GetAxis("Vertical") * (Time.deltaTime * speed);
 
         // Move target position while clamping its X and Y.
-        target.position = new Vector2(Mathf.Clamp(target.position.x + x, startX - camMoveRangeX, startX + camMoveRangeX),
-                                      Mathf.Clamp(target.position.y + y, startY - camMoveRangeYDown, startY + camMoveRangeYUp));
+        target.position = new Vector3(Mathf.Clamp(target.position.x + x, startX - camMoveRangeX, startX + camMoveRangeX),
+                                      Mathf.Clamp(target.position.y + y, startY - camMoveRangeYDown, startY + camMoveRangeYUp),
+                                      target.position.z);
     }
 
     private void ZoomCam()

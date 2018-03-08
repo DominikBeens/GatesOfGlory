@@ -14,7 +14,8 @@ public class CastleRoom : MonoBehaviour
         Spearman,
         Gold,
         Heal,
-        Damage
+        Damage,
+        Ambush
     }
     public RoomType roomType;
 
@@ -76,6 +77,8 @@ public class CastleRoom : MonoBehaviour
     public virtual void Upgrade()
     {
         roomLevel++;
+
+        ResourceManager.instance.RemoveGold((int)upgradeCost.currentValue);
 
         goldSpentOnThisObject += (int)upgradeCost.currentValue;
         upgradeCost.currentValue += upgradeCost.increaseValue;

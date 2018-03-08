@@ -14,8 +14,18 @@ public class CastleRoom_Ambush : CastleRoom
     [Header("Ambush Room Setup")]
     public Image cooldownFill;
     public TextMeshProUGUI descriptionText;
+    public Transform cameraTarget;
+    public float camZoomSpeed;
+    private CameraManager mainCamManager;
 
     private float currentCooldown = 0.95f;
+
+    public override void Awake()
+    {
+        base.Awake();
+
+        mainCamManager = Camera.main.GetComponent<CameraManager>();
+    }
 
     public override void SetupUI()
     {
@@ -40,6 +50,11 @@ public class CastleRoom_Ambush : CastleRoom
         {
             currentCooldown = 1;
         }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            StartCoroutine(Volley());
+        }
     }
 
     public override void UseRoom()
@@ -52,6 +67,19 @@ public class CastleRoom_Ambush : CastleRoom
         }
 
         currentCooldown = 0;
+    }
+
+    private IEnumerator Volley()
+    {
+        Vector3 zoomTo = new Vector3(0, 10, -20);
+        mainCamManager.canMove = false;
+
+        while (Vector3.Distance(cameraTarget.position, zoomTo) > 0.1f)
+        {
+            cameraTarget.position = Vector3.Lerp(cameraTarget.position, zoomTo, Time.deltaTime * camZoomSpeed);
+            Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 60, Time.deltaTime * (camZoomSpeed * 5));
+            yield return null;
+        }
     }
 
     public override void Upgrade()

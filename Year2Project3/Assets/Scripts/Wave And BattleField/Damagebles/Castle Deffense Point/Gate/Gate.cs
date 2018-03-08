@@ -34,4 +34,16 @@ public class Gate : CastleDeffensePoint{
     {
         gateOpen = !gateOpen;
     }
+
+    public void Heal(float healAmount)
+    {
+        myStats.health.currentValue += healAmount;
+
+        if (myStats.health.currentValue > myStats.health.baseValue)
+        {
+            myStats.health.currentValue = myStats.health.baseValue;
+        }
+
+        healthbarFill.fillAmount = myStats.health.currentValue / myStats.health.baseValue;
+    }
 }

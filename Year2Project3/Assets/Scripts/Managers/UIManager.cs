@@ -94,13 +94,17 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        if (Time.timeScale == 1)
+        if (GameManager.instance.gameState == GameManager.GameState.Playing)
         {
+            GameManager.instance.gameState = GameManager.GameState.Paused;
+
             pausePanel.SetActive(true);
             Time.timeScale = 0;
         }
         else
         {
+            GameManager.instance.gameState = GameManager.GameState.Playing;
+
             pausePanel.SetActive(false);
             Time.timeScale = 1;
         }
