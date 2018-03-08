@@ -10,8 +10,11 @@ public class CastleRoom_Heal : CastleRoom
     [Header("Stats")]
     public Stat useCooldown;
     public Stat healAmount;
+
+    [Space(10)]
     public Image cooldownFill;
     public TextMeshProUGUI descriptionText;
+    public TextMeshProUGUI nextLevelExtraUpgradeText;
 
     private float currentCooldown = 0.95f;
 
@@ -23,6 +26,15 @@ public class CastleRoom_Heal : CastleRoom
 
         upgradeStatsText.text = "Heal amount: " + healAmount.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(healAmount.increaseValue) + "</color>)" + "\n" +
                                 "Cooldown: " + useCooldown .currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(useCooldown.increaseValue) + "</color>)";
+
+        if (roomLevel == 4)
+        {
+            nextLevelExtraUpgradeText.text = "Next level will heal both gates at the end of each turn.";
+        }
+        else
+        {
+            nextLevelExtraUpgradeText.text = string.Empty;
+        }
     }
 
     public override void Update()
