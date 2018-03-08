@@ -7,7 +7,6 @@ using TMPro;
 public class CastleRoom : MonoBehaviour
 {
 
-
     public enum RoomType
     {
         Knight,
@@ -35,22 +34,30 @@ public class CastleRoom : MonoBehaviour
 
     [HideInInspector]
     public CastleBuilder myBuilder;
+    [HideInInspector]
+    public int goldSpentOnThisObject;
 
     [Header("Upgrade Panel")]
     public GameObject upgradePanel;
     public Button buyUpgradeButton;
     public TextMeshProUGUI upgradeStatsText;
-    public TextMeshProUGUI upgradeDescriptionText;
+    public TextMeshProUGUI upgradeCostText;
     public TextMeshProUGUI roomNameText;
 
     [Space(10)]
     public GameObject useUI;
     private bool usingRoom;
 
-    private void Awake()
+    [Space(10)]
+    public GameObject demolishPanel;
+
+    public virtual void Awake()
     {
         useUI.SetActive(false);
         upgradePanel.SetActive(false);
+        demolishPanel.SetActive(false);
+
+        goldSpentOnThisObject += buildCost;
     }
 
     public virtual void Update()
@@ -69,6 +76,8 @@ public class CastleRoom : MonoBehaviour
     public virtual void Upgrade()
     {
         roomLevel++;
+
+        goldSpentOnThisObject += (int)upgradeCost.currentValue;
         upgradeCost.currentValue += upgradeCost.increaseValue;
 
         if (roomLevel >= maxRoomLevel)
@@ -80,7 +89,7 @@ public class CastleRoom : MonoBehaviour
     public virtual void SetupUI()
     {
         roomNameText.text = "Level <color=green>" + roomLevel.ToString() + "</color> " + roomName;
-        upgradeDescriptionText.text = "Upgrade cost: <color=yellow>" + upgradeCost.currentValue + "</color> gold.";
+        upgradeCostText.text = upgradeCost.currentValue.ToString();
     }
 
     public virtual void StartUsing()
@@ -111,10 +120,16 @@ public class CastleRoom : MonoBehaviour
 
         upgradePanel.SetActive(false);
         useUI.SetActive(false);
+        demolishPanel.SetActive(false);
     }
 
     public virtual void ToggleUpgradePanelButton()
     {
+        if (demolishPanel.activeInHierarchy)
+        {
+            StartCoroutine(CloseDemolishUI());
+        }
+
         if (!upgradePanel.activeInHierarchy)
         {
             upgradePanel.SetActive(true);
@@ -125,6 +140,28 @@ public class CastleRoom : MonoBehaviour
         }
     }
 
+    public virtual void ToggleDemolishPanelButton()
+    {
+        if (upgradePanel.activeInHierarchy)
+        {
+            StartCoroutine(CloseUpgradeUI());
+        }
+
+        if (!demolishPanel.activeInHierarchy)
+        {
+            demolishPanel.SetActive(true);
+        }
+        else
+        {
+            StartCoroutine(CloseDemolishUI());
+        }
+    }
+
+    public void DemolishButton()
+    {
+        myBuilder.Demolish();
+    }
+
     private IEnumerator CloseUpgradeUI()
     {
         upgradePanel.GetComponent<Animator>().SetTrigger("CloseUI");
@@ -132,5 +169,19 @@ public class CastleRoom : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         upgradePanel.SetActive(false);
+    }
+
+    private IEnumerator CloseDemolishUI()
+    {
+        demolishPanel.GetComponent<Animator>().SetTrigger("CloseUI");
+
+        yield return new WaitForSeconds(0.5f);
+
+        demolishPanel.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        goldSpentOnThisObject = 0;
     }
 }

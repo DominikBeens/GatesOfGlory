@@ -47,6 +47,8 @@ public class CastleBuilder : MonoBehaviour
                 newBuild.transform.SetParent(transform);
                 myBuildedObject = newBuild;
 
+                ObjectPooler.instance.GrabFromPool("build particle", myBuildedObject.transform.position, Quaternion.identity);
+
                 CastleWeapon castleWeaponComponent = myBuildedObject.GetComponent<CastleWeapon>();
                 castleWeaponComponent.myBuilder = this;
 
@@ -90,6 +92,8 @@ public class CastleBuilder : MonoBehaviour
                 newBuild.transform.SetParent(transform);
                 myBuildedObject = newBuild;
 
+                ObjectPooler.instance.GrabFromPool("build particle", myBuildedObject.transform.position, Quaternion.identity);
+
                 CastleRoom castleRoomComponent = myBuildedObject.GetComponent<CastleRoom>();
                 castleRoomComponent.myBuilder = this;
 
@@ -129,12 +133,19 @@ public class CastleBuilder : MonoBehaviour
         }
         else if (room != null)
         {
-            CastleUpgradeManager.instance.allBuiltRooms.Add(room);
-            //ResourceManager.instance.AddGold(room.goldSpentOnThisObject / 2);
+            CastleUpgradeManager.instance.allBuiltRooms.Remove(room);
+            ResourceManager.instance.AddGold(room.goldSpentOnThisObject / 2);
         }
 
         CastleUpgradeManager.instance.CloseAllUI();
 
+        ObjectPooler.instance.GrabFromPool("demolish particle", myBuildedObject.transform.position, Quaternion.identity);
+        myBuildedObject.GetComponent<Animator>().SetTrigger("Destroy");
+        Invoke("DestroyMyBuildedObject", myBuildedObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+    }
+
+    private void DestroyMyBuildedObject()
+    {
         Destroy(myBuildedObject);
         myBuildedObject = null;
 

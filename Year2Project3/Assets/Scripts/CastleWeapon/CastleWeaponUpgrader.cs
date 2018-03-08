@@ -175,8 +175,8 @@ public class CastleWeaponUpgrader : MonoBehaviour
         weaponComponent.anim.speed = 1 / weaponComponent.cooldown.currentValue;
 
         ResourceManager.instance.RemoveGold((int)weaponComponent.upgradeCost.currentValue);
-        weaponComponent.goldSpentOnThisObject += (int)weaponComponent.upgradeCost.currentValue;
 
+        weaponComponent.goldSpentOnThisObject += (int)weaponComponent.upgradeCost.currentValue;
         weaponComponent.upgradeCost.currentValue += weaponComponent.upgradeCost.increaseValue;
         weaponComponent.weaponLevel++;
 
