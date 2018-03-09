@@ -12,12 +12,20 @@ public class CastleRoom_Ambush : CastleRoom
     [Header("Stats")]
     public Stat useCooldown;
     public Stat damageAmount;
-    [Space(10)]
-    public Stat projectileRows;
-    public Stat projectileColumns;
-    public float projectileDistOffset;
-    public Stat projectileSpawnDelay;
-    public float randomProjectileSpawnOffset;
+
+    [Header("Volley")]
+    public int volleyRows;
+    public int volleyColumns;
+    public float volleyDistOffset;
+    public float volleySpawnDelay;
+    public float randomVolleySpawnOffset;
+
+    [Header("Meteor")]
+    public int meteorRows;
+    public int meteorColumns;
+    public float meteorDistOffset;
+    public float meteorSpawnDelay;
+    public float randomMeteorSpawnOffset;
 
     [Header("Ambush Room Setup")]
     public Image cooldownFill;
@@ -108,10 +116,12 @@ public class CastleRoom_Ambush : CastleRoom
         {
             case 0:
 
-                StartCoroutine(Volley());
+                StartCoroutine(ProjectileRain("ambush volley", volleyRows, volleyColumns, volleyDistOffset, volleySpawnDelay, randomVolleySpawnOffset));
                 break;
 
             case 1:
+
+                StartCoroutine(ProjectileRain("ambush meteor", meteorRows, meteorColumns, meteorDistOffset, meteorSpawnDelay, randomMeteorSpawnOffset));
                 break;
 
             case 2:
@@ -121,7 +131,7 @@ public class CastleRoom_Ambush : CastleRoom
         StopUsing();
     }
 
-    private IEnumerator Volley()
+    private IEnumerator ProjectileRain(string projectile, int rainRows, int rainColumns, float rainDistOffset, float rainSpawnDelay, float rainSpawnOffset)
     {
         Vector3 zoomTo = new Vector3(0, 15, -25);
         mainCamManager.canMove = false;
@@ -133,12 +143,12 @@ public class CastleRoom_Ambush : CastleRoom
             yield return null;
         }
 
-        Camera.main.GetComponent<CameraShake>().Shake(projectileSpawnDelay.currentValue * projectileRows.currentValue + 5, 2, 2, 0, 0, 1);
+        Camera.main.GetComponent<CameraShake>().Shake(rainSpawnDelay * rainRows + 5, 2, 2, 0, 0, 1);
 
-        int toSpawnLeft = (int)projectileRows.currentValue;
-        int toSpawnRight = (int)projectileRows.currentValue;
+        int toSpawnLeft = rainRows;
+        int toSpawnRight = rainRows;
 
-        for (int i = 0; i < projectileRows.currentValue; i++)
+        for (int i = 0; i < rainRows; i++)
         {
             for (int ii = 0; ii < ambushSpawns.Length; ii++)
             {
@@ -147,40 +157,40 @@ public class CastleRoom_Ambush : CastleRoom
 
                 if (ambushSpawns[ii].transform.position.x < 0)
                 {
-                    spawnPos = new Vector3(ambushSpawns[ii].transform.position.x - (projectileDistOffset * toSpawnLeft + GetRandomOffset()), ambushSpawns[ii].transform.position.y + GetRandomOffset(), ambushSpawns[ii].transform.position.z);
+                    spawnPos = new Vector3(ambushSpawns[ii].transform.position.x - (rainDistOffset * toSpawnLeft + GetRandomOffset(rainSpawnOffset)), ambushSpawns[ii].transform.position.y + GetRandomOffset(rainSpawnOffset), ambushSpawns[ii].transform.position.z);
                     toSpawnLeft--;
                 }
                 else
                 {
-                    spawnPos = new Vector3(ambushSpawns[ii].transform.position.x + (projectileDistOffset * toSpawnRight + GetRandomOffset()), ambushSpawns[ii].transform.position.y + GetRandomOffset(), ambushSpawns[ii].transform.position.z);
+                    spawnPos = new Vector3(ambushSpawns[ii].transform.position.x + (rainDistOffset * toSpawnRight + GetRandomOffset(rainSpawnOffset)), ambushSpawns[ii].transform.position.y + GetRandomOffset(rainSpawnOffset), ambushSpawns[ii].transform.position.z);
                     toSpawnRight--;
                 }
 
-                newProjectile = ObjectPooler.instance.GrabFromPool("ambush projectile", spawnPos, ambushSpawns[ii].transform.rotation);
+                newProjectile = ObjectPooler.instance.GrabFromPool(projectile, spawnPos, ambushSpawns[ii].transform.rotation);
                 newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * 150);
                 newProjectile.GetComponent<Projectile>().myDamage = damageAmount.currentValue;
 
                 Vector3 columnSpawnPos = new Vector3();
-                int columns = (int)projectileColumns.currentValue;
-                for (int iii = 0; iii < projectileColumns.currentValue; iii++)
+                int columns = rainColumns;
+                for (int iii = 0; iii < rainColumns; iii++)
                 {
                     if (ambushSpawns[ii].transform.position.x < 0)
                     {
-                        columnSpawnPos = new Vector3(newProjectile.transform.position.x + (0.2f * columns + GetRandomOffset()), newProjectile.transform.position.y + (2f * columns + GetRandomOffset()), newProjectile.transform.position.z);
+                        columnSpawnPos = new Vector3(newProjectile.transform.position.x + (0.2f * columns + GetRandomOffset(rainSpawnOffset)), newProjectile.transform.position.y + (2f * columns + GetRandomOffset(rainSpawnOffset)), newProjectile.transform.position.z);
                     }
                     else
                     {
-                        columnSpawnPos = new Vector3(newProjectile.transform.position.x - (0.2f * columns + GetRandomOffset()), newProjectile.transform.position.y + (2f * columns + GetRandomOffset()), newProjectile.transform.position.z);
+                        columnSpawnPos = new Vector3(newProjectile.transform.position.x - (0.2f * columns + GetRandomOffset(rainSpawnOffset)), newProjectile.transform.position.y + (2f * columns + GetRandomOffset(rainSpawnOffset)), newProjectile.transform.position.z);
                     }
 
-                    GameObject newNewProjectile = ObjectPooler.instance.GrabFromPool("ambush projectile", columnSpawnPos, ambushSpawns[ii].transform.rotation);
+                    GameObject newNewProjectile = ObjectPooler.instance.GrabFromPool(projectile, columnSpawnPos, ambushSpawns[ii].transform.rotation);
                     newNewProjectile.GetComponent<Rigidbody>().AddForce(newNewProjectile.transform.forward * 150);
                     newNewProjectile.GetComponent<Projectile>().myDamage = damageAmount.currentValue;
 
                     columns--;
                 }
 
-                yield return new WaitForSeconds(projectileSpawnDelay.currentValue);
+                yield return new WaitForSeconds(rainSpawnDelay);
             }
         }
 
@@ -198,9 +208,9 @@ public class CastleRoom_Ambush : CastleRoom
         mainCamManager.canMove = true;
     }
 
-    private float GetRandomOffset()
+    private float GetRandomOffset(float variable)
     {
-        float random = Random.Range(-randomProjectileSpawnOffset, randomProjectileSpawnOffset);
+        float random = Random.Range(-variable, variable);
         return random;
     }
 

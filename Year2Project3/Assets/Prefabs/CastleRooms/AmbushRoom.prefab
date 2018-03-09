@@ -2516,20 +2516,16 @@ MonoBehaviour:
     baseValue: 100
     currentValue: 100
     increaseValue: 150
-  projectileRows:
-    baseValue: 50
-    currentValue: 50
-    increaseValue: 0
-  projectileColumns:
-    baseValue: 3
-    currentValue: 3
-    increaseValue: 0
-  projectileDistOffset: 1.5
-  projectileSpawnDelay:
-    baseValue: 0
-    currentValue: 0
-    increaseValue: 0
-  randomProjectileSpawnOffset: 3
+  volleyRows: 50
+  volleyColumns: 3
+  volleyDistOffset: 1.5
+  volleySpawnDelay: 0
+  randomVolleySpawnOffset: 3
+  meteorRows: 5
+  meteorColumns: 2
+  meteorDistOffset: 5
+  meteorSpawnDelay: 0.5
+  randomMeteorSpawnOffset: 5
   cooldownFill: {fileID: 114626224411293460}
   descriptionText: {fileID: 114796186760574084}
   camZoomSpeed: 3

@@ -14,7 +14,8 @@ public class Projectile : MonoBehaviour
     {
         BallistaProjectile,
         CatapultProjectile,
-        AmbushProjectile_Volley
+        AmbushProjectile_Volley,
+        AmbushProjectile_Meteor
     }
     public Type type;
 
@@ -101,7 +102,12 @@ public class Projectile : MonoBehaviour
                 break;
             case Type.AmbushProjectile_Volley:
 
-                ObjectPooler.instance.AddToPool("ambush projectile", gameObject);
+                ObjectPooler.instance.AddToPool("ambush volley", gameObject);
+                break;
+
+            case Type.AmbushProjectile_Meteor:
+
+                ObjectPooler.instance.AddToPool("ambush meteor", gameObject);
                 break;
         }
     }
