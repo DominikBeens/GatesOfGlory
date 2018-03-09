@@ -10,13 +10,20 @@ public class CastleRoom_Ambush : CastleRoom
     [Header("Stats")]
     public Stat useCooldown;
     public Stat damageAmount;
+    [Space(10)]
+    public Stat projectileRows;
+    public Stat projectileColumns;
+    public float projectileDistOffset;
+    public Stat projectileSpawnDelay;
 
     [Header("Ambush Room Setup")]
     public Image cooldownFill;
     public TextMeshProUGUI descriptionText;
-    public Transform cameraTarget;
+    private Transform cameraTarget;
     public float camZoomSpeed;
     private CameraManager mainCamManager;
+
+    private GameObject[] ambushSpawns;
 
     private float currentCooldown = 0.95f;
 
@@ -24,7 +31,10 @@ public class CastleRoom_Ambush : CastleRoom
     {
         base.Awake();
 
+        cameraTarget = GameObject.FindWithTag("CameraTarget").transform;
         mainCamManager = Camera.main.GetComponent<CameraManager>();
+
+        ambushSpawns = GameObject.FindGameObjectsWithTag("AmbushSpawn");
     }
 
     public override void SetupUI()
@@ -67,11 +77,13 @@ public class CastleRoom_Ambush : CastleRoom
         }
 
         currentCooldown = 0;
+
+        StartCoroutine(Volley());
     }
 
     private IEnumerator Volley()
     {
-        Vector3 zoomTo = new Vector3(0, 10, -20);
+        Vector3 zoomTo = new Vector3(0, 15, -25);
         mainCamManager.canMove = false;
 
         while (Vector3.Distance(cameraTarget.position, zoomTo) > 0.1f)
@@ -79,6 +91,34 @@ public class CastleRoom_Ambush : CastleRoom
             cameraTarget.position = Vector3.Lerp(cameraTarget.position, zoomTo, Time.deltaTime * camZoomSpeed);
             Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 60, Time.deltaTime * (camZoomSpeed * 5));
             yield return null;
+        }
+
+        for (int i = 0; i < projectileRows.currentValue; i++)
+        {
+            int toSpawnLeft = (int)projectileRows.currentValue;
+            int toSpawnRight = (int)projectileRows.currentValue;
+
+            for (int ii = 0; ii < ambushSpawns.Length; ii++)
+            {
+                if (ambushSpawns[ii].transform.position.x < 0)
+                {
+                    Vector3 spawnPos = new Vector3(ambushSpawns[ii].transform.position.x - (projectileDistOffset * toSpawnLeft), ambushSpawns[ii].transform.position.y, ambushSpawns[ii].transform.position.z);
+                    GameObject newProjectile = ObjectPooler.instance.GrabFromPool("ballista projectile", spawnPos, ambushSpawns[ii].transform.rotation);
+                    newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * 150);
+
+                    toSpawnLeft--;
+                }
+                else
+                {
+                    Vector3 spawnPos = new Vector3(ambushSpawns[ii].transform.position.x + (projectileDistOffset * toSpawnRight), ambushSpawns[ii].transform.position.y, ambushSpawns[ii].transform.position.z);
+                    GameObject newProjectile = ObjectPooler.instance.GrabFromPool("ballista projectile", spawnPos, ambushSpawns[ii].transform.rotation);
+                    newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * 150);
+
+                    toSpawnRight--;
+                }
+            }
+
+            yield return new WaitForSeconds(projectileSpawnDelay.currentValue);
         }
     }
 

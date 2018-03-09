@@ -2198,9 +2198,21 @@ MonoBehaviour:
     baseValue: 100
     currentValue: 100
     increaseValue: 150
+  projectileRows:
+    baseValue: 50
+    currentValue: 50
+    increaseValue: 0
+  projectileColumns:
+    baseValue: 3
+    currentValue: 3
+    increaseValue: 0
+  projectileDistOffset: 1.5
+  projectileSpawnDelay:
+    baseValue: 0
+    currentValue: 0
+    increaseValue: 0
   cooldownFill: {fileID: 114626224411293460}
   descriptionText: {fileID: 114796186760574084}
-  cameraTarget: {fileID: 0}
   camZoomSpeed: 3
 --- !u!114 &114638829308857614
 MonoBehaviour:

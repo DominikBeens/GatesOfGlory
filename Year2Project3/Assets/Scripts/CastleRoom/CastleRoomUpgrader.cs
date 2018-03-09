@@ -62,6 +62,10 @@ public class CastleRoomUpgrader : MonoBehaviour
 
                 selectRoomText.text = "Damage Room";
                 break;
+            case 3:
+
+                selectRoomText.text = "Ambush Room";
+                break;
         }
     }
 
@@ -85,6 +89,10 @@ public class CastleRoomUpgrader : MonoBehaviour
             case 2:
 
                 CastleUpgradeManager.selectedBuild.BuildRoom(CastleRoom.RoomType.Damage);
+                break;
+            case 3:
+
+                CastleUpgradeManager.selectedBuild.BuildRoom(CastleRoom.RoomType.Ambush);
                 break;
         }
     }
