@@ -13,7 +13,8 @@ public class Projectile : MonoBehaviour
     public enum Type
     {
         BallistaProjectile,
-        CatapultProjectile
+        CatapultProjectile,
+        AmbushProjectile_Volley
     }
     public Type type;
 
@@ -97,6 +98,10 @@ public class Projectile : MonoBehaviour
             case Type.CatapultProjectile:
 
 
+                break;
+            case Type.AmbushProjectile_Volley:
+
+                ObjectPooler.instance.AddToPool("ambush projectile", gameObject);
                 break;
         }
     }
