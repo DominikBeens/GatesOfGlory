@@ -93,11 +93,13 @@ public class CastleRoom_Ambush : CastleRoom
             yield return null;
         }
 
+        Camera.main.GetComponent<CameraShake>().Shake(projectileSpawnDelay.currentValue * projectileRows.currentValue + 4, 2, 2, 0, 0, 1);
+
+        int toSpawnLeft = (int)projectileRows.currentValue;
+        int toSpawnRight = (int)projectileRows.currentValue;
+
         for (int i = 0; i < projectileRows.currentValue; i++)
         {
-            int toSpawnLeft = (int)projectileRows.currentValue;
-            int toSpawnRight = (int)projectileRows.currentValue;
-
             for (int ii = 0; ii < ambushSpawns.Length; ii++)
             {
                 if (ambushSpawns[ii].transform.position.x < 0)
@@ -105,6 +107,16 @@ public class CastleRoom_Ambush : CastleRoom
                     Vector3 spawnPos = new Vector3(ambushSpawns[ii].transform.position.x - (projectileDistOffset * toSpawnLeft), ambushSpawns[ii].transform.position.y, ambushSpawns[ii].transform.position.z);
                     GameObject newProjectile = ObjectPooler.instance.GrabFromPool("ballista projectile", spawnPos, ambushSpawns[ii].transform.rotation);
                     newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * 150);
+
+                    int columns = (int)projectileColumns.currentValue;
+                    for (int iii = 0; iii < projectileColumns.currentValue; iii++)
+                    {
+                        Vector3 columnSpawnPos = new Vector3(newProjectile.transform.position.x + (0.2f * columns), newProjectile.transform.position.y + (2f * columns), newProjectile.transform.position.z);
+                        GameObject newNewProjectile = ObjectPooler.instance.GrabFromPool("ballista projectile", columnSpawnPos, ambushSpawns[ii].transform.rotation);
+                        newNewProjectile.GetComponent<Rigidbody>().AddForce(newNewProjectile.transform.forward * 150);
+
+                        columns--;
+                    }
 
                     toSpawnLeft--;
                 }
@@ -114,12 +126,35 @@ public class CastleRoom_Ambush : CastleRoom
                     GameObject newProjectile = ObjectPooler.instance.GrabFromPool("ballista projectile", spawnPos, ambushSpawns[ii].transform.rotation);
                     newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * 150);
 
+                    int columns = (int)projectileColumns.currentValue;
+                    for (int iii = 0; iii < projectileColumns.currentValue; iii++)
+                    {
+                        Vector3 columnSpawnPos = new Vector3(newProjectile.transform.position.x - (0.2f * columns), newProjectile.transform.position.y + (2f * columns), newProjectile.transform.position.z);
+                        GameObject newNewProjectile = ObjectPooler.instance.GrabFromPool("ballista projectile", columnSpawnPos, ambushSpawns[ii].transform.rotation);
+                        newNewProjectile.GetComponent<Rigidbody>().AddForce(newNewProjectile.transform.forward * 150);
+
+                        columns--;
+                    }
+
                     toSpawnRight--;
                 }
-            }
 
-            yield return new WaitForSeconds(projectileSpawnDelay.currentValue);
+                yield return new WaitForSeconds(projectileSpawnDelay.currentValue);
+            }
         }
+
+        yield return new WaitForSeconds(4);
+
+        zoomTo = new Vector3(0, 2, 0);
+
+        while (Vector3.Distance(cameraTarget.position, zoomTo) > 0.1f)
+        {
+            cameraTarget.position = Vector3.Lerp(cameraTarget.position, zoomTo, Time.deltaTime * camZoomSpeed);
+            yield return null;
+        }
+
+        cameraTarget.position = zoomTo;
+        mainCamManager.canMove = true;
     }
 
     public override void Upgrade()
