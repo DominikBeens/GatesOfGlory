@@ -31,7 +31,7 @@ public class Enemy : Soldier
         {
             BattleManager.instance.freeEnemys.Add(gameObject);
         }
-        if (attackingSoldiers.Count <= 0)
+        else if (attackingSoldiers.Count <= 0)
         {
             FindNewTarget();
             if (attackingCastle)
@@ -102,12 +102,18 @@ public class Enemy : Soldier
         {
             if (attackingSoldiers.Count > 0)
             {
-                target = attackingSoldiers[0];
+                for (int i = 0; i < attackingSoldiers.Count; i++)
+                {
+                    if (attackingSoldiers[i].inFight == true)
+                    {
+
+                        target = attackingSoldiers[i];
+                        break;
+                    }
+                }
             }
-            else
-            {
-                StopBattle();
-            }
+            StopBattle();
+
         }
         else
         {

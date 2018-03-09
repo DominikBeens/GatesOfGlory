@@ -415,8 +415,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1075527394150870}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.84, y: 0.53, z: 3.3}
+  m_LocalRotation: {x: -0, y: -0.67816705, z: -0, w: 0.7349078}
+  m_LocalPosition: {x: -12.648, y: 0.53, z: -2.903}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4760367385330744}
@@ -431,7 +431,7 @@ Transform:
   - {fileID: 4201194160557174}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -85.401, z: 0}
 --- !u!4 &4760367385330744
 Transform:
   m_ObjectHideFlags: 1
@@ -788,7 +788,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.9034482, g: 1, b: 0, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 8
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -4234,7 +4234,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -289711364
+  randomSeed: -1657921347
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6753,7 +6753,7 @@ ParticleSystem:
       type: 0
       properties: 0
   LightsModule:
-    enabled: 1
+    enabled: 0
     ratio: 1
     light: {fileID: 108761723416833094}
     randomDistribution: 1
@@ -13485,7 +13485,7 @@ ParticleSystem:
     rangeCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 18
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -13564,7 +13564,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    maxLights: 20
+    maxLights: 84
   TrailModule:
     enabled: 0
     mode: 0
@@ -14317,7 +14317,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1084294729
+  randomSeed: 1147199476
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -16836,7 +16836,7 @@ ParticleSystem:
       type: 0
       properties: 0
   LightsModule:
-    enabled: 1
+    enabled: 0
     ratio: 1
     light: {fileID: 108761723416833094}
     randomDistribution: 1

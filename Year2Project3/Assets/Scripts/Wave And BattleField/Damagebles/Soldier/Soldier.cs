@@ -24,7 +24,7 @@ public class Soldier : Damagebles{
 
     public virtual void Update()
     {
-        healthbarCanvas.LookAt(Camera.main.transform);
+        //healthbarCanvas.LookAt(Camera.main.transform);
     }
 
     //public void ShowHealthbar()

@@ -65,6 +65,19 @@ public class WaveManager : MonoBehaviour
     {
         HealthMultiplier += 0.01f * waveSize;
         DamageMultiplier += 0.01f * waveSize;
+        for (int i = 0; i < BattleManager.instance.newDeffensePoints.Count; i++)
+        {
+            for (int ii = 0; ii < CastleUpgradeManager.instance.allBuiltRooms.Count; ii++)
+            {
+                if (CastleUpgradeManager.instance.allBuiltRooms[ii].roomType == CastleRoom.RoomType.Heal)
+                {
+                    if (CastleUpgradeManager.instance.allBuiltRooms[ii].roomLevel >= 5)
+                    {
+                        BattleManager.instance.newDeffensePoints[i].gate.GetComponent<Gate>().Heal(50);
+                    }
+                }
+            }
+        }
         GeneradeWave();
 
         currentWaveTotalHealth = 0;

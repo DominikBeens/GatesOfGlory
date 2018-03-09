@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyKnight : Enemy{
-    void OnCollisionStay(Collision collision){
-        if (collision.collider.tag == "Defense"){
-            if (collision.transform.GetComponent<CastleDeffensePoint>().gateOpen == true){
+public class EnemyKnight : Enemy
+{
+    void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.tag == "Defense")
+        {
+            if (collision.transform.GetComponent<CastleDeffensePoint>().gateOpen == true)
+            {
                 FindNewTarget();
                 agent.isStopped = false;
             }
-            else{
+            else
+            {
                 agent.isStopped = true;
             }
         }
@@ -20,25 +25,27 @@ public class EnemyKnight : Enemy{
     {
         if (myStats.health.currentValue >= damage)
         {
-            WaveManager.instance.DecreaseWaveCurrentHealth((int)damage);
+            WaveManager.instance.DecreaseWaveCurrentHealth((int) damage);
         }
         else
         {
-            WaveManager.instance.DecreaseWaveCurrentHealth((int)myStats.health.currentValue);
+            WaveManager.instance.DecreaseWaveCurrentHealth((int) myStats.health.currentValue);
         }
 
         myStats.health.currentValue -= damage;
-        healthbarFill.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
+        //healthbarFill.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
 
         if (myStats.health.currentValue <= 0)
         {
-            ObjectPooler.instance.AddToPool("Enemy Knight",gameObject);
+            ObjectPooler.instance.AddToPool("Enemy Knight", gameObject);
             ResourceManager.instance.AddGold(ResourceManager.instance.normalEnemyGoldReward);
         }
     }
 
-    void OnCollisionEnter(Collision collision){
-        if (collision.transform == targetTransform){
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform == targetTransform)
+        {
             StartBattle(target);
             targetTransform.GetComponent<CastleDeffensePoint>().attackingMe.Add(this);
             agent.isStopped = true;
@@ -47,8 +54,10 @@ public class EnemyKnight : Enemy{
         }
     }
 
-    void OnCollisionExit(Collision collision){
-        if (collision.transform == targetTransform){
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.transform == targetTransform)
+        {
             targetTransform.GetComponent<CastleDeffensePoint>().attackingMe.Remove(this);
         }
     }

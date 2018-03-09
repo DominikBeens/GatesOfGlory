@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Allie : Soldier
 {
+    public bool inFight;
 
     void Start()
     {
@@ -19,11 +20,17 @@ public class Allie : Soldier
 
     public void GetNewTarget()
     {
-        if (targetTransform.gameObject.activeInHierarchy == false)
+        if (targetTransform != null && targetTransform.gameObject.activeInHierarchy == false)
         {
             targetTransform = null;
+            inFight = false;
         }
-
+        if (inFight)
+        {
+            Debug.Log("K");
+            agent.isStopped = true;
+            return;
+        }
         if (targetTransform != null)
         {
             Transform newTarget = BattleManager.instance.AllyGetTarget(transform.position.x, this, targetTransform);
@@ -31,6 +38,7 @@ public class Allie : Soldier
             {
                 if (targetTransform.tag == "Enemy")
                 {
+                    agent.isStopped = false;
                     if (newTarget.tag == "Enemy")
                     {
                         targetTransform.GetComponent<Enemy>().RemoveCounter(this);

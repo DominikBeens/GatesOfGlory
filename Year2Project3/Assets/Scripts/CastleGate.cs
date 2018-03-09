@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class CastleGate : MonoBehaviour 
+public class CastleGate : MonoBehaviour
 {
     public Gate myDefensePoint;
     public Animator gateAnim;
     public Animator gateButtonAnim;
     public bool locked;
     public bool isOpen;
+
+    public static void HealGate(int heal){
+    }
 
     public void ToggleGate()
     {

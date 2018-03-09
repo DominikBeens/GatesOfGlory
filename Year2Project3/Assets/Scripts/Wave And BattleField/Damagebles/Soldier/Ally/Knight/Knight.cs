@@ -10,6 +10,7 @@ public class Knight : Allie
         if (targetTransform != null && targetTransform == other.transform)
         {
             targetTransform.gameObject.GetComponent<Enemy>().StartBattle(this);
+            inFight = true;
             agent.isStopped = true;
             StartCoroutine(Attack());
         }
@@ -28,12 +29,10 @@ public class Knight : Allie
         if (collision.transform != targetTransform)
         {
             GetNewTarget();
-            agent.isStopped = false;
         }
         else
         {
             GetNewTarget();
-            agent.isStopped = true;
         }
     }
 }
