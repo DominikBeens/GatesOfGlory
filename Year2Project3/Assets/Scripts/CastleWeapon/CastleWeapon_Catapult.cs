@@ -10,14 +10,16 @@ public class CastleWeapon_Catapult : CastleWeapon
     public Slider forceSlider;
 
     public float minForce;
-    public float maxFloat;
+    public float maxForce;
 
     public override void Awake()
     {
         base.Awake();
 
         forceSlider.minValue = minForce;
-        forceSlider.maxValue = maxFloat;
+        forceSlider.maxValue = maxForce;
+
+        forceSlider.value = 0.5f * maxForce;
     }
 
     public override void Update()
@@ -34,7 +36,9 @@ public class CastleWeapon_Catapult : CastleWeapon
 
     public void FireProjectile()
     {
-        GameObject newProjectile = Instantiate(projectile, projectileSpawns[0].position, projectileSpawns[0].rotation);
-        newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * forceSlider.value);
+        GameObject newProjectile = ObjectPooler.instance.GrabFromPool("catapult projectile", projectileSpawns[0].position, projectileSpawns[0].rotation);
+
+        newProjectile.GetComponent<Projectile>().myDamage = damage.currentValue;
+        newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * forceSlider.value, ForceMode.Impulse);
     }
 }

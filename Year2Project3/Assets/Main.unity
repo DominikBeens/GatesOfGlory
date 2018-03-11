@@ -13866,6 +13866,12 @@ MonoBehaviour:
     poolSize: 50
     autoExpand: 1
     expansionAmount: 10
+  - poolName: catapult projectile
+    poolPrefab: {fileID: 1816421631133504, guid: 1aacc76c6213b6c4c8dd01f45bbeb948,
+      type: 2}
+    poolSize: 50
+    autoExpand: 1
+    expansionAmount: 25
 --- !u!1 &827514873
 GameObject:
   m_ObjectHideFlags: 0

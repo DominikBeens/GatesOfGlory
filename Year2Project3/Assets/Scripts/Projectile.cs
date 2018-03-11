@@ -98,7 +98,7 @@ public class Projectile : MonoBehaviour
                 break;
             case Type.CatapultProjectile:
 
-
+                ObjectPooler.instance.AddToPool("catapult projectile", gameObject);
                 break;
             case Type.AmbushProjectile_Volley:
 
