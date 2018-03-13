@@ -22,6 +22,7 @@ public class Projectile : MonoBehaviour
     public float myDamage;
 
     private Material myMat;
+    private bool hit;
 
     public bool freezeOnImpact;
     [Space(10)]
@@ -50,6 +51,7 @@ public class Projectile : MonoBehaviour
         rb.isKinematic = false;
         targetsHit = 0;
         trailParticle.SetActive(true);
+        hit = false;
     }
 
     private void Update()
@@ -62,11 +64,20 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Enemy" && collision.transform.tag == "Ally")
+        if (collision.transform.tag == "Enemy" || collision.transform.tag == "Ally")
         {
             return;
         }
-        
+
+        if (hit)
+        {
+            return;
+        }
+
+        hit = true;
+        // Sets targetsHit to max so that it cant deal damage to enemies passing by
+        targetsHit = maxTargetsToHit;
+
         canRotate = false;
 
         if (freezeOnImpact)
@@ -83,6 +94,11 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (hit)
+        {
+            return;
+        }
+
         if (targetsHit >= maxTargetsToHit)
         {
             return;
@@ -94,6 +110,11 @@ public class Projectile : MonoBehaviour
             enemy.TakeDamage(myDamage);
             ReAddToPool();
             targetsHit++;
+
+            if (targetsHit >= maxTargetsToHit)
+            {
+                hit = true;
+            }
         }
     }
 
@@ -132,5 +153,10 @@ public class Projectile : MonoBehaviour
                 ObjectPooler.instance.AddToPool("ambush meteor", gameObject);
                 break;
         }
+    }
+
+    private void OnDisable()
+    {
+        rb.velocity = Vector3.zero;
     }
 }
