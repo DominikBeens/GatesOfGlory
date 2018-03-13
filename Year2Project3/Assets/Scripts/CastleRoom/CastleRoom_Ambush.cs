@@ -116,12 +116,12 @@ public class CastleRoom_Ambush : CastleRoom
         {
             case 0:
 
-                StartCoroutine(ProjectileRain("ambush volley", volleyRows, volleyColumns, volleyDistOffset, volleySpawnDelay, randomVolleySpawnOffset));
+                StartCoroutine(ProjectileRain("ambush volley", volleyRows, volleyColumns, volleyDistOffset, volleySpawnDelay, randomVolleySpawnOffset, false, 2));
                 break;
 
             case 1:
 
-                StartCoroutine(ProjectileRain("ambush meteor", meteorRows, meteorColumns, meteorDistOffset, meteorSpawnDelay, randomMeteorSpawnOffset));
+                StartCoroutine(ProjectileRain("ambush meteor", meteorRows, meteorColumns, meteorDistOffset, meteorSpawnDelay, randomMeteorSpawnOffset, true, 4));
                 break;
 
             case 2:
@@ -131,7 +131,7 @@ public class CastleRoom_Ambush : CastleRoom
         StopUsing();
     }
 
-    private IEnumerator ProjectileRain(string projectile, int rainRows, int rainColumns, float rainDistOffset, float rainSpawnDelay, float rainSpawnOffset)
+    private IEnumerator ProjectileRain(string projectile, int rainRows, int rainColumns, float rainDistOffset, float rainSpawnDelay, float rainSpawnOffset, bool addTorque, float screenShakeAmount)
     {
         Vector3 zoomTo = new Vector3(0, 15, -25);
         mainCamManager.canMove = false;
@@ -143,7 +143,7 @@ public class CastleRoom_Ambush : CastleRoom
             yield return null;
         }
 
-        Camera.main.GetComponent<CameraShake>().Shake(rainSpawnDelay * rainRows + 5, 2, 2, 0, 0, 1);
+        Camera.main.GetComponent<CameraShake>().Shake(rainSpawnDelay * rainRows + 5, screenShakeAmount, screenShakeAmount, 0, 0, 1);
 
         int toSpawnLeft = rainRows;
         int toSpawnRight = rainRows;
@@ -153,7 +153,6 @@ public class CastleRoom_Ambush : CastleRoom
             for (int ii = 0; ii < ambushSpawns.Length; ii++)
             {
                 Vector3 spawnPos = new Vector3();
-                GameObject newProjectile = null;
 
                 if (ambushSpawns[ii].transform.position.x < 0)
                 {
@@ -166,9 +165,7 @@ public class CastleRoom_Ambush : CastleRoom
                     toSpawnRight--;
                 }
 
-                newProjectile = ObjectPooler.instance.GrabFromPool(projectile, spawnPos, ambushSpawns[ii].transform.rotation);
-                newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * 150);
-                newProjectile.GetComponent<Projectile>().myDamage = damageAmount.currentValue;
+                GameObject newProjectile = SpawnProjectile(projectile, spawnPos, ambushSpawns[ii].transform.rotation, addTorque);
 
                 Vector3 columnSpawnPos = new Vector3();
                 int columns = rainColumns;
@@ -183,9 +180,7 @@ public class CastleRoom_Ambush : CastleRoom
                         columnSpawnPos = new Vector3(newProjectile.transform.position.x - (0.2f * columns + GetRandomOffset(rainSpawnOffset)), newProjectile.transform.position.y + (2f * columns + GetRandomOffset(rainSpawnOffset)), newProjectile.transform.position.z);
                     }
 
-                    GameObject newNewProjectile = ObjectPooler.instance.GrabFromPool(projectile, columnSpawnPos, ambushSpawns[ii].transform.rotation);
-                    newNewProjectile.GetComponent<Rigidbody>().AddForce(newNewProjectile.transform.forward * 150);
-                    newNewProjectile.GetComponent<Projectile>().myDamage = damageAmount.currentValue;
+                    SpawnProjectile(projectile, columnSpawnPos, ambushSpawns[ii].transform.rotation, addTorque);
 
                     columns--;
                 }
@@ -206,6 +201,20 @@ public class CastleRoom_Ambush : CastleRoom
 
         cameraTarget.position = zoomTo;
         mainCamManager.canMove = true;
+    }
+
+    private GameObject SpawnProjectile(string projectile, Vector3 position, Quaternion rotation, bool addTorque)
+    {
+        GameObject newProjectile = ObjectPooler.instance.GrabFromPool(projectile, position, rotation);
+        newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * 150);
+        newProjectile.GetComponent<Projectile>().myDamage = damageAmount.currentValue;
+
+        //if (addTorque)
+        //{
+        //    newProjectile.GetComponent<Rigidbody>().AddTorque(newProjectile.transform.right * 150);
+        //}
+
+        return newProjectile;
     }
 
     private float GetRandomOffset(float variable)

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 54154414201482192}
   - component: {fileID: 114274695316789698}
   - component: {fileID: 65738562134809520}
+  - component: {fileID: 136951541356796178}
   m_Layer: 9
   m_Name: BallistaProjectile
   m_TagString: Untagged
@@ -70,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1024772973343442}
   m_LocalRotation: {x: -0, y: -0.70710707, z: -0, w: 0.70710653}
-  m_LocalPosition: {x: -5.4067335, y: 0.55, z: -0.828634}
+  m_LocalPosition: {x: -6.6824884, y: 1.29, z: -1.192668}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4283205058953758}
@@ -167,7 +168,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1024772973343442}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4, y: 0.45, z: 1}
@@ -185,8 +186,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   myDamage: 0
+  freezeOnImpact: 1
+  maxTargetsToHit: 1
   destroyTime: 1
   destroyFadeSpeed: 1
+  trailParticle: {fileID: 1438842130262518}
+--- !u!136 &136951541356796178
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1024772973343442}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.11
+  m_Height: 1.24
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.5}
 --- !u!198 &198699352275794740
 ParticleSystem:
   m_ObjectHideFlags: 1

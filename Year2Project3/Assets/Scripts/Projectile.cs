@@ -8,7 +8,6 @@ public class Projectile : MonoBehaviour
     private Rigidbody rb;
 
     private bool canRotate;
-    private bool canDealDamage = true;
 
     public enum Type
     {
@@ -23,8 +22,16 @@ public class Projectile : MonoBehaviour
     public float myDamage;
 
     private Material myMat;
+
+    public bool freezeOnImpact;
+    [Space(10)]
+    public int maxTargetsToHit;
+    private int targetsHit;
+    [Space(10)]
     public float destroyTime;
     public float destroyFadeSpeed;
+    [Space(10)]
+    public GameObject trailParticle;
 
     private void Awake()
     {
@@ -41,7 +48,8 @@ public class Projectile : MonoBehaviour
 
         canRotate = true;
         rb.isKinematic = false;
-        canDealDamage = true;
+        targetsHit = 0;
+        trailParticle.SetActive(true);
     }
 
     private void Update()
@@ -54,25 +62,39 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.transform.tag == "Enemy" && collision.transform.tag == "Ally")
+        {
+            return;
+        }
+        
         canRotate = false;
-        rb.isKinematic = true;
 
-        if (!canDealDamage)
+        if (freezeOnImpact)
+        {
+            rb.isKinematic = true;
+        }
+        else
+        {
+            trailParticle.SetActive(false);
+        }
+
+        StartCoroutine(Destroy());
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (targetsHit >= maxTargetsToHit)
         {
             return;
         }
 
-        canDealDamage = false;
-
-        Enemy enemy = collision.transform.GetComponent<Enemy>();
+        Enemy enemy = other.transform.GetComponent<Enemy>();
         if (enemy != null)
         {
             enemy.TakeDamage(myDamage);
             ReAddToPool();
-            return;
+            targetsHit++;
         }
-
-        StartCoroutine(Destroy());
     }
 
     private IEnumerator Destroy()

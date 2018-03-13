@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 54436355593163366}
   - component: {fileID: 114183542200601218}
   - component: {fileID: 135921134271437550}
+  - component: {fileID: 135026440389832194}
   m_Layer: 9
   m_Name: CatapultProjectile
   m_TagString: Untagged
@@ -70,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816421631133504}
   m_LocalRotation: {x: -0, y: 0.70710707, z: -0, w: 0.70710653}
-  m_LocalPosition: {x: -7.863073, y: 1.4, z: -1.1224265}
+  m_LocalPosition: {x: -7.253773, y: 1.373, z: -1.0506954}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4967964916721336}
@@ -173,9 +174,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   myDamage: 0
+  freezeOnImpact: 0
+  maxTargetsToHit: 5
   destroyTime: 1
   destroyFadeSpeed: 1
---- !u!135 &135921134271437550
+  trailParticle: {fileID: 1082543813103096}
+--- !u!135 &135026440389832194
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -185,7 +189,19 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.25
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &135921134271437550
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1816421631133504}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198935121117108622
 ParticleSystem:

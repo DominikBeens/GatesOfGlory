@@ -38,7 +38,7 @@ public class ResourceManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            AddGold(5);
+            AddGold(100);
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
