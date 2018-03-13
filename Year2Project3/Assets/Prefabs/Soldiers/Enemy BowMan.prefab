@@ -64,7 +64,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1385821130610866
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,12 +74,27 @@ GameObject:
   m_Component:
   - component: {fileID: 4923558122408722}
   - component: {fileID: 195985851031835828}
-  - component: {fileID: 114373870585154128}
+  - component: {fileID: 114487912407914386}
   - component: {fileID: 54765816286145294}
   - component: {fileID: 65392191819248120}
   m_Layer: 11
   m_Name: Enemy BowMan
   m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1498220046247930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4230197911339806}
+  m_Layer: 11
+  m_Name: BowPos
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +127,7 @@ GameObject:
   - component: {fileID: 33739512492070150}
   - component: {fileID: 23134239979758034}
   m_Layer: 11
-  m_Name: Enemy Knight
+  m_Name: Enemy BowPos
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,21 +146,35 @@ Transform:
   m_Father: {fileID: 4923558122408722}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
+--- !u!4 &4230197911339806
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1498220046247930}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.265, y: 0.023, z: 0.285}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4923558122408722}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4923558122408722
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385821130610866}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.08, y: 1.18, z: -0.28361607}
+  m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -31.97, y: 1.028, z: -0.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4210055967814444}
   - {fileID: 224742655499768670}
+  - {fileID: 4230197911339806}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!23 &23134239979758034
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -209,11 +238,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385821130610866}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 1, z: 0.25}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.2079761, y: 1, z: 6.1051083}
+  m_Center: {x: 0.07580891, y: 0, z: 2.9275541}
 --- !u!95 &95949403251999354
 Animator:
   serializedVersion: 3
@@ -301,7 +330,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114373870585154128}
+        - m_Target: {fileID: 0}
           m_MethodName: ShowHealthbar
           m_Mode: 1
           m_Arguments:
@@ -318,7 +347,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114373870585154128}
+        - m_Target: {fileID: 0}
           m_MethodName: HideHealthbar
           m_Mode: 1
           m_Arguments:
@@ -353,7 +382,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114373870585154128
+--- !u!114 &114487912407914386
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -361,28 +390,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 1385821130610866}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0dc06b60d106fb4a9b136732598051e, type: 3}
+  m_Script: {fileID: 11500000, guid: e2ef0b7ea1de9c54b9c7fd5234595180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myStats:
     health:
-      baseValue: 100
-      currentValue: 100
+      baseValue: 75
+      currentValue: 75
       increaseValue: 0
     damage:
-      baseValue: 10
-      currentValue: 10
+      baseValue: 4
+      currentValue: 4
       increaseValue: 0
   attackCooldown: 2
   agent: {fileID: 195985851031835828}
   targetTransform: {fileID: 0}
-  healthbarCanvas: {fileID: 224742655499768670}
-  healthbarFill: {fileID: 114763347963810896}
-  healthbarAnim: {fileID: 95949403251999354}
+  healthbarCanvas: {fileID: 0}
+  healthbarFill: {fileID: 0}
+  healthbarAnim: {fileID: 0}
   attackingSoldiers: []
-  maxAttacking: 2
+  maxAttacking: 0
   attackingCastle: 0
   target: {fileID: 0}
+  arrow: {fileID: 1257314764173348, guid: 7062ab9f13967664fb51ce6c99150593, type: 2}
+  bowPos: {fileID: 4230197911339806}
+  fireRate: 1
 --- !u!114 &114763347963810896
 MonoBehaviour:
   m_ObjectHideFlags: 1

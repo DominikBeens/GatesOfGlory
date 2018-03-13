@@ -79,11 +79,12 @@ public class Enemy : Soldier
         }
     }
 
-    public void FindNewTarget()
+    public virtual void FindNewTarget()
     {
         Transform newTarget = BattleManager.instance.EnemyGetTarget(transform.position.x);
         if (targetTransform != newTarget)
         {
+            StopCoroutine(Attack());
             targetTransform = newTarget;
             agent.SetDestination(targetTransform.position);
             attackingCastle = false;
@@ -94,7 +95,7 @@ public class Enemy : Soldier
         }
     }
 
-    public IEnumerator Attack()
+    public virtual IEnumerator Attack()
     {
         Damagebles _targetToAttack = targetTransform.GetComponent<Damagebles>();
         yield return new WaitForSeconds(attackCooldown);

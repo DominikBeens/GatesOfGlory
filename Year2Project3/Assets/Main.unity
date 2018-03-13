@@ -13951,6 +13951,12 @@ MonoBehaviour:
     poolSize: 50
     autoExpand: 1
     expansionAmount: 25
+  - poolName: Attacking Arrow
+    poolPrefab: {fileID: 1257314764173348, guid: 7062ab9f13967664fb51ce6c99150593,
+      type: 2}
+    poolSize: 50
+    autoExpand: 1
+    expansionAmount: 5
 --- !u!1 &827514873
 GameObject:
   m_ObjectHideFlags: 0

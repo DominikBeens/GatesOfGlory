@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour 
 {
+    public bool enemyArrow;
 
     private Rigidbody rb;
 
@@ -14,7 +15,8 @@ public class Projectile : MonoBehaviour
         BallistaProjectile,
         CatapultProjectile,
         AmbushProjectile_Volley,
-        AmbushProjectile_Meteor
+        AmbushProjectile_Meteor,
+        AttackProjectile_Arrow
     }
     public Type type;
 
@@ -104,18 +106,36 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        Enemy enemy = other.transform.GetComponent<Enemy>();
-        if (enemy != null)
-        {
-            enemy.TakeDamage(myDamage);
-            ReAddToPool();
-            targetsHit++;
-
-            if (targetsHit >= maxTargetsToHit)
+        if (enemyArrow){
+            Allie allie = other.transform.GetComponent<Allie>();
+            if (allie != null)
             {
-                hit = true;
+                allie.TakeDamage(myDamage);
+                ReAddToPool();
+                targetsHit++;
+
+                if (targetsHit >= maxTargetsToHit)
+                {
+                    hit = true;
+                }
             }
         }
+        else
+        {
+            Enemy enemy = other.transform.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(myDamage);
+                ReAddToPool();
+                targetsHit++;
+
+                if (targetsHit >= maxTargetsToHit)
+                {
+                    hit = true;
+                }
+            }
+        }
+
     }
 
     private IEnumerator Destroy()
@@ -151,6 +171,10 @@ public class Projectile : MonoBehaviour
             case Type.AmbushProjectile_Meteor:
 
                 ObjectPooler.instance.AddToPool("ambush meteor", gameObject);
+                break;
+            case Type.AttackProjectile_Arrow:
+
+                ObjectPooler.instance.AddToPool("Attacking Arrow", gameObject);
                 break;
         }
     }
