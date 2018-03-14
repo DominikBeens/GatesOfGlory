@@ -230,7 +230,7 @@ public class CastleRoom_Ambush : CastleRoom
 
     public override void Upgrade()
     {
-        if (ResourceManager.instance.goldPrefabsInScene.Count < upgradeCost.currentValue || roomLevel >= maxRoomLevel)
+        if (!ResourceManager.instance.HasEnoughGold((int)upgradeCost.currentValue) || roomLevel >= maxRoomLevel)
         {
             return;
         }

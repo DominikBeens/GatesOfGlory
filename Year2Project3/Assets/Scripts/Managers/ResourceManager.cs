@@ -135,4 +135,17 @@ public class ResourceManager : MonoBehaviour
             goldPrefabsInScene.RemoveAt(goldPrefabsInScene.Count - 1);
         }
     }
+
+    public bool HasEnoughGold(int price)
+    {
+        if (goldPrefabsInScene.Count >= price)
+        {
+            return true;
+        }
+        else
+        {
+            UIManager.instance.DisplayNotEnoughGoldIcon();
+            return false;
+        }
+    }
 }

@@ -37,6 +37,7 @@ public class ObjectPooler : MonoBehaviour
             {
                 GameObject newPooledObject = Instantiate(pools[i].poolPrefab);
                 newPooledObject.SetActive(false);
+                newPooledObject.transform.position = new Vector3(0, -50, 0);
 
                 pools[i].poolQueue.Enqueue(newPooledObject);
             }
@@ -87,6 +88,7 @@ public class ObjectPooler : MonoBehaviour
         if (!poolDictionary[poolName].Contains(obj))
         {
             obj.SetActive(false);
+            obj.transform.position = new Vector3(0, -50, 0);
             poolDictionary[poolName].Enqueue(obj);
         }
     }

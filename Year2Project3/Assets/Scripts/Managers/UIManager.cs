@@ -29,11 +29,31 @@ public class UIManager : MonoBehaviour
     public GameObject gameInfoPanel;
     public GameObject waveTimerPanel;
 
+    [Header("Not Enough Gold Icon")]
+    public GameObject notEnoughGoldIcon;
+    public float notEnoughGoldIconDisplayTime;
+    private float notEnoughGoldDisplayTimer;
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
+        }
+    }
+
+    private void Update()
+    {
+        if (notEnoughGoldDisplayTimer > 0)
+        {
+            notEnoughGoldDisplayTimer -= Time.deltaTime;
+            notEnoughGoldIcon.SetActive(true);
+            notEnoughGoldIcon.transform.position = Input.mousePosition;
+        }
+        else
+        {
+            notEnoughGoldDisplayTimer = 0;
+            notEnoughGoldIcon.SetActive(false);
         }
     }
 
@@ -108,5 +128,10 @@ public class UIManager : MonoBehaviour
             pausePanel.SetActive(false);
             Time.timeScale = 1;
         }
+    }
+
+    public void DisplayNotEnoughGoldIcon()
+    {
+        notEnoughGoldDisplayTimer = notEnoughGoldIconDisplayTime;
     }
 }
