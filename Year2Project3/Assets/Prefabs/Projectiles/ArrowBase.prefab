@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4540413710555210}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ArrowBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,14 +113,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1257314764173348}
-  m_LocalRotation: {x: -0.00000019861236, y: 0.7071068, z: 0.7071068, w: 0.00000019861236}
-  m_LocalPosition: {x: -28.21544, y: 0.55, z: -0.6780646}
+  m_LocalRotation: {x: 0, y: 0.92387956, z: 0.38268343, w: 0}
+  m_LocalPosition: {x: -26.359789, y: 0.55, z: -1.4267168}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4392940091318684}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 179.99998, z: 0}
+  m_LocalEulerAnglesHint: {x: -45, y: 180, z: 0}
 --- !u!4 &4931401452840366
 Transform:
   m_ObjectHideFlags: 1
@@ -214,17 +214,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyArrow: 1
-  type: 0
+  type: 4
   myDamage: 0
   freezeOnImpact: 1
   maxTargetsToHit: 1
   destroyTime: 1
   destroyFadeSpeed: 1
   trailParticle: {fileID: 1605669040419556}
-  arrow: {fileID: 4540413710555210}
+  myArrow: {fileID: 4540413710555210}
   distance: 0
-  rb: {fileID: 0}
+  rb: {fileID: 54180949339954374}
   arrowSpeed: 15
+  minAmount: 2
 --- !u!136 &136415169259618892
 CapsuleCollider:
   m_ObjectHideFlags: 1

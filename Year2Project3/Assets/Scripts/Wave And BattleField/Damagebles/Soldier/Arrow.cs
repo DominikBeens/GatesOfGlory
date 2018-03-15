@@ -7,11 +7,7 @@ public class Arrow : Projectile{
     public float distance;
     public Rigidbody rb;
     public int arrowSpeed;
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
+    public float minAmount;
 
     private void Update()
     {
