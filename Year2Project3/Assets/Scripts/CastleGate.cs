@@ -16,6 +16,11 @@ public class CastleGate : MonoBehaviour
 
     public void ToggleGate()
     {
+        if (GameManager.instance.gameState != GameManager.GameState.Playing)
+        {
+            return;
+        }
+
         gateButtonAnim.SetTrigger("Pressed");
 
         if (gateAnim.GetCurrentAnimatorStateInfo(0).IsName("GateOpen"))

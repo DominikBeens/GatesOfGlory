@@ -267,6 +267,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4075364850198890, guid: 9ea93ace16a0de74f9968282fbfb15d9,
     type: 2}
   m_PrefabInternal: {fileID: 2058472422}
+--- !u!1 &16774692 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1033679618585386, guid: 3bd37145902066d43b054e1bbc14787d,
+    type: 2}
+  m_PrefabInternal: {fileID: 897118726}
 --- !u!1001 &17097435
 Prefab:
   m_ObjectHideFlags: 0
@@ -6940,6 +6945,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ea93ace16a0de74f9968282fbfb15d9, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &311029132 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1460424808220580, guid: e3272da4b86edcb4983d347dab9d978b,
+    type: 2}
+  m_PrefabInternal: {fileID: 738355183}
 --- !u!1001 &324501424
 Prefab:
   m_ObjectHideFlags: 0
@@ -8951,7 +8961,6 @@ RectTransform:
   - {fileID: 1792388302}
   - {fileID: 238570552}
   - {fileID: 1302343632}
-  - {fileID: 890374880}
   m_Father: {fileID: 1445762030}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12416,6 +12425,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4307185954371124, guid: e3272da4b86edcb4983d347dab9d978b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4307185954371124, guid: e3272da4b86edcb4983d347dab9d978b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.58
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3272da4b86edcb4983d347dab9d978b, type: 2}
   m_IsPrefabParent: 0
@@ -15204,13 +15221,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 445009225}
-  m_RootOrder: 4
+  m_Father: {fileID: 1445762030}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 421}
-  m_SizeDelta: {x: 2000, y: 2158.1}
+  m_AnchoredPosition: {x: 0, y: -30.248322}
+  m_SizeDelta: {x: 1038, y: 1334.416}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &890374881
 MonoBehaviour:
@@ -15224,7 +15241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.13235295, g: 0.04184689, b: 0.04184689, a: 0}
+  m_Color: {r: 0.13235295, g: 0.04184689, b: 0.04184689, a: 0.027999818}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -15363,6 +15380,14 @@ Prefab:
     - target: {fileID: 4256039913489604, guid: 3bd37145902066d43b054e1bbc14787d, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365716201118492, guid: 3bd37145902066d43b054e1bbc14787d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365716201118492, guid: 3bd37145902066d43b054e1bbc14787d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.58
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3bd37145902066d43b054e1bbc14787d, type: 2}
@@ -17275,7 +17300,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4664731807818956, guid: 8342e6c7fabef5a4a853ad7775ca6285, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -13.6
+      value: -13.8
       objectReference: {fileID: 0}
     - target: {fileID: 4664731807818956, guid: 8342e6c7fabef5a4a853ad7775ca6285, type: 2}
       propertyPath: m_LocalPosition.y
@@ -22157,6 +22182,7 @@ RectTransform:
   - {fileID: 434084117}
   - {fileID: 445009225}
   - {fileID: 1193352402}
+  - {fileID: 890374880}
   m_Father: {fileID: 2039167317}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -29541,6 +29567,7 @@ GameObject:
   - component: {fileID: 1789650936}
   - component: {fileID: 1789650931}
   - component: {fileID: 1789650937}
+  - component: {fileID: 1789650938}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -29685,7 +29712,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1789650930}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 75a24f2040560034a9240823c5100ce1, type: 2}
   m_CullingMode: 0
@@ -29695,6 +29722,30 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!320 &1789650938
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1789650930}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 44f11cd5fb798a847946b1620c80030c, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 0
+  m_DirectorUpdateMode: 2
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 114922642250194368, guid: 44f11cd5fb798a847946b1620c80030c, type: 2}
+    value: {fileID: 1789650930}
+  - key: {fileID: 114000296986918186, guid: 44f11cd5fb798a847946b1620c80030c, type: 2}
+    value: {fileID: 16774692}
+  - key: {fileID: 114481043141724698, guid: 44f11cd5fb798a847946b1620c80030c, type: 2}
+    value: {fileID: 311029132}
+  - key: {fileID: 114552154038803388, guid: 44f11cd5fb798a847946b1620c80030c, type: 2}
+    value: {fileID: 890374879}
+  m_ExposedReferences:
+    m_References: []
 --- !u!4 &1791385971 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4585203522595084, guid: 378d4765d4b88494b85047d3c4aa668b,
@@ -33611,7 +33662,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4664731807818956, guid: 8342e6c7fabef5a4a853ad7775ca6285, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 13.6
+      value: 13.8
       objectReference: {fileID: 0}
     - target: {fileID: 4664731807818956, guid: 8342e6c7fabef5a4a853ad7775ca6285, type: 2}
       propertyPath: m_LocalPosition.y
@@ -39028,6 +39079,7 @@ MonoBehaviour:
   waveHealthText: {fileID: 991642176}
   gameInfoPanel: {fileID: 445009224}
   waveTimerPanel: {fileID: 962544107}
+  startGameTLDirector: {fileID: 1789650938}
   notEnoughGoldIcon: {fileID: 1193352398}
   notEnoughGoldIconDisplayTime: 1
 --- !u!1001 &2040557820

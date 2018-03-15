@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     public enum GameState
     {
+        Cinematic,
         Playing,
         Paused
     }

@@ -55,11 +55,17 @@ public class FadeOnMouseOver : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        fadeIn = true;
+        if (GameManager.instance.gameState == GameManager.GameState.Playing)
+        {
+            fadeIn = true;
+        }
     }
 
     private void OnMouseExit()
     {
-        fadeIn = false;
+        if (GameManager.instance.gameState == GameManager.GameState.Playing)
+        {
+            fadeIn = false;
+        }
     }
 }

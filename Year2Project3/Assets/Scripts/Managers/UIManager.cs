@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Playables;
 
 public class UIManager : MonoBehaviour 
 {
@@ -28,6 +29,7 @@ public class UIManager : MonoBehaviour
     [Header("Other")]
     public GameObject gameInfoPanel;
     public GameObject waveTimerPanel;
+    public PlayableDirector startGameTLDirector;
 
     [Header("Not Enough Gold Icon")]
     public GameObject notEnoughGoldIcon;
@@ -40,6 +42,8 @@ public class UIManager : MonoBehaviour
         {
             instance = this;
         }
+
+        StartCoroutine(StartGame());
     }
 
     private void Update()
@@ -59,10 +63,40 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private IEnumerator StartGame()
+    {
+        canPause = false;
+
+        CameraManager mainCamManager = Camera.main.GetComponent<CameraManager>();
+        mainCamManager.enabled = false;
+
+        gameInfoPanel.SetActive(false);
+        waveTimerPanel.SetActive(false);
+
+        gameOverAnimator.enabled = true;
+
+        yield return new WaitForSeconds(12);
+
+        gameOverAnimator.enabled = false;
+        mainCamManager.enabled = true;
+        canPause = true;
+
+        gameInfoPanel.SetActive(true);
+        waveTimerPanel.SetActive(true);
+
+        GameManager.instance.gameState = GameManager.GameState.Playing;
+
+        yield return new WaitForSeconds(2);
+
+        startGameTLDirector.enabled = false;
+        WaveManager.instance.NextWave();
+    }
+
     public IEnumerator GameOver()
     {
         CastleUpgradeManager.instance.CloseAllUI();
         canPause = false;
+        GameManager.instance.gameState = GameManager.GameState.Cinematic;
 
         CameraManager mainCamManager = Camera.main.GetComponent<CameraManager>();
         mainCamManager.enabled = false;
@@ -92,7 +126,9 @@ public class UIManager : MonoBehaviour
         waveTimerPanel.SetActive(false);
         Camera.main.fieldOfView = 60;
         gameOverAnimator.enabled = true;
+        gameOverAnimator.SetTrigger("End");
 
+        yield return new WaitForSeconds(0.1f);
         yield return new WaitForSeconds(gameOverAnimator.GetCurrentAnimatorStateInfo(0).length);
 
         Time.timeScale = 0;

@@ -29,7 +29,10 @@ public class CastleBuilder : MonoBehaviour
 
     public void InteractButton()
     {
-        CastleUpgradeManager.instance.OpenUI(this);
+        if (GameManager.instance.gameState == GameManager.GameState.Playing)
+        {
+            CastleUpgradeManager.instance.OpenUI(this);
+        }
     }
 
     public void BuildWeapon(CastleWeapon.WeaponType type)
@@ -43,13 +46,9 @@ public class CastleBuilder : MonoBehaviour
                     return;
                 }
 
-                RaycastHit hit;
-                if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), -transform.up, out hit))
-                {
-                    GameObject newBuild = Instantiate(availableBuilds[i], hit.point, Quaternion.identity);
-                    newBuild.transform.SetParent(transform);
-                    myBuildedObject = newBuild;
-                }
+                GameObject newBuild = Instantiate(availableBuilds[i], transform.position, Quaternion.identity);
+                newBuild.transform.SetParent(transform);
+                myBuildedObject = newBuild;
 
                 ObjectPooler.instance.GrabFromPool("build particle", myBuildedObject.transform.position, Quaternion.identity);
 

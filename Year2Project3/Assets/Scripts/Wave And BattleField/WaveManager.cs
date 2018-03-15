@@ -48,11 +48,6 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        NextWave();
-    }
-
     void Update()
     {
         if (enemiesInScene.Count <= 0 && waveDone == true)
