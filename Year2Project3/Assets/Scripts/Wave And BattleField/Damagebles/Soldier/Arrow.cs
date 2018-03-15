@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Arrow : Projectile{
-    public Transform arrow;
+    public Transform myArrow;
     public float distance;
     public Rigidbody rb;
     public int arrowSpeed;
