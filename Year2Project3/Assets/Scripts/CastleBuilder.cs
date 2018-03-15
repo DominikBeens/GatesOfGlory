@@ -43,9 +43,13 @@ public class CastleBuilder : MonoBehaviour
                     return;
                 }
 
-                GameObject newBuild = Instantiate(availableBuilds[i], transform.position, Quaternion.identity);
-                newBuild.transform.SetParent(transform);
-                myBuildedObject = newBuild;
+                RaycastHit hit;
+                if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), -transform.up, out hit))
+                {
+                    GameObject newBuild = Instantiate(availableBuilds[i], hit.point, Quaternion.identity);
+                    newBuild.transform.SetParent(transform);
+                    myBuildedObject = newBuild;
+                }
 
                 ObjectPooler.instance.GrabFromPool("build particle", myBuildedObject.transform.position, Quaternion.identity);
 

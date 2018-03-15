@@ -12,7 +12,6 @@ public class ObjectPooler : MonoBehaviour
         public GameObject poolPrefab;
         public int poolSize;
         public bool autoExpand;
-        public int expansionAmount;
         public Queue<GameObject> poolQueue = new Queue<GameObject>();
     }
 
@@ -95,14 +94,9 @@ public class ObjectPooler : MonoBehaviour
 
     private void ExpandPool(ObjectPool pool)
     {
-        for (int i = 0; i < pool.expansionAmount; i++)
-        {
-            GameObject newPooledObject = Instantiate(pool.poolPrefab);
-            newPooledObject.SetActive(false);
+        GameObject newPooledObject = Instantiate(pool.poolPrefab);
+        newPooledObject.SetActive(false);
 
-            pool.poolQueue.Enqueue(newPooledObject);
-        }
-
-        print("Expanded object pool '" + pool.poolName + "' by " + pool.expansionAmount);
+        pool.poolQueue.Enqueue(newPooledObject);
     }
 }

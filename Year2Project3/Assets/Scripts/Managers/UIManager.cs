@@ -49,11 +49,13 @@ public class UIManager : MonoBehaviour
             notEnoughGoldDisplayTimer -= Time.deltaTime;
             notEnoughGoldIcon.SetActive(true);
             notEnoughGoldIcon.transform.position = Input.mousePosition;
+            Cursor.visible = false;
         }
         else
         {
             notEnoughGoldDisplayTimer = 0;
             notEnoughGoldIcon.SetActive(false);
+            Cursor.visible = true;
         }
     }
 

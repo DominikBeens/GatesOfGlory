@@ -854,11 +854,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4664731807818956, guid: 8342e6c7fabef5a4a853ad7775ca6285, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 16.07
+      value: 17.414
       objectReference: {fileID: 0}
     - target: {fileID: 4664731807818956, guid: 8342e6c7fabef5a4a853ad7775ca6285, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 12.5
+      value: 13.16
       objectReference: {fileID: 0}
     - target: {fileID: 4664731807818956, guid: 8342e6c7fabef5a4a853ad7775ca6285, type: 2}
       propertyPath: m_LocalPosition.z
@@ -7237,11 +7237,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4664731807818956, guid: 8342e6c7fabef5a4a853ad7775ca6285, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -15.93
+      value: -17.61
       objectReference: {fileID: 0}
     - target: {fileID: 4664731807818956, guid: 8342e6c7fabef5a4a853ad7775ca6285, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 12.5
+      value: 13.16
       objectReference: {fileID: 0}
     - target: {fileID: 4664731807818956, guid: 8342e6c7fabef5a4a853ad7775ca6285, type: 2}
       propertyPath: m_LocalPosition.z
@@ -12263,7 +12263,7 @@ Prefab:
     - target: {fileID: 224908919361642174, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -52.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224633295053828908, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -12283,7 +12283,7 @@ Prefab:
     - target: {fileID: 224633295053828908, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -52.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224066990894667990, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -12303,7 +12303,7 @@ Prefab:
     - target: {fileID: 224066990894667990, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -88.35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224656856544700236, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -12323,7 +12323,7 @@ Prefab:
     - target: {fileID: 224656856544700236, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -88.35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224213176844330440, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -12343,7 +12343,7 @@ Prefab:
     - target: {fileID: 224213176844330440, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -88.35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224238493477248702, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -12363,7 +12363,7 @@ Prefab:
     - target: {fileID: 224238493477248702, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -88.35
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c304939f7dd57f54baea33fb78f101ad, type: 2}
@@ -13931,97 +13931,81 @@ MonoBehaviour:
       type: 2}
     poolSize: 400
     autoExpand: 1
-    expansionAmount: 100
   - poolName: heal particle
     poolPrefab: {fileID: 1169565690203310, guid: 60e9ef00abb384a4e8bb8ecbd9cc2514,
       type: 2}
     poolSize: 50
     autoExpand: 1
-    expansionAmount: 10
   - poolName: damage particle
     poolPrefab: {fileID: 1169920380047710, guid: cebbfed30482c6a44a87fcf78eb37cf9,
       type: 2}
     poolSize: 20
     autoExpand: 1
-    expansionAmount: 5
   - poolName: Ally Knight
     poolPrefab: {fileID: 1357994592998048, guid: 7e060cdcf6fdaf643bcac33afd9a64b4,
       type: 2}
     poolSize: 100
     autoExpand: 1
-    expansionAmount: 20
   - poolName: Ally Bowman
     poolPrefab: {fileID: 1357994592998048, guid: 7e060cdcf6fdaf643bcac33afd9a64b4,
       type: 2}
     poolSize: 100
     autoExpand: 1
-    expansionAmount: 20
   - poolName: Ally Giant
     poolPrefab: {fileID: 1357994592998048, guid: 7e060cdcf6fdaf643bcac33afd9a64b4,
       type: 2}
     poolSize: 100
     autoExpand: 1
-    expansionAmount: 20
   - poolName: Enemy Knight
     poolPrefab: {fileID: 1385821130610866, guid: 8980cde9536a9d845a2f891c3ee3fe14,
       type: 2}
     poolSize: 200
     autoExpand: 1
-    expansionAmount: 20
   - poolName: Enemy Bowman
     poolPrefab: {fileID: 1385821130610866, guid: 77a7a1734e5c0114892d0d9559a1c14d,
       type: 2}
     poolSize: 200
     autoExpand: 1
-    expansionAmount: 20
   - poolName: Enemy Giant
     poolPrefab: {fileID: 1385821130610866, guid: 4f4738548f9f66a4c8202fb7ab9ce27c,
       type: 2}
     poolSize: 200
     autoExpand: 1
-    expansionAmount: 20
   - poolName: ballista projectile
     poolPrefab: {fileID: 1024772973343442, guid: 6714d7ee2206ad2408a828f1ace35b81,
       type: 2}
     poolSize: 100
     autoExpand: 1
-    expansionAmount: 50
   - poolName: build particle
     poolPrefab: {fileID: 1474692277582434, guid: c3e845f2b4f1e2844a6c6e47763850a5,
       type: 2}
     poolSize: 5
     autoExpand: 0
-    expansionAmount: 0
   - poolName: demolish particle
     poolPrefab: {fileID: 1407166093788108, guid: 12f24dc3ae2fa1f4690cdf017d7a0286,
       type: 2}
     poolSize: 5
     autoExpand: 0
-    expansionAmount: 0
   - poolName: ambush volley
     poolPrefab: {fileID: 1384169516174632, guid: 3ae9143023741db46a442d9b9b3ee03c,
       type: 2}
     poolSize: 200
     autoExpand: 1
-    expansionAmount: 50
   - poolName: ambush meteor
     poolPrefab: {fileID: 1137636219270194, guid: 83f7b913b62898649aa8680e55717049,
       type: 2}
     poolSize: 50
     autoExpand: 1
-    expansionAmount: 10
   - poolName: catapult projectile
     poolPrefab: {fileID: 1816421631133504, guid: 1aacc76c6213b6c4c8dd01f45bbeb948,
       type: 2}
     poolSize: 50
     autoExpand: 1
-    expansionAmount: 25
   - poolName: Attacking Arrow
     poolPrefab: {fileID: 1257314764173348, guid: 7062ab9f13967664fb51ce6c99150593,
       type: 2}
     poolSize: 50
     autoExpand: 1
-    expansionAmount: 5
 --- !u!1 &827514873
 GameObject:
   m_ObjectHideFlags: 0
