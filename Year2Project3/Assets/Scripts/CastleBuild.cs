@@ -37,6 +37,8 @@ public class CastleBuild : MonoBehaviour
     public Button buyUpgradeButton;
     public TextMeshProUGUI upgradeStatsText;
     public TextMeshProUGUI upgradeCostText;
+    [Space(10)]
+    public TextMeshProUGUI myNameText;
 
     // Awake assures that all of the panels are inactive and also means that this build has been built by the player. 
     // Increase the gold spent on this build by the cost of this build.

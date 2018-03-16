@@ -57,77 +57,6 @@ public class CastleWeaponUpgrader : MonoBehaviour
         buildUI.SetActive(true);
     }
 
-    public void UseWeaponButton()
-    {
-        CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleWeapon>().StartUsing();
-    }
-
-    public void OpenUpgradeUIButton()
-    {
-        CastleWeapon weaponComponent = CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleWeapon>();
-
-        weaponNameText.text = "Level <color=green>" + weaponComponent.myLevel.ToString() + "</color> " + weaponComponent.myName;
-        weaponDamageText.text = "Damage: <color=green>" + weaponComponent.damage.currentValue + "</color>";
-        weaponForceText.text = "Force: <color=green>" + weaponComponent.force.currentValue + "</color>";
-        weaponFireRateText.text = "Fire Rate: <color=green>" + weaponComponent.cooldown.currentValue.ToString("f2") + "</color>";
-
-        upgradeText.text = "<color=#FFF800FF>" + weaponComponent.myUpgradeCost.currentValue + "</color>";
-
-        if (weaponComponent.myLevel < weaponComponent.myMaxLevel)
-        {
-            buyUpgradeButton.SetActive(true);
-        }
-        else
-        {
-            buyUpgradeButton.SetActive(false);
-        }
-
-        if (weaponComponent.myLevel >= weaponComponent.autoFireLevelReq)
-        {
-            weaponComponent.autoFireToggle.SetActive(true);
-        }
-        else
-        {
-            weaponComponent.autoFireToggle.SetActive(false);
-        }
-
-        if (weaponComponent.myLevel == weaponComponent.autoFireLevelReq - 1)
-        {
-            autoFireUpdateText.SetActive(true);
-        }
-        else
-        {
-            autoFireUpdateText.SetActive(false);
-        }
-
-        //if (demolishUI.activeInHierarchy)
-        //{
-        //    demolishUI.GetComponent<Animator>().SetTrigger("CloseUI");
-        //    Invoke("DisableDemolishUI", demolishUI.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
-        //}
-
-        //upgradeUI.SetActive(true);
-    }
-
-    public void ShowUpgradeBenefits()
-    {
-        CastleWeapon weaponComponent = CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleWeapon>();
-
-        if (weaponComponent.myLevel >= weaponComponent.myMaxLevel)
-        {
-            return;
-        }
-
-        weaponDamageText.text = "Damage: " + weaponComponent.damage.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(weaponComponent.damage.increaseValue) + "</color>)";
-        weaponForceText.text = "Force: " + weaponComponent.force.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(weaponComponent.force.increaseValue) + "</color>)";
-        weaponFireRateText.text = "Fire Rate: " + weaponComponent.cooldown.currentValue.ToString("f2") + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(weaponComponent.cooldown.increaseValue) + "</color>)";
-    }
-
-    public void HideUpgradeBenefits()
-    {
-        OpenUpgradeUIButton();
-    }
-
     public void SetSelectWeaponText(int type)
     {
         switch (type)
@@ -171,68 +100,8 @@ public class CastleWeaponUpgrader : MonoBehaviour
         }
     }
 
-    public void UpgradeButton()
-    {
-        CastleWeapon weaponComponent = CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleWeapon>();
-
-        if (!ResourceManager.instance.HasEnoughGold((int)weaponComponent.myUpgradeCost.currentValue) || weaponComponent.myLevel >= weaponComponent.myMaxLevel)
-        {
-            return;
-        }
-
-        weaponComponent.damage.currentValue += weaponComponent.damage.increaseValue;
-        weaponComponent.force.currentValue += weaponComponent.force.increaseValue;
-        weaponComponent.cooldown.currentValue += weaponComponent.cooldown.increaseValue;
-        weaponComponent.anim.speed = 1 / weaponComponent.cooldown.currentValue;
-
-        ResourceManager.instance.RemoveGold((int)weaponComponent.myUpgradeCost.currentValue);
-
-        weaponComponent.goldSpentOnThisObject += (int)weaponComponent.myUpgradeCost.currentValue;
-        weaponComponent.myUpgradeCost.currentValue += weaponComponent.myUpgradeCost.increaseValue;
-        weaponComponent.myLevel++;
-
-        OpenUpgradeUIButton();
-        ShowUpgradeBenefits();
-
-        if (weaponComponent.myLevel >= weaponComponent.myMaxLevel)
-        {
-            buyUpgradeButton.SetActive(false);
-        }
-
-        if (weaponComponent.myLevel >= weaponComponent.autoFireLevelReq)
-        {
-            weaponComponent.autoFireToggle.SetActive(true);
-        }
-    }
-
-    //public void OpenDemolishUIButton()
-    //{
-    //    if (upgradeUI.activeInHierarchy)
-    //    {
-    //        upgradeUI.GetComponent<Animator>().SetTrigger("CloseUI");
-    //        Invoke("DisableUpgradeUI", upgradeUI.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
-    //    }
-
-    //    demolishUI.SetActive(true);
-    //}
-
-    public void DemolishButton()
-    {
-        CastleUpgradeManager.selectedBuild.Demolish();
-    }
-
     private void OnDisable()
     {
         buildUI.SetActive(false);
     }
-
-    //private void DisableUpgradeUI()
-    //{
-    //    upgradeUI.SetActive(false);
-    //}
-
-    //private void DisableDemolishUI()
-    //{
-    //    demolishUI.SetActive(false);
-    //}
 }

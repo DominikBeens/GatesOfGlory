@@ -23,7 +23,6 @@ public class CastleWeapon : CastleBuild
     private bool autoFire;
 
     [Header("Weapon Setup")]
-    public Transform rotatableWeapon;
     public GameObject projectile;
     public List<Transform> projectileSpawns = new List<Transform>();
     public enum AmountOfProjectiles
@@ -40,10 +39,6 @@ public class CastleWeapon : CastleBuild
     public Stat force;
     public Stat cooldown;
     private float nextTimeToFire;
-
-    [Header("Rotation Options")]
-    public float maxXRotation;
-    public float minXRotation;
 
     public override void Awake()
     {
@@ -74,7 +69,8 @@ public class CastleWeapon : CastleBuild
 
     public override void SetupUI()
     {
-
+        myNameText.text = "Level <color=green>" + myLevel.ToString() + "</color> " + myName;
+        upgradeCostText.text = myUpgradeCost.currentValue.ToString();
     }
 
     public virtual void Shoot()
@@ -84,7 +80,7 @@ public class CastleWeapon : CastleBuild
 
     public override void Upgrade()
     {
-
+        base.Upgrade();
     }
 
     public void ToggleAutoShoot()

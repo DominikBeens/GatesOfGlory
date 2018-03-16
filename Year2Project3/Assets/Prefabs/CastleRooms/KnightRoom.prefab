@@ -1307,7 +1307,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1805246033734042
 GameObject:
   m_ObjectHideFlags: 1
@@ -2053,13 +2053,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1911134033299260}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
   m_LocalPosition: {x: 0, y: 0.68799996, z: -0.003000021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4588080487813162}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
 --- !u!4 &4665783103218458
 Transform:
   m_ObjectHideFlags: 1
@@ -6160,8 +6160,8 @@ MonoBehaviour:
   buyUpgradeButton: {fileID: 114440381351808240}
   upgradeStatsText: {fileID: 114742955941147748}
   upgradeCostText: {fileID: 114333855464637488}
+  myNameText: {fileID: 114771465130788118}
   roomType: 0
-  roomNameText: {fileID: 114771465130788118}
   minionToSpawn: {fileID: 1357994592998048, guid: 7e060cdcf6fdaf643bcac33afd9a64b4,
     type: 2}
   minionSpawnPoint: {fileID: 4625714402741780}
