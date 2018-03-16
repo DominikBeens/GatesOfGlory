@@ -73,6 +73,17 @@ public class ResourceManager : MonoBehaviour
         for (int i = 0; i < extraGoldToSpawn; i++)
         {
             GameObject newGold = ObjectPooler.instance.GrabFromPool("gold", goldSpawn.transform.position, Quaternion.Euler(Random.Range(-360, 360), Random.Range(-360, 360), Random.Range(-360, 360)));
+
+            int random = Random.Range(0, 2);
+            if (random == 0)
+            {
+                newGold.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            else
+            {
+                newGold.transform.GetChild(0).gameObject.SetActive(false);
+            }
+
             goldPrefabsInScene.Add(newGold);
         }
     }

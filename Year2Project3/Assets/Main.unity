@@ -15317,7 +15317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.13235295, g: 0.04184689, b: 0.04184689, a: 0.027999818}
+  m_Color: {r: 0.125, g: 0.033088237, b: 0.033088237, a: 0}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -17887,6 +17887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
+  showStartGameAnimation: 1
 --- !u!4 &1065293230 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4075364850198890, guid: 9ea93ace16a0de74f9968282fbfb15d9,
@@ -39117,7 +39118,6 @@ MonoBehaviour:
   gameInfoPanel: {fileID: 445009224}
   waveTimerPanel: {fileID: 962544107}
   startGameTLDirector: {fileID: 1789650938}
-  showStartGameAnimation: 0
   notEnoughGoldIcon: {fileID: 1193352398}
   notEnoughGoldIconDisplayTime: 1
 --- !u!1001 &2040557820

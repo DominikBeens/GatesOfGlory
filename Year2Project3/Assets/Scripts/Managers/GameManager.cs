@@ -16,11 +16,14 @@ public class GameManager : MonoBehaviour
     }
     public GameState gameState;
 
+    public bool showStartGameAnimation = true;
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
         Time.timeScale = 1;

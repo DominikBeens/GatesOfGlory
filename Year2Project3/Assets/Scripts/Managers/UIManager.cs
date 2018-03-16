@@ -30,7 +30,6 @@ public class UIManager : MonoBehaviour
     public GameObject gameInfoPanel;
     public GameObject waveTimerPanel;
     public PlayableDirector startGameTLDirector;
-    public bool showStartGameAnimation = true;
 
     [Header("Not Enough Gold Icon")]
     public GameObject notEnoughGoldIcon;
@@ -44,7 +43,7 @@ public class UIManager : MonoBehaviour
             instance = this;
         }
 
-        if (showStartGameAnimation)
+        if (GameManager.instance.showStartGameAnimation)
         {
             StartCoroutine(StartGame());
         }
@@ -104,14 +103,15 @@ public class UIManager : MonoBehaviour
 
         gameInfoPanel.SetActive(true);
         waveTimerPanel.SetActive(true);
+        startGameTLDirector.enabled = false;
         UICam.SetActive(true);
 
         GameManager.instance.gameState = GameManager.GameState.Playing;
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
 
-        startGameTLDirector.enabled = false;
         WaveManager.instance.NextWave();
+        GameManager.instance.showStartGameAnimation = false;
     }
 
     public IEnumerator GameOver()
