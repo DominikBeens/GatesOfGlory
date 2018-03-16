@@ -509,6 +509,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1724068265491150
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4313769898256058}
+  - component: {fileID: 33710902805272584}
+  - component: {fileID: 23941164158238084}
+  - component: {fileID: 95065710416811254}
+  m_Layer: 0
+  m_Name: ArcherHelmet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1736250217757828
 GameObject:
   m_ObjectHideFlags: 1
@@ -768,6 +786,19 @@ Transform:
   m_Children:
   - {fileID: 4759754506965714}
   m_Father: {fileID: 4480545741149640}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4313769898256058
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1724068265491150}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.246, y: 0.06, z: -0.52}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_Children: []
+  m_Father: {fileID: 4903854466970884}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4383245533059916
@@ -1142,7 +1173,8 @@ Transform:
   m_LocalRotation: {x: -0.7061883, y: 0.03602518, z: 0.7061888, w: 0.03602532}
   m_LocalPosition: {x: -0.638, y: 0.137, z: -0.233}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
-  m_Children: []
+  m_Children:
+  - {fileID: 4313769898256058}
   m_Father: {fileID: 4547526320177192}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 185.841, y: 89.99999, z: 0}
@@ -1171,7 +1203,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385821130610866}
   m_LocalRotation: {x: -0, y: 0.0000014603136, z: -0, w: 1}
-  m_LocalPosition: {x: -33.189, y: 1.058, z: -1.878}
+  m_LocalPosition: {x: -25.396294, y: 0.55, z: -1.2800713}
   m_LocalScale: {x: 0.8, y: 1, z: 0.8}
   m_Children:
   - {fileID: 4917153919954430}
@@ -1230,6 +1262,40 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!23 &23941164158238084
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1724068265491150}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 2a6f007122852024b8d052c9228ab01b, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!33 &33243726627521544
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -1237,6 +1303,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1290007159097650}
   m_Mesh: {fileID: 4300000, guid: 062360c9e9389d046b9f25bcc3441ed8, type: 3}
+--- !u!33 &33710902805272584
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1724068265491150}
+  m_Mesh: {fileID: 4300000, guid: 0e2e9c73a3ce4a443a4223309aee8d97, type: 3}
 --- !u!54 &54765816286145294
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -1356,6 +1429,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95065710416811254
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1724068265491150}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 0e2e9c73a3ce4a443a4223309aee8d97, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95153122204031010
 Animator:
   serializedVersion: 3
@@ -1552,6 +1642,7 @@ MonoBehaviour:
   attackCooldown: 2
   agent: {fileID: 195985851031835828}
   targetTransform: {fileID: 0}
+  anim: {fileID: 0}
   healthbarCanvas: {fileID: 0}
   healthbarFill: {fileID: 0}
   healthbarAnim: {fileID: 0}
