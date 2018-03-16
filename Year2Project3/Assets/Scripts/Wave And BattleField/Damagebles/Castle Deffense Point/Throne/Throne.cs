@@ -23,7 +23,10 @@ public class Throne : CastleDeffensePoint
 
             if (myStats.health.currentValue <= 0)
             {
-                StartCoroutine(UIManager.instance.GameOver());
+                if (GameManager.instance.gameState == GameManager.GameState.Playing)
+                {
+                    StartCoroutine(UIManager.instance.GameOver());
+                }
             }
         }
 

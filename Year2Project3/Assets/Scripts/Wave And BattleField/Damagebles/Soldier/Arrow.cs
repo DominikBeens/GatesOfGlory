@@ -5,7 +5,6 @@ using UnityEngine;
 public class Arrow : Projectile{
     public Transform myArrow;
     public float distance;
-    public Rigidbody rb;
     public int arrowSpeed;
     public float minAmount;
 

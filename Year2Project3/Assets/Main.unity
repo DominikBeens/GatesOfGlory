@@ -1084,30 +1084,6 @@ MonoBehaviour:
   secondaryCamera: 1
   smoothSpeed: 0
   moveSpeed: 0
-  speedCurveMultiplier:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.5
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
   camMoveRangeX: 0
   camMoveRangeYUp: 0
   camMoveRangeYDown: 0
@@ -19853,7 +19829,7 @@ Prefab:
     - target: {fileID: 224964312793551274, guid: 93a2b99a28284484a9feed17ab37596f,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93a2b99a28284484a9feed17ab37596f, type: 2}
@@ -24245,24 +24221,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114820180781343320, guid: 93a2b99a28284484a9feed17ab37596f,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114820180781343320, guid: 93a2b99a28284484a9feed17ab37596f,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1237236883190250, guid: 93a2b99a28284484a9feed17ab37596f, type: 2}
       propertyPath: m_Name
       value: CastleRoom (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 224964312793551274, guid: 93a2b99a28284484a9feed17ab37596f,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93a2b99a28284484a9feed17ab37596f, type: 2}
@@ -29662,30 +29623,6 @@ MonoBehaviour:
   secondaryCamera: 0
   smoothSpeed: 5
   moveSpeed: 15
-  speedCurveMultiplier:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.5
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
   camMoveRangeX: 40
   camMoveRangeYUp: 10
   camMoveRangeYDown: 1
@@ -39077,6 +39014,7 @@ MonoBehaviour:
   waveText: {fileID: 650586129}
   waveHealthFill: {fileID: 568269841}
   waveHealthText: {fileID: 991642176}
+  UICam: {fileID: 78702201}
   gameInfoPanel: {fileID: 445009224}
   waveTimerPanel: {fileID: 962544107}
   startGameTLDirector: {fileID: 1789650938}

@@ -20,8 +20,6 @@ public class CameraManager : MonoBehaviour
     public float smoothSpeed;
     public float moveSpeed;
 
-    public AnimationCurve speedCurveMultiplier = new AnimationCurve(new Keyframe[3]);
-
     [Header("Move Restrictions")]
     public float camMoveRangeX;
     public float camMoveRangeYUp;
@@ -46,13 +44,6 @@ public class CameraManager : MonoBehaviour
         offset = transform.position - target.position;
 
         fov = Camera.main.fieldOfView;
-
-        Keyframe[] speedKeys = speedCurveMultiplier.keys;
-        speedKeys[0].time = startX - camMoveRangeX;
-        speedKeys[1].time = 0;
-        speedKeys[2].time = startX + camMoveRangeX;
-
-        speedCurveMultiplier = new AnimationCurve(speedKeys);
     }
 
     private void Update()
@@ -86,12 +77,9 @@ public class CameraManager : MonoBehaviour
 
     private void MoveCam()
     {
-        // Adjusting speed according to the speed animation curve.
-        float speed = speedCurveMultiplier.Evaluate(target.position.x) * moveSpeed;
-
         // Axis inputs.
-        float x = Input.GetAxis("Horizontal") * (Time.deltaTime * speed);
-        float y = Input.GetAxis("Vertical") * (Time.deltaTime * speed);
+        float x = Input.GetAxis("Horizontal") * (Time.deltaTime * moveSpeed);
+        float y = Input.GetAxis("Vertical") * (Time.deltaTime * moveSpeed);
 
         // Move target position while clamping its X and Y.
         target.position = new Vector3(Mathf.Clamp(target.position.x + x, startX - camMoveRangeX, startX + camMoveRangeX),

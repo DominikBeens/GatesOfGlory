@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI waveHealthText;
 
     [Header("Other")]
+    public GameObject UICam;
     public GameObject gameInfoPanel;
     public GameObject waveTimerPanel;
     public PlayableDirector startGameTLDirector;
@@ -69,6 +70,7 @@ public class UIManager : MonoBehaviour
 
         CameraManager mainCamManager = Camera.main.GetComponent<CameraManager>();
         mainCamManager.enabled = false;
+        UICam.SetActive(false);
 
         gameInfoPanel.SetActive(false);
         waveTimerPanel.SetActive(false);
@@ -83,6 +85,7 @@ public class UIManager : MonoBehaviour
 
         gameInfoPanel.SetActive(true);
         waveTimerPanel.SetActive(true);
+        UICam.SetActive(true);
 
         GameManager.instance.gameState = GameManager.GameState.Playing;
 
@@ -124,6 +127,7 @@ public class UIManager : MonoBehaviour
 
         gameInfoPanel.SetActive(false);
         waveTimerPanel.SetActive(false);
+        UICam.SetActive(false);
         Camera.main.fieldOfView = 60;
         gameOverAnimator.enabled = true;
         gameOverAnimator.SetTrigger("End");

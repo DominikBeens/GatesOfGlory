@@ -6,7 +6,8 @@ public class Projectile : MonoBehaviour
 {
     public bool enemyArrow;
 
-    private Rigidbody rb;
+    [HideInInspector]
+    public Rigidbody rb;
 
     private bool canRotate;
 
