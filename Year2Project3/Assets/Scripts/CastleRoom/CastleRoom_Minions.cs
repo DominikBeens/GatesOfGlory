@@ -44,7 +44,7 @@ public class CastleRoom_Minions : CastleRoom
         roomMinionCostText.text = "Spawn Cost: " + spawnCost.currentValue;
 
         upgradeStatsText.text = "Spawn cost: " + spawnCost.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(spawnCost.increaseValue) + "</color>)" + "\n" +
-                                "Spawns per buy: " + amountToSpawnPerBuy .currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(amountToSpawnPerBuy.increaseValue) + "</color>)";
+                                "Spawns per buy: " + amountToSpawnPerBuy.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(amountToSpawnPerBuy.increaseValue) + "</color>)";
     }
 
     public override void UseRoom()

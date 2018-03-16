@@ -19,9 +19,6 @@ public class CastleRoom : CastleBuild
     }
     public RoomType roomType;
 
-    [Header("Upgrade Panel")]
-    public TextMeshProUGUI roomNameText;
-
     public override void Awake()
     {
         base.Awake();
@@ -42,12 +39,12 @@ public class CastleRoom : CastleBuild
 
     public override void Upgrade()
     {
-
+        base.Upgrade();
     }
 
     public override void SetupUI()
     {
-        roomNameText.text = "Level <color=green>" + myLevel.ToString() + "</color> " + myName;
+        myNameText.text = "Level <color=green>" + myLevel.ToString() + "</color> " + myName;
         upgradeCostText.text = myUpgradeCost.currentValue.ToString();
     }
 }

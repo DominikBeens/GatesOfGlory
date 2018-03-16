@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CastleWeapon_Ballista : CastleWeapon 
+public class CastleWeapon_Ballista : CastleWeapon
 {
 
     [Header("Ballista Setup")]
+    public float maxXRotation;
+    public float minXRotation;
+    [Space(10)]
     public float rotationSpeed;
     public Slider rotationSlider;
+    [Space(10)]
+    public Transform rotatableWeapon;
+    [Space(10)]
+    public GameObject autoFireNotification;
 
     public override void Awake()
     {
@@ -16,6 +23,24 @@ public class CastleWeapon_Ballista : CastleWeapon
 
         rotationSlider.minValue = minXRotation;
         rotationSlider.maxValue = maxXRotation;
+    }
+
+    public override void SetupUI()
+    {
+        base.SetupUI();
+
+        upgradeStatsText.text = "Damage: " + damage.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(damage.increaseValue) + "</color>)\n" +
+                                "Force: " + force.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(force.increaseValue) + "</color>)\n" +
+                                "Fire Rate: " + cooldown.currentValue.ToString("f2") + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(cooldown.increaseValue) + "</color>)";
+
+        if (myLevel == (autoFireLevelReq - 1))
+        {
+            autoFireNotification.SetActive(true);
+        }
+        else
+        {
+            autoFireNotification.SetActive(false);
+        }
     }
 
     public override void Update()
@@ -70,5 +95,32 @@ public class CastleWeapon_Ballista : CastleWeapon
                 }
                 break;
         }
+    }
+
+    public override void Upgrade()
+    {
+        if (!ResourceManager.instance.HasEnoughGold((int)myUpgradeCost.currentValue) || myLevel >= myMaxLevel)
+        {
+            return;
+        }
+
+        base.Upgrade();
+
+        damage.currentValue += damage.increaseValue;
+        force.currentValue += force.increaseValue;
+        cooldown.currentValue += cooldown.increaseValue;
+        anim.speed = 1 / cooldown.currentValue;
+
+        if (myLevel >= myMaxLevel)
+        {
+            buyUpgradeButton.interactable = false;
+        }
+
+        if (myLevel >= autoFireLevelReq)
+        {
+            autoFireToggle.SetActive(true);
+        }
+
+        SetupUI();
     }
 }
