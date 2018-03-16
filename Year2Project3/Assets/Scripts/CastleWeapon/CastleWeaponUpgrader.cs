@@ -57,30 +57,6 @@ public class CastleWeaponUpgrader : MonoBehaviour
         buildUI.SetActive(true);
     }
 
-    public void SetSelectWeaponText(int type)
-    {
-        switch (type)
-        {
-            case 0:
-
-                selectWeaponText.text = "Ballista";
-                break;
-            case 1:
-
-                selectWeaponText.text = "Canon";
-                break;
-            case 2:
-
-                selectWeaponText.text = "Catapult";
-                break;
-        }
-    }
-
-    public void ResetSelectWeaponText()
-    {
-        selectWeaponText.text = "Select A Weapon";
-    }
-
     public void BuildWeapon(int type)
     {
         switch (type)

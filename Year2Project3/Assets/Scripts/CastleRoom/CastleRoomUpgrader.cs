@@ -41,34 +41,6 @@ public class CastleRoomUpgrader : MonoBehaviour
         buildUI.SetActive(true);
     }
 
-    public void SetSelectRoomText(int type)
-    {
-        switch (type)
-        {
-            case 0:
-
-                selectRoomText.text = "Knight Room";
-                break;
-            case 1:
-
-                selectRoomText.text = "Healing Room";
-                break;
-            case 2:
-
-                selectRoomText.text = "Damage Room";
-                break;
-            case 3:
-
-                selectRoomText.text = "Ambush Room";
-                break;
-        }
-    }
-
-    public void ResetSelectRoomText()
-    {
-        selectRoomText.text = "Select A Room";
-    }
-
     public void BuildRoom(int type)
     {
         switch (type)

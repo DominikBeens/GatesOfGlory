@@ -60,7 +60,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1023756863017898
 GameObject:
   m_ObjectHideFlags: 1
@@ -245,10 +245,11 @@ GameObject:
   - component: {fileID: 222550939603155196}
   - component: {fileID: 114569516133795984}
   - component: {fileID: 114111104032591538}
+  - component: {fileID: 114609190416217342}
   - component: {fileID: 95579729441835670}
   - component: {fileID: 114564701726384940}
   m_Layer: 5
-  m_Name: BuildDamageRoomButton (2)
+  m_Name: BuildDamageRoomButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,6 +283,7 @@ GameObject:
   - component: {fileID: 222661614165391592}
   - component: {fileID: 114686016939491518}
   - component: {fileID: 114139429113130770}
+  - component: {fileID: 114159968778334516}
   - component: {fileID: 95133695701891120}
   - component: {fileID: 114211928314584648}
   m_Layer: 5
@@ -355,6 +357,7 @@ GameObject:
   - component: {fileID: 222184890415630802}
   - component: {fileID: 114572626860569546}
   - component: {fileID: 114269564861999234}
+  - component: {fileID: 114432794338199294}
   - component: {fileID: 95930961705533956}
   - component: {fileID: 114104305244832746}
   m_Layer: 5
@@ -497,6 +500,7 @@ GameObject:
   - component: {fileID: 222187587390602524}
   - component: {fileID: 114758245716336852}
   - component: {fileID: 114907423791407914}
+  - component: {fileID: 114891665886317986}
   - component: {fileID: 95486763318156860}
   - component: {fileID: 114451932712105342}
   m_Layer: 5
@@ -534,10 +538,11 @@ GameObject:
   - component: {fileID: 222481706515546712}
   - component: {fileID: 114032561527776866}
   - component: {fileID: 114082512750666810}
+  - component: {fileID: 114059748722538182}
   - component: {fileID: 95716761466785718}
   - component: {fileID: 114973700336820362}
   m_Layer: 5
-  m_Name: BuildHealRoomButton (1)
+  m_Name: BuildHealRoomButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -656,6 +661,7 @@ GameObject:
   - component: {fileID: 222739728744006570}
   - component: {fileID: 114308197260881812}
   - component: {fileID: 114646283675043806}
+  - component: {fileID: 114131152254212044}
   - component: {fileID: 95369566251477424}
   - component: {fileID: 114027686148896664}
   m_Layer: 5
@@ -735,7 +741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1665381027937172
 GameObject:
   m_ObjectHideFlags: 1
@@ -752,7 +758,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1671940304051590
 GameObject:
   m_ObjectHideFlags: 1
@@ -1142,6 +1148,7 @@ GameObject:
   - component: {fileID: 222511006208807674}
   - component: {fileID: 114251777632725798}
   - component: {fileID: 114862479594146866}
+  - component: {fileID: 114648685531805202}
   - component: {fileID: 95168853067623978}
   - component: {fileID: 114972371806003964}
   m_Layer: 5
@@ -1694,9 +1701,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114200068860380054}
-          m_MethodName: SetSelectWeaponText
-          m_Mode: 3
+        - m_Target: {fileID: 114131152254212044}
+          m_MethodName: SetSelectBuildText
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1711,8 +1718,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114200068860380054}
-          m_MethodName: ResetSelectWeaponText
+        - m_Target: {fileID: 114131152254212044}
+          m_MethodName: ResetSelectBuildText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1865,6 +1872,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114059748722538182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1498207230864826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4f4bbe5b9f2b24e8ea0427458e2b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBuild: {fileID: 114237894207583802, guid: 728f9eda75122b64db007664c20825c3, type: 2}
+  type: 1
+  buildCostText: {fileID: 114204559385459044}
+  selectWeaponText: {fileID: 114216578245201056}
+  cwUpgrader: {fileID: 114200068860380054}
+  crUpgrader: {fileID: 114936818299134980}
 --- !u!114 &114064557478507266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2186,9 +2210,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114936818299134980}
-          m_MethodName: SetSelectRoomText
-          m_Mode: 3
+        - m_Target: {fileID: 114432794338199294}
+          m_MethodName: SetSelectBuildText
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2203,8 +2227,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114936818299134980}
-          m_MethodName: ResetSelectRoomText
+        - m_Target: {fileID: 114432794338199294}
+          m_MethodName: ResetSelectBuildText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2296,6 +2320,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114131152254212044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1608993346990708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4f4bbe5b9f2b24e8ea0427458e2b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBuild: {fileID: 114453990266339110, guid: 42e659d6352c539449caa9ec08cb824a, type: 2}
+  type: 0
+  buildCostText: {fileID: 114927213033033968}
+  selectWeaponText: {fileID: 114555292778595728}
+  cwUpgrader: {fileID: 114200068860380054}
+  crUpgrader: {fileID: 114936818299134980}
 --- !u!114 &114139429113130770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2510,6 +2551,23 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114159968778334516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1153872665490524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4f4bbe5b9f2b24e8ea0427458e2b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBuild: {fileID: 114862023133857932, guid: 6921b42915359e24891723244082c98b, type: 2}
+  type: 0
+  buildCostText: {fileID: 114587658796977474}
+  selectWeaponText: {fileID: 114555292778595728}
+  cwUpgrader: {fileID: 114200068860380054}
+  crUpgrader: {fileID: 114936818299134980}
 --- !u!114 &114162950353183806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2656,7 +2714,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 10
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a372cddacb694c2489be188466a1d800, type: 2}
   m_sharedMaterial: {fileID: 21913952429635500, guid: a372cddacb694c2489be188466a1d800,
@@ -2766,9 +2824,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114200068860380054}
-          m_MethodName: SetSelectWeaponText
-          m_Mode: 3
+        - m_Target: {fileID: 114159968778334516}
+          m_MethodName: SetSelectBuildText
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2783,8 +2841,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114200068860380054}
-          m_MethodName: ResetSelectWeaponText
+        - m_Target: {fileID: 114159968778334516}
+          m_MethodName: ResetSelectBuildText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3426,6 +3484,23 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
+--- !u!114 &114432794338199294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1233353539288438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4f4bbe5b9f2b24e8ea0427458e2b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBuild: {fileID: 114637176339380366, guid: 9dfa12c172259d648b7d43a3fb3a7c95, type: 2}
+  type: 1
+  buildCostText: {fileID: 114450126511287392}
+  selectWeaponText: {fileID: 114216578245201056}
+  cwUpgrader: {fileID: 114200068860380054}
+  crUpgrader: {fileID: 114936818299134980}
 --- !u!114 &114440975898167264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3524,7 +3599,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 25
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a372cddacb694c2489be188466a1d800, type: 2}
   m_sharedMaterial: {fileID: 21913952429635500, guid: a372cddacb694c2489be188466a1d800,
@@ -3661,9 +3736,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114936818299134980}
-          m_MethodName: SetSelectRoomText
-          m_Mode: 3
+        - m_Target: {fileID: 114891665886317986}
+          m_MethodName: SetSelectBuildText
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3678,8 +3753,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114936818299134980}
-          m_MethodName: ResetSelectRoomText
+        - m_Target: {fileID: 114891665886317986}
+          m_MethodName: ResetSelectBuildText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4101,9 +4176,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114936818299134980}
-          m_MethodName: SetSelectRoomText
-          m_Mode: 3
+        - m_Target: {fileID: 114609190416217342}
+          m_MethodName: SetSelectBuildText
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4118,8 +4193,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114936818299134980}
-          m_MethodName: ResetSelectRoomText
+        - m_Target: {fileID: 114609190416217342}
+          m_MethodName: ResetSelectBuildText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4248,7 +4323,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 10
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a372cddacb694c2489be188466a1d800, type: 2}
   m_sharedMaterial: {fileID: 21913952429635500, guid: a372cddacb694c2489be188466a1d800,
@@ -4354,6 +4429,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleDivider: 40
+--- !u!114 &114609190416217342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1136145091124620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4f4bbe5b9f2b24e8ea0427458e2b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBuild: {fileID: 114958230396530342, guid: 8b3963f9d2053e04abfd75025b18075b, type: 2}
+  type: 1
+  buildCostText: {fileID: 114824162044854114}
+  selectWeaponText: {fileID: 114216578245201056}
+  cwUpgrader: {fileID: 114200068860380054}
+  crUpgrader: {fileID: 114936818299134980}
 --- !u!114 &114615319373225370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4487,6 +4579,23 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114648685531805202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972614542546208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4f4bbe5b9f2b24e8ea0427458e2b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBuild: {fileID: 114845373663026214, guid: 294cb18630fd6bd469a045cf7aa3dff9, type: 2}
+  type: 0
+  buildCostText: {fileID: 114978758545916990}
+  selectWeaponText: {fileID: 114555292778595728}
+  cwUpgrader: {fileID: 114200068860380054}
+  crUpgrader: {fileID: 114936818299134980}
 --- !u!114 &114667235947619896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5045,7 +5154,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 15
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a372cddacb694c2489be188466a1d800, type: 2}
   m_sharedMaterial: {fileID: 21913952429635500, guid: a372cddacb694c2489be188466a1d800,
@@ -5158,7 +5267,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 15
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a372cddacb694c2489be188466a1d800, type: 2}
   m_sharedMaterial: {fileID: 21913952429635500, guid: a372cddacb694c2489be188466a1d800,
@@ -5395,6 +5504,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114891665886317986
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1478469825581292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4f4bbe5b9f2b24e8ea0427458e2b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBuild: {fileID: 114790494247196908, guid: 60c1c9b52684ace40a5b2b08f364be43, type: 2}
+  type: 1
+  buildCostText: {fileID: 114811602386200778}
+  selectWeaponText: {fileID: 114216578245201056}
+  cwUpgrader: {fileID: 114200068860380054}
+  crUpgrader: {fileID: 114936818299134980}
 --- !u!114 &114907423791407914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5606,7 +5732,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 10
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a372cddacb694c2489be188466a1d800, type: 2}
   m_sharedMaterial: {fileID: 21913952429635500, guid: a372cddacb694c2489be188466a1d800,
@@ -5799,9 +5925,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114200068860380054}
-          m_MethodName: SetSelectWeaponText
-          m_Mode: 3
+        - m_Target: {fileID: 114648685531805202}
+          m_MethodName: SetSelectBuildText
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5816,8 +5942,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114200068860380054}
-          m_MethodName: ResetSelectWeaponText
+        - m_Target: {fileID: 114648685531805202}
+          m_MethodName: ResetSelectBuildText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5846,9 +5972,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114936818299134980}
-          m_MethodName: SetSelectRoomText
-          m_Mode: 3
+        - m_Target: {fileID: 114059748722538182}
+          m_MethodName: SetSelectBuildText
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5863,8 +5989,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114936818299134980}
-          m_MethodName: ResetSelectRoomText
+        - m_Target: {fileID: 114059748722538182}
+          m_MethodName: ResetSelectBuildText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5896,7 +6022,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 10
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a372cddacb694c2489be188466a1d800, type: 2}
   m_sharedMaterial: {fileID: 21913952429635500, guid: a372cddacb694c2489be188466a1d800,
@@ -6436,9 +6562,9 @@ RectTransform:
   m_Father: {fileID: 224694853098183258}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 129.85, y: -88.35}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224068580399440984
@@ -6572,9 +6698,9 @@ RectTransform:
   m_Father: {fileID: 224347232509033978}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 300.505, y: -88.335}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224137793007861606
@@ -6684,9 +6810,9 @@ RectTransform:
   m_Father: {fileID: 224694853098183258}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 429.85, y: -88.35}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224238493477248702
@@ -6705,9 +6831,9 @@ RectTransform:
   m_Father: {fileID: 224694853098183258}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 579.85, y: -88.35}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224247079231636766
@@ -6781,9 +6907,9 @@ RectTransform:
   m_Father: {fileID: 224347232509033978}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150.505, y: -88.335}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224339320018266596
@@ -6952,9 +7078,9 @@ RectTransform:
   m_Father: {fileID: 224605639680513156}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 187.45, y: -52.5}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224468317034569936
@@ -7174,9 +7300,9 @@ RectTransform:
   m_Father: {fileID: 224595643614712902}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 187.5, y: -52.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224650286320546922
@@ -7230,9 +7356,9 @@ RectTransform:
   m_Father: {fileID: 224605639680513156}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 107.45, y: -52.5}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224656856544700236
@@ -7251,9 +7377,9 @@ RectTransform:
   m_Father: {fileID: 224694853098183258}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 279.85, y: -88.35}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224694853098183258
@@ -7422,9 +7548,9 @@ RectTransform:
   m_Father: {fileID: 224347232509033978}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450.505, y: -88.335}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224873795990445000
@@ -7478,9 +7604,9 @@ RectTransform:
   m_Father: {fileID: 224595643614712902}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 107.5, y: -52.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224936978957089408
