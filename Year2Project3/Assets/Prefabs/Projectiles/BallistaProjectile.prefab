@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1024772973343442}
   m_LocalRotation: {x: -0, y: -0.70710707, z: -0, w: 0.70710653}
-  m_LocalPosition: {x: -7.2918425, y: 0.5600001, z: 0.05961132}
+  m_LocalPosition: {x: -6.832692, y: 1.15, z: -0.90466785}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4283205058953758}
@@ -184,6 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c839b4f008ee842a2d8c0e26b8da6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyArrow: 0
+  rb: {fileID: 0}
   type: 0
   myDamage: 0
   freezeOnImpact: 1
@@ -264,7 +266,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1286278799
+  randomSeed: 783081118
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3601,7 +3603,7 @@ ParticleSystemRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_RenderMode: 4
+  m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5

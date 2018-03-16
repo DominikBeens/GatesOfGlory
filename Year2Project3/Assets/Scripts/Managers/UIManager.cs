@@ -26,10 +26,12 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI waveHealthText;
 
     [Header("Other")]
-    public GameObject UICam;
     public GameObject gameInfoPanel;
     public GameObject waveTimerPanel;
     public PlayableDirector startGameTLDirector;
+    public GameObject castleWeapons;
+    public GameObject castleRooms;
+    public GameObject startCinematicProps;
 
     [Header("Not Enough Gold Icon")]
     public GameObject notEnoughGoldIcon;
@@ -54,7 +56,6 @@ public class UIManager : MonoBehaviour
 
             gameInfoPanel.SetActive(true);
             waveTimerPanel.SetActive(true);
-            UICam.SetActive(true);
             startGameTLDirector.enabled = false;
 
             GameManager.instance.gameState = GameManager.GameState.Playing;
@@ -88,14 +89,17 @@ public class UIManager : MonoBehaviour
 
         CameraManager mainCamManager = Camera.main.GetComponent<CameraManager>();
         mainCamManager.enabled = false;
-        UICam.SetActive(false);
+
+        castleWeapons.SetActive(false);
+        castleRooms.SetActive(false);
+        startCinematicProps.SetActive(true);
 
         gameInfoPanel.SetActive(false);
         waveTimerPanel.SetActive(false);
 
         gameOverAnimator.enabled = true;
 
-        yield return new WaitForSeconds(12);
+        yield return new WaitForSeconds(11);
 
         gameOverAnimator.enabled = false;
         mainCamManager.enabled = true;
@@ -104,7 +108,10 @@ public class UIManager : MonoBehaviour
         gameInfoPanel.SetActive(true);
         waveTimerPanel.SetActive(true);
         startGameTLDirector.enabled = false;
-        UICam.SetActive(true);
+
+        castleWeapons.SetActive(true);
+        castleRooms.SetActive(true);
+        startCinematicProps.SetActive(false);
 
         GameManager.instance.gameState = GameManager.GameState.Playing;
 
@@ -146,7 +153,8 @@ public class UIManager : MonoBehaviour
 
         gameInfoPanel.SetActive(false);
         waveTimerPanel.SetActive(false);
-        UICam.SetActive(false);
+        castleWeapons.SetActive(false);
+        castleRooms.SetActive(false);
         Camera.main.fieldOfView = 60;
         gameOverAnimator.enabled = true;
         gameOverAnimator.SetTrigger("End");

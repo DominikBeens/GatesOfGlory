@@ -14,7 +14,7 @@ public class CastleRoom_Heal : CastleRoom
     [Space(10)]
     public Image cooldownFill;
     public TextMeshProUGUI descriptionText;
-    public TextMeshProUGUI nextLevelExtraUpgradeText;
+    public GameObject nextLevelExtraUpgradePanel;
 
     private float currentCooldown = 0.95f;
 
@@ -29,11 +29,11 @@ public class CastleRoom_Heal : CastleRoom
 
         if (myLevel == 4)
         {
-            nextLevelExtraUpgradeText.text = "Next level will heal both gates at the end of each turn.";
+            nextLevelExtraUpgradePanel.SetActive(true);
         }
         else
         {
-            nextLevelExtraUpgradeText.text = string.Empty;
+            nextLevelExtraUpgradePanel.SetActive(false);
         }
     }
 

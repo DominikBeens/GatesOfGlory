@@ -83,6 +83,11 @@ public class CastleUpgradeManager : MonoBehaviour
         selectedBuild = null;
     }
 
+    public void CloseUIButton()
+    {
+        CloseAllUI(null);
+    }
+
     public void CloseAllUI(CastleBuild exception)
     {
         GetComponent<Animator>().SetTrigger("CloseUI");

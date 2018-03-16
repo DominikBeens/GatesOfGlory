@@ -36,6 +36,7 @@ public class CastleRoom_Ambush : CastleRoom
 
     [Header("Upgrades")]
     public TextMeshProUGUI nextLevelExtraUpgradeText;
+    public GameObject nextLevelExtraUpgradePanel;
     public GameObject meteorStrikeButton;
     public GameObject spearRainButton;
 
@@ -64,14 +65,17 @@ public class CastleRoom_Ambush : CastleRoom
 
         if (myLevel == 4)
         {
+            nextLevelExtraUpgradePanel.SetActive(true);
             nextLevelExtraUpgradeText.text = "Next level will unlock the ambush: meteor strike";
         }
         else if (myLevel == 9)
         {
+            nextLevelExtraUpgradePanel.SetActive(true);
             nextLevelExtraUpgradeText.text = "Next level will unlock the ambush: spear rain";
         }
         else
         {
+            nextLevelExtraUpgradePanel.SetActive(false);
             nextLevelExtraUpgradeText.text = string.Empty;
         }
 

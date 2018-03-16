@@ -46,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1975393803817220
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1137636219270194}
   m_LocalRotation: {x: -0.00000031296494, y: 0.7071071, z: -0.70710653, w: 0.00000031567168}
-  m_LocalPosition: {x: -7.3548446, y: 0.5600001, z: -0.44175148}
+  m_LocalPosition: {x: -6.6980195, y: 0.5600001, z: -0.5836086}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4367235559619362}
@@ -172,6 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c839b4f008ee842a2d8c0e26b8da6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyArrow: 0
+  rb: {fileID: 0}
   type: 3
   myDamage: 0
   freezeOnImpact: 0
@@ -263,7 +265,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1258000673
+  randomSeed: -1465497940
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3600,7 +3602,7 @@ ParticleSystemRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_RenderMode: 4
+  m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5

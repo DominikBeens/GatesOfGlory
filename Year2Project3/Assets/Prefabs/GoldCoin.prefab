@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198859156566468154}
   - component: {fileID: 199373555027216066}
   m_Layer: 9
-  m_Name: TrailParticle
+  m_Name: Sparkles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1918120417587034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -6.64921, y: 1.446, z: -1.3236237}
   m_LocalScale: {x: 0.3, y: 0.04, z: 0.3}
   m_Children:
   - {fileID: 4762551146777362}
@@ -246,7 +246,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1576421652
+  randomSeed: 1246646722
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3562,8 +3562,8 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0744048bdf4df3745b88b0d2c4bebe63, type: 2}
-  - {fileID: 2100000, guid: 0744048bdf4df3745b88b0d2c4bebe63, type: 2}
+  - {fileID: 2100000, guid: d5d79572e2cbb2940b2cdbf3f4ef5962, type: 2}
+  - {fileID: 2100000, guid: d5d79572e2cbb2940b2cdbf3f4ef5962, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3583,7 +3583,7 @@ ParticleSystemRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_RenderMode: 4
+  m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5

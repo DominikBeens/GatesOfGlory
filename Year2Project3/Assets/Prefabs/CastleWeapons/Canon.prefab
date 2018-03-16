@@ -1265,24 +1265,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3149e59b0a08dd445988eea97e5b2d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 1
   side: 0
-  weaponName: Canon
-  weaponLevel: 1
-  weaponMaxLevel: 0
-  buildCost: 10
-  upgradeCost:
-    baseValue: 3
-    currentValue: 3
-    increaseValue: 2
-  rotatableWeapon: {fileID: 4342353219132358}
+  myBuilder: {fileID: 0}
+  goldSpentOnThisObject: 0
+  myName: Canon (WIP)
+  myLevel: 1
+  myMaxLevel: 15
+  myBuildCost: 500
+  myUpgradeCost:
+    baseValue: 0
+    currentValue: 0
+    increaseValue: 0
+  useUI: {fileID: 1522565143467558}
+  upgradePanel: {fileID: 0}
+  demolishPanel: {fileID: 0}
+  buyUpgradeButton: {fileID: 0}
+  upgradeStatsText: {fileID: 0}
+  upgradeCostText: {fileID: 0}
+  myNameText: {fileID: 0}
+  weaponType: 1
+  autoFireLevelReq: 0
+  autoFireToggle: {fileID: 0}
   projectile: {fileID: 1816421631133504, guid: 1aacc76c6213b6c4c8dd01f45bbeb948, type: 2}
   projectileSpawns:
   - {fileID: 4327984786120038}
   amountOfProjectiles: 0
-  useUI: {fileID: 1522565143467558}
   anim: {fileID: 0}
-  myBuilder: {fileID: 0}
   damage:
     baseValue: 30
     currentValue: 30
@@ -1299,6 +1307,8 @@ MonoBehaviour:
   minXRotation: -20
   rotationSpeed: 100
   rotationSlider: {fileID: 114462213101195302}
+  rotatableWeapon: {fileID: 4342353219132358}
+  autoFireNotification: {fileID: 0}
 --- !u!114 &114908650767097798
 MonoBehaviour:
   m_ObjectHideFlags: 1
