@@ -62,11 +62,11 @@ public class CastleRoom_Ambush : CastleRoom
         upgradeStatsText.text = "Damage amount: " + damageAmount.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(damageAmount.increaseValue) + "</color>)" + "\n" +
                                 "Cooldown: " + useCooldown.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(useCooldown.increaseValue) + "</color>)";
 
-        if (roomLevel == 4)
+        if (myLevel == 4)
         {
             nextLevelExtraUpgradeText.text = "Next level will unlock the ambush: meteor strike";
         }
-        else if (roomLevel == 9)
+        else if (myLevel == 9)
         {
             nextLevelExtraUpgradeText.text = "Next level will unlock the ambush: spear rain";
         }
@@ -75,12 +75,12 @@ public class CastleRoom_Ambush : CastleRoom
             nextLevelExtraUpgradeText.text = string.Empty;
         }
 
-        if (roomLevel >= 5)
+        if (myLevel >= 5)
         {
             meteorStrikeButton.SetActive(true);
         }
 
-        if (roomLevel >= 10)
+        if (myLevel >= 10)
         {
             spearRainButton.SetActive(true);
         }
@@ -128,7 +128,7 @@ public class CastleRoom_Ambush : CastleRoom
                 break;
         }
 
-        StopUsing();
+        StopUsingButton();
     }
 
     private IEnumerator ProjectileRain(string projectile, int rainRows, int rainColumns, float rainDistOffset, float rainSpawnDelay, float rainSpawnOffset, bool addTorque, float screenShakeAmount)
@@ -230,7 +230,7 @@ public class CastleRoom_Ambush : CastleRoom
 
     public override void Upgrade()
     {
-        if (!ResourceManager.instance.HasEnoughGold((int)upgradeCost.currentValue) || roomLevel >= maxRoomLevel)
+        if (!ResourceManager.instance.HasEnoughGold((int)myUpgradeCost.currentValue) || myLevel >= myMaxLevel)
         {
             return;
         }

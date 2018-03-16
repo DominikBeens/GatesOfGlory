@@ -437,7 +437,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1734355286776504}
-  m_LocalRotation: {x: -0.6044855, y: -0.366875, z: 0.36687562, w: 0.6044851}
+  m_LocalRotation: {x: -0.6044856, y: -0.36687502, z: 0.36687565, w: 0.60448515}
   m_LocalPosition: {x: 0.12619972, y: 2.68507, z: 0.005819559}
   m_LocalScale: {x: 0.30000013, y: 0.3000001, z: 0.30000022}
   m_Children: []
@@ -520,7 +520,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1211034835806006}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.7517705, y: 0.5600001, z: -1.1133652}
+  m_LocalPosition: {x: 1.7279623, y: 0, z: 16.21117}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4710168499879900}
@@ -1277,16 +1277,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7bad41b5f439fe46943c3a8e976cae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 2
   side: 0
-  weaponName: Ballista
-  weaponLevel: 1
-  weaponMaxLevel: 15
-  buildCost: 10
-  upgradeCost:
+  myBuilder: {fileID: 0}
+  goldSpentOnThisObject: 0
+  myName: Catapult
+  myLevel: 1
+  myMaxLevel: 15
+  myBuildCost: 10
+  myUpgradeCost:
     baseValue: 3
     currentValue: 3
-    increaseValue: 2
+    increaseValue: 1
+  useUI: {fileID: 1517839146176254}
+  upgradePanel: {fileID: 0}
+  demolishPanel: {fileID: 0}
+  buyUpgradeButton: {fileID: 0}
+  upgradeStatsText: {fileID: 0}
+  upgradeCostText: {fileID: 0}
+  weaponType: 2
   autoFireLevelReq: 0
   autoFireToggle: {fileID: 1733416815124740}
   rotatableWeapon: {fileID: 4146024740496584}
@@ -1294,10 +1302,7 @@ MonoBehaviour:
   projectileSpawns:
   - {fileID: 4072446347910002}
   amountOfProjectiles: 0
-  useUI: {fileID: 1517839146176254}
   anim: {fileID: 95480058980289596}
-  myBuilder: {fileID: 0}
-  goldSpentOnThisObject: 0
   damage:
     baseValue: 30
     currentValue: 30

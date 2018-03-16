@@ -48,12 +48,7 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
-        if (secondaryCamera)
-        {
-            transform.position = Camera.main.transform.position;
-            transform.rotation = Camera.main.transform.rotation;
-        }
-        else
+        if (!secondaryCamera)
         {
             if (canMove)
             {
@@ -73,6 +68,12 @@ public class CameraManager : MonoBehaviour
     {
         // Lerping camera position.
         transform.position = Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * smoothSpeed);
+
+        if (secondaryCamera)
+        {
+            transform.position = Camera.main.transform.position;
+            transform.rotation = Camera.main.transform.rotation;
+        }
     }
 
     private void MoveCam()

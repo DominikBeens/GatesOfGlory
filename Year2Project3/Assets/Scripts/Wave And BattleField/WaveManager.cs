@@ -66,7 +66,7 @@ public class WaveManager : MonoBehaviour
             {
                 if (CastleUpgradeManager.instance.allBuiltRooms[ii].roomType == CastleRoom.RoomType.Heal)
                 {
-                    if (CastleUpgradeManager.instance.allBuiltRooms[ii].roomLevel >= 5)
+                    if (CastleUpgradeManager.instance.allBuiltRooms[ii].myLevel >= 5)
                     {
                         BattleManager.instance.newDeffensePoints[i].gate.GetComponent<Gate>().Heal(50);
                     }

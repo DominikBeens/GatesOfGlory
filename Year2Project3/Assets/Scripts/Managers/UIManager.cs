@@ -15,7 +15,6 @@ public class UIManager : MonoBehaviour
     public GameObject gameOverPanel;
     public Animator screenFadeAnim;
     public Animator gameOverAnimator;
-    public Transform gameOverCamSpawn;
 
     [Header("Pause")]
     public GameObject pausePanel;
@@ -31,6 +30,7 @@ public class UIManager : MonoBehaviour
     public GameObject gameInfoPanel;
     public GameObject waveTimerPanel;
     public PlayableDirector startGameTLDirector;
+    public bool showStartGameAnimation = true;
 
     [Header("Not Enough Gold Icon")]
     public GameObject notEnoughGoldIcon;
@@ -44,7 +44,24 @@ public class UIManager : MonoBehaviour
             instance = this;
         }
 
-        StartCoroutine(StartGame());
+        if (showStartGameAnimation)
+        {
+            StartCoroutine(StartGame());
+        }
+        else
+        {
+            gameOverAnimator.enabled = false;
+            canPause = true;
+
+            gameInfoPanel.SetActive(true);
+            waveTimerPanel.SetActive(true);
+            UICam.SetActive(true);
+            startGameTLDirector.enabled = false;
+
+            GameManager.instance.gameState = GameManager.GameState.Playing;
+
+            WaveManager.instance.NextWave();
+        }
     }
 
     private void Update()
@@ -66,6 +83,8 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator StartGame()
     {
+        GameManager.instance.gameState = GameManager.GameState.Cinematic;
+
         canPause = false;
 
         CameraManager mainCamManager = Camera.main.GetComponent<CameraManager>();
@@ -97,7 +116,7 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator GameOver()
     {
-        CastleUpgradeManager.instance.CloseAllUI();
+        CastleUpgradeManager.instance.CloseAllUI(null);
         canPause = false;
         GameManager.instance.gameState = GameManager.GameState.Cinematic;
 

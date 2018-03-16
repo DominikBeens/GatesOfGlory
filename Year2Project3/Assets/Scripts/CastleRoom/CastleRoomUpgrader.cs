@@ -7,7 +7,6 @@ public class CastleRoomUpgrader : MonoBehaviour
 {
 
     public GameObject buildUI;
-    public GameObject upgradeUI;
 
     public TextMeshProUGUI selectRoomText;
 
@@ -16,7 +15,6 @@ public class CastleRoomUpgrader : MonoBehaviour
 
     private void Awake()
     {
-        upgradeUI.SetActive(false);
         buildUI.SetActive(false);
     }
 
@@ -37,7 +35,6 @@ public class CastleRoomUpgrader : MonoBehaviour
         if (CastleUpgradeManager.selectedBuild.myBuildedObject != null)
         {
             CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleRoom>().StartUsing();
-            //CastleUpgradeManager.instance.CloseAllUI();
         }
     }
 
@@ -109,7 +106,6 @@ public class CastleRoomUpgrader : MonoBehaviour
 
     private void OnDisable()
     {
-        upgradeUI.SetActive(false);
         buildUI.SetActive(false);
     }
 }

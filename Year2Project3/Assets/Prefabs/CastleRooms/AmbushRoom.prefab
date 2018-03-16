@@ -802,7 +802,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1417063403201582}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.0237956, y: 1.88, z: -1.5394855}
+  m_LocalPosition: {x: -20.79, y: -0, z: -9.7157}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4509385976185438}
@@ -2489,25 +2489,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449f8df43f2d2d04c993a8faa9b2fdaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomType: 6
   side: 0
-  roomName: Ambush
-  roomLevel: 1
-  maxRoomLevel: 15
-  buildCost: 25
-  upgradeCost:
-    baseValue: 15
-    currentValue: 15
-    increaseValue: 3
   myBuilder: {fileID: 0}
   goldSpentOnThisObject: 0
+  myName: Ambush Room
+  myLevel: 1
+  myMaxLevel: 10
+  myBuildCost: 25
+  myUpgradeCost:
+    baseValue: 6
+    currentValue: 6
+    increaseValue: 2
+  useUI: {fileID: 1310946753476040}
   upgradePanel: {fileID: 1108611497024950}
+  demolishPanel: {fileID: 1475648110364916}
   buyUpgradeButton: {fileID: 114536784819319526}
   upgradeStatsText: {fileID: 114686838998251872}
   upgradeCostText: {fileID: 114542224967741148}
+  roomType: 6
   roomNameText: {fileID: 114862070438982632}
-  useUI: {fileID: 1310946753476040}
-  demolishPanel: {fileID: 1475648110364916}
   useCooldown:
     baseValue: 45
     currentValue: 45

@@ -792,7 +792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1545593190250498
 GameObject:
   m_ObjectHideFlags: 1
@@ -1058,7 +1058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1657834072063844
 GameObject:
   m_ObjectHideFlags: 1
@@ -2011,7 +2011,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1258482574334662}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.5212812, y: 0.5600001, z: 0.09318304}
+  m_LocalPosition: {x: 30.826595, y: 0, z: -8.842856}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4968926522639236}
@@ -6143,25 +6143,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb96546db67e3864f8db07101a34fbe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomType: 0
   side: 0
-  roomName: Knight Room
-  roomLevel: 1
-  maxRoomLevel: 10
-  buildCost: 15
-  upgradeCost:
-    baseValue: 5
-    currentValue: 5
-    increaseValue: 3
   myBuilder: {fileID: 0}
   goldSpentOnThisObject: 0
+  myName: Knight Room
+  myLevel: 1
+  myMaxLevel: 10
+  myBuildCost: 10
+  myUpgradeCost:
+    baseValue: 5
+    currentValue: 5
+    increaseValue: 1
+  useUI: {fileID: 1544753736834150}
   upgradePanel: {fileID: 1792789951630432}
+  demolishPanel: {fileID: 1651483591867090}
   buyUpgradeButton: {fileID: 114440381351808240}
   upgradeStatsText: {fileID: 114742955941147748}
   upgradeCostText: {fileID: 114333855464637488}
+  roomType: 0
   roomNameText: {fileID: 114771465130788118}
-  useUI: {fileID: 1544753736834150}
-  demolishPanel: {fileID: 1651483591867090}
   minionToSpawn: {fileID: 1357994592998048, guid: 7e060cdcf6fdaf643bcac33afd9a64b4,
     type: 2}
   minionSpawnPoint: {fileID: 4625714402741780}
@@ -47761,9 +47761,9 @@ RectTransform:
   m_Father: {fileID: 224426222902147092}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 113.5, y: -57.22}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224318588876052114
@@ -47899,9 +47899,9 @@ RectTransform:
   m_Father: {fileID: 224426222902147092}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 193.5, y: -57.22}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224419587607869374
@@ -48121,9 +48121,9 @@ RectTransform:
   m_Father: {fileID: 224426222902147092}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 273.5, y: -57.22}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224814542435843854

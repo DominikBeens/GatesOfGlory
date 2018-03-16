@@ -87,7 +87,7 @@ public class CastleRoom_Damage : CastleRoom
 
     public override void Upgrade()
     {
-        if (!ResourceManager.instance.HasEnoughGold((int)upgradeCost.currentValue) || roomLevel >= maxRoomLevel)
+        if (!ResourceManager.instance.HasEnoughGold((int)myUpgradeCost.currentValue) || myLevel >= myMaxLevel)
         {
             return;
         }

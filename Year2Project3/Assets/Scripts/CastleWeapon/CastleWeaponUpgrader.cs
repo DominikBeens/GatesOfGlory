@@ -73,14 +73,14 @@ public class CastleWeaponUpgrader : MonoBehaviour
     {
         CastleWeapon weaponComponent = CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleWeapon>();
 
-        weaponNameText.text = "Level <color=green>" + weaponComponent.weaponLevel.ToString() + "</color> " + weaponComponent.weaponName;
+        weaponNameText.text = "Level <color=green>" + weaponComponent.myLevel.ToString() + "</color> " + weaponComponent.myName;
         weaponDamageText.text = "Damage: <color=green>" + weaponComponent.damage.currentValue + "</color>";
         weaponForceText.text = "Force: <color=green>" + weaponComponent.force.currentValue + "</color>";
         weaponFireRateText.text = "Fire Rate: <color=green>" + weaponComponent.cooldown.currentValue.ToString("f2") + "</color>";
 
-        upgradeText.text = "<color=#FFF800FF>" + weaponComponent.upgradeCost.currentValue + "</color>";
+        upgradeText.text = "<color=#FFF800FF>" + weaponComponent.myUpgradeCost.currentValue + "</color>";
 
-        if (weaponComponent.weaponLevel < weaponComponent.weaponMaxLevel)
+        if (weaponComponent.myLevel < weaponComponent.myMaxLevel)
         {
             buyUpgradeButton.SetActive(true);
         }
@@ -89,7 +89,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
             buyUpgradeButton.SetActive(false);
         }
 
-        if (weaponComponent.weaponLevel >= weaponComponent.autoFireLevelReq)
+        if (weaponComponent.myLevel >= weaponComponent.autoFireLevelReq)
         {
             weaponComponent.autoFireToggle.SetActive(true);
         }
@@ -98,7 +98,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
             weaponComponent.autoFireToggle.SetActive(false);
         }
 
-        if (weaponComponent.weaponLevel == weaponComponent.autoFireLevelReq - 1)
+        if (weaponComponent.myLevel == weaponComponent.autoFireLevelReq - 1)
         {
             autoFireUpdateText.SetActive(true);
         }
@@ -120,7 +120,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
     {
         CastleWeapon weaponComponent = CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleWeapon>();
 
-        if (weaponComponent.weaponLevel >= weaponComponent.weaponMaxLevel)
+        if (weaponComponent.myLevel >= weaponComponent.myMaxLevel)
         {
             return;
         }
@@ -182,7 +182,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
     {
         CastleWeapon weaponComponent = CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleWeapon>();
 
-        if (!ResourceManager.instance.HasEnoughGold((int)weaponComponent.upgradeCost.currentValue) || weaponComponent.weaponLevel >= weaponComponent.weaponMaxLevel)
+        if (!ResourceManager.instance.HasEnoughGold((int)weaponComponent.myUpgradeCost.currentValue) || weaponComponent.myLevel >= weaponComponent.myMaxLevel)
         {
             return;
         }
@@ -192,21 +192,21 @@ public class CastleWeaponUpgrader : MonoBehaviour
         weaponComponent.cooldown.currentValue += weaponComponent.cooldown.increaseValue;
         weaponComponent.anim.speed = 1 / weaponComponent.cooldown.currentValue;
 
-        ResourceManager.instance.RemoveGold((int)weaponComponent.upgradeCost.currentValue);
+        ResourceManager.instance.RemoveGold((int)weaponComponent.myUpgradeCost.currentValue);
 
-        weaponComponent.goldSpentOnThisObject += (int)weaponComponent.upgradeCost.currentValue;
-        weaponComponent.upgradeCost.currentValue += weaponComponent.upgradeCost.increaseValue;
-        weaponComponent.weaponLevel++;
+        weaponComponent.goldSpentOnThisObject += (int)weaponComponent.myUpgradeCost.currentValue;
+        weaponComponent.myUpgradeCost.currentValue += weaponComponent.myUpgradeCost.increaseValue;
+        weaponComponent.myLevel++;
 
         OpenUpgradeUIButton();
         ShowUpgradeBenefits();
 
-        if (weaponComponent.weaponLevel >= weaponComponent.weaponMaxLevel)
+        if (weaponComponent.myLevel >= weaponComponent.myMaxLevel)
         {
             buyUpgradeButton.SetActive(false);
         }
 
-        if (weaponComponent.weaponLevel >= weaponComponent.autoFireLevelReq)
+        if (weaponComponent.myLevel >= weaponComponent.autoFireLevelReq)
         {
             weaponComponent.autoFireToggle.SetActive(true);
         }

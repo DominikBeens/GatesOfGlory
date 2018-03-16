@@ -41,7 +41,7 @@ public class CastleBuilder : MonoBehaviour
         {
             if (availableBuilds[i].GetComponent<CastleWeapon>().weaponType == type)
             {
-                if (!ResourceManager.instance.HasEnoughGold(availableBuilds[i].GetComponent<CastleWeapon>().buildCost))
+                if (!ResourceManager.instance.HasEnoughGold(availableBuilds[i].GetComponent<CastleWeapon>().myBuildCost))
                 {
                     return;
                 }
@@ -72,9 +72,9 @@ public class CastleBuilder : MonoBehaviour
                 buildButton.SetActive(false);
                 useButton.SetActive(true);
 
-                CastleUpgradeManager.instance.CloseAllUI();
+                CastleUpgradeManager.instance.CloseAllUI(null);
 
-                ResourceManager.instance.RemoveGold(availableBuilds[i].GetComponent<CastleWeapon>().buildCost);
+                ResourceManager.instance.RemoveGold(availableBuilds[i].GetComponent<CastleWeapon>().myBuildCost);
                 return;
             }
         }
@@ -86,7 +86,7 @@ public class CastleBuilder : MonoBehaviour
         {
             if (availableBuilds[i].GetComponent<CastleRoom>().roomType == type)
             {
-                if (!ResourceManager.instance.HasEnoughGold(availableBuilds[i].GetComponent<CastleRoom>().buildCost))
+                if (!ResourceManager.instance.HasEnoughGold(availableBuilds[i].GetComponent<CastleRoom>().myBuildCost))
                 {
                     return;
                 }
@@ -117,9 +117,9 @@ public class CastleBuilder : MonoBehaviour
                 buildButton.SetActive(false);
                 useButton.SetActive(true);
 
-                CastleUpgradeManager.instance.CloseAllUI();
+                CastleUpgradeManager.instance.CloseAllUI(null);
 
-                ResourceManager.instance.RemoveGold(availableBuilds[i].GetComponent<CastleRoom>().buildCost);
+                ResourceManager.instance.RemoveGold(availableBuilds[i].GetComponent<CastleRoom>().myBuildCost);
                 return;
             }
         }
@@ -140,7 +140,7 @@ public class CastleBuilder : MonoBehaviour
             ResourceManager.instance.AddGold(room.goldSpentOnThisObject / 2);
         }
 
-        CastleUpgradeManager.instance.CloseAllUI();
+        CastleUpgradeManager.instance.CloseAllUI(null);
 
         ObjectPooler.instance.GrabFromPool("demolish particle", myBuildedObject.transform.position, Quaternion.identity);
         myBuildedObject.GetComponent<Animator>().SetTrigger("Destroy");

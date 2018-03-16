@@ -39009,7 +39009,6 @@ MonoBehaviour:
   gameOverPanel: {fileID: 434084112}
   screenFadeAnim: {fileID: 890374883}
   gameOverAnimator: {fileID: 1789650937}
-  gameOverCamSpawn: {fileID: 0}
   pausePanel: {fileID: 1122694640}
   waveText: {fileID: 650586129}
   waveHealthFill: {fileID: 568269841}
@@ -39018,6 +39017,7 @@ MonoBehaviour:
   gameInfoPanel: {fileID: 445009224}
   waveTimerPanel: {fileID: 962544107}
   startGameTLDirector: {fileID: 1789650938}
+  showStartGameAnimation: 0
   notEnoughGoldIcon: {fileID: 1193352398}
   notEnoughGoldIconDisplayTime: 1
 --- !u!1001 &2040557820

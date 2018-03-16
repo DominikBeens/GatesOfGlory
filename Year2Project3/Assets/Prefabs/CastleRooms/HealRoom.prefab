@@ -1348,7 +1348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1728949793624350
 GameObject:
   m_ObjectHideFlags: 1
@@ -2887,7 +2887,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1849405394902148}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.434263, y: 0.5600001, z: -0.016010761}
+  m_LocalPosition: {x: 9.723807, y: 0, z: -8.21238}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4110259011673406}
@@ -4909,25 +4909,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64361b8321ef9fc469041c5b3d2bd969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomType: 4
   side: 0
-  roomName: Healing Room
-  roomLevel: 1
-  maxRoomLevel: 10
-  buildCost: 10
-  upgradeCost:
-    baseValue: 2
-    currentValue: 2
-    increaseValue: 1
   myBuilder: {fileID: 0}
   goldSpentOnThisObject: 0
+  myName: Healing Room
+  myLevel: 1
+  myMaxLevel: 10
+  myBuildCost: 15
+  myUpgradeCost:
+    baseValue: 4
+    currentValue: 4
+    increaseValue: 2
+  useUI: {fileID: 1102115106772004}
   upgradePanel: {fileID: 1711609715377944}
+  demolishPanel: {fileID: 1758837585601118}
   buyUpgradeButton: {fileID: 114766587696289712}
   upgradeStatsText: {fileID: 114683341204485742}
   upgradeCostText: {fileID: 114661094180698304}
+  roomType: 4
   roomNameText: {fileID: 114733270392880054}
-  useUI: {fileID: 1102115106772004}
-  demolishPanel: {fileID: 1758837585601118}
   useCooldown:
     baseValue: 15
     currentValue: 15

@@ -8,8 +8,6 @@ public class CastleUpgradeManager : MonoBehaviour
 
     public static CastleBuilder selectedBuild;
 
-    public float uiScaleDivider;
-
     public GameObject castleWeaponUI;
     public GameObject castleRoomUI;
 
@@ -36,7 +34,7 @@ public class CastleUpgradeManager : MonoBehaviour
 
             if (Input.GetButtonDown("Cancel"))
             {
-                CloseAllUI();
+                CloseAllUI(null);
             }
         }
     }
@@ -85,22 +83,7 @@ public class CastleUpgradeManager : MonoBehaviour
         selectedBuild = null;
     }
 
-    public void CloseAllUI()
-    {
-        GetComponent<Animator>().SetTrigger("CloseUI");
-
-        for (int i = 0; i < allBuiltWeapons.Count; i++)
-        {
-            allBuiltWeapons[i].StopUsing();
-        }
-
-        for (int i = 0; i < allBuiltRooms.Count; i++)
-        {
-            allBuiltRooms[i].StopUsing();
-        }
-    }
-
-    public void CloseAllUI(CastleWeapon exception)
+    public void CloseAllUI(CastleBuild exception)
     {
         GetComponent<Animator>().SetTrigger("CloseUI");
 
@@ -108,30 +91,15 @@ public class CastleUpgradeManager : MonoBehaviour
         {
             if (allBuiltWeapons[i] != exception)
             {
-                allBuiltWeapons[i].StopUsing();
+                allBuiltWeapons[i].StopUsingButton();
             }
-        }
-
-        for (int i = 0; i < allBuiltRooms.Count; i++)
-        {
-            allBuiltRooms[i].StopUsing();
-        }
-    }
-
-    public void CloseAllUI(CastleRoom exception)
-    {
-        GetComponent<Animator>().SetTrigger("CloseUI");
-
-        for (int i = 0; i < allBuiltWeapons.Count; i++)
-        {
-            allBuiltWeapons[i].StopUsing();
         }
 
         for (int i = 0; i < allBuiltRooms.Count; i++)
         {
             if (allBuiltRooms[i] != exception)
             {
-                allBuiltRooms[i].StopUsing();
+                allBuiltRooms[i].StopUsingButton();
             }
         }
     }
@@ -140,12 +108,12 @@ public class CastleUpgradeManager : MonoBehaviour
     {
         for (int i = 0; i < allBuiltWeapons.Count; i++)
         {
-            allBuiltWeapons[i].StopUsing();
+            allBuiltWeapons[i].StopUsingButton();
         }
 
         for (int i = 0; i < allBuiltRooms.Count; i++)
         {
-            allBuiltRooms[i].StopUsing();
+            allBuiltRooms[i].StopUsingButton();
         }
     }
 

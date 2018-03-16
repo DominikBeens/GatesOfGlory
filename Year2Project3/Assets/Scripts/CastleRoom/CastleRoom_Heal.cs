@@ -27,7 +27,7 @@ public class CastleRoom_Heal : CastleRoom
         upgradeStatsText.text = "Heal amount: " + healAmount.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(healAmount.increaseValue) + "</color>)" + "\n" +
                                 "Cooldown: " + useCooldown .currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(useCooldown.increaseValue) + "</color>)";
 
-        if (roomLevel == 4)
+        if (myLevel == 4)
         {
             nextLevelExtraUpgradeText.text = "Next level will heal both gates at the end of each turn.";
         }
@@ -74,7 +74,7 @@ public class CastleRoom_Heal : CastleRoom
 
     public override void Upgrade()
     {
-        if (!ResourceManager.instance.HasEnoughGold((int)upgradeCost.currentValue) || roomLevel >= maxRoomLevel)
+        if (!ResourceManager.instance.HasEnoughGold((int)myUpgradeCost.currentValue) || myLevel >= myMaxLevel)
         {
             return;
         }

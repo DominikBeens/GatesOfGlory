@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-public class CastleWeapon : MonoBehaviour 
+public class CastleWeapon : CastleBuild 
 {
 
     public enum WeaponType
@@ -13,19 +15,7 @@ public class CastleWeapon : MonoBehaviour
     }
     public WeaponType weaponType;
 
-    public enum Side
-    {
-        Left,
-        Right
-    }
-    public Side side;
-
-    [Header("Basic Properties")]
-    public string weaponName;
-    public int weaponLevel;
-    public int weaponMaxLevel;
-    public int buildCost;
-    public Stat upgradeCost;
+    [Header("Auto-Fire")]
     public int autoFireLevelReq;
     public GameObject autoFireToggle;
 
@@ -44,13 +34,7 @@ public class CastleWeapon : MonoBehaviour
     }
     public AmountOfProjectiles amountOfProjectiles;
 
-    public GameObject useUI;
     public Animator anim;
-
-    [HideInInspector]
-    public CastleBuilder myBuilder;
-    [HideInInspector]
-    public int goldSpentOnThisObject;
 
     [Header("Stats")]
     public Stat damage;
@@ -62,11 +46,9 @@ public class CastleWeapon : MonoBehaviour
     public float maxXRotation;
     public float minXRotation;
 
-    public virtual void Awake()
+    public override void Awake()
     {
-        useUI.SetActive(false);
-
-        goldSpentOnThisObject += buildCost;
+        base.Awake();
     }
 
     public virtual void Update()
@@ -86,9 +68,14 @@ public class CastleWeapon : MonoBehaviour
 
             if (Input.GetButtonDown("Cancel"))
             {
-                StopUsing();
+                StopUsingButton();
             }
         }
+    }
+
+    public override void SetupUI()
+    {
+
     }
 
     public virtual void Shoot()
@@ -96,7 +83,7 @@ public class CastleWeapon : MonoBehaviour
 
     }
 
-    public void Upgrade()
+    public override void Upgrade()
     {
 
     }
@@ -111,34 +98,9 @@ public class CastleWeapon : MonoBehaviour
         autoFire = !autoFire;
     }
 
-    public virtual void StartUsing()
+    public override void StopUsingButton()
     {
-        usingWeapon = true;
-        useUI.SetActive(true);
-
-        CastleUpgradeManager.instance.CloseAllUI(this);
-    }
-
-    public virtual void StopUsing()
-    {
-        StartCoroutine(EventStopUsing());
-    }
-
-    public IEnumerator EventStopUsing()
-    {
-        if (useUI.activeInHierarchy)
-        {
-            useUI.GetComponent<Animator>().SetTrigger("CloseUI");
-        }
-
-        yield return new WaitForSeconds(0.5f);
-
-        myBuilder.useButton.SetActive(true);
-
-        usingWeapon = false;
-        shooting = false;
-
-        useUI.SetActive(false);
+        base.StopUsingButton();
     }
 
     public void SetLeftSide()
@@ -151,10 +113,5 @@ public class CastleWeapon : MonoBehaviour
         side = Side.Right;
         transform.rotation = Quaternion.Euler(0, 180, 0);
         useUI.transform.parent.parent.rotation = Quaternion.Euler(Vector3.zero);
-    }
-
-    private void OnDisable()
-    {
-        goldSpentOnThisObject = 0;
     }
 }
