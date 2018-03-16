@@ -12,9 +12,8 @@ public class Allie : Soldier
         agent.SetDestination(targetTransform.position);
     }
 
-    public override void Update()
+    void Update()
     {
-        base.Update();
         GetNewTarget();
     }
 
@@ -27,7 +26,6 @@ public class Allie : Soldier
         }
         if (inFight)
         {
-            Debug.Log("K");
             agent.isStopped = true;
             return;
         }
@@ -98,11 +96,13 @@ public class Allie : Soldier
     {
         Transform _attackingCurrently = targetTransform;
         yield return new WaitForSeconds(attackCooldown);
-        if (targetTransform != null && targetTransform.tag == "Enemy" && targetTransform == _attackingCurrently)
-        {
+        if(targetTransform != null && targetTransform.tag == "Enemy" && targetTransform == _attackingCurrently) {
             targetTransform.GetComponent<Enemy>().TakeDamage(myStats.damage.currentValue);
-            //death Animation
             StartCoroutine(Attack());
+        }
+        else {
+            anim.SetBool("Attack", false);
+            anim.SetBool("Idle", false);
         }
     }
 

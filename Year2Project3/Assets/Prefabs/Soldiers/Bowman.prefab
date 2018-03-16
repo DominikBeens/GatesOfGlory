@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 65392191819248120}
   - component: {fileID: 82162788758268966}
   m_Layer: 11
-  m_Name: Enemy BowMan
+  m_Name: Bowman
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1140,7 +1140,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1290007159097650}
   m_LocalRotation: {x: -0.7061883, y: 0.03602518, z: 0.7061888, w: 0.03602532}
-  m_LocalPosition: {x: -0.638, y: 0.137, z: -0.233}
+  m_LocalPosition: {x: -0.638, y: 0.132, z: -0.251}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 4547526320177192}
@@ -1171,7 +1171,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385821130610866}
   m_LocalRotation: {x: -0, y: 0.0000014603136, z: -0, w: 1}
-  m_LocalPosition: {x: -33.189, y: 1.058, z: -1.878}
+  m_LocalPosition: {x: -32.328, y: 0.972, z: -1.7334456}
   m_LocalScale: {x: 0.8, y: 1, z: 0.8}
   m_Children:
   - {fileID: 4917153919954430}
@@ -1210,7 +1210,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2a6f007122852024b8d052c9228ab01b, type: 2}
+  - {fileID: 2100000, guid: ed5e35e7ef788364193b378d79382ef0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1618,7 +1618,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6a64216f82d207340b6b4886b47c9fdb, type: 2}
+  - {fileID: 2100000, guid: cd0ceef39024dba40902b8be82820268, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

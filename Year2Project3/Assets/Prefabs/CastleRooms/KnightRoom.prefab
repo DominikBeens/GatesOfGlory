@@ -554,6 +554,7 @@ GameObject:
   - component: {fileID: 33004045573574406}
   - component: {fileID: 23836695236752042}
   - component: {fileID: 95484234717391404}
+  - component: {fileID: 208078256301806350}
   m_Layer: 0
   m_Name: Stoel
   m_TagString: Untagged
@@ -47455,6 +47456,21 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!208 &208078256301806350
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362224842515048}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.09, y: 0.035, z: 0.41000003}
+  m_MoveThreshold: 0
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0.022000002, y: 0.21, z: 0.13100001}
+  m_TimeToStationary: 0
 --- !u!222 &222000273168700178
 CanvasRenderer:
   m_ObjectHideFlags: 1

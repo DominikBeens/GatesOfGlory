@@ -37,6 +37,7 @@ public class EnemyKnight : Enemy
 
         if (myStats.health.currentValue <= 0)
         {
+            StopAllCoroutines();
             ObjectPooler.instance.AddToPool("Enemy Knight", gameObject);
             ResourceManager.instance.AddGold(ResourceManager.instance.normalEnemyGoldReward);
         }

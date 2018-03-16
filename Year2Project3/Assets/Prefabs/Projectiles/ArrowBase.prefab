@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyArrow: 1
+  rb: {fileID: 0}
   type: 4
   myDamage: 0
   freezeOnImpact: 1
@@ -223,8 +224,7 @@ MonoBehaviour:
   trailParticle: {fileID: 1605669040419556}
   myArrow: {fileID: 4540413710555210}
   distance: 0
-  rb: {fileID: 54180949339954374}
-  arrowSpeed: 15
+  arrowSpeed: 30
   minAmount: 2
 --- !u!136 &136415169259618892
 CapsuleCollider:

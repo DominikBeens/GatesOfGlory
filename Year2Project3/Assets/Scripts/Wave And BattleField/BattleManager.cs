@@ -79,7 +79,7 @@ public class BattleManager : MonoBehaviour
         {
             for (int i = 0; i < RightDeffensePoints.Count; i++)
             {
-                if (RightDeffensePoints[i].gate.position.x > _myPosX || !RightDeffensePoints[i].gate.GetComponent<Gate>().gateOpen && RightDeffensePoints[i].gate.position.x > _myPosX)
+                if (!RightDeffensePoints[i].gate.GetComponent<Gate>().gateOpen && RightDeffensePoints[i].gate.position.x < _myPosX)
                 {
                     return (RightDeffensePoints[i].gate.transform);
                 }
@@ -90,7 +90,7 @@ public class BattleManager : MonoBehaviour
         {
             for (int i = 0; i < LeftDeffensePoints.Count; i++)
             {
-                if (LeftDeffensePoints[i].gate.position.x > _myPosX || !LeftDeffensePoints[i].gate.GetComponent<Gate>().gateOpen && LeftDeffensePoints[i].gate.position.x > _myPosX)
+                if (!LeftDeffensePoints[i].gate.GetComponent<Gate>().gateOpen && LeftDeffensePoints[i].gate.position.x > _myPosX)
                 {
                     return (LeftDeffensePoints[i].gate.transform);
                 }

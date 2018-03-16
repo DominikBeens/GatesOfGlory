@@ -8,6 +8,7 @@ public class Soldier : Damagebles{
     public float attackCooldown;
     public NavMeshAgent agent;
     public Transform targetTransform;
+    public Animator anim;
 
     [Header("Healthbar")]
     public Transform healthbarCanvas;
@@ -21,21 +22,4 @@ public class Soldier : Damagebles{
             Destroy(gameObject);
         }
     }
-
-    public virtual void Update()
-    {
-        //healthbarCanvas.LookAt(Camera.main.transform);
-    }
-
-    //public void ShowHealthbar()
-    //{
-    //    healthbarAnim.ResetTrigger("Hide");
-    //    healthbarAnim.SetTrigger("Show");
-    //}
-
-    //public void HideHealthbar()
-    //{
-    //    healthbarAnim.ResetTrigger("Show");
-    //    healthbarAnim.SetTrigger("Hide");
-    //}
 }

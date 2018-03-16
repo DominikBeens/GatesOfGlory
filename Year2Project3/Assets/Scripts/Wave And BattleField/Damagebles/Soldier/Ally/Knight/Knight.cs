@@ -7,12 +7,16 @@ public class Knight : Allie
 
     void OnTriggerEnter(Collider other)
     {
-        if (targetTransform != null && targetTransform == other.transform)
-        {
+        if(targetTransform != null && targetTransform == other.transform) {
+            anim.SetBool("Attack", true);
+            anim.SetBool("Idle", false);
             targetTransform.gameObject.GetComponent<Enemy>().StartBattle(this);
             inFight = true;
             agent.isStopped = true;
             StartCoroutine(Attack());
+        }
+        else {
+            anim.SetBool("Idle", true);
         }
     }
 
@@ -32,6 +36,7 @@ public class Knight : Allie
         }
         else
         {
+            anim.SetBool("Idle", true);
             GetNewTarget();
         }
     }

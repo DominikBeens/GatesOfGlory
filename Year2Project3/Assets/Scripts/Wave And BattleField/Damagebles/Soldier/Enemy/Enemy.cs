@@ -18,9 +18,8 @@ public class Enemy : Soldier
         BattleManager.instance.freeEnemys.Add(gameObject);
     }
 
-    public override void Update()
+    void Update()
     {
-        base.Update();
         FindNewTarget();
     }
 
@@ -61,6 +60,7 @@ public class Enemy : Soldier
 
     public void StartBattle(Damagebles _target)
     {
+        anim.SetBool("Attack", true);
         target = _target;
         agent.isStopped = true;
         StartCoroutine(Attack());
@@ -74,6 +74,7 @@ public class Enemy : Soldier
         }
         else
         {
+            anim.SetBool("Attack", false);
             agent.isStopped = false;
             FindNewTarget();
         }
@@ -82,8 +83,8 @@ public class Enemy : Soldier
     public virtual void FindNewTarget()
     {
         Transform newTarget = BattleManager.instance.EnemyGetTarget(transform.position.x);
-        if (targetTransform != newTarget)
-        {
+        if (targetTransform != newTarget){
+            anim.SetBool("Attack", false);
             StopCoroutine(Attack());
             targetTransform = newTarget;
             agent.SetDestination(targetTransform.position);
