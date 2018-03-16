@@ -837,7 +837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1927091610068266
 GameObject:
   m_ObjectHideFlags: 1
@@ -3869,7 +3869,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114845373663026214}
-        m_MethodName: StopUsing
+        m_MethodName: StopUsingButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

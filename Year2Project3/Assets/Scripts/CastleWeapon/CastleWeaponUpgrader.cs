@@ -7,8 +7,6 @@ public class CastleWeaponUpgrader : MonoBehaviour
 {
 
     public GameObject buildUI;
-    public GameObject upgradeUI;
-    public GameObject demolishUI;
     [Space(10)]
     public TextMeshProUGUI upgradeText;
 
@@ -31,9 +29,7 @@ public class CastleWeaponUpgrader : MonoBehaviour
 
     private void Awake()
     {
-        upgradeUI.SetActive(false);
         buildUI.SetActive(false);
-        demolishUI.SetActive(false);
     }
 
     public void OpenUI()
@@ -41,21 +37,19 @@ public class CastleWeaponUpgrader : MonoBehaviour
         if (CastleUpgradeManager.selectedBuild.myBuildedObject == null)
         {
             buildWeaponButton.SetActive(true);
-            useWeaponButton.SetActive(false);
-            upgradeWeaponButton.SetActive(false);
-            demolishWeaponButton.SetActive(false);
+            gameObject.SetActive(true);
         }
         else
         {
             buildWeaponButton.SetActive(false);
-            useWeaponButton.SetActive(true);
-            upgradeWeaponButton.SetActive(true);
-            demolishWeaponButton.SetActive(true);
         }
 
-        gameObject.SetActive(true);
-
         CastleUpgradeManager.selectedBuild.buildButton.SetActive(false);
+
+        if (CastleUpgradeManager.selectedBuild.myBuildedObject != null)
+        {
+            CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleWeapon>().StartUsing();
+        }
     }
 
     public void OpenBuildUIButton()
@@ -66,7 +60,6 @@ public class CastleWeaponUpgrader : MonoBehaviour
     public void UseWeaponButton()
     {
         CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleWeapon>().StartUsing();
-        //CastleUpgradeManager.instance.CloseAllUI();
     }
 
     public void OpenUpgradeUIButton()
@@ -107,13 +100,13 @@ public class CastleWeaponUpgrader : MonoBehaviour
             autoFireUpdateText.SetActive(false);
         }
 
-        if (demolishUI.activeInHierarchy)
-        {
-            demolishUI.GetComponent<Animator>().SetTrigger("CloseUI");
-            Invoke("DisableDemolishUI", demolishUI.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
-        }
+        //if (demolishUI.activeInHierarchy)
+        //{
+        //    demolishUI.GetComponent<Animator>().SetTrigger("CloseUI");
+        //    Invoke("DisableDemolishUI", demolishUI.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+        //}
 
-        upgradeUI.SetActive(true);
+        //upgradeUI.SetActive(true);
     }
 
     public void ShowUpgradeBenefits()
@@ -212,16 +205,16 @@ public class CastleWeaponUpgrader : MonoBehaviour
         }
     }
 
-    public void OpenDemolishUIButton()
-    {
-        if (upgradeUI.activeInHierarchy)
-        {
-            upgradeUI.GetComponent<Animator>().SetTrigger("CloseUI");
-            Invoke("DisableUpgradeUI", upgradeUI.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
-        }
+    //public void OpenDemolishUIButton()
+    //{
+    //    if (upgradeUI.activeInHierarchy)
+    //    {
+    //        upgradeUI.GetComponent<Animator>().SetTrigger("CloseUI");
+    //        Invoke("DisableUpgradeUI", upgradeUI.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+    //    }
 
-        demolishUI.SetActive(true);
-    }
+    //    demolishUI.SetActive(true);
+    //}
 
     public void DemolishButton()
     {
@@ -230,18 +223,16 @@ public class CastleWeaponUpgrader : MonoBehaviour
 
     private void OnDisable()
     {
-        upgradeUI.SetActive(false);
         buildUI.SetActive(false);
-        demolishUI.SetActive(false);
     }
 
-    private void DisableUpgradeUI()
-    {
-        upgradeUI.SetActive(false);
-    }
+    //private void DisableUpgradeUI()
+    //{
+    //    upgradeUI.SetActive(false);
+    //}
 
-    private void DisableDemolishUI()
-    {
-        demolishUI.SetActive(false);
-    }
+    //private void DisableDemolishUI()
+    //{
+    //    demolishUI.SetActive(false);
+    //}
 }

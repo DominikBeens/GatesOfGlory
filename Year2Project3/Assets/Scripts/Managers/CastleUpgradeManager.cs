@@ -50,7 +50,7 @@ public class CastleUpgradeManager : MonoBehaviour
 
         if (selectedBuild.myBuildedObject == null)
         {
-            CloseAllOtherUI();
+            CloseAllUI(null);
         }
 
         gameObject.SetActive(true);
@@ -101,19 +101,6 @@ public class CastleUpgradeManager : MonoBehaviour
             {
                 allBuiltRooms[i].StopUsingButton();
             }
-        }
-    }
-
-    public void CloseAllOtherUI()
-    {
-        for (int i = 0; i < allBuiltWeapons.Count; i++)
-        {
-            allBuiltWeapons[i].StopUsingButton();
-        }
-
-        for (int i = 0; i < allBuiltRooms.Count; i++)
-        {
-            allBuiltRooms[i].StopUsingButton();
         }
     }
 

@@ -19,7 +19,6 @@ public class CastleWeapon : CastleBuild
     public int autoFireLevelReq;
     public GameObject autoFireToggle;
 
-    protected bool usingWeapon;
     protected bool shooting;
     private bool autoFire;
 
@@ -53,7 +52,7 @@ public class CastleWeapon : CastleBuild
 
     public virtual void Update()
     {
-        if (usingWeapon || autoFire)
+        if (usingBuilding || autoFire)
         {
             useUI.transform.parent.parent.LookAt(Camera.main.transform);
 
@@ -96,11 +95,6 @@ public class CastleWeapon : CastleBuild
     public void ToggleAutoFire()
     {
         autoFire = !autoFire;
-    }
-
-    public override void StopUsingButton()
-    {
-        base.StopUsingButton();
     }
 
     public void SetLeftSide()

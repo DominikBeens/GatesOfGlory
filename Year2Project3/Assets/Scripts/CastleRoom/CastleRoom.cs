@@ -42,17 +42,7 @@ public class CastleRoom : CastleBuild
 
     public override void Upgrade()
     {
-        myLevel++;
 
-        ResourceManager.instance.RemoveGold((int)myUpgradeCost.currentValue);
-
-        goldSpentOnThisObject += (int)myUpgradeCost.currentValue;
-        myUpgradeCost.currentValue += myUpgradeCost.increaseValue;
-
-        if (myLevel >= myMaxLevel)
-        {
-            buyUpgradeButton.interactable = false;
-        }
     }
 
     public override void SetupUI()

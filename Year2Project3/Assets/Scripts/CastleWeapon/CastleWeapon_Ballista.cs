@@ -22,7 +22,7 @@ public class CastleWeapon_Ballista : CastleWeapon
     {
         base.Update();
 
-        if (usingWeapon)
+        if (usingBuilding)
         {
             Quaternion newRotation;
 

@@ -58,7 +58,17 @@ public class CastleBuild : MonoBehaviour
     // Upgrades the build if the player has enough gold.
     public virtual void Upgrade()
     {
+        myLevel++;
 
+        ResourceManager.instance.RemoveGold((int)myUpgradeCost.currentValue);
+
+        goldSpentOnThisObject += (int)myUpgradeCost.currentValue;
+        myUpgradeCost.currentValue += myUpgradeCost.increaseValue;
+
+        if (myLevel >= myMaxLevel)
+        {
+            buyUpgradeButton.interactable = false;
+        }
     }
 
     // Opens/closes the upgrade panel.
@@ -130,7 +140,7 @@ public class CastleBuild : MonoBehaviour
         SetupUI();
         useUI.SetActive(true);
 
-        CastleUpgradeManager.instance.CloseAllUI(null);
+        CastleUpgradeManager.instance.CloseAllUI(this);
     }
 
     // Stop using this build.

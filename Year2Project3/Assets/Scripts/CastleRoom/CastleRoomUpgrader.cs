@@ -9,8 +9,6 @@ public class CastleRoomUpgrader : MonoBehaviour
     public GameObject buildUI;
 
     public TextMeshProUGUI selectRoomText;
-
-    [Header("Buttons")]
     public GameObject buildRoomButton;
 
     private void Awake()
@@ -92,16 +90,6 @@ public class CastleRoomUpgrader : MonoBehaviour
                 CastleUpgradeManager.selectedBuild.BuildRoom(CastleRoom.RoomType.Ambush);
                 break;
         }
-    }
-
-    public void UseRoomButton()
-    {
-
-    }
-
-    public void UpgradeButton()
-    {
-
     }
 
     private void OnDisable()
