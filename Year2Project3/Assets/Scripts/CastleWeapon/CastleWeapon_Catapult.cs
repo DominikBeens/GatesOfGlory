@@ -28,8 +28,16 @@ public class CastleWeapon_Catapult : CastleWeapon
     {
         base.SetupUI();
 
-        upgradeStatsText.text = "Damage: " + damage.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(damage.increaseValue) + "</color>)\n" +
-                                "Fire Rate: " + cooldown.currentValue.ToString("f2") + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(cooldown.increaseValue) + "</color>)";
+        if (myLevel < myMaxLevel)
+        {
+            upgradeStatsText.text = "Damage: " + damage.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(damage.increaseValue) + "</color>)\n" +
+                                    "Fire Rate: " + cooldown.currentValue.ToString("f2") + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(cooldown.increaseValue) + "</color>)";
+        }
+        else
+        {
+            upgradeStatsText.text = "Damage: " + damage.currentValue + "\n" +
+                                    "Fire Rate: " + cooldown.currentValue.ToString("f2");
+        }
 
         if (myLevel == (autoFireLevelReq - 1))
         {

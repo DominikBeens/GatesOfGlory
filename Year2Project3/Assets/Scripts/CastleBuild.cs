@@ -35,6 +35,7 @@ public class CastleBuild : MonoBehaviour
 
     [Header("Upgrade Panel")]
     public Button buyUpgradeButton;
+    public GameObject upgradesMaxedOverlay;
     public TextMeshProUGUI upgradeStatsText;
     public TextMeshProUGUI upgradeCostText;
     [Space(10)]
@@ -70,6 +71,7 @@ public class CastleBuild : MonoBehaviour
         if (myLevel >= myMaxLevel)
         {
             buyUpgradeButton.interactable = false;
+            upgradesMaxedOverlay.SetActive(true);
         }
     }
 

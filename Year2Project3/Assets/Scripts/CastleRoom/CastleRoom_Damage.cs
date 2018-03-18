@@ -22,11 +22,20 @@ public class CastleRoom_Damage : CastleRoom
     {
         base.SetupUI();
 
-        descriptionText.text = "Strikes <color=green>" + amountOfEnemiesToDamage.currentValue + "</color> enemies for <color=green>" + damageAmount.currentValue + "</color> hp.";
+        descriptionText.text = "Strikes <color=green>" + amountOfEnemiesToDamage.currentValue + "</color> enemies for <color=green>" + damageAmount.currentValue + "</color> damage.";
 
-        upgradeStatsText.text = "Damage amount: " + damageAmount.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(damageAmount.increaseValue) + "</color>)" + "\n" +
-                                "Amount of targets: " + amountOfEnemiesToDamage.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(amountOfEnemiesToDamage.increaseValue) + "</color>)" + "\n" +
-                                "Cooldown: " + useCooldown.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(useCooldown.increaseValue) + "</color>)";
+        if (myLevel < myMaxLevel)
+        {
+            upgradeStatsText.text = "Damage amount: " + damageAmount.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(damageAmount.increaseValue) + "</color>)" + "\n" +
+                                    "Amount of targets: " + amountOfEnemiesToDamage.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(amountOfEnemiesToDamage.increaseValue) + "</color>)" + "\n" +
+                                    "Cooldown: " + useCooldown.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(useCooldown.increaseValue) + "</color>)";
+        }
+        else
+        {
+            upgradeStatsText.text = "Damage amount: " + damageAmount.currentValue + "\n" +
+                                    "Amount of targets: " + amountOfEnemiesToDamage.currentValue + "\n" +
+                                    "Cooldown: " + useCooldown.currentValue;
+        }
     }
 
     public override void Update()

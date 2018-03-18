@@ -85,6 +85,7 @@ public class UIManager : MonoBehaviour
     {
         GameManager.instance.gameState = GameManager.GameState.Cinematic;
 
+        Cursor.visible = false;
         canPause = false;
 
         CameraManager mainCamManager = Camera.main.GetComponent<CameraManager>();
@@ -112,6 +113,8 @@ public class UIManager : MonoBehaviour
         castleWeapons.SetActive(true);
         castleRooms.SetActive(true);
         startCinematicProps.SetActive(false);
+
+        Cursor.visible = true;
 
         GameManager.instance.gameState = GameManager.GameState.Playing;
 

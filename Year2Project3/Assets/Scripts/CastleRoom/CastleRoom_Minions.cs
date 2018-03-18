@@ -41,10 +41,18 @@ public class CastleRoom_Minions : CastleRoom
         base.SetupUI();
 
         roomTypeText.text = "Type: <color=green>" + roomType + "</color>";
-        roomMinionCostText.text = "Spawn Cost: " + spawnCost.currentValue;
+        roomMinionCostText.text = "Spawn Cost: <color=yellow>" + spawnCost.currentValue + "</color>";
 
-        upgradeStatsText.text = "Spawn cost: " + spawnCost.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(spawnCost.increaseValue) + "</color>)" + "\n" +
-                                "Spawns per buy: " + amountToSpawnPerBuy.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(amountToSpawnPerBuy.increaseValue) + "</color>)";
+        if (myLevel < myMaxLevel)
+        {
+            upgradeStatsText.text = "Spawn cost: " + spawnCost.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(spawnCost.increaseValue) + "</color>)" + "\n" +
+                                    "Spawns per buy: " + amountToSpawnPerBuy.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(amountToSpawnPerBuy.increaseValue) + "</color>)";
+        }
+        else
+        {
+            upgradeStatsText.text = "Spawn cost: " + spawnCost.currentValue + "\n" +
+                                    "Spawns per buy: " + amountToSpawnPerBuy.currentValue;
+        }
     }
 
     public override void UseRoom()
