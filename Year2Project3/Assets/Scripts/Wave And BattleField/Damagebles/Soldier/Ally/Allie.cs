@@ -23,10 +23,13 @@ public class Allie : Soldier
         {
             targetTransform = null;
             inFight = false;
+            anim.SetBool("Attack", false);
         }
         if (inFight)
         {
             agent.isStopped = true;
+            anim.SetBool("Attack", true);
+            anim.SetBool("Idle", false);
             return;
         }
         if (targetTransform != null)
@@ -49,6 +52,7 @@ public class Allie : Soldier
                     {
                         agent.SetDestination(targetTransform.position);
                     }
+                    anim.SetBool("Idle", false);
                 }
                 else
                 {
@@ -59,11 +63,13 @@ public class Allie : Soldier
                     targetTransform = newTarget;
                     agent.SetDestination(targetTransform.position);
                     agent.isStopped = false;
+                    anim.SetBool("Idle", false);
                 }
             }
             else if (targetTransform.tag == "Enemy" && agent.isStopped == false)
             {
                 agent.SetDestination(targetTransform.position);
+                anim.SetBool("Idle", false);
             }
         }
         else
@@ -76,6 +82,7 @@ public class Allie : Soldier
             targetTransform = newTarget;
             agent.SetDestination(targetTransform.position);
             agent.isStopped = false;
+            anim.SetBool("Idle", false);
         }
     }
 

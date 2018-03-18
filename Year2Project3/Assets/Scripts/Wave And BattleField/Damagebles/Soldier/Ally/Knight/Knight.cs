@@ -5,18 +5,15 @@ using UnityEngine;
 public class Knight : Allie
 {
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if(targetTransform != null && targetTransform == other.transform) {
+            targetTransform.gameObject.GetComponent<Enemy>().StartBattle(this);
             anim.SetBool("Attack", true);
             anim.SetBool("Idle", false);
-            targetTransform.gameObject.GetComponent<Enemy>().StartBattle(this);
             inFight = true;
             agent.isStopped = true;
             StartCoroutine(Attack());
-        }
-        else {
-            anim.SetBool("Idle", true);
         }
     }
 
@@ -25,6 +22,7 @@ public class Knight : Allie
         if (collision.transform == targetTransform)
         {
             agent.isStopped = true;
+            anim.SetBool("Idle", true);
         }
     }
 

@@ -1379,12 +1379,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myStats:
     health:
-      baseValue: 100
-      currentValue: 100
+      baseValue: 75
+      currentValue: 75
       increaseValue: 0
     damage:
-      baseValue: 10
-      currentValue: 10
+      baseValue: 8
+      currentValue: 8
       increaseValue: 0
   attackCooldown: 2
   agent: {fileID: 195985851031835828}
