@@ -7,7 +7,6 @@ public class CastleRoomUpgrader : MonoBehaviour
 {
 
     public GameObject buildUI;
-
     public TextMeshProUGUI selectRoomText;
     public GameObject buildRoomButton;
 

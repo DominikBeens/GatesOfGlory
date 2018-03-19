@@ -7,25 +7,8 @@ public class CastleWeaponUpgrader : MonoBehaviour
 {
 
     public GameObject buildUI;
-    [Space(10)]
-    public TextMeshProUGUI upgradeText;
-
     public TextMeshProUGUI selectWeaponText;
-
-    [Header("Buttons")]
     public GameObject buildWeaponButton;
-    public GameObject useWeaponButton;
-    public GameObject upgradeWeaponButton;
-    public GameObject demolishWeaponButton;
-    [Space(10)]
-    public GameObject buyUpgradeButton;
-
-    [Header("Upgrade Panel")]
-    public TextMeshProUGUI weaponNameText;
-    public TextMeshProUGUI weaponDamageText;
-    public TextMeshProUGUI weaponForceText;
-    public TextMeshProUGUI weaponFireRateText;
-    public GameObject autoFireUpdateText;
 
     private void Awake()
     {

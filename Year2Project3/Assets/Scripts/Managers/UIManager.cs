@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
     public GameObject castleWeapons;
     public GameObject castleRooms;
     public GameObject startCinematicProps;
+    public GameObject gameOverCinematicProps;
 
     [Header("Not Enough Gold Icon")]
     public GameObject notEnoughGoldIcon;
@@ -158,6 +159,7 @@ public class UIManager : MonoBehaviour
         waveTimerPanel.SetActive(false);
         castleWeapons.SetActive(false);
         castleRooms.SetActive(false);
+        gameOverCinematicProps.SetActive(true);
         Camera.main.fieldOfView = 60;
         gameOverAnimator.enabled = true;
         gameOverAnimator.SetTrigger("End");
