@@ -283,7 +283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1426211133426606
 GameObject:
   m_ObjectHideFlags: 1
@@ -1203,7 +1203,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385821130610866}
   m_LocalRotation: {x: -0, y: 0.0000014603136, z: -0, w: 1}
-  m_LocalPosition: {x: -25.396294, y: 0.55, z: -1.2800713}
+  m_LocalPosition: {x: -28.823542, y: 0.55, z: 0.4546749}
   m_LocalScale: {x: 0.8, y: 1, z: 0.8}
   m_Children:
   - {fileID: 4917153919954430}
@@ -1455,7 +1455,7 @@ Animator:
   m_GameObject: {fileID: 1067539602944824}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 6cf5c88520e90a94c96dfef29fed3203, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3257cadb380e5e044ba54a9779c5ab93, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1642,7 +1642,7 @@ MonoBehaviour:
   attackCooldown: 2
   agent: {fileID: 195985851031835828}
   targetTransform: {fileID: 0}
-  anim: {fileID: 0}
+  anim: {fileID: 95153122204031010}
   healthbarCanvas: {fileID: 0}
   healthbarFill: {fileID: 0}
   healthbarAnim: {fileID: 0}
@@ -1651,7 +1651,7 @@ MonoBehaviour:
   attackingCastle: 0
   target: {fileID: 0}
   bowPos: {fileID: 4230197911339806}
-  fireRate: 1
+  fireRate: 0.5
 --- !u!114 &114763347963810896
 MonoBehaviour:
   m_ObjectHideFlags: 1

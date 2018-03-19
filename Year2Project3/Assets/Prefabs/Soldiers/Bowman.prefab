@@ -1171,7 +1171,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385821130610866}
   m_LocalRotation: {x: -0, y: 0.0000014603136, z: -0, w: 1}
-  m_LocalPosition: {x: -26.125332, y: 0.55, z: -0.9762423}
+  m_LocalPosition: {x: -30.203726, y: 0.88, z: -2}
   m_LocalScale: {x: 0.8, y: 1, z: 0.8}
   m_Children:
   - {fileID: 4917153919954430}
@@ -1552,7 +1552,7 @@ MonoBehaviour:
   attackCooldown: 2
   agent: {fileID: 195985851031835828}
   targetTransform: {fileID: 0}
-  anim: {fileID: 0}
+  anim: {fileID: 95153122204031010}
   healthbarCanvas: {fileID: 0}
   healthbarFill: {fileID: 0}
   healthbarAnim: {fileID: 0}

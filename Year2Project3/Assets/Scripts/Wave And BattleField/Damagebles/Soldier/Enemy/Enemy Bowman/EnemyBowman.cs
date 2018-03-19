@@ -48,6 +48,7 @@ public class EnemyBowman : Enemy {
 
         }
         else {
+            StopAllCoroutines();
             StartCoroutine(Attack());
             target.TakeDamage(myStats.damage.currentValue);
         }

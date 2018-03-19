@@ -54,6 +54,10 @@ public class WaveManager : MonoBehaviour
         {
             NextWave();
         }
+
+        if(Input.GetKeyDown("m")){
+            currentWave++;
+        }
     }
 
     public void NextWave()
@@ -95,7 +99,7 @@ public class WaveManager : MonoBehaviour
             Stage _newStage = new Stage();
             for (int s = 0; s < stageSize; s++)
             {
-                _newStage.soldiers.Add(enemyTypes[Mathf.Clamp(Mathf.RoundToInt(Mathf.Clamp(currentWave / 10f, 0, enemyTypes.Count - 1) - Random.Range(0, enemyTypes.Count)), 0, enemyTypes.Count - 1)]);
+                _newStage.soldiers.Add(enemyTypes[Mathf.Clamp(Mathf.RoundToInt(Mathf.Clamp(currentWave / 15f, 0, enemyTypes.Count - 1) - Random.Range(0, enemyTypes.Count)), 0, enemyTypes.Count - 1)]);
             }
             thisWave.atackStage.Add(_newStage);
         }
