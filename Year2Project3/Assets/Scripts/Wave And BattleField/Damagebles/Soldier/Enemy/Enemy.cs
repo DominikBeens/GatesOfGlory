@@ -50,6 +50,9 @@ public class Enemy : Soldier {
     public void StartBattle(Damagebles _target) {
         anim.SetBool("Attack", true);
         target = _target;
+        if(target != null) {
+            transform.LookAt(target.transform);
+        }
         agent.isStopped = true;
         StartCoroutine(Attack());
     }
