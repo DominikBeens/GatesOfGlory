@@ -99,7 +99,7 @@ public class WaveManager : MonoBehaviour
             Stage _newStage = new Stage();
             for (int s = 0; s < stageSize; s++)
             {
-                _newStage.soldiers.Add(enemyTypes[Mathf.Clamp(Mathf.RoundToInt(Mathf.Clamp(currentWave / 15f, 0, enemyTypes.Count - 1) - Random.Range(0, enemyTypes.Count)), 0, enemyTypes.Count - 1)]);
+                _newStage.soldiers.Add(enemyTypes[Mathf.Clamp(Mathf.RoundToInt(Mathf.Clamp(currentWave / 7.5f, 0, enemyTypes.Count - 1) - Random.Range(0, enemyTypes.Count)), 0, enemyTypes.Count - 1)]);
             }
             thisWave.atackStage.Add(_newStage);
         }
@@ -169,6 +169,7 @@ public class WaveManager : MonoBehaviour
             newEnemy.GetComponent<NavMeshAgent>().speed = Random.Range(1.75f, 2.25f);
             newEnemy.GetComponent<AudioSource>().pitch = Random.Range(0.75f, 1.25f);
             newEnemy.GetComponent<AudioSource>().volume = Random.Range(0.01f, 0.08f);
+            newEnemy.transform.localScale *= Random.Range(0.9f,1.1f);
             AddWaveCurrentHealth((int) newEnemy.GetComponent<Enemy>().myStats.health.currentValue);
             currentSoldier++;
             enemiesInScene.Add(newEnemy.GetComponent<Enemy>());
