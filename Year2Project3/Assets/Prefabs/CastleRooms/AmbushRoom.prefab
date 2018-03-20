@@ -2866,7 +2866,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1370444586302360}
-  m_LocalRotation: {x: -0.31453463, y: 0.71695065, z: -0.6190766, w: -0.06159371}
+  m_LocalRotation: {x: -0.31453466, y: 0.7169507, z: -0.61907667, w: -0.061593715}
   m_LocalPosition: {x: -0.672, y: 0.822, z: -1.198}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
@@ -6977,7 +6977,7 @@ MonoBehaviour:
   useCooldown:
     baseValue: 45
     currentValue: 45
-    increaseValue: -5
+    increaseValue: -1.5
   damageAmount:
     baseValue: 100
     currentValue: 100
@@ -6992,6 +6992,11 @@ MonoBehaviour:
   meteorDistOffset: 5
   meteorSpawnDelay: 0.5
   randomMeteorSpawnOffset: 5
+  spearRows: 30
+  spearColumns: 2
+  spearDistOffset: 3
+  spearSpawnDelay: 0
+  randomSpearSpawnOffset: 6
   cooldownFill: {fileID: 114626224411293460}
   descriptionText: {fileID: 114796186760574084}
   camZoomSpeed: 3

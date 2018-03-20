@@ -27,6 +27,13 @@ public class CastleRoom_Ambush : CastleRoom
     public float meteorSpawnDelay;
     public float randomMeteorSpawnOffset;
 
+    [Header("Spear")]
+    public int spearRows;
+    public int spearColumns;
+    public float spearDistOffset;
+    public float spearSpawnDelay;
+    public float randomSpearSpawnOffset;
+
     [Header("Ambush Room Setup")]
     public Image cooldownFill;
     public TextMeshProUGUI descriptionText;
@@ -137,6 +144,8 @@ public class CastleRoom_Ambush : CastleRoom
                 break;
 
             case 2:
+
+                StartCoroutine(ProjectileRain("ambush spear", spearRows, spearColumns, spearDistOffset, spearSpawnDelay, randomSpearSpawnOffset, false, 2));
                 break;
         }
 

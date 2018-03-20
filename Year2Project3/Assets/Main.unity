@@ -13846,7 +13846,7 @@ Transform:
   - {fileID: 1031883483}
   - {fileID: 825389973}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &201123220
 GameObject:
@@ -47306,7 +47306,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4433073466367980, guid: c304939f7dd57f54baea33fb78f101ad, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114204559385459044, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -56556,6 +56556,11 @@ MonoBehaviour:
     poolPrefab: {fileID: 1257314764173348, guid: 7062ab9f13967664fb51ce6c99150593,
       type: 2}
     poolSize: 1000
+    autoExpand: 1
+  - poolName: ambush spear
+    poolPrefab: {fileID: 1700321448599626, guid: b98ad8b8a60258c45b96054c00d35b0e,
+      type: 2}
+    poolSize: 200
     autoExpand: 1
 --- !u!1 &827514873
 GameObject:
@@ -136274,7 +136279,7 @@ Transform:
   - {fileID: 1445762030}
   - {fileID: 1154835439}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2039167318
 MonoBehaviour:
