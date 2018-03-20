@@ -9,12 +9,12 @@ public class Throne : CastleDeffensePoint
     {
         if (ResourceManager.instance.goldPrefabsInScene.Count >= Mathf.RoundToInt(damage / 10))
         {
-            ResourceManager.instance.RemoveGold(Mathf.RoundToInt(damage / 10));
+            ResourceManager.instance.RemoveGold(Mathf.RoundToInt(damage / 10), false);
         }
         else if(ResourceManager.instance.goldPrefabsInScene.Count > 0)
         {
             damage = Mathf.Abs(ResourceManager.instance.goldPrefabsInScene.Count - Mathf.RoundToInt(damage / 10));
-            ResourceManager.instance.RemoveGold(ResourceManager.instance.goldPrefabsInScene.Count);
+            ResourceManager.instance.RemoveGold(ResourceManager.instance.goldPrefabsInScene.Count, false);
             myStats.health.currentValue -= damage;
         }
         else

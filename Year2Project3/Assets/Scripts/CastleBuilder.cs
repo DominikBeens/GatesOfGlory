@@ -74,7 +74,7 @@ public class CastleBuilder : MonoBehaviour
 
                 CastleUpgradeManager.instance.CloseAllUI(null);
 
-                ResourceManager.instance.RemoveGold(availableBuilds[i].GetComponent<CastleWeapon>().myBuildCost);
+                ResourceManager.instance.RemoveGold(availableBuilds[i].GetComponent<CastleWeapon>().myBuildCost, true);
                 return;
             }
         }
@@ -119,7 +119,7 @@ public class CastleBuilder : MonoBehaviour
 
                 CastleUpgradeManager.instance.CloseAllUI(null);
 
-                ResourceManager.instance.RemoveGold(availableBuilds[i].GetComponent<CastleRoom>().myBuildCost);
+                ResourceManager.instance.RemoveGold(availableBuilds[i].GetComponent<CastleRoom>().myBuildCost, true);
                 return;
             }
         }

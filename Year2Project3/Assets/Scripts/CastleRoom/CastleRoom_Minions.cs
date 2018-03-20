@@ -63,7 +63,7 @@ public class CastleRoom_Minions : CastleRoom
         {
             currentAmountToSpawn += (int)amountToSpawnPerBuy.currentValue;
 
-            ResourceManager.instance.RemoveGold((int)spawnCost.currentValue);
+            ResourceManager.instance.RemoveGold((int)spawnCost.currentValue, true);
         }
     }
 

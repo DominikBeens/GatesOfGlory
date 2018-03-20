@@ -63,7 +63,7 @@ public class CastleBuild : MonoBehaviour
     {
         myLevel++;
 
-        ResourceManager.instance.RemoveGold((int)myUpgradeCost.currentValue);
+        ResourceManager.instance.RemoveGold((int)myUpgradeCost.currentValue, true);
 
         goldSpentOnThisObject += (int)myUpgradeCost.currentValue;
         myUpgradeCost.currentValue += myUpgradeCost.increaseValue;

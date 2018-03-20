@@ -42,7 +42,7 @@ public class ResourceManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
-            RemoveGold(5);
+            RemoveGold(5, false);
         }
 
         goldText.text = goldPrefabsInScene.Count.ToString();
@@ -85,6 +85,7 @@ public class ResourceManager : MonoBehaviour
             }
 
             goldPrefabsInScene.Add(newGold);
+            Notary.goldAccumulated++;
         }
     }
 
@@ -112,11 +113,16 @@ public class ResourceManager : MonoBehaviour
         canDumpGold = true;
     }
 
-    public void RemoveGold(int amount)
+    public void RemoveGold(int amount, bool spentByPlayer)
     {
         if (goldPrefabsInScene.Count < amount)
         {
             return;
+        }
+
+        if (spentByPlayer)
+        {
+            Notary.goldSpent += amount;
         }
 
         if (goldToDump >= amount)
