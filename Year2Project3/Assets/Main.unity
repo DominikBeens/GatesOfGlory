@@ -56483,7 +56483,7 @@ MonoBehaviour:
     poolSize: 400
     autoExpand: 1
   - poolName: heal particle
-    poolPrefab: {fileID: 1169565690203310, guid: 60e9ef00abb384a4e8bb8ecbd9cc2514,
+    poolPrefab: {fileID: 1809634218756278, guid: fc08d3e09a4972c4ea7f19afc3422a4e,
       type: 2}
     poolSize: 50
     autoExpand: 1
@@ -58924,6 +58924,7 @@ MonoBehaviour:
   HealthMultiplier: 1.05
   DamageMultiplier: 1.05
   maxStageSize: 5
+  waveHealth: 0
   currentWave: 0
   wavePause: 30
   maxSoldierWait: 0.2
@@ -138065,10 +138066,6 @@ Prefab:
     - target: {fileID: 4128533078131388, guid: b8c6b0f8a5e77774c96eddda6dea0997, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4128533078131388, guid: b8c6b0f8a5e77774c96eddda6dea0997, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 270
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8c6b0f8a5e77774c96eddda6dea0997, type: 2}
