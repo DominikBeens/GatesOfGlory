@@ -14,6 +14,7 @@ public class WaveManager : MonoBehaviour
     public float HealthMultiplier;
     public float DamageMultiplier;
     public int maxStageSize;
+    public int waveHealth;
 
     public static WaveManager instance;
     bool waveDone;
@@ -164,7 +165,7 @@ public class WaveManager : MonoBehaviour
         if (currentSoldier < thisWave.atackStage[currentStage].soldiers.Count)
         {
             int k = Random.Range(0, 1);
-            GameObject newEnemy = ObjectPooler.instance.GrabFromPool(thisWave.atackStage[currentStage].soldiers[currentSoldier], new Vector3(spwanPoints[k].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 0, Random.Range(-SpawnsetOff, SpawnsetOff)), spwanPoints[k].transform.rotation); //Instantiate(thisWave.atackStage[currentStage].soldiers[currentSoldier], new Vector3(spwanPoints[k].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 0, Random.Range(-SpawnsetOff, SpawnsetOff)), spwanPoints[k].transform.rotation);
+            GameObject newEnemy = ObjectPooler.instance.GrabFromPool(thisWave.atackStage[currentStage].soldiers[currentSoldier], new Vector3(spwanPoints[Random.Range(0,spwanPoints.Count)].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 0, Random.Range(-SpawnsetOff, SpawnsetOff)), spwanPoints[k].transform.rotation); //Instantiate(thisWave.atackStage[currentStage].soldiers[currentSoldier], new Vector3(spwanPoints[k].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 0, Random.Range(-SpawnsetOff, SpawnsetOff)), spwanPoints[k].transform.rotation);
             newEnemy.GetComponent<Enemy>().myStats.ChangeStats(HealthMultiplier, DamageMultiplier);
             newEnemy.GetComponent<NavMeshAgent>().speed = Random.Range(1.75f, 2.25f);
             newEnemy.GetComponent<AudioSource>().pitch = Random.Range(0.75f, 1.25f);

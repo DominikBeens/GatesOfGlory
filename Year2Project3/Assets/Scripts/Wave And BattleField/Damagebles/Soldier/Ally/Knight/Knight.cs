@@ -22,6 +22,12 @@ public class Knight : Allie
         if (collision.transform == targetTransform)
         {
             agent.isStopped = true;
+            if(transform.position.x > 0) {
+                transform.localEulerAngles = new Vector3(0,90,0);
+            }
+            else {
+                transform.localEulerAngles = new Vector3(0, -90, 0);
+            }
             anim.SetBool("Idle", true);
         }
     }

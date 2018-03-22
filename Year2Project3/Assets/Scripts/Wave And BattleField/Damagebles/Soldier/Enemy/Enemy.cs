@@ -99,7 +99,7 @@ public class Enemy : Soldier {
 
         }
         else {
-            StopCoroutine(Attack());
+            StopAllCoroutines();
             StartCoroutine(Attack());
             target.TakeDamage(myStats.damage.currentValue);
         }
