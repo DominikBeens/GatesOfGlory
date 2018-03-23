@@ -32,8 +32,6 @@ public class CastleWeapon : CastleBuild
     }
     public AmountOfProjectiles amountOfProjectiles;
 
-    public Animator anim;
-
     [Header("Stats")]
     public Stat damage;
     public Stat force;

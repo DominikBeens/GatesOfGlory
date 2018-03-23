@@ -18,6 +18,8 @@ public class CastleBuild : MonoBehaviour
     public CastleBuilder myBuilder;
     [HideInInspector]
     public int goldSpentOnThisObject;
+    [HideInInspector]
+    public Animator anim;
 
     protected bool usingBuilding;
 
@@ -45,6 +47,8 @@ public class CastleBuild : MonoBehaviour
     // Increase the gold spent on this build by the cost of this build.
     public virtual void Awake()
     {
+        anim = GetComponent<Animator>();
+
         useUI.SetActive(false);
         upgradePanel.SetActive(false);
         demolishPanel.SetActive(false);

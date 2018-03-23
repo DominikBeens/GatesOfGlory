@@ -19,7 +19,7 @@ public class CastleBuilder : MonoBehaviour
     }
     public Side side;
 
-    public GameObject myBuildedObject;
+    public CastleBuild myBuildedObject;
 
     public List<GameObject> availableBuilds = new List<GameObject>();
 
@@ -48,12 +48,12 @@ public class CastleBuilder : MonoBehaviour
 
                 GameObject newBuild = Instantiate(availableBuilds[i], transform.position, Quaternion.identity);
                 newBuild.transform.SetParent(transform);
-                myBuildedObject = newBuild;
+
+                CastleWeapon castleWeaponComponent = newBuild.GetComponent<CastleWeapon>();
+                castleWeaponComponent.myBuilder = this;
+                myBuildedObject = castleWeaponComponent;
 
                 ObjectPooler.instance.GrabFromPool("build particle", myBuildedObject.transform.position, Quaternion.identity);
-
-                CastleWeapon castleWeaponComponent = myBuildedObject.GetComponent<CastleWeapon>();
-                castleWeaponComponent.myBuilder = this;
 
                 switch (side)
                 {
@@ -93,22 +93,22 @@ public class CastleBuilder : MonoBehaviour
 
                 GameObject newBuild = Instantiate(availableBuilds[i], transform.position, Quaternion.identity);
                 newBuild.transform.SetParent(transform);
-                myBuildedObject = newBuild;
+
+                CastleRoom castleRoomComponent = newBuild.GetComponent<CastleRoom>();
+                castleRoomComponent.myBuilder = this;
+                myBuildedObject = castleRoomComponent;
 
                 ObjectPooler.instance.GrabFromPool("build particle", myBuildedObject.transform.position, Quaternion.identity);
-
-                CastleRoom castleRoomComponent = myBuildedObject.GetComponent<CastleRoom>();
-                castleRoomComponent.myBuilder = this;
 
                 switch (side)
                 {
                     case Side.Left:
 
-                        castleRoomComponent.side = CastleRoom.Side.Left;
+                        castleRoomComponent.side = CastleBuild.Side.Left;
                         break;
                     case Side.Right:
 
-                        castleRoomComponent.side = CastleRoom.Side.Right;
+                        castleRoomComponent.side = CastleBuild.Side.Right;
                         break;
                 }
 
@@ -127,29 +127,30 @@ public class CastleBuilder : MonoBehaviour
 
     public void Demolish()
     {
-        CastleWeapon weapon = myBuildedObject.GetComponent<CastleWeapon>();
-        CastleRoom room = myBuildedObject.GetComponent<CastleRoom>();
-        if (weapon != null)
+        if (myBuildedObject != null)
         {
-            CastleUpgradeManager.instance.allBuiltWeapons.Remove(weapon);
-            ResourceManager.instance.AddGold(weapon.goldSpentOnThisObject / 2);
-        }
-        else if (room != null)
-        {
-            CastleUpgradeManager.instance.allBuiltRooms.Remove(room);
-            ResourceManager.instance.AddGold(room.goldSpentOnThisObject / 2);
+            if (myBuildedObject is CastleWeapon)
+            {
+                CastleUpgradeManager.instance.allBuiltWeapons.Remove((CastleWeapon)myBuildedObject);
+            }
+            else if (myBuildedObject is CastleRoom)
+            {
+                CastleUpgradeManager.instance.allBuiltRooms.Remove((CastleRoom)myBuildedObject);
+            }
+
+            ResourceManager.instance.AddGold(myBuildedObject.goldSpentOnThisObject / 2);
         }
 
         CastleUpgradeManager.instance.CloseAllUI(null);
 
         ObjectPooler.instance.GrabFromPool("demolish particle", myBuildedObject.transform.position, Quaternion.identity);
-        myBuildedObject.GetComponent<Animator>().SetTrigger("Destroy");
+        myBuildedObject.anim.SetTrigger("Destroy");
         Invoke("DestroyMyBuildedObject", myBuildedObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
     }
 
     private void DestroyMyBuildedObject()
     {
-        Destroy(myBuildedObject);
+        Destroy(myBuildedObject.gameObject);
         myBuildedObject = null;
 
         buildButton.SetActive(true);

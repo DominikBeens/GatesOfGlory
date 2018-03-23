@@ -8,8 +8,12 @@ public class CastleUpgradeManager : MonoBehaviour
 
     public static CastleBuilder selectedBuild;
 
+    private Animator anim;
+
     public GameObject castleWeaponUI;
     public GameObject castleRoomUI;
+    public CastleUpgrader weaponUpgrader;
+    public CastleUpgrader roomUpgrader;
 
     public List<CastleWeapon> allBuiltWeapons = new List<CastleWeapon>();
     public List<CastleRoom> allBuiltRooms = new List<CastleRoom>();
@@ -20,6 +24,11 @@ public class CastleUpgradeManager : MonoBehaviour
         {
             instance = this;
         }
+
+        anim = GetComponent<Animator>();
+
+        weaponUpgrader = castleWeaponUI.GetComponent<CastleUpgrader>();
+        roomUpgrader = castleRoomUI.GetComponent<CastleUpgrader>();
 
         gameObject.SetActive(false);
         castleWeaponUI.SetActive(false);
@@ -58,11 +67,11 @@ public class CastleUpgradeManager : MonoBehaviour
 
         if (selectedBuild.type == CastleBuilder.Type.Weapon)
         {
-            castleWeaponUI.GetComponent<CastleWeaponUpgrader>().OpenUI();
+            weaponUpgrader.OpenUI();
         }
         else
         {
-            castleRoomUI.GetComponent<CastleRoomUpgrader>().OpenUI();
+            roomUpgrader.OpenUI();
         }
 
         selectedBuild.useButton.SetActive(false);
@@ -90,7 +99,7 @@ public class CastleUpgradeManager : MonoBehaviour
 
     public void CloseAllUI(CastleBuild exception)
     {
-        GetComponent<Animator>().SetTrigger("CloseUI");
+        anim.SetTrigger("CloseUI");
 
         for (int i = 0; i < allBuiltWeapons.Count; i++)
         {

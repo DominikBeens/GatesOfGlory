@@ -558,7 +558,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4677486983322146}
-  - component: {fileID: 114936818299134980}
+  - component: {fileID: 114042209867317090}
   - component: {fileID: 95185192725317852}
   m_Layer: 5
   m_Name: CastleRoomUI
@@ -575,7 +575,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4452538052139290}
-  - component: {fileID: 114200068860380054}
+  - component: {fileID: 114260125975404270}
   - component: {fileID: 95816591048545848}
   m_Layer: 5
   m_Name: CastleWeaponUI
@@ -1269,6 +1269,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114042209867317090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1661586451992464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ec904690ffbea4c8b34e2e5f7e194c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  buildUI: {fileID: 1023292099857176}
+  selectBuildText: {fileID: 114216578245201056}
+  buildButton: {fileID: 1962176997390038}
 --- !u!114 &114059748722538182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1284,8 +1299,6 @@ MonoBehaviour:
   type: 1
   buildCostText: {fileID: 114204559385459044}
   selectWeaponText: {fileID: 114216578245201056}
-  cwUpgrader: {fileID: 114200068860380054}
-  crUpgrader: {fileID: 114936818299134980}
 --- !u!114 &114082512750666810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1325,13 +1338,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114936818299134980}
-        m_MethodName: BuildRoom
+      - m_Target: {fileID: 114042209867317090}
+        m_MethodName: BuildButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1451,13 +1464,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114936818299134980}
-        m_MethodName: BuildRoom
+      - m_Target: {fileID: 114042209867317090}
+        m_MethodName: BuildButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1506,8 +1519,6 @@ MonoBehaviour:
   type: 0
   buildCostText: {fileID: 114927213033033968}
   selectWeaponText: {fileID: 114555292778595728}
-  cwUpgrader: {fileID: 114200068860380054}
-  crUpgrader: {fileID: 114936818299134980}
 --- !u!114 &114139429113130770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1547,8 +1558,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114200068860380054}
-        m_MethodName: BuildWeapon
+      - m_Target: {fileID: 114260125975404270}
+        m_MethodName: BuildButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1624,8 +1635,6 @@ MonoBehaviour:
   type: 0
   buildCostText: {fileID: 114587658796977474}
   selectWeaponText: {fileID: 114555292778595728}
-  cwUpgrader: {fileID: 114200068860380054}
-  crUpgrader: {fileID: 114936818299134980}
 --- !u!114 &114162950353183806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1702,20 +1711,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114200068860380054
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1665381027937172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89ec904690ffbea4c8b34e2e5f7e194c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildUI: {fileID: 1579691707310854}
-  selectWeaponText: {fileID: 114555292778595728}
-  buildWeaponButton: {fileID: 1424910764089808}
 --- !u!114 &114204559385459044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2134,7 +2129,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114936818299134980}
+      - m_Target: {fileID: 114042209867317090}
         m_MethodName: OpenBuildUIButton
         m_Mode: 1
         m_Arguments:
@@ -2147,6 +2142,21 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114260125975404270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1665381027937172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ec904690ffbea4c8b34e2e5f7e194c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  buildUI: {fileID: 1579691707310854}
+  selectBuildText: {fileID: 114555292778595728}
+  buildButton: {fileID: 1424910764089808}
 --- !u!114 &114269564861999234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2186,13 +2196,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114936818299134980}
-        m_MethodName: BuildRoom
+      - m_Target: {fileID: 114042209867317090}
+        m_MethodName: BuildButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2346,7 +2356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.90344834, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.92941177, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2441,8 +2451,6 @@ MonoBehaviour:
   type: 1
   buildCostText: {fileID: 114450126511287392}
   selectWeaponText: {fileID: 114216578245201056}
-  cwUpgrader: {fileID: 114200068860380054}
-  crUpgrader: {fileID: 114936818299134980}
 --- !u!114 &114440975898167264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2509,7 +2517,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114200068860380054}
+      - m_Target: {fileID: 114260125975404270}
         m_MethodName: OpenBuildUIButton
         m_Mode: 1
         m_Arguments:
@@ -2647,7 +2655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.90344834, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.92941177, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3106,8 +3114,6 @@ MonoBehaviour:
   type: 1
   buildCostText: {fileID: 114824162044854114}
   selectWeaponText: {fileID: 114216578245201056}
-  cwUpgrader: {fileID: 114200068860380054}
-  crUpgrader: {fileID: 114936818299134980}
 --- !u!114 &114615319373225370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3174,8 +3180,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114200068860380054}
-        m_MethodName: BuildWeapon
+      - m_Target: {fileID: 114260125975404270}
+        m_MethodName: BuildButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3202,8 +3208,6 @@ MonoBehaviour:
   type: 0
   buildCostText: {fileID: 114978758545916990}
   selectWeaponText: {fileID: 114555292778595728}
-  cwUpgrader: {fileID: 114200068860380054}
-  crUpgrader: {fileID: 114936818299134980}
 --- !u!114 &114667235947619896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3726,8 +3730,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114200068860380054}
-        m_MethodName: BuildWeapon
+      - m_Target: {fileID: 114260125975404270}
+        m_MethodName: BuildButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3802,8 +3806,6 @@ MonoBehaviour:
   type: 1
   buildCostText: {fileID: 114811602386200778}
   selectWeaponText: {fileID: 114216578245201056}
-  cwUpgrader: {fileID: 114200068860380054}
-  crUpgrader: {fileID: 114936818299134980}
 --- !u!114 &114907423791407914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3843,8 +3845,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114936818299134980}
-        m_MethodName: BuildRoom
+      - m_Target: {fileID: 114042209867317090}
+        m_MethodName: BuildButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3996,20 +3998,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &114936818299134980
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1661586451992464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 419c86fbce7ac8c44b3b6a06f6edd86f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildUI: {fileID: 1023292099857176}
-  selectRoomText: {fileID: 114216578245201056}
-  buildRoomButton: {fileID: 1962176997390038}
 --- !u!114 &114952965509798992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4022,7 +4010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.90344834, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.92941177, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

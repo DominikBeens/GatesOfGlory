@@ -19,9 +19,6 @@ public class BuildButton : MonoBehaviour
     [Space(10)]
     public TextMeshProUGUI buildCostText;
     public TextMeshProUGUI selectWeaponText;
-    [Space(10)]
-    public CastleWeaponUpgrader cwUpgrader;
-    public CastleRoomUpgrader crUpgrader;
 
     private void Awake()
     {

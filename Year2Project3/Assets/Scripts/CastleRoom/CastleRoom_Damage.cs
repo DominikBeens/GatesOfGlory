@@ -55,14 +55,13 @@ public class CastleRoom_Damage : CastleRoom
 
     public override void UseRoom()
     {
-        base.UseRoom();
-
         if (currentCooldown < 1)
         {
             return;
         }
 
         currentCooldown = 0;
+        base.UseRoom();
 
         List<Enemy> toDamage = new List<Enemy>();
         for (int i = 0; i < amountOfEnemiesToDamage.currentValue; i++)
