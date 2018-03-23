@@ -2866,7 +2866,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1370444586302360}
-  m_LocalRotation: {x: -0.31453463, y: 0.71695065, z: -0.6190766, w: -0.061593708}
+  m_LocalRotation: {x: -0.31453466, y: 0.7169507, z: -0.61907667, w: -0.061593708}
   m_LocalPosition: {x: -0.672, y: 0.822, z: -1.198}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
@@ -3593,7 +3593,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9e8e7e55d43f6e24d8c41865c88f426e, type: 2}
+  - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3627,7 +3627,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a023364ca9b383f419f05cf91ab11d20, type: 2}
+  - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3763,7 +3763,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9e8e7e55d43f6e24d8c41865c88f426e, type: 2}
+  - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3967,7 +3967,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a023364ca9b383f419f05cf91ab11d20, type: 2}
+  - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4103,7 +4103,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9e8e7e55d43f6e24d8c41865c88f426e, type: 2}
+  - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4341,7 +4341,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9e8e7e55d43f6e24d8c41865c88f426e, type: 2}
+  - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4477,7 +4477,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9e8e7e55d43f6e24d8c41865c88f426e, type: 2}
+  - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4613,7 +4613,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9e8e7e55d43f6e24d8c41865c88f426e, type: 2}
+  - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6957,6 +6957,7 @@ MonoBehaviour:
   side: 0
   myBuilder: {fileID: 0}
   goldSpentOnThisObject: 0
+  anim: {fileID: 0}
   myName: Ambush Room
   myLevel: 1
   myMaxLevel: 10

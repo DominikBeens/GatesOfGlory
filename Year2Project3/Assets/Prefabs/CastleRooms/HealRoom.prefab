@@ -3023,7 +3023,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9e8e7e55d43f6e24d8c41865c88f426e, type: 2}
+  - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3125,7 +3125,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9e8e7e55d43f6e24d8c41865c88f426e, type: 2}
+  - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3261,7 +3261,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9e8e7e55d43f6e24d8c41865c88f426e, type: 2}
+  - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3397,7 +3397,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a023364ca9b383f419f05cf91ab11d20, type: 2}
+  - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3431,7 +3431,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9e8e7e55d43f6e24d8c41865c88f426e, type: 2}
+  - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3465,7 +3465,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9e8e7e55d43f6e24d8c41865c88f426e, type: 2}
+  - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3567,7 +3567,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a023364ca9b383f419f05cf91ab11d20, type: 2}
+  - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3635,7 +3635,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9e8e7e55d43f6e24d8c41865c88f426e, type: 2}
+  - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5099,6 +5099,7 @@ MonoBehaviour:
   side: 0
   myBuilder: {fileID: 0}
   goldSpentOnThisObject: 0
+  anim: {fileID: 0}
   myName: Healing Room
   myLevel: 1
   myMaxLevel: 10
