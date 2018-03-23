@@ -11,7 +11,7 @@ public class Throne : CastleDeffensePoint
     public Image gateHealthBarLeft;
     public Image gateHealthBarRight;
 
-    public RectTransform rightGatesUI, leftGatesUI;
+    public CastleDeffensePoint leftGate, rightGate;
 
     public float lerpSpeed;
 
@@ -21,6 +21,10 @@ public class Throne : CastleDeffensePoint
         {
             TakeDamage(10);
         }
+    }
+
+    private void Start() {
+        HPBar();
     }
 
     public override void TakeDamage(float damage)
@@ -38,6 +42,7 @@ public class Throne : CastleDeffensePoint
         else
         {
             myStats.health.currentValue -= damage;
+            HPBar();
 
             if (myStats.health.currentValue <= 0)
             {
@@ -47,5 +52,12 @@ public class Throne : CastleDeffensePoint
                 }
             }
         }
+    }
+
+    public void HPBar(){
+        gateHealthBarLeft.fillAmount = (leftGate.myStats.health.currentValue + myStats.health.currentValue) / (leftGate.myStats.health.baseValue + myStats.health.baseValue);
+        throneHealthBarLeft.fillAmount = myStats.health.currentValue / (myStats.health.baseValue + leftGate.myStats.health.baseValue);
+        gateHealthBarRight.fillAmount = (rightGate.myStats.health.currentValue + myStats.health.currentValue) / (rightGate.myStats.health.baseValue + myStats.health.baseValue);
+        throneHealthBarRight.fillAmount = myStats.health.currentValue / (myStats.health.baseValue + rightGate.myStats.health.baseValue);
     }
 }
