@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CastleDeffensePoint : Damagebles {
+    public Image uiHealthBar;
     public bool gateOpen;
     public List<Enemy> attackingMe = new List<Enemy>();
     public CastleGate myGate;
@@ -15,6 +16,7 @@ public class CastleDeffensePoint : Damagebles {
         if (healthbarFill != null)
         {
             healthbarFill.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
+            uiHealthBar.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
         }
     }
 }

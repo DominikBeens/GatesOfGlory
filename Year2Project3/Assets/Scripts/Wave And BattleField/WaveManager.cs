@@ -171,7 +171,6 @@ public class WaveManager : MonoBehaviour
             newEnemy.GetComponent<AudioSource>().pitch = Random.Range(0.75f, 1.25f);
             newEnemy.GetComponent<AudioSource>().volume = Random.Range(0.01f, 0.08f);
             newEnemy.transform.localScale *= Random.Range(0.9f,1.1f);
-            AddWaveCurrentHealth((int) newEnemy.GetComponent<Enemy>().myStats.health.currentValue);
             currentSoldier++;
             enemiesInScene.Add(newEnemy.GetComponent<Enemy>());
             StartCoroutine(SoldierTimer());
@@ -193,22 +192,5 @@ public class WaveManager : MonoBehaviour
     public void SkipWaitingForNextWaveButton()
     {
         skipWaiting = true;
-    }
-
-    public void AddWaveCurrentHealth(int i)
-    {
-        currentWaveTotalHealth += i;
-        currentWaveHealth += i;
-
-        UIManager.instance.waveHealthFill.fillAmount = ((float) currentWaveHealth / currentWaveTotalHealth);
-        UIManager.instance.waveHealthText.text = currentWaveHealth.ToString() + " / " + currentWaveTotalHealth.ToString();
-    }
-
-    public void DecreaseWaveCurrentHealth(int i)
-    {
-        currentWaveHealth -= i;
-
-        UIManager.instance.waveHealthFill.fillAmount = ((float) currentWaveHealth / currentWaveTotalHealth);
-        UIManager.instance.waveHealthText.text = currentWaveHealth.ToString() + " / " + currentWaveTotalHealth.ToString();
     }
 }

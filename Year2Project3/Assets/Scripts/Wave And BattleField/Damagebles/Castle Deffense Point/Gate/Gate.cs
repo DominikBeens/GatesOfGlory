@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Gate : CastleDeffensePoint {
 
-
     public override void TakeDamage(float damage) {
         if(gateOpen) {
             return;
         }
 
         myStats.health.currentValue -= damage;
-            healthbarFill.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
+        healthbarFill.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
+        uiHealthBar.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
         if(myStats.health.currentValue < 0) {
-
             myGate.OpenGate();
             gateOpen = true;
             myGate.locked = true;
@@ -38,5 +37,6 @@ public class Gate : CastleDeffensePoint {
         }
 
         healthbarFill.fillAmount = myStats.health.currentValue / myStats.health.baseValue;
+        uiHealthBar.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
     }
 }
