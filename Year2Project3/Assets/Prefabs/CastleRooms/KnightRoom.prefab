@@ -6269,6 +6269,7 @@ MonoBehaviour:
   side: 0
   myBuilder: {fileID: 0}
   goldSpentOnThisObject: 0
+  anim: {fileID: 0}
   myName: Knight Room
   myLevel: 1
   myMaxLevel: 10
@@ -6299,6 +6300,7 @@ MonoBehaviour:
     increaseValue: 1
   spawnInterval: 0.35
   spawnPointOffsetRandomizer: 1
+  statMultiplier: 0.65
   roomTypeText: {fileID: 114349154696548098}
   roomMinionCostText: {fileID: 114083352369181858}
 --- !u!114 &114800371846477972
@@ -47804,7 +47806,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.000041008, y: 75}
-  m_SizeDelta: {x: 357, y: 150}
+  m_SizeDelta: {x: 386.9, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224027427565556616
 RectTransform:

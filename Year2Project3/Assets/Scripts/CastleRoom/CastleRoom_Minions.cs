@@ -15,6 +15,7 @@ public class CastleRoom_Minions : CastleRoom
     public Stat amountToSpawnPerBuy;
     public float spawnInterval;
     public float spawnPointOffsetRandomizer;
+    public float statMultiplier;
 
     private bool canSpawn = true;
     private int currentAmountToSpawn;
@@ -45,7 +46,8 @@ public class CastleRoom_Minions : CastleRoom
 
         if (myLevel < myMaxLevel)
         {
-            upgradeStatsText.text = "Spawn cost: " + spawnCost.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(spawnCost.increaseValue) + "</color>)" + "\n" +
+            upgradeStatsText.text = "Minions get a stat boost." + "\n" +
+                                    "Spawn cost: " + spawnCost.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(spawnCost.increaseValue) + "</color>)" + "\n" +
                                     "Spawns per buy: " + amountToSpawnPerBuy.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(amountToSpawnPerBuy.increaseValue) + "</color>)";
         }
         else
@@ -79,6 +81,13 @@ public class CastleRoom_Minions : CastleRoom
         newMinion.GetComponent<AudioSource>().pitch = Random.Range(0.75f, 1.25f);
         newMinion.GetComponent<AudioSource>().volume = Random.Range(0.01f, 0.08f);
         newMinion.transform.SetParent(null);
+
+        if (myLevel > 1)
+        {
+            Damagebles minion = newMinion.GetComponent<Damagebles>();
+            minion.myStats.health.currentValue *= (myLevel * statMultiplier);
+            minion.myStats.damage.currentValue *= (myLevel * statMultiplier);
+        }
 
         WaveManager.instance.alliesInScene.Add(newMinion.GetComponent<Allie>());
 

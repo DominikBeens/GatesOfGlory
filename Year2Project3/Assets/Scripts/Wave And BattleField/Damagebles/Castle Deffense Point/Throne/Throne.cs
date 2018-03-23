@@ -5,14 +5,22 @@ using UnityEngine.UI;
 
 public class Throne : CastleDeffensePoint
 {
-    public Image uiHealthBarLeft;
-    public Image uiHealthBarRight;
-    public Transform rightGatesUI, leftGatesUI;
-    public Transform nextRightGatesUI, nextLeftGatesUI;
+
+    public Image throneHealthBarLeft;
+    public Image throneHealthBarRight;
+    public Image gateHealthBarLeft;
+    public Image gateHealthBarRight;
+
+    public RectTransform rightGatesUI, leftGatesUI;
+
     public float lerpSpeed;
 
     private void Update() {
 
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            TakeDamage(10);
+        }
     }
 
     public override void TakeDamage(float damage)
@@ -38,22 +46,6 @@ public class Throne : CastleDeffensePoint
                     StartCoroutine(UIManager.instance.GameOver());
                 }
             }
-        }
-
-        if (healthbarFill != null)
-        {
-            healthbarFill.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
-            uiHealthBarLeft.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
-            uiHealthBarRight.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
-            StopCoroutine(Lerp());
-            StartCoroutine(Lerp());
-        }
-    }
-
-    public IEnumerator Lerp() {
-        while(Mathf.Abs(rightGatesUI.position.x - nextRightGatesUI.position.x) * 1 - uiHealthBarRight.fillAmount > 0.1f ) {
-            rightGatesUI.position = new Vector3(Mathf.Lerp(rightGatesUI.position.x, nextRightGatesUI.position.x, lerpSpeed) * 1 - uiHealthBarRight.fillAmount, rightGatesUI.position.y, rightGatesUI.position.z);
-            yield return null;
         }
     }
 }
