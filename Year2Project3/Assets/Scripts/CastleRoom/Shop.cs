@@ -13,6 +13,11 @@ public class Shop : MonoBehaviour
 
     public Animator anim;
 
+    public float camZoomSpeed;
+    private Transform cameraTarget;
+    private CameraManager mainCamManager;
+    private Camera mainCam;
+
     public TextMeshProUGUI selectedShopItemText;
 
     [Header("Cost")]
@@ -20,9 +25,15 @@ public class Shop : MonoBehaviour
     public int oilCost;
     public int archersCost;
 
+    public GameObject spears;
+
     private void Awake()
     {
         uiPanel.SetActive(false);
+
+        cameraTarget = GameObject.FindWithTag("CameraTarget").transform;
+        mainCam = Camera.main;
+        mainCamManager = mainCam.GetComponent<CameraManager>();
     }
 
     private void Update()
@@ -85,6 +96,7 @@ public class Shop : MonoBehaviour
 
         a.SetTrigger("Buy");
         ResourceManager.instance.RemoveGold(spikesCost, true);
+        StartCoroutine(PlaceObject(spears));
     }
 
     public void BuyOilButton(Animator a)
@@ -107,5 +119,24 @@ public class Shop : MonoBehaviour
 
         a.SetTrigger("Buy");
         ResourceManager.instance.RemoveGold(archersCost, true);
+    }
+
+    private IEnumerator PlaceObject(GameObject obj)
+    {
+        CloseUIButton();
+
+        Vector3 zoomTo = new Vector3(0, 5, -5);
+        mainCamManager.canMove = false;
+
+        while (Vector3.Distance(cameraTarget.position, zoomTo) > 0.1f)
+        {
+            cameraTarget.position = Vector3.Lerp(cameraTarget.position, zoomTo, Time.deltaTime * camZoomSpeed);
+            mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, 60, Time.deltaTime * (camZoomSpeed * 5));
+            yield return null;
+        }
+
+        mainCamManager.canMove = true;
+
+        Instantiate(obj, transform.position, Quaternion.identity);
     }
 }

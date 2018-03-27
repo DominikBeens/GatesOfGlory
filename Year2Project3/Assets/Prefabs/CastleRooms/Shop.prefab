@@ -3128,7 +3128,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1571337615831654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.9109504, y: -0.23823696, z: -29.752789}
+  m_LocalPosition: {x: 7, y: 6.5, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224085505105826796}
@@ -5118,7 +5118,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: e168614e51e379444a11cdac601d66e6, type: 2}
+  - {fileID: 2100000, guid: 2f86ec962f88b9243bdb7a1950f431af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7875,7 +7875,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.9034482, g: 1, b: 0, a: 1}
   m_Intensity: 1
-  m_Range: 8
+  m_Range: 6
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -9230,10 +9230,12 @@ MonoBehaviour:
   uiPanel: {fileID: 1079464495307816}
   uiOpenButton: {fileID: 1102135240011660}
   anim: {fileID: 95204181286246224}
+  camZoomSpeed: 5
   selectedShopItemText: {fileID: 114501985445159366}
   spikesCost: 5
   oilCost: 10
   archersCost: 12
+  spears: {fileID: 1316280804688530, guid: 7083765d344a6c045ac921cfadbab6e5, type: 2}
 --- !u!114 &114830637694562558
 MonoBehaviour:
   m_ObjectHideFlags: 1

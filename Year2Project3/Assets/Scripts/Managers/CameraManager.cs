@@ -43,7 +43,7 @@ public class CameraManager : MonoBehaviour
         startY = target.position.y;
         offset = transform.position - target.position;
 
-        fov = Camera.main.fieldOfView;
+        fov = cam.fieldOfView;
     }
 
     private void Update()
@@ -71,8 +71,8 @@ public class CameraManager : MonoBehaviour
 
         if (secondaryCamera)
         {
-            transform.position = Camera.main.transform.position;
-            transform.rotation = Camera.main.transform.rotation;
+            transform.position = cam.transform.position;
+            transform.rotation = cam.transform.rotation;
         }
     }
 

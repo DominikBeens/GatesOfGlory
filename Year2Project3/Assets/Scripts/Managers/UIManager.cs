@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
 
     public static UIManager instance;
 
+    private Camera mainCam;
+
     [Header("Game Over")]
     public GameObject gameOverPanel;
     public Animator screenFadeAnim;
@@ -45,6 +47,8 @@ public class UIManager : MonoBehaviour
         {
             instance = this;
         }
+
+        mainCam = Camera.main;
 
         if (GameManager.instance.showStartGameAnimation)
         {
@@ -89,7 +93,7 @@ public class UIManager : MonoBehaviour
         Cursor.visible = false;
         canPause = false;
 
-        CameraManager mainCamManager = Camera.main.GetComponent<CameraManager>();
+        CameraManager mainCamManager = mainCam.GetComponent<CameraManager>();
         mainCamManager.enabled = false;
 
         castleWeapons.SetActive(false);
@@ -131,36 +135,19 @@ public class UIManager : MonoBehaviour
         canPause = false;
         GameManager.instance.gameState = GameManager.GameState.Cinematic;
 
-        CameraManager mainCamManager = Camera.main.GetComponent<CameraManager>();
+        CameraManager mainCamManager = mainCam.GetComponent<CameraManager>();
         mainCamManager.enabled = false;
 
         screenFadeAnim.SetTrigger("Fade");
 
         yield return new WaitForSeconds(1.2f);
 
-        //float speed = 0;
-        //while (Vector3.Distance(mainCamManager.transform.position, gameOverCamSpawn.position) > 0.1f)
-        //{
-        //    if (speed < 20)
-        //    {
-        //        speed += 0.5f;
-        //    }
-        //    mainCamManager.transform.position = Vector3.MoveTowards(mainCamManager.transform.position, gameOverCamSpawn.position, Time.deltaTime * speed);
-        //    mainCamManager.transform.rotation = Quaternion.RotateTowards(mainCamManager.transform.rotation, gameOverCamSpawn.rotation, Time.deltaTime * 30);
-
-        //    if (Camera.main.fieldOfView < mainCamManager.maxZoomOut)
-        //    {
-        //        Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, mainCamManager.maxZoomOut, Time.deltaTime * 3);
-        //    }
-        //    yield return null;
-        //}
-
         gameInfoPanel.SetActive(false);
         waveTimerPanel.SetActive(false);
         castleWeapons.SetActive(false);
         castleRooms.SetActive(false);
         gameOverCinematicProps.SetActive(true);
-        Camera.main.fieldOfView = 60;
+        mainCam.fieldOfView = 60;
         gameOverAnimator.enabled = true;
         gameOverAnimator.SetTrigger("End");
 

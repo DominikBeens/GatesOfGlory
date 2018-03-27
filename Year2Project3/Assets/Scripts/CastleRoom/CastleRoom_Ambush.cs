@@ -40,6 +40,7 @@ public class CastleRoom_Ambush : CastleRoom
     private Transform cameraTarget;
     public float camZoomSpeed;
     private CameraManager mainCamManager;
+    private Camera mainCam;
 
     [Header("Upgrades")]
     public TextMeshProUGUI nextLevelExtraUpgradeText;
@@ -56,7 +57,8 @@ public class CastleRoom_Ambush : CastleRoom
         base.Awake();
 
         cameraTarget = GameObject.FindWithTag("CameraTarget").transform;
-        mainCamManager = Camera.main.GetComponent<CameraManager>();
+        mainCam = Camera.main;
+        mainCamManager = mainCam.GetComponent<CameraManager>();
 
         ambushSpawns = GameObject.FindGameObjectsWithTag("AmbushSpawn");
     }
@@ -160,11 +162,11 @@ public class CastleRoom_Ambush : CastleRoom
         while (Vector3.Distance(cameraTarget.position, zoomTo) > 0.1f)
         {
             cameraTarget.position = Vector3.Lerp(cameraTarget.position, zoomTo, Time.deltaTime * camZoomSpeed);
-            Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 60, Time.deltaTime * (camZoomSpeed * 5));
+            mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, 60, Time.deltaTime * (camZoomSpeed * 5));
             yield return null;
         }
 
-        Camera.main.GetComponent<CameraShake>().Shake(rainSpawnDelay * rainRows + 5, screenShakeAmount, screenShakeAmount, 0, 0, 1);
+        mainCam.GetComponent<CameraShake>().Shake(rainSpawnDelay * rainRows + 5, screenShakeAmount, screenShakeAmount, 0, 0, 1);
 
         int toSpawnLeft = rainRows;
         int toSpawnRight = rainRows;

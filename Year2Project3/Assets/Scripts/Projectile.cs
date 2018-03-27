@@ -127,6 +127,12 @@ public class Projectile : MonoBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(myDamage);
+
+                if (type == Type.CatapultProjectile)
+                {
+                    ObjectPooler.instance.GrabFromPool("meteor explode particle", transform.position, Quaternion.identity);
+                }
+
                 ReAddToPool();
                 targetsHit++;
 
