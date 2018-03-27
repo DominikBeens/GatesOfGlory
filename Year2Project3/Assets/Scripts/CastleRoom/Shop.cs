@@ -25,8 +25,6 @@ public class Shop : MonoBehaviour
     public int oilCost;
     public int archersCost;
 
-    public GameObject spears;
-
     private void Awake()
     {
         uiPanel.SetActive(false);
@@ -96,7 +94,7 @@ public class Shop : MonoBehaviour
 
         a.SetTrigger("Buy");
         ResourceManager.instance.RemoveGold(spikesCost, true);
-        StartCoroutine(PlaceObject(spears));
+        StartCoroutine(PlaceObject("shopitem spears"));
     }
 
     public void BuyOilButton(Animator a)
@@ -121,22 +119,21 @@ public class Shop : MonoBehaviour
         ResourceManager.instance.RemoveGold(archersCost, true);
     }
 
-    private IEnumerator PlaceObject(GameObject obj)
+    private IEnumerator PlaceObject(string obj)
     {
         CloseUIButton();
 
-        Vector3 zoomTo = new Vector3(0, 5, -5);
+        Vector3 zoomTo = new Vector3(0, 5, cameraTarget.position.z);
         mainCamManager.canMove = false;
 
         while (Vector3.Distance(cameraTarget.position, zoomTo) > 0.1f)
         {
             cameraTarget.position = Vector3.Lerp(cameraTarget.position, zoomTo, Time.deltaTime * camZoomSpeed);
-            mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, 60, Time.deltaTime * (camZoomSpeed * 5));
             yield return null;
         }
 
+        UIManager.instance.placeObjectUI.SetActive(true);
         mainCamManager.canMove = true;
-
-        Instantiate(obj, transform.position, Quaternion.identity);
+        ObjectPooler.instance.GrabFromPool("shopitem spears", transform.position, Quaternion.identity);
     }
 }

@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
     public GameObject castleRooms;
     public GameObject startCinematicProps;
     public GameObject gameOverCinematicProps;
+    public GameObject placeObjectUI;
 
     [Header("Not Enough Gold Icon")]
     public GameObject notEnoughGoldIcon;

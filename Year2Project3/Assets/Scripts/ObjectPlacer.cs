@@ -5,6 +5,8 @@ using UnityEngine;
 public class ObjectPlacer : MonoBehaviour 
 {
 
+    private bool canPlace = true;
+
     [SerializeField]
     private Color canPlaceColor;
     [SerializeField]
@@ -13,21 +15,34 @@ public class ObjectPlacer : MonoBehaviour
     private Material colorToChange;
     [SerializeField]
     private GameObject placeAvailabilityTrigger;
+    [SerializeField]
+    private DamageZone damageZone;
 
     private List<Transform> badCollisions = new List<Transform>();
 
-    private void Awake()
+    private void OnEnable()
     {
+        canPlace = true;
         placeAvailabilityTrigger.SetActive(true);
+
+        if (damageZone != null)
+        {
+            damageZone.canDamage = false;
+        }
     }
 
     private void Update()
     {
+        if (!canPlace)
+        {
+            return;
+        }
+
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = transform.position.z - Camera.main.transform.position.z;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-        transform.position = new Vector3(mousePos.x, 1, 0);
+        transform.position = new Vector3(mousePos.x, 0.6f, 0);
 
         if (badCollisions.Count > 0)
         {
@@ -69,6 +84,13 @@ public class ObjectPlacer : MonoBehaviour
     public void PlaceObject()
     {
         placeAvailabilityTrigger.SetActive(false);
-        this.enabled = false;
+        UIManager.instance.placeObjectUI.SetActive(false);
+        ObjectPooler.instance.GrabFromPool("build particle", transform.position, Quaternion.identity);
+        canPlace = false;
+
+        if (damageZone != null)
+        {
+            damageZone.canDamage = true;
+        }
     }
 }
