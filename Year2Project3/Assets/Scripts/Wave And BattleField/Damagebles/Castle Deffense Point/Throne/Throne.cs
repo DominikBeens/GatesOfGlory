@@ -55,9 +55,24 @@ public class Throne : CastleDeffensePoint
     }
 
     public void HPBar(){
-        gateHealthBarLeft.fillAmount = (leftGate.myStats.health.currentValue + myStats.health.currentValue) / (leftGate.myStats.health.baseValue + myStats.health.baseValue);
-        throneHealthBarLeft.fillAmount = myStats.health.currentValue / (myStats.health.baseValue + leftGate.myStats.health.baseValue);
-        gateHealthBarRight.fillAmount = (rightGate.myStats.health.currentValue + myStats.health.currentValue) / (rightGate.myStats.health.baseValue + myStats.health.baseValue);
-        throneHealthBarRight.fillAmount = myStats.health.currentValue / (myStats.health.baseValue + rightGate.myStats.health.baseValue);
+        float newGateHealthBarLeft = (leftGate.myStats.health.currentValue + myStats.health.currentValue) / (leftGate.myStats.health.baseValue + myStats.health.baseValue);
+        float newThroneHealthBarLeft = myStats.health.currentValue / (myStats.health.baseValue + leftGate.myStats.health.baseValue);
+        float newGateHealthBarRight = (rightGate.myStats.health.currentValue + myStats.health.currentValue) / (rightGate.myStats.health.baseValue + myStats.health.baseValue);
+        float newThroneHealthBarRight = myStats.health.currentValue / (myStats.health.baseValue + rightGate.myStats.health.baseValue);
+
+        StopCoroutine("HealthBarLerp");
+        StartCoroutine(HealthBarLerp(newGateHealthBarLeft, newGateHealthBarRight, newThroneHealthBarLeft, newThroneHealthBarRight));
+    }
+
+    IEnumerator HealthBarLerp(float newGateLeft, float newGateRight, float newThroneLeft,float newThroneRight) {
+
+        while(gateHealthBarLeft.fillAmount >= newGateLeft || gateHealthBarRight.fillAmount >= newGateRight || throneHealthBarLeft.fillAmount >= newThroneLeft || throneHealthBarRight.fillAmount >= newThroneRight) {
+            gateHealthBarLeft.fillAmount = Mathf.Lerp(gateHealthBarLeft.fillAmount, (leftGate.myStats.health.currentValue + myStats.health.currentValue) / (leftGate.myStats.health.baseValue + myStats.health.baseValue),lerpSpeed);
+            throneHealthBarLeft.fillAmount = Mathf.Lerp(throneHealthBarLeft.fillAmount, myStats.health.currentValue / (myStats.health.baseValue + leftGate.myStats.health.baseValue), lerpSpeed);
+            gateHealthBarRight.fillAmount = Mathf.Lerp(gateHealthBarRight.fillAmount, (rightGate.myStats.health.currentValue + myStats.health.currentValue) / (rightGate.myStats.health.baseValue + myStats.health.baseValue), lerpSpeed);
+            throneHealthBarRight.fillAmount = Mathf.Lerp(throneHealthBarRight.fillAmount, myStats.health.currentValue / (myStats.health.baseValue + rightGate.myStats.health.baseValue), lerpSpeed);
+            yield return null;
+        }
+
     }
 }

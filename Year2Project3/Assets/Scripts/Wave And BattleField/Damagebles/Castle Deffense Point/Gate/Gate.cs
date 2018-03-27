@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Gate : CastleDeffensePoint {
+    public Throne daThrone;
 
     public override void TakeDamage(float damage) {
         if(gateOpen) {
@@ -11,7 +12,6 @@ public class Gate : CastleDeffensePoint {
 
         myStats.health.currentValue -= damage;
         healthbarFill.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
-        uiHealthBar.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
         if(myStats.health.currentValue < 0) {
             myGate.OpenGate();
             gateOpen = true;
@@ -23,6 +23,8 @@ public class Gate : CastleDeffensePoint {
                 }
             }
         }
+
+        daThrone.HPBar();
     }
 
     public void ChangeGateOpen() {
@@ -36,7 +38,5 @@ public class Gate : CastleDeffensePoint {
             myStats.health.currentValue = myStats.health.baseValue;
         }
 
-        healthbarFill.fillAmount = myStats.health.currentValue / myStats.health.baseValue;
-        uiHealthBar.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
-    }
+        healthbarFill.fillAmount = myStats.health.currentValue / myStats.health.baseValue;    }
 }
