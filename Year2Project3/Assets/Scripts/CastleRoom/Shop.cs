@@ -20,8 +20,6 @@ public class Shop : MonoBehaviour
 
     public TextMeshProUGUI selectedShopItemText;
 
-    public OutlineOnMouseOver outline;
-
     [Header("Cost")]
     public int spikesCost;
     public int oilCost;
@@ -48,22 +46,11 @@ public class Shop : MonoBehaviour
     {
         uiOpenButton.SetActive(false);
         uiPanel.SetActive(true);
-
-        if (outline!= null)
-        {
-            outline.canShowOutline = false;
-            outline.OnMouseExit();
-        }
     }
 
     public void CloseUIButton()
     {
         StartCoroutine(CloseUI());
-
-        if (outline != null)
-        {
-            outline.canShowOutline = true;
-        }
     }
 
     private IEnumerator CloseUI()

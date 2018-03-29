@@ -19,8 +19,6 @@ public class Notary : MonoBehaviour
     public TextMeshProUGUI goldAccumulatedText;
     public TextMeshProUGUI goldSpentText;
 
-    public OutlineOnMouseOver outline;
-
     private void Awake()
     {
         uiPanel.SetActive(false);    
@@ -41,22 +39,11 @@ public class Notary : MonoBehaviour
     {
         uiOpenButton.SetActive(false);
         uiPanel.SetActive(true);
-
-        if (outline != null)
-        {
-            outline.canShowOutline = false;
-            outline.OnMouseExit();
-        }
     }
 
     public void CloseUIButton()
     {
         StartCoroutine(CloseUI());
-
-        if (outline != null)
-        {
-            outline.canShowOutline = true;
-        }
     }
 
     private IEnumerator CloseUI()

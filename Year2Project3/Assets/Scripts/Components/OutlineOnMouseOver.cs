@@ -1,24 +1,11 @@
 ﻿using UnityEngine;
-using cakeslice;
 
 public class OutlineOnMouseOver : MonoBehaviour 
 {
 
-    private Outline[] outlineComponents;
+    public Material outlineMat;
+    public float outlineThickness;
     public bool canShowOutline = true;
-
-    private void Awake()
-    {
-        outlineComponents = GetComponentsInChildren<Outline>();
-    }
-
-    private void Start()
-    {
-        for (int i = 0; i < outlineComponents.Length; i++)
-        {
-            outlineComponents[i].color = 1;
-        }
-    }
 
     private void OnMouseEnter()
     {
@@ -27,17 +14,11 @@ public class OutlineOnMouseOver : MonoBehaviour
             return;
         }
 
-        for (int i = 0; i < outlineComponents.Length; i++)
-        {
-            outlineComponents[i].color = 0;
-        }
+        outlineMat.SetFloat("_Thickness", outlineThickness);
     }
 
     public void OnMouseExit()
     {
-        for (int i = 0; i < outlineComponents.Length; i++)
-        {
-            outlineComponents[i].color = 1;
-        }
+        outlineMat.SetFloat("_Thickness", 0);
     }
 }
