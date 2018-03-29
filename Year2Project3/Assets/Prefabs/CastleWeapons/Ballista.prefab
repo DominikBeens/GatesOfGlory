@@ -70,6 +70,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4783387037615672}
+  - component: {fileID: 65969167665113398}
+  - component: {fileID: 114518188646761774}
   m_Layer: 0
   m_Name: BallistaAnimated
   m_TagString: Untagged
@@ -2086,6 +2088,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 6ed3f73fcd658014f81bb7a94436be40, type: 2}
+  - {fileID: 2100000, guid: e5d332dc02024ff4f977bbd6181eb46b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2120,6 +2123,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: b6411abd7388a304481a5fb1a89ee290, type: 2}
+  - {fileID: 2100000, guid: e5d332dc02024ff4f977bbd6181eb46b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2154,6 +2158,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: ac34032520ac8004ea202a113027b67f, type: 2}
+  - {fileID: 2100000, guid: e5d332dc02024ff4f977bbd6181eb46b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2188,6 +2193,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: e44ed4d9f2896484da7333a52fb92662, type: 2}
+  - {fileID: 2100000, guid: e5d332dc02024ff4f977bbd6181eb46b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2276,6 +2282,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1341422136796088}
   m_Mesh: {fileID: 4300006, guid: 753a0ceb14d6c5547a5014964893b111, type: 3}
+--- !u!65 &65969167665113398
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051165700352004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.72, y: 2.6, z: 1}
+  m_Center: {x: -0.72, y: -0.25, z: 0}
 --- !u!95 &95020619000557562
 Animator:
   serializedVersion: 3
@@ -5512,6 +5530,20 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114518188646761774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051165700352004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf91207331ebc434ca3c7b0b9a2ea66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMat: {fileID: 2100000, guid: e5d332dc02024ff4f977bbd6181eb46b, type: 2}
+  outlineThickness: 6
+  canShowOutline: 1
 --- !u!114 &114522235800643268
 MonoBehaviour:
   m_ObjectHideFlags: 1

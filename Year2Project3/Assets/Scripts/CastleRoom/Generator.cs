@@ -22,6 +22,8 @@ public class Generator : MonoBehaviour
     public TextMeshProUGUI repairCostText;
     public TextMeshProUGUI healDescriptionText;
 
+    public OutlineOnMouseOver outline;
+
     [Header("Stats")]
     public Stat healAmount;
     public Stat healCooldown;
@@ -63,11 +65,22 @@ public class Generator : MonoBehaviour
     {
         uiOpenButton.SetActive(false);
         uiPanel.SetActive(true);
+
+        if (outline != null)
+        {
+            outline.canShowOutline = false;
+            outline.OnMouseExit();
+        }
     }
 
     public void CloseUIButton()
     {
         StartCoroutine(CloseUI());
+
+        if (outline != null)
+        {
+            outline.canShowOutline = true;
+        }
     }
 
     private IEnumerator CloseUI()
