@@ -37,7 +37,7 @@ public class EnemyKnight : Enemy
     {
         if (collision.transform == targetTransform)
         {
-            //StartBattle(target);
+            StartBattle(target);
             targetTransform.GetComponent<CastleDeffensePoint>().attackingMe.Add(this);
             agent.isStopped = true;
             attackingCastle = true;
