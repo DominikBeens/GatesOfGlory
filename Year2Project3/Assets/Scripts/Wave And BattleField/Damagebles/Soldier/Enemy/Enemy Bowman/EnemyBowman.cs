@@ -18,6 +18,19 @@ public class EnemyBowman : Enemy {
 
     public override IEnumerator Attack() {
         yield return new WaitForSeconds(attackCooldown);
+        if(target == null){
+                        if(attackingSoldiers.Count > 0) {
+                for(int i = 0; i < attackingSoldiers.Count; i++) {
+                    if(attackingSoldiers[i].inFight == true) {
+
+                        target = attackingSoldiers[i];
+                        break;
+                    }
+                }
+            }
+            StopBattle();
+            StopCoroutine(Attack());
+        }
         float distance = Vector3.Distance(bowPos.position, target.transform.position);
         Transform _currentArrow = ObjectPooler.instance.GrabFromPool("Attacking Arrow", bowPos.position, Quaternion.Euler(new Vector3(0, 0, -45))).transform;
         _currentArrow.LookAt(target.transform);
@@ -71,10 +84,6 @@ public class EnemyBowman : Enemy {
             target = collision.gameObject.GetComponent<Damagebles>();
             StartCoroutine(Attack());
         }
-        /*if(collision.tag == "Ally" && attackingCastle == false && attackingSoldiers.Count < maxAttacking && target.tag != "Ally"){
-            target = collision.GetComponent<Allie>();
-            StartBattle(target);
-        }*/
     }
 
     void OnTriggerExit(Collider collision) {

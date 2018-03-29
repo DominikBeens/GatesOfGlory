@@ -37,7 +37,7 @@ public class EnemyKnight : Enemy
     {
         if (collision.transform == targetTransform)
         {
-            StartBattle(target);
+            //StartBattle(target);
             targetTransform.GetComponent<CastleDeffensePoint>().attackingMe.Add(this);
             agent.isStopped = true;
             attackingCastle = true;
@@ -50,6 +50,12 @@ public class EnemyKnight : Enemy
         if (collision.transform == targetTransform)
         {
             targetTransform.GetComponent<CastleDeffensePoint>().attackingMe.Remove(this);
+        }
+    }
+
+    void OnTriggerEnter(Collider other) {
+        if(other.tag == "Ally" && other.GetComponent<Allie>().targetTransform == gameObject.transform){
+            StartBattle(target);
         }
     }
 }

@@ -5,21 +5,16 @@ using UnityEngine.UI;
 using UnityEngine.AI;
 
 public class Soldier : Damagebles{
-    public float attackCooldown;
     public NavMeshAgent agent;
+    public float attackCooldown;
     public Transform targetTransform;
     public Animator anim;
-
-    [Header("Healthbar")]
-    public Transform healthbarCanvas;
-    public Image healthbarFill;
-    public Animator healthbarAnim;
+    public bool inFight;
 
     public override void TakeDamage(float damage){
         myStats.health.currentValue -= damage;
-        healthbarFill.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
         if(myStats.health.currentValue <= 0){
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }

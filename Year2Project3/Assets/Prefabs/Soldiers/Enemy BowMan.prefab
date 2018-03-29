@@ -1265,7 +1265,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385821130610866}
   m_LocalRotation: {x: -0, y: 0.70710784, z: -0, w: 0.7071058}
-  m_LocalPosition: {x: -27.045, y: 1.059, z: -0.775}
+  m_LocalPosition: {x: -39.45943, y: 1.39, z: -1.3018894}
   m_LocalScale: {x: 0.8, y: 1, z: 0.8}
   m_Children:
   - {fileID: 4871027741740994}
@@ -1776,13 +1776,11 @@ MonoBehaviour:
       baseValue: 4
       currentValue: 4
       increaseValue: 0
-  attackCooldown: 2
   agent: {fileID: 195985851031835828}
+  attackCooldown: 2
   targetTransform: {fileID: 0}
   anim: {fileID: 95153122204031010}
-  healthbarCanvas: {fileID: 0}
-  healthbarFill: {fileID: 0}
-  healthbarAnim: {fileID: 0}
+  inFight: 0
   attackingSoldiers: []
   maxAttacking: 2
   attackingCastle: 0
