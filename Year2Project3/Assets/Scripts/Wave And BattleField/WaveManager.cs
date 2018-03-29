@@ -41,11 +41,25 @@ public class WaveManager : MonoBehaviour
     private int currentWaveTotalHealth;
     private int currentWaveHealth;
 
+    [HideInInspector]
+    public List<CastleGate> allCastleGates = new List<CastleGate>();
+    [HideInInspector]
+    public List<Gate> allGates = new List<Gate>();
+
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
+        }
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < BattleManager.instance.newDeffensePoints.Count; i++)
+        {
+            allCastleGates.Add(BattleManager.instance.newDeffensePoints[i].castleGate);
+            allGates.Add(BattleManager.instance.newDeffensePoints[i].gate.GetComponent<Gate>());
         }
     }
 
@@ -73,7 +87,12 @@ public class WaveManager : MonoBehaviour
                 {
                     if (CastleUpgradeManager.instance.allBuiltRooms[ii].myLevel >= 5)
                     {
-                        BattleManager.instance.newDeffensePoints[i].gate.GetComponent<Gate>().Heal(50);
+                        if (allCastleGates[i].locked)
+                        {
+                            allCastleGates[i].locked = false;
+                        }
+
+                        allGates[i].Heal(100);
                     }
                 }
             }

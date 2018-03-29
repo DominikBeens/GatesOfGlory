@@ -1993,7 +1993,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1432945445547528}
-  m_LocalRotation: {x: 0.3170546, y: 0.5103249, z: 0.72813016, w: -0.3299569}
+  m_LocalRotation: {x: 0.31705457, y: 0.51032484, z: 0.7281301, w: -0.32995686}
   m_LocalPosition: {x: -0.23908794, y: -0.21246439, z: -0.2363007}
   m_LocalScale: {x: 0.9999999, y: 1.0000005, z: 1.0000002}
   m_Children: []
@@ -2032,7 +2032,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1417866986001986}
-  m_LocalRotation: {x: 0.3388718, y: 0.620826, z: 0.6575912, w: -0.25945127}
+  m_LocalRotation: {x: 0.33887178, y: 0.62082595, z: 0.65759116, w: -0.25945124}
   m_LocalPosition: {x: -0.026215434, y: -0.23409045, z: -1.2462583}
   m_LocalScale: {x: 1, y: 0.99999976, z: 0.9999995}
   m_Children: []
@@ -2045,7 +2045,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1270244719209034}
-  m_LocalRotation: {x: 0.63137764, y: 0.12704583, z: 0.2384318, w: -0.72689193}
+  m_LocalRotation: {x: 0.6313777, y: 0.12704584, z: 0.23843181, w: -0.726892}
   m_LocalPosition: {x: -0.29645622, y: -0.22658157, z: -0.6809999}
   m_LocalScale: {x: 1, y: 1.0000002, z: 1.0000005}
   m_Children: []
@@ -2214,7 +2214,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1697277991046228}
-  m_LocalRotation: {x: 0.5291721, y: -0.41024518, z: -0.5377734, w: -0.5123236}
+  m_LocalRotation: {x: 0.5291722, y: -0.41024518, z: -0.53777343, w: -0.5123237}
   m_LocalPosition: {x: 0.2479726, y: -0.22927868, z: 1.240431}
   m_LocalScale: {x: 1, y: 1.0000002, z: 1.0000005}
   m_Children: []
@@ -3059,7 +3059,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1884712364317062}
-  m_LocalRotation: {x: 0.7495926, y: -0.27404884, z: -0.050004665, w: -0.6004229}
+  m_LocalRotation: {x: 0.74959266, y: -0.27404886, z: -0.050004665, w: -0.600423}
   m_LocalPosition: {x: 0.028, y: -0.19901693, z: 1.2448179}
   m_LocalScale: {x: 0.9999999, y: 1, z: 1}
   m_Children: []
@@ -8164,7 +8164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canDamage: 0
-  myDamage: 15
+  myDamage: 25
   myMaxHealth: 10
   anim: {fileID: 95433629980325658}
   myObjectPool: shopitem spears

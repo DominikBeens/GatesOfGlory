@@ -32,11 +32,20 @@ public class Gate : CastleDeffensePoint {
     }
 
     public void Heal(float healAmount) {
+        if (myStats.health.currentValue == myStats.health.baseValue)
+        {
+            return;
+        }
+
         myStats.health.currentValue += healAmount;
+
+        Vector3 healParticlePos = new Vector3(transform.position.x + 0.5f, transform.position.y + 3, transform.position.z - 5);
+        ObjectPooler.instance.GrabFromPool("heal particle", healParticlePos, Quaternion.identity);
 
         if(myStats.health.currentValue > myStats.health.baseValue) {
             myStats.health.currentValue = myStats.health.baseValue;
         }
 
-        healthbarFill.fillAmount = myStats.health.currentValue / myStats.health.baseValue;    }
+        healthbarFill.fillAmount = myStats.health.currentValue / myStats.health.baseValue;
+    }
 }

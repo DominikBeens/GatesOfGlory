@@ -264,5 +264,6 @@ public class BattleManager : MonoBehaviour
         public Transform frontGate;
         public Transform backGate;
         public Transform gate;
+        public CastleGate castleGate;
     }
 }

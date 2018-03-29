@@ -70,6 +70,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4783387037615672}
+  - component: {fileID: 65039022438845260}
+  - component: {fileID: 114172275080988364}
   m_Layer: 0
   m_Name: BallistaAnimated
   m_TagString: Untagged
@@ -593,6 +595,7 @@ GameObject:
   - component: {fileID: 4558720144825922}
   - component: {fileID: 33714897887825102}
   - component: {fileID: 23709225608266334}
+  - component: {fileID: 114610482751978044}
   m_Layer: 0
   m_Name: FiringMechanism
   m_TagString: Untagged
@@ -822,6 +825,7 @@ GameObject:
   - component: {fileID: 4113996466287050}
   - component: {fileID: 33529577959042738}
   - component: {fileID: 23037830577806722}
+  - component: {fileID: 114874038246251424}
   m_Layer: 0
   m_Name: BallistaHead
   m_TagString: Untagged
@@ -972,6 +976,7 @@ GameObject:
   - component: {fileID: 4987208991375372}
   - component: {fileID: 33571381966153794}
   - component: {fileID: 23208632444336890}
+  - component: {fileID: 114130013104961316}
   m_Layer: 0
   m_Name: Poot
   m_TagString: Untagged
@@ -1634,6 +1639,7 @@ GameObject:
   - component: {fileID: 4723011835686050}
   - component: {fileID: 33098612016780588}
   - component: {fileID: 23013491355100154}
+  - component: {fileID: 114407292161708410}
   m_Layer: 0
   m_Name: Handles
   m_TagString: Untagged
@@ -2276,6 +2282,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1341422136796088}
   m_Mesh: {fileID: 4300006, guid: 753a0ceb14d6c5547a5014964893b111, type: 3}
+--- !u!65 &65039022438845260
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051165700352004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.92, y: 2.54, z: 1}
+  m_Center: {x: -0.79, y: -0.18, z: 0}
 --- !u!95 &95020619000557562
 Animator:
   serializedVersion: 3
@@ -3627,6 +3645,21 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &114130013104961316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1523095776478272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!114 &114132691291017926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3818,6 +3851,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114172275080988364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051165700352004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf91207331ebc434ca3c7b0b9a2ea66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114189274482467770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4874,6 +4918,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114407292161708410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1876881523131230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!114 &114411984960385228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6127,6 +6186,21 @@ MonoBehaviour:
   roomUpgrader: {fileID: 0}
   allBuiltWeapons: []
   allBuiltRooms: []
+--- !u!114 &114610482751978044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1341422136796088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!114 &114613395393544250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7759,6 +7833,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114874038246251424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1433258825006990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!114 &114878858846877260
 MonoBehaviour:
   m_ObjectHideFlags: 1

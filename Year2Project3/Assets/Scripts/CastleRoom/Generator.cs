@@ -6,6 +6,8 @@ using TMPro;
 public class Generator : MonoBehaviour 
 {
 
+    private bool repaired;
+
     public Transform uiParent;
     public GameObject uiPanel;
     public GameObject uiOpenButton;
@@ -18,6 +20,15 @@ public class Generator : MonoBehaviour
 
     public int repairCost;
     public TextMeshProUGUI repairCostText;
+    public TextMeshProUGUI healDescriptionText;
+
+    public OutlineOnMouseOver outline;
+
+    [Header("Stats")]
+    public Stat healAmount;
+    public Stat healCooldown;
+
+    private float nextHealTime;
 
     private void Awake()
     {
@@ -30,6 +41,23 @@ public class Generator : MonoBehaviour
         if (uiPanel.activeInHierarchy)
         {
             uiParent.LookAt(Camera.main.transform);
+            healDescriptionText.text = "Current rate: <color=green>" + healAmount.currentValue + "</color> HP per <color=green>" + healCooldown.currentValue + "</color> seconds.";
+        }
+
+        if (repaired)
+        {
+            if (Time.time >= nextHealTime)
+            {
+                nextHealTime = Time.time + healCooldown.currentValue;
+
+                for (int i = 0; i < WaveManager.instance.allGates.Count; i++)
+                {
+                    if (!WaveManager.instance.allCastleGates[i].locked)
+                    {
+                        WaveManager.instance.allGates[i].Heal(healAmount.currentValue);
+                    }
+                }
+            }
         }
     }
 
@@ -37,11 +65,22 @@ public class Generator : MonoBehaviour
     {
         uiOpenButton.SetActive(false);
         uiPanel.SetActive(true);
+
+        if (outline != null)
+        {
+            outline.canShowOutline = false;
+            outline.OnMouseExit();
+        }
     }
 
     public void CloseUIButton()
     {
         StartCoroutine(CloseUI());
+
+        if (outline != null)
+        {
+            outline.canShowOutline = true;
+        }
     }
 
     private IEnumerator CloseUI()
@@ -63,6 +102,8 @@ public class Generator : MonoBehaviour
 
         ResourceManager.instance.RemoveGold(repairCost, true);
         generatorAnim.SetBool("Repaired", true);
+
+        repaired = true;
 
         uiPanel.SetActive(false);
 
