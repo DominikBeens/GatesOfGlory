@@ -40,8 +40,9 @@ GameObject:
   - component: {fileID: 23576929667447696}
   - component: {fileID: 95553456693987836}
   - component: {fileID: 65201702405373260}
-  - component: {fileID: 114288395011467132}
   - component: {fileID: 208925746883595358}
+  - component: {fileID: 114288395011467132}
+  - component: {fileID: 65117153799417700}
   m_Layer: 10
   m_Name: Gate
   m_TagString: Untagged
@@ -125,7 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4017767670870438}
   - component: {fileID: 65023300113349552}
-  - component: {fileID: 114274188918326766}
+  - component: {fileID: 114543769911967602}
   m_Layer: 10
   m_Name: Gate Right
   m_TagString: Defense
@@ -293,7 +294,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4256039913489604}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!4 &4033803020045838
 Transform:
@@ -306,7 +307,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4256039913489604}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!4 &4131083084479772
 Transform:
@@ -335,10 +336,10 @@ Transform:
   - {fileID: 4598326887987776}
   - {fileID: 4578757943952808}
   - {fileID: 4464350036503918}
-  - {fileID: 224937361664401480}
-  - {fileID: 4033803020045838}
-  - {fileID: 4698878563794462}
   - {fileID: 4017767670870438}
+  - {fileID: 4698878563794462}
+  - {fileID: 4033803020045838}
+  - {fileID: 224937361664401480}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
@@ -362,7 +363,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1033679618585386}
   m_LocalRotation: {x: 0.00000001545432, y: -0.7071064, z: -0.000000015454305, w: 0.7071072}
-  m_LocalPosition: {x: -0, y: 0.58, z: 0}
+  m_LocalPosition: {x: 0, y: 0.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4598326887987776}
@@ -421,7 +422,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4256039913489604}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!4 &4736466591660652
 Transform:
@@ -625,6 +626,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 0.06, z: 1.5}
   m_Center: {x: 0, y: 0.03, z: -1}
+--- !u!65 &65117153799417700
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033679618585386}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 0.06, z: 4}
+  m_Center: {x: -1.3, y: -0.05, z: 0}
 --- !u!65 &65201702405373260
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -757,30 +770,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114274188918326766
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1451891948700254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 604a546b46396d44e965144d34a1ebb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myStats:
-    health:
-      baseValue: 400
-      currentValue: 400
-      increaseValue: 0
-    damage:
-      baseValue: 0
-      currentValue: 0
-      increaseValue: 0
-  gateOpen: 0
-  attackingMe: []
-  myGate: {fileID: 114288395011467132}
-  healthbarFill: {fileID: 114331849622710916}
 --- !u!114 &114288395011467132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -792,7 +781,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dc8aa187d99c64bb9bee890164320f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myDefensePoint: {fileID: 114274188918326766}
+  myStats:
+    health:
+      baseValue: 1000
+      currentValue: 1000
+      increaseValue: 0
+    damage:
+      baseValue: 0
+      currentValue: 0
+      increaseValue: 0
+  attackingMe: []
+  myGate: {fileID: 114288395011467132}
+  healthbarFill: {fileID: 114331849622710916}
   gateAnim: {fileID: 95553456693987836}
   gateButtonAnim: {fileID: 95702466499256218}
   locked: 0
@@ -907,6 +907,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114543769911967602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1451891948700254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 604a546b46396d44e965144d34a1ebb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myGate: {fileID: 114288395011467132}
 --- !u!114 &114811841596481878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1083,7 +1095,7 @@ RectTransform:
   - {fileID: 4131083084479772}
   - {fileID: 224813425217443378}
   m_Father: {fileID: 4256039913489604}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

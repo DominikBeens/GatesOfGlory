@@ -109,7 +109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1289006072138766
 GameObject:
   m_ObjectHideFlags: 1
@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 65876775334412746}
   - component: {fileID: 208520861440523468}
   - component: {fileID: 114387678790898556}
+  - component: {fileID: 65866222259143046}
   m_Layer: 10
   m_Name: Gate
   m_TagString: Untagged
@@ -237,7 +238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4503019992904156}
   - component: {fileID: 65837712616184866}
-  - component: {fileID: 114290578961216166}
+  - component: {fileID: 114142353140287362}
   m_Layer: 10
   m_Name: Gate Left
   m_TagString: Defense
@@ -304,7 +305,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1460424808220580}
   m_LocalRotation: {x: 0.00000001545432, y: -0.7071064, z: -0.000000015454305, w: 0.7071072}
-  m_LocalPosition: {x: -0, y: 0.58, z: 0}
+  m_LocalPosition: {x: 0, y: 0.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4768938325766636}
@@ -702,6 +703,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 0.06, z: 1.5}
   m_Center: {x: 0, y: 0.03, z: -1}
+--- !u!65 &65866222259143046
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1460424808220580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 0.06, z: 4}
+  m_Center: {x: -1.3, y: -0.05, z: 0}
 --- !u!65 &65876775334412746
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -817,7 +830,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114290578961216166
+--- !u!114 &114142353140287362
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -828,19 +841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604a546b46396d44e965144d34a1ebb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myStats:
-    health:
-      baseValue: 400
-      currentValue: 400
-      increaseValue: 0
-    damage:
-      baseValue: 0
-      currentValue: 0
-      increaseValue: 0
-  gateOpen: 0
-  attackingMe: []
   myGate: {fileID: 114387678790898556}
-  healthbarFill: {fileID: 114952551819989886}
 --- !u!114 &114387678790898556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -852,7 +853,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dc8aa187d99c64bb9bee890164320f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myDefensePoint: {fileID: 114290578961216166}
+  myStats:
+    health:
+      baseValue: 1000
+      currentValue: 1000
+      increaseValue: 0
+    damage:
+      baseValue: 0
+      currentValue: 0
+      increaseValue: 0
+  attackingMe: []
+  myGate: {fileID: 114387678790898556}
+  healthbarFill: {fileID: 114952551819989886}
   gateAnim: {fileID: 95173574679361334}
   gateButtonAnim: {fileID: 95186546376900790}
   locked: 0

@@ -43,8 +43,6 @@ public class WaveManager : MonoBehaviour
 
     [HideInInspector]
     public List<CastleGate> allCastleGates = new List<CastleGate>();
-    [HideInInspector]
-    public List<Gate> allGates = new List<Gate>();
 
     void Awake()
     {
@@ -59,7 +57,6 @@ public class WaveManager : MonoBehaviour
         for (int i = 0; i < BattleManager.instance.newDeffensePoints.Count; i++)
         {
             allCastleGates.Add(BattleManager.instance.newDeffensePoints[i].castleGate);
-            allGates.Add(BattleManager.instance.newDeffensePoints[i].gate.GetComponent<Gate>());
         }
     }
 
@@ -92,7 +89,7 @@ public class WaveManager : MonoBehaviour
                             allCastleGates[i].locked = false;
                         }
 
-                        allGates[i].Heal(100);
+                        allCastleGates[i].Heal(100);
                     }
                 }
             }

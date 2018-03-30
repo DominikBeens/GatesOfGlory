@@ -62,14 +62,20 @@ public class EnemyBowman : Enemy {
 
     void OnTriggerStay(Collider collision){
         if(collision.tag == "Defense"){
-            if(collision.transform.GetComponent<CastleDeffensePoint>().gateOpen == true) {
-                FindNewTarget();
-                attackingCastle = false;
-                StopAllCoroutines();
+            CastleGatePoint castleGatePoint = collision.transform.GetComponent<CastleGatePoint>();
+
+            if (castleGatePoint != null)
+            {
+                if (castleGatePoint.myGate.isOpen)
+                {
+                    FindNewTarget();
+                    attackingCastle = false;
+                    StopAllCoroutines();
+                    return;
+                }
             }
-            else {
-                agent.isStopped = true;
-            }
+
+            agent.isStopped = true;
         }
 
     }

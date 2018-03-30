@@ -15,6 +15,9 @@ public class Throne : CastleDeffensePoint
 
     public float lerpSpeed;
 
+    [Space(10)]
+    public Image secondThroneHealthBarFill;
+
     private void Update() {
 
         if (Input.GetKeyDown(KeyCode.F))
@@ -43,6 +46,16 @@ public class Throne : CastleDeffensePoint
         {
             myStats.health.currentValue -= damage;
             HPBar();
+
+            if (healthbarFill != null)
+            {
+                healthbarFill.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
+
+                if (secondThroneHealthBarFill != null)
+                {
+                    secondThroneHealthBarFill.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
+                }
+            }
 
             if (myStats.health.currentValue <= 0)
             {

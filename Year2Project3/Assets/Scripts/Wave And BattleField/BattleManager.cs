@@ -79,7 +79,7 @@ public class BattleManager : MonoBehaviour
         {
             for (int i = 0; i < RightDeffensePoints.Count; i++)
             {
-                if (!RightDeffensePoints[i].gate.GetComponent<Gate>().gateOpen && RightDeffensePoints[i].gate.position.x < _myPosX)
+                if (!RightDeffensePoints[i].gate.GetComponent<CastleGate>().isOpen && RightDeffensePoints[i].gate.position.x < _myPosX)
                 {
                     return (RightDeffensePoints[i].gate.transform);
                 }
@@ -90,7 +90,7 @@ public class BattleManager : MonoBehaviour
         {
             for (int i = 0; i < LeftDeffensePoints.Count; i++)
             {
-                if (!LeftDeffensePoints[i].gate.GetComponent<Gate>().gateOpen && LeftDeffensePoints[i].gate.position.x > _myPosX)
+                if (!LeftDeffensePoints[i].gate.GetComponent<CastleGate>().isOpen && LeftDeffensePoints[i].gate.position.x > _myPosX)
                 {
                     return (LeftDeffensePoints[i].gate.transform);
                 }
@@ -110,7 +110,7 @@ public class BattleManager : MonoBehaviour
         {
             for (int i = 0; i < RightDeffensePoints.Count; i++)
             {
-                if (!RightDeffensePoints[i].gate.GetComponent<Gate>().gateOpen)
+                if (!RightDeffensePoints[i].gate.GetComponent<CastleGate>().isOpen)
                 {
                     if (_myPosX > RightDeffensePoints[i].gate.position.x)
                     {
@@ -144,7 +144,7 @@ public class BattleManager : MonoBehaviour
             {
                 for (int i = 0; i < LeftDeffensePoints.Count; i++)
                 {
-                    if (!LeftDeffensePoints[i].gate.GetComponent<Gate>().gateOpen)
+                    if (!LeftDeffensePoints[i].gate.GetComponent<CastleGate>().isOpen)
                     {
                         _min = LeftDeffensePoints[i].backGate.position.x;
                     }
@@ -167,7 +167,7 @@ public class BattleManager : MonoBehaviour
         {
             for (int i = 0; i < LeftDeffensePoints.Count; i++)
             {
-                if (!LeftDeffensePoints[i].gate.GetComponent<Gate>().gateOpen)
+                if (!LeftDeffensePoints[i].gate.GetComponent<CastleGate>().isOpen)
                 {
                     if (_myPosX < LeftDeffensePoints[i].gate.position.x)
                     {
@@ -201,7 +201,7 @@ public class BattleManager : MonoBehaviour
             {
                 for (int i = 0; i < RightDeffensePoints.Count; i++)
                 {
-                    if (!RightDeffensePoints[i].gate.GetComponent<Gate>().gateOpen)
+                    if (!RightDeffensePoints[i].gate.GetComponent<CastleGate>().isOpen)
                     {
                         _max = RightDeffensePoints[i].backGate.position.x;
                     }

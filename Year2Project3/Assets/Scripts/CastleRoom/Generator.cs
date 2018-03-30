@@ -46,11 +46,11 @@ public class Generator : PreBuiltCastleRoom
             {
                 nextHealTime = Time.time + healCooldown.currentValue;
 
-                for (int i = 0; i < WaveManager.instance.allGates.Count; i++)
+                for (int i = 0; i < WaveManager.instance.allCastleGates.Count; i++)
                 {
                     if (!WaveManager.instance.allCastleGates[i].locked)
                     {
-                        WaveManager.instance.allGates[i].Heal(healAmount.currentValue);
+                        WaveManager.instance.allCastleGates[i].Heal(healAmount.currentValue);
                     }
                 }
             }
