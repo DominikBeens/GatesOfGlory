@@ -21,6 +21,8 @@ public class CastleBuild : MonoBehaviour
     [HideInInspector]
     public Animator anim;
 
+    protected Camera mainCam;
+
     protected bool usingBuilding;
 
     [Header("Basic Properties")]
@@ -48,6 +50,7 @@ public class CastleBuild : MonoBehaviour
     public virtual void Awake()
     {
         anim = GetComponent<Animator>();
+        mainCam = Camera.main;
 
         useUI.SetActive(false);
         upgradePanel.SetActive(false);

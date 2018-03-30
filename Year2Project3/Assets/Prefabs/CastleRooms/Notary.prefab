@@ -3708,7 +3708,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
-  - {fileID: 2100000, guid: 120d588b5b80778489c03847e6460635, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3983,7 +3982,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
-  - {fileID: 2100000, guid: 120d588b5b80778489c03847e6460635, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4328,7 +4326,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
-  - {fileID: 2100000, guid: 120d588b5b80778489c03847e6460635, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4570,7 +4567,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
-  - {fileID: 2100000, guid: 120d588b5b80778489c03847e6460635, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6789,9 +6785,9 @@ MonoBehaviour:
   uiPanel: {fileID: 1586282158756246}
   uiOpenButton: {fileID: 1060870330670994}
   anim: {fileID: 95981219986567632}
+  outline: {fileID: 114005466214122658}
   goldAccumulatedText: {fileID: 114138668541169632}
   goldSpentText: {fileID: 114853185008392086}
-  outline: {fileID: 114005466214122658}
 --- !u!137 &137630946921650666
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

@@ -10,6 +10,8 @@ public class CastleUpgradeManager : MonoBehaviour
 
     private Animator anim;
 
+    private Transform mainCam;
+
     public GameObject castleWeaponUI;
     public GameObject castleRoomUI;
     public CastleUpgrader weaponUpgrader;
@@ -26,6 +28,7 @@ public class CastleUpgradeManager : MonoBehaviour
         }
 
         anim = GetComponent<Animator>();
+        mainCam = Camera.main.transform;
 
         weaponUpgrader = castleWeaponUI.GetComponent<CastleUpgrader>();
         roomUpgrader = castleRoomUI.GetComponent<CastleUpgrader>();
@@ -39,7 +42,7 @@ public class CastleUpgradeManager : MonoBehaviour
     {
         if (selectedBuild != null)
         {
-            transform.parent.gameObject.transform.LookAt(Camera.main.transform);
+            transform.parent.gameObject.transform.LookAt(mainCam);
 
             if (Input.GetButtonDown("Cancel"))
             {

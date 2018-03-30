@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Generator : MonoBehaviour 
+public class Generator : PreBuiltCastleRoom
 {
 
     private bool repaired;
 
-    public Transform uiParent;
-    public GameObject uiPanel;
-    public GameObject uiOpenButton;
-
-    public Animator anim;
+    [Space(10)]
     public Animator generatorAnim;
 
     public GameObject brokenUI;
@@ -22,25 +18,25 @@ public class Generator : MonoBehaviour
     public TextMeshProUGUI repairCostText;
     public TextMeshProUGUI healDescriptionText;
 
-    public OutlineOnMouseOver outline;
-
     [Header("Stats")]
     public Stat healAmount;
     public Stat healCooldown;
 
     private float nextHealTime;
 
-    private void Awake()
+    public override void Awake()
     {
-        uiPanel.SetActive(false);
+        base.Awake();
+
         repairCostText.text = repairCost.ToString();
     }
 
-    private void Update()
+    public override void Update()
     {
+        base.Update();
+
         if (uiPanel.activeInHierarchy)
         {
-            uiParent.LookAt(Camera.main.transform);
             healDescriptionText.text = "Current rate: <color=green>" + healAmount.currentValue + "</color> HP per <color=green>" + healCooldown.currentValue + "</color> seconds.";
         }
 
@@ -59,38 +55,6 @@ public class Generator : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void OpenUIButton()
-    {
-        uiOpenButton.SetActive(false);
-        uiPanel.SetActive(true);
-
-        if (outline != null)
-        {
-            outline.canShowOutline = false;
-            outline.OnMouseExit();
-        }
-    }
-
-    public void CloseUIButton()
-    {
-        StartCoroutine(CloseUI());
-
-        if (outline != null)
-        {
-            outline.canShowOutline = true;
-        }
-    }
-
-    private IEnumerator CloseUI()
-    {
-        anim.SetTrigger("CloseUI");
-
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
-
-        uiPanel.SetActive(false);
-        uiOpenButton.SetActive(true);
     }
 
     public void RepairGeneratorButton()

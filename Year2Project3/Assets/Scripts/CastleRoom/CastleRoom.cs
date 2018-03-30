@@ -28,7 +28,7 @@ public class CastleRoom : CastleBuild
     {
         if (usingBuilding)
         {
-            useUI.transform.parent.parent.LookAt(Camera.main.transform);
+            useUI.transform.parent.parent.LookAt(mainCam.transform);
         }
     }
 

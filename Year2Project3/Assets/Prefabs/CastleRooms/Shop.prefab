@@ -6041,7 +6041,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
-  - {fileID: 2100000, guid: 577cdc3dbfa655e4a86eb018fca21470, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6180,7 +6179,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
-  - {fileID: 2100000, guid: 577cdc3dbfa655e4a86eb018fca21470, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6665,7 +6663,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
-  - {fileID: 2100000, guid: 577cdc3dbfa655e4a86eb018fca21470, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7047,7 +7044,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 37a65d6e2e056c544ae2327cc8debf5c, type: 2}
-  - {fileID: 2100000, guid: 577cdc3dbfa655e4a86eb018fca21470, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9427,9 +9423,9 @@ MonoBehaviour:
   uiPanel: {fileID: 1079464495307816}
   uiOpenButton: {fileID: 1102135240011660}
   anim: {fileID: 95204181286246224}
+  outline: {fileID: 114942080069380206}
   camZoomSpeed: 5
   selectedShopItemText: {fileID: 114501985445159366}
-  outline: {fileID: 114942080069380206}
   spikesCost: 5
   oilCost: 10
   archersCost: 12

@@ -40,7 +40,6 @@ public class CastleRoom_Ambush : CastleRoom
     private Transform cameraTarget;
     public float camZoomSpeed;
     private CameraManager mainCamManager;
-    private Camera mainCam;
 
     [Header("Upgrades")]
     public TextMeshProUGUI nextLevelExtraUpgradeText;
@@ -57,7 +56,6 @@ public class CastleRoom_Ambush : CastleRoom
         base.Awake();
 
         cameraTarget = GameObject.FindWithTag("CameraTarget").transform;
-        mainCam = Camera.main;
         mainCamManager = mainCam.GetComponent<CameraManager>();
 
         ambushSpawns = GameObject.FindGameObjectsWithTag("AmbushSpawn");

@@ -20,6 +20,13 @@ public class ObjectPlacer : MonoBehaviour
 
     private List<Transform> badCollisions = new List<Transform>();
 
+    private Camera mainCam;
+
+    private void Awake()
+    {
+        mainCam = Camera.main;
+    }
+
     private void OnEnable()
     {
         canPlace = true;
@@ -39,8 +46,8 @@ public class ObjectPlacer : MonoBehaviour
         }
 
         Vector3 mousePos = Input.mousePosition;
-        mousePos.z = transform.position.z - Camera.main.transform.position.z;
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        mousePos.z = transform.position.z - mainCam.transform.position.z;
+        mousePos = mainCam.ScreenToWorldPoint(mousePos);
 
         transform.position = new Vector3(mousePos.x, 0.6f, 0);
 
