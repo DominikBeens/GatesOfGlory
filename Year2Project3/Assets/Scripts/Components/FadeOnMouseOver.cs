@@ -5,8 +5,11 @@ using UnityEngine;
 public class FadeOnMouseOver : MonoBehaviour
 {
 
+    private bool canFade;
+
     private bool fadeIn;
     public List<GameObject> objectsToFade = new List<GameObject>();
+    private List<Renderer> renderers = new List<Renderer>();
     [Range(0, 1)]
     public float targetAlpha;
     public float fadeSpeed;
@@ -26,6 +29,8 @@ public class FadeOnMouseOver : MonoBehaviour
             myRenderer.material.EnableKeyword("_ALPHABLEND_ON");
             myRenderer.material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
             myRenderer.material.renderQueue = 3000;
+
+            renderers.Add(myRenderer);
         }
     }
 
@@ -33,21 +38,32 @@ public class FadeOnMouseOver : MonoBehaviour
     {
         if (fadeIn)
         {
-            for (int i = 0; i < objectsToFade.Count; i++)
+            for (int i = 0; i < renderers.Count; i++)
             {
-                if (objectsToFade[i].GetComponent<Renderer>().material.color.a > targetAlpha)
+                if (renderers[i].material.color.a > targetAlpha)
                 {
-                    objectsToFade[i].GetComponent<Renderer>().material.color -= new Color(0, 0, 0, Time.deltaTime * fadeSpeed);
+                    renderers[i].material.color -= new Color(0, 0, 0, Time.deltaTime * fadeSpeed);
                 }
             }
         }
         else
         {
-            for (int i = 0; i < objectsToFade.Count; i++)
+            if (canFade)
             {
-                if (objectsToFade[i].GetComponent<Renderer>().material.color.a < 1f)
+                for (int i = 0; i < renderers.Count; i++)
                 {
-                    objectsToFade[i].GetComponent<Renderer>().material.color += new Color(0, 0, 0, Time.deltaTime * fadeSpeed);
+                    if (renderers[i].material.color.a < 1f)
+                    {
+                        renderers[i].material.color += new Color(0, 0, 0, Time.deltaTime * fadeSpeed);
+                    }
+
+                    if (i == renderers.Count - 1)
+                    {
+                        if (renderers[i].material.color.a > 0.99f)
+                        {
+                            canFade = false;
+                        }
+                    }
                 }
             }
         }
@@ -58,6 +74,7 @@ public class FadeOnMouseOver : MonoBehaviour
         if (GameManager.instance.gameState == GameManager.GameState.Playing)
         {
             fadeIn = true;
+            canFade = true;
         }
     }
 

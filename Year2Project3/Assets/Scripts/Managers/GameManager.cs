@@ -31,6 +31,14 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            if (UIManager.instance != null)
+            {
+                UIManager.instance.PauseButton();
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -39,11 +47,6 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             ToggleTimeScale();
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            StartCoroutine(UIManager.instance.GameOver());
         }
     }
 

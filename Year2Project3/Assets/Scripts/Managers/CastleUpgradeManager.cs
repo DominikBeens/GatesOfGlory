@@ -44,10 +44,10 @@ public class CastleUpgradeManager : MonoBehaviour
         {
             transform.parent.gameObject.transform.LookAt(mainCam);
 
-            if (Input.GetButtonDown("Cancel"))
-            {
-                CloseAllUI(null);
-            }
+            //if (Input.GetButtonDown("Cancel"))
+            //{
+            //    CloseAllUI(null);
+            //}
         }
     }
 

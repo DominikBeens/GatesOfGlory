@@ -40,14 +40,7 @@ public class CastleUpgrader : MonoBehaviour
 
         if (CastleUpgradeManager.selectedBuild.myBuildedObject != null)
         {
-            if (type == Type.Weapon)
-            {
-                CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleWeapon>().StartUsing();
-            }
-            else
-            {
-                CastleUpgradeManager.selectedBuild.myBuildedObject.GetComponent<CastleRoom>().StartUsing();
-            }
+            CastleUpgradeManager.selectedBuild.myBuildedObject.StartUsing();
         }
     }
 
