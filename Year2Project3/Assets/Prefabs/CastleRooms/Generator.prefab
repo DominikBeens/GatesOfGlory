@@ -5307,7 +5307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMat: {fileID: 2100000, guid: 79bfd8a79de000141b7b9ff87e325eb6, type: 2}
-  outlineThickness: 4
+  outlineThickness: -4
   canShowOutline: 1
 --- !u!222 &222011411174265560
 CanvasRenderer:

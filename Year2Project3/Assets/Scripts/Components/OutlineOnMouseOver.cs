@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class OutlineOnMouseOver : MonoBehaviour 
 {
@@ -7,6 +8,32 @@ public class OutlineOnMouseOver : MonoBehaviour
     public float outlineThickness;
     public bool canShowOutline = true;
 
+    private List<Material> outlineMats = new List<Material>();
+
+    private void Start()
+    {
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
+
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            if (renderers[i].sharedMaterials.Length > 1)
+            {
+                Material[] sharedMats = renderers[i].sharedMaterials;
+
+                for (int ii = 0; ii < sharedMats.Length; ii++)
+                {
+                    if (sharedMats[ii] == outlineMat)
+                    {
+                        sharedMats[ii] = new Material(sharedMats[ii]);
+                        outlineMats.Add(sharedMats[ii]);
+                    }
+                }
+
+                renderers[i].sharedMaterials = sharedMats;
+            }
+        }
+    }
+
     private void OnMouseEnter()
     {
         if (!canShowOutline)
@@ -14,11 +41,17 @@ public class OutlineOnMouseOver : MonoBehaviour
             return;
         }
 
-        outlineMat.SetFloat("_Thickness", outlineThickness);
+        for (int i = 0; i < outlineMats.Count; i++)
+        {
+            outlineMats[i].SetFloat("_Thickness", outlineThickness);
+        }
     }
 
     public void OnMouseExit()
     {
-        outlineMat.SetFloat("_Thickness", 0);
+        for (int i = 0; i < outlineMats.Count; i++)
+        {
+            outlineMats[i].SetFloat("_Thickness", 0);
+        }
     }
 }
