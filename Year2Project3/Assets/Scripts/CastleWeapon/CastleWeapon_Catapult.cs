@@ -65,8 +65,9 @@ public class CastleWeapon_Catapult : CastleWeapon
     {
         GameObject newProjectile = ObjectPooler.instance.GrabFromPool("catapult projectile", projectileSpawns[0].position, projectileSpawns[0].rotation);
 
-        newProjectile.GetComponent<Projectile>().myDamage = damage.currentValue;
-        newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * forceSlider.value, ForceMode.Impulse);
+        Projectile projectile = newProjectile.GetComponent<Projectile>();
+        projectile.myDamage = damage.currentValue;
+        projectile.Fire(forceSlider.value, 0);
     }
 
     public override void Upgrade()

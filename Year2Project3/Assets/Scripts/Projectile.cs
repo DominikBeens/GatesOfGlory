@@ -57,6 +57,11 @@ public class Projectile : MonoBehaviour
         hit = false;
     }
 
+    public void Fire(float force, float randomizer)
+    {
+        rb.AddForce(transform.forward * (force + Random.Range(-randomizer, randomizer)));
+    }
+
     private void Update()
     {
         if (canRotate)

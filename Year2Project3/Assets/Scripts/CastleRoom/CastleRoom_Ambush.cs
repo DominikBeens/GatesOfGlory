@@ -227,8 +227,10 @@ public class CastleRoom_Ambush : CastleRoom
     private GameObject SpawnProjectile(string projectile, Vector3 position, Quaternion rotation, bool addTorque)
     {
         GameObject newProjectile = ObjectPooler.instance.GrabFromPool(projectile, position, rotation);
-        newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * 150);
-        newProjectile.GetComponent<Projectile>().myDamage = damageAmount.currentValue;
+
+        Projectile projectileComponent = newProjectile.GetComponent<Projectile>();
+        projectileComponent.myDamage = damageAmount.currentValue;
+        projectileComponent.Fire(150, 0);
 
         //if (addTorque)
         //{
