@@ -11,6 +11,9 @@ public class Bowman : Allie {
             if(other.GetComponent<Enemy>() is EnemyBowman) {
                 targetTransform.gameObject.GetComponent<Enemy>().StartBattle(this);
             }
+            else{
+                other.GetComponent<Enemy>().targetTransform = gameObject.transform;
+            }
             anim.SetBool("Attack", true);
             anim.SetBool("Idle", false);
             inFight = true;
@@ -48,7 +51,7 @@ public class Bowman : Allie {
         yield return new WaitForSeconds(attackCooldown);
 
         float distance = Vector3.Distance(bowPos.position, targetTransform.position);
-        Transform _currentArrow = ObjectPooler.instance.GrabFromPool("Ally Arrow", bowPos.position, Quaternion.Euler(new Vector3(0, 0, 0))).transform;
+        Transform _currentArrow = ObjectPooler.instance.GrabFromPool("Arrow", bowPos.position, Quaternion.Euler(new Vector3(0, 0, 0))).transform;
         _currentArrow.LookAt(targetTransform);
         _currentArrow.GetChild(0).GetComponent<Arrow>().distance = distance;
         _currentArrow.position += _currentArrow.forward * distance / 2;

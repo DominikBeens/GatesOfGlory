@@ -40,7 +40,9 @@ public class EnemyKnight : Enemy
         if (collision.transform == targetTransform)
         {
             StartBattle(target);
+            if(targetTransform.tag == "Defense") {
             targetTransform.GetComponent<CastleDeffensePoint>().attackingMe.Add(this);
+            }
             agent.isStopped = true;
             attackingCastle = true;
             target = collision.gameObject.GetComponent<Damagebles>();

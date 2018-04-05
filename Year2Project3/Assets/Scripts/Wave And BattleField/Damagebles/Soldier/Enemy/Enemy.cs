@@ -79,6 +79,10 @@ public class Enemy : Soldier {
     }
 
     public virtual void FindNewTarget() {
+        if(targetTransform.tag == "Ally") {
+            agent.SetDestination(targetTransform.position);
+            return;
+        }
         Transform newTarget = BattleManager.instance.EnemyGetTarget(transform.position.x);
         if(targetTransform != newTarget) {
             anim.SetBool("Attack", false);
