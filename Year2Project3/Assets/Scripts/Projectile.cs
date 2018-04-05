@@ -57,9 +57,9 @@ public class Projectile : MonoBehaviour
         hit = false;
     }
 
-    public void Fire(float force, float randomizer)
+    public void Fire(float force, float randomizer, ForceMode forceMode)
     {
-        rb.AddForce(transform.forward * (force + Random.Range(-randomizer, randomizer)));
+        rb.AddForce(transform.forward * (force + Random.Range(-randomizer, randomizer)), forceMode);
     }
 
     private void Update()

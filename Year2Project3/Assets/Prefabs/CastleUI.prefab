@@ -4038,6 +4038,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castleWeaponUI: {fileID: 1665381027937172}
   castleRoomUI: {fileID: 1661586451992464}
+  weaponUpgrader: {fileID: 0}
+  roomUpgrader: {fileID: 0}
   allBuiltWeapons: []
   allBuiltRooms: []
 --- !u!114 &114970346482758690
@@ -4532,7 +4534,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!223 &223904728580464664
 Canvas:
@@ -4552,7 +4554,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &224057165620409524
 RectTransform:

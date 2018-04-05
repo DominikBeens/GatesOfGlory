@@ -29,6 +29,8 @@ public class CastleBuild : MonoBehaviour
 
     protected bool usingBuilding;
 
+    private Canvas mainCanvas;
+
     [Header("Basic Properties")]
     public string myName;
     public int myLevel;
@@ -59,6 +61,8 @@ public class CastleBuild : MonoBehaviour
         upgradeAnim = upgradePanel.GetComponent<Animator>();
 
         mainCam = Camera.main;
+
+        mainCanvas = useUI.GetComponentInParent<Canvas>();
 
         useUI.SetActive(false);
         upgradePanel.SetActive(false);
@@ -157,6 +161,8 @@ public class CastleBuild : MonoBehaviour
     {
         usingBuilding = true;
         SetupUI();
+
+        mainCanvas.sortingOrder = 1;
         useUI.SetActive(true);
 
         CastleUpgradeManager.instance.CloseAllUI(this);
@@ -180,6 +186,8 @@ public class CastleBuild : MonoBehaviour
 
         usingBuilding = false;
         myBuilder.useButton.SetActive(true);
+
+        mainCanvas.sortingOrder = 0;
 
         upgradePanel.SetActive(false);
         useUI.SetActive(false);

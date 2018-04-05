@@ -230,7 +230,7 @@ public class CastleRoom_Ambush : CastleRoom
 
         Projectile projectileComponent = newProjectile.GetComponent<Projectile>();
         projectileComponent.myDamage = damageAmount.currentValue;
-        projectileComponent.Fire(150, 0);
+        projectileComponent.Fire(150, 0, ForceMode.Force);
 
         //if (addTorque)
         //{

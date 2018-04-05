@@ -67,7 +67,7 @@ public class CastleWeapon_Catapult : CastleWeapon
 
         Projectile projectile = newProjectile.GetComponent<Projectile>();
         projectile.myDamage = damage.currentValue;
-        projectile.Fire(forceSlider.value, 0);
+        projectile.Fire(forceSlider.value, 0, ForceMode.Impulse);
     }
 
     public override void Upgrade()

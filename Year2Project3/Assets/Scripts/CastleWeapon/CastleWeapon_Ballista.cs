@@ -93,7 +93,7 @@ public class CastleWeapon_Ballista : CastleWeapon
 
                 projectile = newProjectile.GetComponent<Projectile>();
                 projectile.myDamage = damage.currentValue;
-                projectile.Fire(force.currentValue, 15);
+                projectile.Fire(force.currentValue, 15, ForceMode.Force);
                 break;
             case AmountOfProjectiles.Three:
 
@@ -103,7 +103,7 @@ public class CastleWeapon_Ballista : CastleWeapon
 
                     projectile = newProjectile.GetComponent<Projectile>();
                     projectile.myDamage = damage.currentValue;
-                    projectile.Fire(force.currentValue, 15);
+                    projectile.Fire(force.currentValue, 15, ForceMode.Force);
                 }
                 break;
         }
