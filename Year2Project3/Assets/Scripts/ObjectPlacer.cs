@@ -16,7 +16,7 @@ public class ObjectPlacer : MonoBehaviour
     [SerializeField]
     private GameObject placeAvailabilityTrigger;
     [SerializeField]
-    private DamageZone damageZone;
+    private EffectZone effectZone;
 
     private List<Transform> badCollisions = new List<Transform>();
 
@@ -32,9 +32,9 @@ public class ObjectPlacer : MonoBehaviour
         canPlace = true;
         placeAvailabilityTrigger.SetActive(true);
 
-        if (damageZone != null)
+        if (effectZone != null)
         {
-            damageZone.canDamage = false;
+            effectZone.canEffect = false;
         }
     }
 
@@ -95,9 +95,9 @@ public class ObjectPlacer : MonoBehaviour
         ObjectPooler.instance.GrabFromPool("build particle", transform.position, Quaternion.identity);
         canPlace = false;
 
-        if (damageZone != null)
+        if (effectZone != null)
         {
-            damageZone.canDamage = true;
+            effectZone.canEffect = true;
         }
     }
 }

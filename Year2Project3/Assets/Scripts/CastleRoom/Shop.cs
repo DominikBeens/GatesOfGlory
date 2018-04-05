@@ -71,6 +71,7 @@ public class Shop : PreBuiltCastleRoom
 
         a.SetTrigger("Buy");
         ResourceManager.instance.RemoveGold(oilCost, true);
+        PlaceObject("shopitem oil");
     }
 
     public void BuyArcherButton(Animator a)

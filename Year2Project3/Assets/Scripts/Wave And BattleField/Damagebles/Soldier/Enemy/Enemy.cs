@@ -10,6 +10,9 @@ public class Enemy : Soldier {
     public bool attackingCastle;
     public Damagebles target;
 
+    [HideInInspector]
+    public bool slowed;
+
     void Start() {
         targetTransform = BattleManager.instance.EnemyGetTarget(transform.position.x);
         FindNewTarget();

@@ -3,47 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class DamageZone : MonoBehaviour
+public class DamageZone : EffectZone
 {
 
-    private Transform mainCam;
-
-    [HideInInspector]
-    public bool canDamage;
-
     public int myDamage;
-    private int myHealth;
-    public int myMaxHealth;
 
-    public Animator anim;
-
-    public string myObjectPool;
-
-    public GameObject statsPopupPanel;
-    public TextMeshProUGUI statsText;
-
-    private void Awake()
+    public override void Update()
     {
-        mainCam = Camera.main.transform;
-    }
+        base.Update();
 
-    private void OnEnable()
-    {
-        myHealth = myMaxHealth;
-    }
-
-    private void Update()
-    {
         if (statsPopupPanel.activeInHierarchy)
         {
-            statsPopupPanel.transform.LookAt(mainCam);
             statsText.text = "Damage: <color=green>" + myDamage + "</color> Health: <color=green>" + myHealth + "</color>/<color=green>" + myMaxHealth;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!canDamage)
+        if (!canEffect)
         {
             return;
         }
@@ -65,18 +42,5 @@ public class DamageZone : MonoBehaviour
             ObjectPooler.instance.GrabFromPool("destroy particle", transform.position, Quaternion.identity);
             ObjectPooler.instance.AddToPool(myObjectPool, gameObject);
         }
-    }
-
-    private void OnMouseEnter()
-    {
-        if (canDamage)
-        {
-            statsPopupPanel.SetActive(true);
-        }
-    }
-
-    private void OnMouseExit()
-    {
-        statsPopupPanel.SetActive(false);
     }
 }
