@@ -40,7 +40,6 @@ public class CastleRoom_Ambush : CastleRoom
     private Transform cameraTarget;
     public float camZoomSpeed;
     private CameraManager mainCamManager;
-    private Camera mainCam;
 
     [Header("Upgrades")]
     public TextMeshProUGUI nextLevelExtraUpgradeText;
@@ -57,7 +56,6 @@ public class CastleRoom_Ambush : CastleRoom
         base.Awake();
 
         cameraTarget = GameObject.FindWithTag("CameraTarget").transform;
-        mainCam = Camera.main;
         mainCamManager = mainCam.GetComponent<CameraManager>();
 
         ambushSpawns = GameObject.FindGameObjectsWithTag("AmbushSpawn");
@@ -229,8 +227,10 @@ public class CastleRoom_Ambush : CastleRoom
     private GameObject SpawnProjectile(string projectile, Vector3 position, Quaternion rotation, bool addTorque)
     {
         GameObject newProjectile = ObjectPooler.instance.GrabFromPool(projectile, position, rotation);
-        newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * 150);
-        newProjectile.GetComponent<Projectile>().myDamage = damageAmount.currentValue;
+
+        Projectile projectileComponent = newProjectile.GetComponent<Projectile>();
+        projectileComponent.myDamage = damageAmount.currentValue;
+        projectileComponent.Fire(150, 0);
 
         //if (addTorque)
         //{

@@ -18,8 +18,14 @@ public class CastleBuild : MonoBehaviour
     public CastleBuilder myBuilder;
     [HideInInspector]
     public int goldSpentOnThisObject;
+
     [HideInInspector]
     public Animator anim;
+    private Animator useUIAnim;
+    private Animator demolishAnim;
+    private Animator upgradeAnim;
+
+    protected Camera mainCam;
 
     protected bool usingBuilding;
 
@@ -48,6 +54,11 @@ public class CastleBuild : MonoBehaviour
     public virtual void Awake()
     {
         anim = GetComponent<Animator>();
+        useUIAnim = useUI.GetComponent<Animator>();
+        demolishAnim = demolishPanel.GetComponent<Animator>();
+        upgradeAnim = upgradePanel.GetComponent<Animator>();
+
+        mainCam = Camera.main;
 
         useUI.SetActive(false);
         upgradePanel.SetActive(false);
@@ -124,7 +135,7 @@ public class CastleBuild : MonoBehaviour
     // Closes the upgrade UI with an animation and sets the panel inactive after a certain time.
     private IEnumerator CloseUpgradeUI()
     {
-        upgradePanel.GetComponent<Animator>().SetTrigger("CloseUI");
+        upgradeAnim.SetTrigger("CloseUI");
 
         yield return new WaitForSeconds(0.5f);
 
@@ -134,7 +145,7 @@ public class CastleBuild : MonoBehaviour
     // Closes the demolish UI with an animation and sets the panel inactive after a certain time.
     private IEnumerator CloseDemolishUI()
     {
-        demolishPanel.GetComponent<Animator>().SetTrigger("CloseUI");
+        demolishAnim.SetTrigger("CloseUI");
 
         yield return new WaitForSeconds(0.5f);
 
@@ -162,7 +173,7 @@ public class CastleBuild : MonoBehaviour
     {
         if (useUI.activeInHierarchy)
         {
-            useUI.GetComponent<Animator>().SetTrigger("CloseUI");
+            useUIAnim.SetTrigger("CloseUI");
         }
 
         yield return new WaitForSeconds(0.5f);

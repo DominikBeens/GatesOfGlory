@@ -166,7 +166,7 @@ public class UIManager : MonoBehaviour
 
     public void MainMenuButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
+        SceneManager.LoadScene(0);
     }
 
     public void PauseButton()

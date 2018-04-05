@@ -8,17 +8,19 @@ public class EnemyKnight : Enemy
     {
         if (collision.collider.tag == "Defense")
         {
-            if (collision.transform.GetComponent<CastleDeffensePoint>().gateOpen == true)
-            {
-                FindNewTarget();
-                agent.isStopped = false;
-            }
-            else
-            {
-                agent.isStopped = true;
-            }
-        }
+            CastleGatePoint castleGatePoint = collision.transform.GetComponent<CastleGatePoint>();
 
+            if (castleGatePoint != null)
+            {
+                if (castleGatePoint.myGate.isOpen)
+                {
+                    FindNewTarget();
+                    agent.isStopped = false;
+                    return;
+                }
+            }
+            agent.isStopped = true;
+        }
     }
 
     public override void TakeDamage(float damage)
@@ -50,6 +52,12 @@ public class EnemyKnight : Enemy
         if (collision.transform == targetTransform)
         {
             targetTransform.GetComponent<CastleDeffensePoint>().attackingMe.Remove(this);
+        }
+    }
+
+    void OnTriggerEnter(Collider other) {
+        if(other.tag == "Ally" && other.GetComponent<Allie>().targetTransform == gameObject.transform){
+            StartBattle(target);
         }
     }
 }

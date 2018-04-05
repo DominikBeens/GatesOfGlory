@@ -83,6 +83,7 @@ public class CastleWeapon_Ballista : CastleWeapon
     public void FireProjectile()
     {
         GameObject newProjectile;
+        Projectile projectile;
 
         switch (amountOfProjectiles)
         {
@@ -90,8 +91,9 @@ public class CastleWeapon_Ballista : CastleWeapon
 
                 newProjectile = ObjectPooler.instance.GrabFromPool("ballista projectile", projectileSpawns[0].position, projectileSpawns[0].rotation);
 
-                newProjectile.GetComponent<Projectile>().myDamage = damage.currentValue;
-                newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * (force.currentValue + Random.Range(-15, 15)));
+                projectile = newProjectile.GetComponent<Projectile>();
+                projectile.myDamage = damage.currentValue;
+                projectile.Fire(force.currentValue, 15);
                 break;
             case AmountOfProjectiles.Three:
 
@@ -99,8 +101,9 @@ public class CastleWeapon_Ballista : CastleWeapon
                 {
                     newProjectile = ObjectPooler.instance.GrabFromPool("ballista projectile", projectileSpawns[i].position, projectileSpawns[i].rotation);
 
-                    newProjectile.GetComponent<Projectile>().myDamage = damage.currentValue;
-                    newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * (force.currentValue + Random.Range(-15, 15)));
+                    projectile = newProjectile.GetComponent<Projectile>();
+                    projectile.myDamage = damage.currentValue;
+                    projectile.Fire(force.currentValue, 15);
                 }
                 break;
         }

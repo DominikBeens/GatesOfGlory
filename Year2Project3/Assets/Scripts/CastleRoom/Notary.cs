@@ -1,58 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using TMPro;
 
-public class Notary : MonoBehaviour 
+public class Notary : PreBuiltCastleRoom
 {
-
-    public Transform uiParent;
-    public GameObject uiPanel;
-    public GameObject uiOpenButton;
-
-    public Animator anim;
 
     public static int goldAccumulated;
     public static int goldSpent;
 
+    [Space(10)]
     public TextMeshProUGUI goldAccumulatedText;
     public TextMeshProUGUI goldSpentText;
 
-    private void Awake()
+    public override void Update()
     {
-        uiPanel.SetActive(false);    
-    }
+        base.Update();
 
-    private void Update()
-    {
         if (uiPanel.activeInHierarchy)
         {
             goldAccumulatedText.text = goldAccumulated.ToString();
             goldSpentText.text = goldSpent.ToString();
-
-            uiParent.LookAt(Camera.main.transform);
         }
-    }
-
-    public void OpenUIButton()
-    {
-        uiOpenButton.SetActive(false);
-        uiPanel.SetActive(true);
-    }
-
-    public void CloseUIButton()
-    {
-        StartCoroutine(CloseUI());
-    }
-
-    private IEnumerator CloseUI()
-    {
-        anim.SetTrigger("CloseUI");
-
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
-
-        uiPanel.SetActive(false);
-        uiOpenButton.SetActive(true);
     }
 }

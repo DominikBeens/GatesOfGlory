@@ -47,7 +47,7 @@ public class CastleWeapon : CastleBuild
     {
         if (usingBuilding || autoFire)
         {
-            useUI.transform.parent.parent.LookAt(Camera.main.transform);
+            useUI.transform.parent.parent.LookAt(mainCam.transform);
 
             if (shooting || autoFire)
             {

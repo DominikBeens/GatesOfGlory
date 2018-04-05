@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Generator : MonoBehaviour 
+public class Generator : PreBuiltCastleRoom
 {
 
-    public Transform uiParent;
-    public GameObject uiPanel;
-    public GameObject uiOpenButton;
+    private bool repaired;
 
-    public Animator anim;
+    [Space(10)]
     public Animator generatorAnim;
 
     public GameObject brokenUI;
@@ -18,40 +16,45 @@ public class Generator : MonoBehaviour
 
     public int repairCost;
     public TextMeshProUGUI repairCostText;
+    public TextMeshProUGUI healDescriptionText;
 
-    private void Awake()
+    [Header("Stats")]
+    public Stat healAmount;
+    public Stat healCooldown;
+
+    private float nextHealTime;
+
+    public override void Awake()
     {
-        uiPanel.SetActive(false);
+        base.Awake();
+
         repairCostText.text = repairCost.ToString();
     }
 
-    private void Update()
+    public override void Update()
     {
+        base.Update();
+
         if (uiPanel.activeInHierarchy)
         {
-            uiParent.LookAt(Camera.main.transform);
+            healDescriptionText.text = "Current rate: <color=green>" + healAmount.currentValue + "</color> HP per <color=green>" + healCooldown.currentValue + "</color> seconds.";
         }
-    }
 
-    public void OpenUIButton()
-    {
-        uiOpenButton.SetActive(false);
-        uiPanel.SetActive(true);
-    }
+        if (repaired)
+        {
+            if (Time.time >= nextHealTime)
+            {
+                nextHealTime = Time.time + healCooldown.currentValue;
 
-    public void CloseUIButton()
-    {
-        StartCoroutine(CloseUI());
-    }
-
-    private IEnumerator CloseUI()
-    {
-        anim.SetTrigger("CloseUI");
-
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
-
-        uiPanel.SetActive(false);
-        uiOpenButton.SetActive(true);
+                for (int i = 0; i < WaveManager.instance.allCastleGates.Count; i++)
+                {
+                    if (!WaveManager.instance.allCastleGates[i].locked)
+                    {
+                        WaveManager.instance.allCastleGates[i].Heal(healAmount.currentValue);
+                    }
+                }
+            }
+        }
     }
 
     public void RepairGeneratorButton()
@@ -63,6 +66,8 @@ public class Generator : MonoBehaviour
 
         ResourceManager.instance.RemoveGold(repairCost, true);
         generatorAnim.SetBool("Repaired", true);
+
+        repaired = true;
 
         uiPanel.SetActive(false);
 

@@ -4,19 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Shop : MonoBehaviour 
+public class Shop : PreBuiltCastleRoom
 {
 
-    public Transform uiParent;
-    public GameObject uiPanel;
-    public GameObject uiOpenButton;
-
-    public Animator anim;
-
+    [Space(10)]
     public float camZoomSpeed;
     private Transform cameraTarget;
     private CameraManager mainCamManager;
-    private Camera mainCam;
 
     public TextMeshProUGUI selectedShopItemText;
 
@@ -25,42 +19,12 @@ public class Shop : MonoBehaviour
     public int oilCost;
     public int archersCost;
 
-    private void Awake()
+    public override void Awake()
     {
-        uiPanel.SetActive(false);
+        base.Awake();
 
         cameraTarget = GameObject.FindWithTag("CameraTarget").transform;
-        mainCam = Camera.main;
         mainCamManager = mainCam.GetComponent<CameraManager>();
-    }
-
-    private void Update()
-    {
-        if (uiPanel.activeInHierarchy)
-        {
-            uiParent.LookAt(Camera.main.transform);
-        }
-    }
-
-    public void OpenUIButton()
-    {
-        uiOpenButton.SetActive(false);
-        uiPanel.SetActive(true);
-    }
-
-    public void CloseUIButton()
-    {
-        StartCoroutine(CloseUI());
-    }
-
-    private IEnumerator CloseUI()
-    {
-        anim.SetTrigger("CloseUI");
-
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
-
-        uiPanel.SetActive(false);
-        uiOpenButton.SetActive(true);
     }
 
     public void SetSelectedShopItemButton(string s)
@@ -94,7 +58,8 @@ public class Shop : MonoBehaviour
 
         a.SetTrigger("Buy");
         ResourceManager.instance.RemoveGold(spikesCost, true);
-        StartCoroutine(PlaceObject("shopitem spears"));
+        //StartCoroutine(PlaceObject("shopitem spears"));
+        PlaceObject("shopitem spears");
     }
 
     public void BuyOilButton(Animator a)
@@ -119,21 +84,30 @@ public class Shop : MonoBehaviour
         ResourceManager.instance.RemoveGold(archersCost, true);
     }
 
-    private IEnumerator PlaceObject(string obj)
+    //private IEnumerator PlaceObject(string obj)
+    //{
+    //    CloseUIButton();
+
+    //    Vector3 zoomTo = new Vector3(0, 5, cameraTarget.position.z);
+    //    mainCamManager.canMove = false;
+
+    //    while (Vector3.Distance(cameraTarget.position, zoomTo) > 0.1f)
+    //    {
+    //        cameraTarget.position = Vector3.Lerp(cameraTarget.position, zoomTo, Time.deltaTime * camZoomSpeed);
+    //        yield return null;
+    //    }
+
+    //    UIManager.instance.placeObjectUI.SetActive(true);
+    //    mainCamManager.canMove = true;
+    //    ObjectPooler.instance.GrabFromPool(obj, transform.position, Quaternion.identity);
+    //}
+
+    private void PlaceObject(string obj)
     {
         CloseUIButton();
 
-        Vector3 zoomTo = new Vector3(0, 5, cameraTarget.position.z);
-        mainCamManager.canMove = false;
-
-        while (Vector3.Distance(cameraTarget.position, zoomTo) > 0.1f)
-        {
-            cameraTarget.position = Vector3.Lerp(cameraTarget.position, zoomTo, Time.deltaTime * camZoomSpeed);
-            yield return null;
-        }
-
         UIManager.instance.placeObjectUI.SetActive(true);
         mainCamManager.canMove = true;
-        ObjectPooler.instance.GrabFromPool("shopitem spears", transform.position, Quaternion.identity);
+        ObjectPooler.instance.GrabFromPool(obj, transform.position, Quaternion.identity);
     }
 }

@@ -44,4 +44,17 @@ public class Knight : Allie
             GetNewTarget();
         }
     }
+
+    public override void TakeDamage(float damage) {
+        myStats.health.currentValue -= damage;
+
+        if(myStats.health.currentValue <= 0) {
+            StopAllCoroutines();
+            if(targetTransform != null) {
+                targetTransform.GetComponent<Enemy>().RemoveCounter(this);
+            }
+            ObjectPooler.instance.AddToPool("Ally Knight", gameObject);
+            ResourceManager.instance.AddGold(ResourceManager.instance.normalEnemyGoldReward);
+        }
+    }
 }

@@ -1,63 +1,51 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class Allie : Soldier
-{
-    public bool inFight;
-
-    void Start()
-    {
+public class Allie : Soldier {
+    void Start() {
         targetTransform = BattleManager.instance.AllyGetTarget(transform.position.x, this, targetTransform);
-        agent.SetDestination(targetTransform.position);
+        if(agent != null) {
+            agent.SetDestination(targetTransform.position);
+        }
     }
 
-    void Update()
-    {
+    void Update() {
         GetNewTarget();
     }
 
-    public void GetNewTarget()
-    {
-        if (targetTransform != null && targetTransform.gameObject.activeInHierarchy == false)
-        {
+    public void GetNewTarget() {
+        if(targetTransform != null && targetTransform.gameObject.activeInHierarchy == false) {
             targetTransform = null;
             inFight = false;
             anim.SetBool("Attack", false);
         }
-        if (inFight)
-        {
+        if(inFight) {
             agent.isStopped = true;
             anim.SetBool("Attack", true);
             anim.SetBool("Idle", false);
             return;
         }
-        if (targetTransform != null)
-        {
+        if(targetTransform != null) {
             Transform newTarget = BattleManager.instance.AllyGetTarget(transform.position.x, this, targetTransform);
-            if (newTarget != targetTransform)
-            {
-                if (targetTransform.tag == "Enemy")
-                {
+            if(newTarget != targetTransform) {
+                if(targetTransform.tag == "Enemy") {
                     agent.isStopped = false;
-                    if (newTarget.tag == "Enemy")
-                    {
+                    if(newTarget.tag == "Enemy") {
                         targetTransform.GetComponent<Enemy>().RemoveCounter(this);
                         newTarget.GetComponent<Enemy>().AddCounter(this);
                         targetTransform = newTarget;
                         agent.SetDestination(targetTransform.position);
                         agent.isStopped = false;
                     }
-                    else if (agent.isStopped == false)
-                    {
+                    else if(agent.isStopped == false) {
                         agent.SetDestination(targetTransform.position);
                     }
                     anim.SetBool("Idle", false);
                 }
-                else
-                {
-                    if (newTarget.tag == "Enemy")
-                    {
+                else {
+                    if(newTarget.tag == "Enemy") {
                         newTarget.GetComponent<Enemy>().AddCounter(this);
                     }
                     targetTransform = newTarget;
@@ -66,17 +54,14 @@ public class Allie : Soldier
                     anim.SetBool("Idle", false);
                 }
             }
-            else if (targetTransform.tag == "Enemy" && agent.isStopped == false)
-            {
+            else if(targetTransform.tag == "Enemy" && agent.isStopped == false) {
                 agent.SetDestination(targetTransform.position);
                 anim.SetBool("Idle", false);
             }
         }
-        else
-        {
+        else {
             Transform newTarget = BattleManager.instance.AllyGetTarget(transform.position.x, this, targetTransform);
-            if (newTarget.tag == "Enemy")
-            {
+            if(newTarget.tag == "Enemy") {
                 newTarget.GetComponent<Enemy>().AddCounter(this);
             }
             targetTransform = newTarget;
@@ -86,21 +71,17 @@ public class Allie : Soldier
         }
     }
 
-    public override void TakeDamage(float damage)
-    {
+    public override void TakeDamage(float damage) {
         myStats.health.currentValue -= damage;
-        if (myStats.health.currentValue <= 0)
-        {
-            if (targetTransform != null)
-            {
+        if(myStats.health.currentValue <= 0) {
+            if(targetTransform != null) {
                 targetTransform.GetComponent<Enemy>().RemoveCounter(this);
             }
             Destroy(gameObject);
         }
     }
 
-    public IEnumerator Attack()
-    {
+    public virtual IEnumerator Attack() {
         Transform _attackingCurrently = targetTransform;
         yield return new WaitForSeconds(attackCooldown);
         if(targetTransform != null && targetTransform.tag == "Enemy" && targetTransform == _attackingCurrently) {
@@ -113,8 +94,7 @@ public class Allie : Soldier
         }
     }
 
-    private void OnDestroy()
-    {
+    private void OnDestroy() {
         WaveManager.instance.alliesInScene.Remove(this);
     }
 }

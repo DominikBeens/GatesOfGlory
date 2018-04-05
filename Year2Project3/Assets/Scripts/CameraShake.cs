@@ -5,6 +5,8 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
 
+    private Transform mainCam;
+
     private static bool shake;
 
     private Vector3 startPos;
@@ -25,6 +27,11 @@ public class CameraShake : MonoBehaviour
     // Rotate amount
     private float rotateAmount;
 
+    private void Awake()
+    {
+        mainCam = Camera.main.transform;
+    }
+
     private void Update()
     {
         if (shake)
@@ -37,8 +44,8 @@ public class CameraShake : MonoBehaviour
                                                               Random.Range(startRot.y - rotateAmount, startRot.y + rotateAmount),
                                                               Random.Range(startRot.z - rotateAmount, startRot.z + rotateAmount)));
 
-            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, nextPos, Time.deltaTime * shakeSpeed);
-            Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, nextRot, Time.deltaTime * shakeSpeed);
+            mainCam.position = Vector3.Lerp(mainCam.position, nextPos, Time.deltaTime * shakeSpeed);
+            mainCam.rotation = Quaternion.Slerp(mainCam.rotation, nextRot, Time.deltaTime * shakeSpeed);
 
             if (shakeTime > 0)
             {
@@ -46,8 +53,8 @@ public class CameraShake : MonoBehaviour
             }
             else
             {
-                Camera.main.transform.position = startPos;
-                Camera.main.transform.rotation = Quaternion.Euler(startRot);
+                mainCam.position = startPos;
+                mainCam.rotation = Quaternion.Euler(startRot);
                 shake = false;
             }
         }
@@ -61,8 +68,8 @@ public class CameraShake : MonoBehaviour
     {
         if (!shake)
         {
-            startPos = Camera.main.transform.position;
-            startRot = Camera.main.transform.rotation.eulerAngles;
+            startPos = mainCam.position;
+            startRot = mainCam.rotation.eulerAngles;
 
             shakeAmountX = _shakeAmountX;
             shakeAmountY = _shakeAmountY;

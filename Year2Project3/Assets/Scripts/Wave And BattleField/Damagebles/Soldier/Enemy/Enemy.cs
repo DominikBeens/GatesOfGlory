@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class Enemy : Soldier {
-    public List<Allie> attackingSoldiers = new List<Allie>();
+    public List<Soldier> attackingSoldiers = new List<Soldier>();
     public int maxAttacking;
     public bool attackingCastle;
     public Damagebles target;
@@ -20,7 +21,7 @@ public class Enemy : Soldier {
         FindNewTarget();
     }
 
-    public void RemoveCounter(Allie _attacking) {
+    public void RemoveCounter(Soldier _attacking) {
         attackingSoldiers.Remove(_attacking);
         if(attackingSoldiers.Count == maxAttacking - 1) {
             BattleManager.instance.freeEnemys.Add(gameObject);
@@ -50,8 +51,16 @@ public class Enemy : Soldier {
     public void StartBattle(Damagebles _target) {
         anim.SetBool("Attack", true);
         target = _target;
-        if(target != null) {
-            transform.LookAt(target.transform);
+        if(_target != null) {
+            transform.LookAt(_target.transform);
+        }
+        else {
+            if(transform.position.x > 0) {
+                transform.localEulerAngles = new Vector3(0, -90, 0);
+            }
+            else {
+                transform.localEulerAngles = new Vector3(0, 90, 0);
+            }
         }
         agent.isStopped = true;
         StartCoroutine(Attack());
@@ -63,6 +72,7 @@ public class Enemy : Soldier {
         }
         else {
             anim.SetBool("Attack", false);
+            target = null;
             agent.isStopped = false;
             FindNewTarget();
         }
@@ -103,6 +113,7 @@ public class Enemy : Soldier {
             StartCoroutine(Attack());
             target.TakeDamage(myStats.damage.currentValue);
         }
+
     }
 
     private void OnDisable() {
