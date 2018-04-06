@@ -96,6 +96,7 @@ public class UIManager : MonoBehaviour
         GameManager.instance.gameState = GameManager.GameState.Cinematic;
 
         Cursor.visible = false;
+        CursorManager.instance.ToggleCursorObject();
         canPause = false;
 
         CameraManager mainCamManager = mainCam.GetComponent<CameraManager>();
@@ -124,7 +125,11 @@ public class UIManager : MonoBehaviour
         castleRooms.SetActive(true);
         startCinematicProps.SetActive(false);
 
-        Cursor.visible = true;
+        if (CursorManager.instance.CursorVisibilityStandard)
+        {
+            Cursor.visible = true;
+        }
+        CursorManager.instance.ToggleCursorObject();
 
         GameManager.instance.gameState = GameManager.GameState.Playing;
 
@@ -138,6 +143,7 @@ public class UIManager : MonoBehaviour
     {
         CastleUpgradeManager.instance.CloseAllUI(null);
         canPause = false;
+        CursorManager.instance.ToggleCursorObject();
         GameManager.instance.gameState = GameManager.GameState.Cinematic;
 
         CameraManager mainCamManager = mainCam.GetComponent<CameraManager>();

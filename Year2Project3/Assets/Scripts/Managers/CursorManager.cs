@@ -29,7 +29,10 @@ public class CursorManager : MonoBehaviour
 
         mainCam = Camera.main;
 
-        cursorObjectPos = Instantiate(cursorObject).transform;
+        if (cursorObject != null)
+        {
+            cursorObjectPos = Instantiate(cursorObject).transform;
+        }
 
         Cursor.visible = cursorVisible;
         CursorVisibilityStandard = cursorVisible;
@@ -45,5 +48,10 @@ public class CursorManager : MonoBehaviour
         {
             cursorObjectPos.position = mousePos;
         }
+    }
+
+    public void ToggleCursorObject()
+    {
+        cursorObjectPos.gameObject.SetActive(!cursorObjectPos.gameObject.activeSelf);
     }
 }

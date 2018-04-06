@@ -9,7 +9,7 @@ public class CastleRoom : CastleBuild
 
     public enum RoomType
     {
-        Knight,
+        Minion,
         Ranger,
         Spearman,
         Gold,

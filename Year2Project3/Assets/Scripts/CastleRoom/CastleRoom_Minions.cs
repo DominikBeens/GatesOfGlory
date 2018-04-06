@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CastleRoom_Minions : CastleRoom 
+public class CastleRoom_Minions : CastleRoom
 {
 
     [Header("Minion Room Setup")]
@@ -19,6 +19,8 @@ public class CastleRoom_Minions : CastleRoom
 
     private bool canSpawn = true;
     private int currentAmountToSpawn;
+    private int knightsToSpawn;
+    private int archersToSpawn;
 
     [Header("UI")]
     public TextMeshProUGUI roomTypeText;
@@ -41,8 +43,8 @@ public class CastleRoom_Minions : CastleRoom
     {
         base.SetupUI();
 
-        roomTypeText.text = "Type: <color=green>" + roomType + "</color>";
-        roomMinionCostText.text = "Spawn Cost: <color=yellow>" + spawnCost.currentValue + "</color>";
+        //roomTypeText.text = "Type: <color=green>" + roomType + "</color>";
+        roomMinionCostText.text = "Cost: <color=yellow>" + spawnCost.currentValue + "</color>";
 
         if (myLevel < myMaxLevel)
         {
@@ -57,16 +59,31 @@ public class CastleRoom_Minions : CastleRoom
         }
     }
 
+    public void BuyMinionsButton(int type)
+    {
+        if (!ResourceManager.instance.HasEnoughGold((int)spawnCost.currentValue))
+        {
+            return;
+        }
+
+        ResourceManager.instance.RemoveGold((int)spawnCost.currentValue, true);
+
+        switch (type)
+        {
+            case 0:
+                knightsToSpawn += (int)amountToSpawnPerBuy.currentValue;
+                break;
+            case 1:
+                archersToSpawn += (int)amountToSpawnPerBuy.currentValue;
+                break;
+        }
+
+        currentAmountToSpawn += (int)amountToSpawnPerBuy.currentValue;
+    }
+
     public override void UseRoom()
     {
         base.UseRoom();
-
-        if (ResourceManager.instance.goldPrefabsInScene.Count >= spawnCost.currentValue)
-        {
-            currentAmountToSpawn += (int)amountToSpawnPerBuy.currentValue;
-
-            ResourceManager.instance.RemoveGold((int)spawnCost.currentValue, true);
-        }
     }
 
     public IEnumerator SpawnMinions()
@@ -77,7 +94,17 @@ public class CastleRoom_Minions : CastleRoom
                                           minionSpawnPoint.position.y,
                                           Random.Range(minionSpawnPoint.position.z - spawnPointOffsetRandomizer, minionSpawnPoint.position.z + spawnPointOffsetRandomizer));
 
-        GameObject newMinion = ObjectPooler.instance.GrabFromPool("Ally Knight", Vector3.zero + spawnOffset,Quaternion.Euler(Vector3.zero));
+        GameObject newMinion = null;
+        if (knightsToSpawn > 0)
+        {
+            newMinion = ObjectPooler.instance.GrabFromPool("Ally Knight", Vector3.zero + spawnOffset, Quaternion.Euler(Vector3.zero));
+            knightsToSpawn--;
+        }
+        else if (archersToSpawn > 0)
+        {
+            newMinion = ObjectPooler.instance.GrabFromPool("Ally Bowman", Vector3.zero + spawnOffset, Quaternion.Euler(Vector3.zero));
+            archersToSpawn--;
+        }
         newMinion.GetComponent<AudioSource>().pitch = Random.Range(0.75f, 1.25f);
         newMinion.GetComponent<AudioSource>().volume = Random.Range(0.01f, 0.08f);
         newMinion.transform.SetParent(null);
