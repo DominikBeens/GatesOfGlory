@@ -83,7 +83,17 @@ public class Enemy : Soldier {
     }
 
     public virtual void FindNewTarget() {
-        if(targetTransform.tag == "Ally") {
+        if(targetTransform == null) {
+            targetTransform = BattleManager.instance.EnemyGetTarget(transform.position.x);
+            agent.SetDestination(targetTransform.position);
+            anim.SetBool("Attack", false);
+            attackingCastle = false;
+            StopCoroutine(Attack());
+            if(attackingSoldiers.Count <= 0) {
+                agent.isStopped = false;
+            }
+        }
+        else if(targetTransform.tag == "Ally") {
             agent.SetDestination(targetTransform.position);
             return;
         }
@@ -101,27 +111,28 @@ public class Enemy : Soldier {
     }
 
     public virtual IEnumerator Attack() {
-        Damagebles _targetToAttack = targetTransform.GetComponent<Damagebles>();
-        yield return new WaitForSeconds(attackCooldown);
-        if(target == null) {
-            if(attackingSoldiers.Count > 0) {
-                for(int i = 0; i < attackingSoldiers.Count; i++) {
-                    if(attackingSoldiers[i].inFight == true) {
+        if(targetTransform.GetComponent<Damagebles>() != null) {
+            Damagebles _targetToAttack = targetTransform.GetComponent<Damagebles>();
+            yield return new WaitForSeconds(attackCooldown);
+            if(target == null) {
+                if(attackingSoldiers.Count > 0) {
+                    for(int i = 0; i < attackingSoldiers.Count; i++) {
+                        if(attackingSoldiers[i].inFight == true) {
 
-                        target = attackingSoldiers[i];
-                        break;
+                            target = attackingSoldiers[i];
+                            break;
+                        }
                     }
                 }
+                StopBattle();
+
             }
-            StopBattle();
-
+            else {
+                StopAllCoroutines();
+                StartCoroutine(Attack());
+                target.TakeDamage(myStats.damage.currentValue);
+            }
         }
-        else {
-            StopAllCoroutines();
-            StartCoroutine(Attack());
-            target.TakeDamage(myStats.damage.currentValue);
-        }
-
     }
 
     private void OnDisable() {

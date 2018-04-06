@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ public class Bowman : Allie {
             if(other.GetComponent<Enemy>() is EnemyBowman) {
                 targetTransform.gameObject.GetComponent<Enemy>().StartBattle(this);
             }
-            else{
+            else {
                 other.GetComponent<Enemy>().targetTransform = gameObject.transform;
             }
             anim.SetBool("Attack", true);
@@ -25,6 +26,7 @@ public class Bowman : Allie {
 
     void OnCollisionEnter(Collision collision) {
         if(collision.transform == targetTransform) {
+            print("l");
             agent.isStopped = true;
             if(transform.position.x > 0) {
                 transform.localEulerAngles = new Vector3(0, 90, 0);
@@ -42,6 +44,7 @@ public class Bowman : Allie {
         }
         else {
             anim.SetBool("Idle", true);
+            agent.isStopped = true;
             GetNewTarget();
         }
     }

@@ -2,18 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyKnight : Enemy
-{
-    void OnCollisionStay(Collision collision)
-    {
-        if (collision.collider.tag == "Defense")
-        {
+public class EnemyKnight : Enemy {
+    void OnCollisionStay(Collision collision) {
+        if(collision.collider.tag == "Defense") {
             CastleGatePoint castleGatePoint = collision.transform.GetComponent<CastleGatePoint>();
 
-            if (castleGatePoint != null)
-            {
-                if (castleGatePoint.myGate.isOpen)
-                {
+            if(castleGatePoint != null) {
+                if(castleGatePoint.myGate.isOpen) {
                     FindNewTarget();
                     agent.isStopped = false;
                     return;
@@ -23,25 +18,21 @@ public class EnemyKnight : Enemy
         }
     }
 
-    public override void TakeDamage(float damage)
-    {
+    public override void TakeDamage(float damage) {
         myStats.health.currentValue -= damage;
 
-        if (myStats.health.currentValue <= 0)
-        {
+        if(myStats.health.currentValue <= 0) {
             StopAllCoroutines();
             ObjectPooler.instance.AddToPool("Enemy Knight", gameObject);
             ResourceManager.instance.AddGold(ResourceManager.instance.normalEnemyGoldReward);
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform == targetTransform)
-        {
+    void OnCollisionEnter(Collision collision) {
+        if(collision.transform == targetTransform) {
             StartBattle(target);
             if(targetTransform.tag == "Defense") {
-            targetTransform.GetComponent<CastleDeffensePoint>().attackingMe.Add(this);
+                targetTransform.GetComponent<CastleDeffensePoint>().attackingMe.Add(this);
             }
             agent.isStopped = true;
             attackingCastle = true;
@@ -49,17 +40,17 @@ public class EnemyKnight : Enemy
         }
     }
 
-    void OnCollisionExit(Collision collision)
-    {
-        if (collision.transform == targetTransform)
-        {
-            //targetTransform.GetComponent<CastleDeffensePoint>().attackingMe.Remove(this);
+    void OnTriggerStay(Collider other) {
+        if(Vector3.Distance(transform.position,other.transform.position) < 1 && other.tag == "Ally" && other.GetComponent<Allie>().targetTransform == gameObject.transform) {
+            StartBattle(other.GetComponent<Allie>());
         }
     }
 
-    void OnTriggerEnter(Collider other) {
-        if(other.tag == "Ally" && other.GetComponent<Allie>().targetTransform == gameObject.transform){
-            StartBattle(target);
+    void OnTriggerExit(Collider other) {
+        if(targetTransform != null && targetTransform.gameObject.activeSelf == false) {
+            targetTransform = null;
+            StopBattle();
+            FindNewTarget();
         }
     }
 }
