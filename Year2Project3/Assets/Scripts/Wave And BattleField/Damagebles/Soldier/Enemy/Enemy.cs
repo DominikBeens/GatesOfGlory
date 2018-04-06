@@ -59,13 +59,14 @@ public class Enemy : Soldier {
             transform.LookAt(_target.transform);
         }
         else {
-            if(transform.position.x > 0) {
+            /*if(transform.position.x > 0) {
                 transform.localEulerAngles = new Vector3(0, -90, 0);
             }
             else {
                 transform.localEulerAngles = new Vector3(0, 90, 0);
-            }
+            }*/
         }
+        transform.LookAt(targetTransform);
         agent.isStopped = true;
         StartCoroutine(Attack());
     }

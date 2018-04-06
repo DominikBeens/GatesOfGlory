@@ -130,8 +130,15 @@ public class WaveManager : MonoBehaviour
 
             for(int s = 0; s < stageSize; s++) {
                 NewSoldier newSoldier = new NewSoldier();
+
                 int currentSoldier = Mathf.Clamp(Mathf.RoundToInt(Mathf.Clamp(currentWave / 7.5f, 0, enemyTypes.Count - 1) - Random.Range(0, enemyTypes.Count)), 0, enemyTypes.Count - 1);
-                newSoldier.Side = Random.Range(0, 2);
+
+                if(currentWave > 3) {
+                    newSoldier.Side = Random.Range(0, 2);
+                }
+                else {
+                    newSoldier.Side = 0;
+                }
 
                 if(newSoldier.Side == 0) {
                     enemyAmountLeft[currentSoldier]++;
@@ -198,7 +205,7 @@ public class WaveManager : MonoBehaviour
 
         if (currentSoldier < thisWave.atackStage[currentStage].soldiers.Count)
         {
-            GameObject newEnemy = ObjectPooler.instance.GrabFromPool(thisWave.atackStage[currentStage].soldiers[currentSoldier].Soldier, new Vector3(spwanPoints[Random.Range(0,spwanPoints.Count)].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 0, Random.Range(-SpawnsetOff, SpawnsetOff)), spwanPoints[thisWave.atackStage[currentStage].soldiers[currentSoldier].Side].transform.rotation);
+            GameObject newEnemy = ObjectPooler.instance.GrabFromPool(thisWave.atackStage[currentStage].soldiers[currentSoldier].Soldier, new Vector3(spwanPoints[thisWave.atackStage[currentStage].soldiers[currentSoldier].Side].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 0, Random.Range(-SpawnsetOff, SpawnsetOff)), spwanPoints[thisWave.atackStage[currentStage].soldiers[currentSoldier].Side].transform.rotation);
             Enemy enemyScript = newEnemy.GetComponent<Enemy>();
             enemyScript.myStats.ChangeStats(HealthMultiplier, DamageMultiplier);
             enemyScript.agent.speed = Random.Range(1.75f, 2.25f);
