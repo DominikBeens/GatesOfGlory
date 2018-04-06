@@ -8,6 +8,8 @@ using TMPro;
 public class WaveManager : MonoBehaviour
 {
     public List<string> enemyTypes = new List<string>();
+    public List<int> enemyAmountRight = new List<int>();
+    public List<int> enemyAmountLeft = new List<int>();
     public Wave thisWave;
     public float waveSize = 10;
     public float minWaveMultiplier, maxWaveMultiplier;
@@ -38,9 +40,6 @@ public class WaveManager : MonoBehaviour
     public Slider waveTimerSlider;
     private bool skipWaiting;
 
-    private int currentWaveTotalHealth;
-    private int currentWaveHealth;
-
     [HideInInspector]
     public List<CastleGate> allCastleGates = new List<CastleGate>();
 
@@ -52,7 +51,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    void Start()
     {
         for (int i = 0; i < BattleManager.instance.newDeffensePoints.Count; i++)
         {
@@ -62,15 +61,24 @@ public class WaveManager : MonoBehaviour
 
     void Update()
     {
-        if (enemiesInScene.Count <= 0 && waveDone == true)
-        {
-            NextWave();
-        }
-
         if(Input.GetKeyDown("m")){
             currentWave++;
         }
     }
+
+    [System.Serializable]
+    public struct NewSoldier {
+        public int Side;
+        public string Soldier;
+    }
+
+
+    public void RemoveEnemyFromScene(Enemy _enemyToRemove){
+        instance.enemiesInScene.Remove(_enemyToRemove);
+        if(enemiesInScene.Count <= 0 && waveDone == true) {
+            NextWave();
+        }
+    } 
 
     public void NextWave()
     {
@@ -94,40 +102,47 @@ public class WaveManager : MonoBehaviour
                 }
             }
         }
-        GeneradeWave();
-
-        currentWaveTotalHealth = 0;
-        currentWaveHealth = 0;
+        StartCoroutine(GeneradeWave());
 
         currentWave++;
         waveDone = false;
         StartCoroutine(WaveTimer());
     }
 
-    void GeneradeWave()
-    {
-        waveSize = waveSize * Random.Range(minWaveMultiplier, maxWaveMultiplier);
+    IEnumerator GeneradeWave() {
 
+        for(int i = 0; i < enemyAmountLeft.Count; i++) {
+            enemyAmountLeft[i] = 0;
+            enemyAmountRight[i] = 0;
+        }
+
+        waveSize = waveSize * Random.Range(minWaveMultiplier, maxWaveMultiplier);
         thisWave = new Wave();
-        for (int w = 0; w < Mathf.Round(waveSize); w++)
-        {
+        for(int w = 0; w < Mathf.Round(waveSize); w++) {
             int stageSize = Random.Range(Mathf.Clamp(Mathf.RoundToInt(currentWave / 2f), 1, maxStageSize), Mathf.Clamp(Mathf.RoundToInt(currentWave / 0.5f), 1, maxStageSize));
+
             stageSize = Mathf.Clamp(stageSize - Random.Range(0, 3), 1, maxStageSize);
             Stage _newStage = new Stage();
-            for (int s = 0; s < stageSize; s++)
-            {
-                _newStage.soldiers.Add(enemyTypes[Mathf.Clamp(Mathf.RoundToInt(Mathf.Clamp(currentWave / 7.5f, 0, enemyTypes.Count - 1) - Random.Range(0, enemyTypes.Count)), 0, enemyTypes.Count - 1)]);
+
+            for(int s = 0; s < stageSize; s++) {
+                NewSoldier newSoldier = new NewSoldier();
+                int currentSoldier = Mathf.Clamp(Mathf.RoundToInt(Mathf.Clamp(currentWave / 7.5f, 0, enemyTypes.Count - 1) - Random.Range(0, enemyTypes.Count)), 0, enemyTypes.Count - 1);
+                newSoldier.Side = Random.Range(0, 2);
+
+                if(newSoldier.Side == 0) {
+                    enemyAmountLeft[currentSoldier]++;
+                }
+                else {
+                    enemyAmountRight[currentSoldier]++;
+                }
+
+                newSoldier.Soldier = enemyTypes[currentSoldier];
+                _newStage.soldiers.Add(newSoldier);
             }
             thisWave.atackStage.Add(_newStage);
+            yield return null;
         }
     }
-
-    void NextStage()
-    {
-        currentStage++;
-        StartCoroutine(StageTimer());
-    }
-
 
     IEnumerator WaveTimer()
     {
@@ -159,7 +174,6 @@ public class WaveManager : MonoBehaviour
 
     IEnumerator StageTimer()
     {
-
         yield return new WaitForSeconds(Random.Range(minStageWait, maxStageWait));
 
         if (currentStage < thisWave.atackStage.Count)
@@ -175,17 +189,16 @@ public class WaveManager : MonoBehaviour
 
     IEnumerator SoldierTimer()
     {
-
         yield return new WaitForSeconds(Random.Range(minSoldierWait, maxSoldierWait));
 
         if (currentSoldier < thisWave.atackStage[currentStage].soldiers.Count)
         {
-            int k = Random.Range(0, 1);
-            GameObject newEnemy = ObjectPooler.instance.GrabFromPool(thisWave.atackStage[currentStage].soldiers[currentSoldier], new Vector3(spwanPoints[Random.Range(0,spwanPoints.Count)].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 0, Random.Range(-SpawnsetOff, SpawnsetOff)), spwanPoints[k].transform.rotation); //Instantiate(thisWave.atackStage[currentStage].soldiers[currentSoldier], new Vector3(spwanPoints[k].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 0, Random.Range(-SpawnsetOff, SpawnsetOff)), spwanPoints[k].transform.rotation);
-            newEnemy.GetComponent<Enemy>().myStats.ChangeStats(HealthMultiplier, DamageMultiplier);
-            newEnemy.GetComponent<NavMeshAgent>().speed = Random.Range(1.75f, 2.25f);
-            newEnemy.GetComponent<AudioSource>().pitch = Random.Range(0.75f, 1.25f);
-            newEnemy.GetComponent<AudioSource>().volume = Random.Range(0.01f, 0.08f);
+            GameObject newEnemy = ObjectPooler.instance.GrabFromPool(thisWave.atackStage[currentStage].soldiers[currentSoldier].Soldier, new Vector3(spwanPoints[Random.Range(0,spwanPoints.Count)].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 0, Random.Range(-SpawnsetOff, SpawnsetOff)), spwanPoints[thisWave.atackStage[currentStage].soldiers[currentSoldier].Side].transform.rotation);
+            Enemy enemyScript = newEnemy.GetComponent<Enemy>();
+            enemyScript.myStats.ChangeStats(HealthMultiplier, DamageMultiplier);
+            enemyScript.agent.speed = Random.Range(1.75f, 2.25f);
+            enemyScript.myAudiosource.pitch = Random.Range(0.75f, 1.25f);
+            enemyScript.myAudiosource.volume = Random.Range(0.01f, 0.08f);
             newEnemy.transform.localScale *= Random.Range(0.9f,1.1f);
             currentSoldier++;
             enemiesInScene.Add(newEnemy.GetComponent<Enemy>());
@@ -194,7 +207,8 @@ public class WaveManager : MonoBehaviour
         else
         {
             currentSoldier = 0;
-            NextStage();
+            currentStage++;
+            StartCoroutine(StageTimer());
         }
     }
 

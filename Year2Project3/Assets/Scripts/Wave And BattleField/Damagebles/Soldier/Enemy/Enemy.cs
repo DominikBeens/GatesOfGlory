@@ -9,6 +9,7 @@ public class Enemy : Soldier {
     public int maxAttacking;
     public bool attackingCastle;
     public Damagebles target;
+    public AudioSource myAudiosource;
 
     [HideInInspector]
     public bool slowed;
@@ -124,6 +125,6 @@ public class Enemy : Soldier {
     }
 
     private void OnDisable() {
-        WaveManager.instance.enemiesInScene.Remove(this);
+        WaveManager.instance.RemoveEnemyFromScene(this);
     }
 }

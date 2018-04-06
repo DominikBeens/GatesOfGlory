@@ -1122,7 +1122,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385821130610866}
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: -26.221245, y: 1.309, z: -0.47883105}
+  m_LocalPosition: {x: -38.772655, y: 0.55, z: -0.82954407}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4048104140576774}
@@ -1442,6 +1442,8 @@ MonoBehaviour:
   maxAttacking: 2
   attackingCastle: 0
   target: {fileID: 0}
+  myAudiosource: {fileID: 82684811194536466}
+  slowed: 0
 --- !u!137 &137783997115373454
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
