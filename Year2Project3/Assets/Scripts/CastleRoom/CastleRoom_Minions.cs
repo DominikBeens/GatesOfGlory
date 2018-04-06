@@ -7,7 +7,6 @@ public class CastleRoom_Minions : CastleRoom
 {
 
     [Header("Minion Room Setup")]
-    public GameObject minionToSpawn;
     public Transform minionSpawnPoint;
 
     [Header("Minion Room Stats")]
