@@ -43,6 +43,10 @@ public class WaveManager : MonoBehaviour
     [HideInInspector]
     public List<CastleGate> allCastleGates = new List<CastleGate>();
 
+    public Animator waveInfoAnim;
+    public TextMeshProUGUI waveInfoLeftText;
+    public TextMeshProUGUI waveInfoRightText;
+
     void Awake()
     {
         if (instance == null)
@@ -142,6 +146,7 @@ public class WaveManager : MonoBehaviour
             thisWave.atackStage.Add(_newStage);
             yield return null;
         }
+        ShowWaveInfo();
     }
 
     IEnumerator WaveTimer()
@@ -168,7 +173,7 @@ public class WaveManager : MonoBehaviour
         waveTimerAnim.SetTrigger("Close");
 
         ShowWaveNumber();
-
+        HideWaveInfo();
         StartCoroutine(StageTimer());
     }
 
@@ -221,5 +226,35 @@ public class WaveManager : MonoBehaviour
 
     public void SkipWaitingForNextWaveButton(){
         skipWaiting = true;
+    }
+
+    private void ShowWaveInfo()
+    {
+        waveInfoLeftText.text = "";
+
+        for (int i = 0; i < enemyAmountLeft.Count; i++)
+        {
+            if (enemyAmountLeft[i] > 0)
+            {
+                waveInfoLeftText.text += enemyAmountLeft[i] + "x " + enemyTypes[i] + "\n";
+            }
+        }
+
+        waveInfoRightText.text = "";
+
+        for (int i = 0; i < enemyAmountRight.Count; i++)
+        {
+            if (enemyAmountRight[i] > 0)
+            {
+                waveInfoRightText.text += enemyAmountRight[i] + "x " + enemyTypes[i] + "\n";
+            }
+        }
+
+        waveInfoAnim.SetTrigger("Trigger");
+    }
+
+    private void HideWaveInfo()
+    {
+        waveInfoAnim.SetTrigger("Trigger");
     }
 }
