@@ -219,8 +219,7 @@ public class WaveManager : MonoBehaviour
         scrollAnim.SetTrigger("Open");
     }
 
-    public void SkipWaitingForNextWaveButton()
-    {
+    public void SkipWaitingForNextWaveButton(){
         skipWaiting = true;
     }
 }

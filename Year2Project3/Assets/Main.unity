@@ -58114,7 +58114,7 @@ MonoBehaviour:
     poolSize: 100
     autoExpand: 1
   - poolName: Ally Bowman
-    poolPrefab: {fileID: 1357994592998048, guid: 7e060cdcf6fdaf643bcac33afd9a64b4,
+    poolPrefab: {fileID: 1385821130610866, guid: b116424463ea3aa4c83c828157916c5b,
       type: 2}
     poolSize: 100
     autoExpand: 1
@@ -60510,6 +60510,8 @@ MonoBehaviour:
   - Enemy Knight
   - Enemy Bowman
   - Enemy Giant
+  enemyAmountRight: 000000000000000000000000
+  enemyAmountLeft: 000000000000000000000000
   thisWave: {fileID: 0}
   waveSize: 10
   minWaveMultiplier: 1.05
