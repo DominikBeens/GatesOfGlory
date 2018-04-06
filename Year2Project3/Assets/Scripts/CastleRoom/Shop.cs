@@ -19,12 +19,20 @@ public class Shop : PreBuiltCastleRoom
     public int oilCost;
     public int archersCost;
 
+    public Button archerButton;
+    public GameObject archerButtonMaxOverlay;
+    private ArcherSpot[] archerSpots;
+
+    public List<RectTransform> shopButtonCostOverlays = new List<RectTransform>();
+
     public override void Awake()
     {
         base.Awake();
 
         cameraTarget = GameObject.FindWithTag("CameraTarget").transform;
         mainCamManager = mainCam.GetComponent<CameraManager>();
+
+        archerSpots = FindObjectsOfType<ArcherSpot>();
     }
 
     public void SetSelectedShopItemButton(string s)
@@ -83,6 +91,39 @@ public class Shop : PreBuiltCastleRoom
 
         a.SetTrigger("Buy");
         ResourceManager.instance.RemoveGold(archersCost, true);
+        CloseUIButton();
+
+        bool lookingForArcherLeft = true;
+        bool lookingForArcherRight = true;
+        for (int i = 0; i < archerSpots.Length; i++)
+        {
+            if (lookingForArcherLeft)
+            {
+                if (archerSpots[i].side == ArcherSpot.Side.Left && archerSpots[i].Isfree())
+                {
+                    archerSpots[i].SetArcher();
+                    lookingForArcherLeft = false;
+                }
+            }
+
+            if (lookingForArcherRight)
+            {
+                if (archerSpots[i].side == ArcherSpot.Side.Right && archerSpots[i].Isfree())
+                {
+                    archerSpots[i].SetArcher();
+                    lookingForArcherRight = false;
+                }
+            }
+
+            if (i == archerSpots.Length - 1)
+            {
+                if (lookingForArcherLeft && lookingForArcherRight)
+                {
+                    archerButtonMaxOverlay.SetActive(true);
+                    archerButton.interactable = false;
+                }
+            }
+        }
     }
 
     //private IEnumerator PlaceObject(string obj)
