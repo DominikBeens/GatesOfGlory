@@ -102,11 +102,11 @@ public class WaveManager : MonoBehaviour
                 }
             }
         }
-        StartCoroutine(GeneradeWave());
 
         currentWave++;
         waveDone = false;
         StartCoroutine(WaveTimer());
+        StartCoroutine(GeneradeWave());
     }
 
     IEnumerator GeneradeWave() {

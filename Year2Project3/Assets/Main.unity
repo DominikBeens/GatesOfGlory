@@ -8529,7 +8529,7 @@ Prefab:
     - target: {fileID: 224181828560991048, guid: 26f713a178563fc4b9f70371f21ff029,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -27.16
       objectReference: {fileID: 0}
     - target: {fileID: 224081247480475420, guid: 26f713a178563fc4b9f70371f21ff029,
         type: 2}
@@ -8549,7 +8549,7 @@ Prefab:
     - target: {fileID: 224081247480475420, guid: 26f713a178563fc4b9f70371f21ff029,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -27.16
       objectReference: {fileID: 0}
     - target: {fileID: 224834614155906570, guid: 26f713a178563fc4b9f70371f21ff029,
         type: 2}
@@ -8569,7 +8569,7 @@ Prefab:
     - target: {fileID: 224834614155906570, guid: 26f713a178563fc4b9f70371f21ff029,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -27.16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 26f713a178563fc4b9f70371f21ff029, type: 2}
@@ -48785,7 +48785,7 @@ Prefab:
     - target: {fileID: 224908919361642174, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -52.5
       objectReference: {fileID: 0}
     - target: {fileID: 224633295053828908, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -48805,7 +48805,7 @@ Prefab:
     - target: {fileID: 224633295053828908, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -52.5
       objectReference: {fileID: 0}
     - target: {fileID: 224066990894667990, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -48825,7 +48825,7 @@ Prefab:
     - target: {fileID: 224066990894667990, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -88.35
       objectReference: {fileID: 0}
     - target: {fileID: 224656856544700236, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -48845,7 +48845,7 @@ Prefab:
     - target: {fileID: 224656856544700236, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -88.35
       objectReference: {fileID: 0}
     - target: {fileID: 224213176844330440, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -48865,7 +48865,7 @@ Prefab:
     - target: {fileID: 224213176844330440, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -88.35
       objectReference: {fileID: 0}
     - target: {fileID: 224238493477248702, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -48885,7 +48885,7 @@ Prefab:
     - target: {fileID: 224238493477248702, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -88.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c304939f7dd57f54baea33fb78f101ad, type: 2}
@@ -58197,6 +58197,11 @@ MonoBehaviour:
     poolPrefab: {fileID: 1943123676371688, guid: 7f78757f312434748b7d699a095f117c,
       type: 2}
     poolSize: 10
+    autoExpand: 1
+  - poolName: Ally Arrows
+    poolPrefab: {fileID: 1257314764173348, guid: c138c9132409af44da56163ef3d30fc0,
+      type: 2}
+    poolSize: 10000
     autoExpand: 1
 --- !u!1 &827514873
 GameObject:
@@ -140195,7 +140200,7 @@ Prefab:
     - target: {fileID: 224018801205803624, guid: f2f9211427532d845bd68bda99626a93,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -15.464999
       objectReference: {fileID: 0}
     - target: {fileID: 224205208801227344, guid: f2f9211427532d845bd68bda99626a93,
         type: 2}
@@ -140215,7 +140220,7 @@ Prefab:
     - target: {fileID: 224205208801227344, guid: f2f9211427532d845bd68bda99626a93,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -42.745
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2f9211427532d845bd68bda99626a93, type: 2}

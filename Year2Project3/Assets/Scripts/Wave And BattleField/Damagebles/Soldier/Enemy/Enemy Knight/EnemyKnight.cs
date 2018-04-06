@@ -53,7 +53,7 @@ public class EnemyKnight : Enemy
     {
         if (collision.transform == targetTransform)
         {
-            targetTransform.GetComponent<CastleDeffensePoint>().attackingMe.Remove(this);
+            //targetTransform.GetComponent<CastleDeffensePoint>().attackingMe.Remove(this);
         }
     }
 
