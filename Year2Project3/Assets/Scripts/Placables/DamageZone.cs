@@ -39,7 +39,7 @@ public class DamageZone : EffectZone
 
         if (myHealth <= 0)
         {
-            ObjectPooler.instance.GrabFromPool("destroy particle", transform.position, Quaternion.identity);
+            ObjectPooler.instance.GrabFromPool("demolish particle", transform.position, Quaternion.identity);
             ObjectPooler.instance.AddToPool(myObjectPool, gameObject);
         }
     }

@@ -124,6 +124,10 @@ public class ResourceManager : MonoBehaviour
         {
             Notary.goldSpent += amount;
         }
+        else
+        {
+            Notary.goldStolen += amount;
+        }
 
         if (goldToDump >= amount)
         {
