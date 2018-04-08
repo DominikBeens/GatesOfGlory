@@ -119,6 +119,11 @@ public class CastleUpgradeManager : MonoBehaviour
                 allBuiltRooms[i].StopUsingButton();
             }
         }
+
+        for (int i = 0; i < UIManager.instance.prebuiltCastleRooms.Length; i++)
+        {
+            UIManager.instance.prebuiltCastleRooms[i].CloseUIButton();
+        }
     }
 
     public string CheckPositiveOrNegative(float stat)

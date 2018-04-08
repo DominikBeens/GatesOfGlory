@@ -243,7 +243,7 @@ public class WaveManager : MonoBehaviour
         {
             if (enemyAmountLeft[i] > 0)
             {
-                waveInfoLeftText.text += enemyAmountLeft[i] + "x " + enemyTypes[i] + "\n";
+                waveInfoLeftText.text += "<color=green>" + enemyAmountLeft[i] + "x</color> " + enemyTypes[i] + "\n";
             }
         }
 
@@ -253,7 +253,7 @@ public class WaveManager : MonoBehaviour
         {
             if (enemyAmountRight[i] > 0)
             {
-                waveInfoRightText.text += enemyAmountRight[i] + "x " + enemyTypes[i] + "\n";
+                waveInfoRightText.text += "<color=green>" + enemyAmountRight[i] + "x</color> " + enemyTypes[i] + "\n";
             }
         }
 

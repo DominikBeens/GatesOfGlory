@@ -12,7 +12,8 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
 
     private Camera mainCam;
-    private PreBuiltCastleRoom[] prebuiltCastleRooms;
+    [HideInInspector]
+    public PreBuiltCastleRoom[] prebuiltCastleRooms;
 
     [Header("Game Over")]
     public GameObject gameOverPanel;
@@ -144,10 +145,6 @@ public class UIManager : MonoBehaviour
     public IEnumerator GameOver()
     {
         CastleUpgradeManager.instance.CloseAllUI(null);
-        for (int i = 0; i < prebuiltCastleRooms.Length; i++)
-        {
-            prebuiltCastleRooms[i].CloseUIButton();
-        }
         canPause = false;
         CursorManager.instance.ToggleCursorObject();
         GameManager.instance.gameState = GameManager.GameState.Cinematic;

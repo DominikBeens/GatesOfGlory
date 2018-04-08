@@ -66,7 +66,10 @@ public class Projectile : MonoBehaviour
     {
         if (canRotate)
         {
-            transform.rotation = Quaternion.LookRotation(rb.velocity);
+            if (rb.velocity != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(rb.velocity);
+            }
         }
     }
 
@@ -131,12 +134,16 @@ public class Projectile : MonoBehaviour
             Enemy enemy = other.transform.GetComponent<Enemy>();
             if (enemy != null)
             {
-                enemy.TakeDamage(myDamage);
-
                 if (type == Type.CatapultProjectile)
                 {
                     ObjectPooler.instance.GrabFromPool("meteor explode particle", transform.position, Quaternion.identity);
                 }
+                else if (type == Type.BallistaProjectile)
+                {
+                    ObjectPooler.instance.GrabFromPool("ballista hit particle", other.transform.position, transform.rotation);
+                }
+
+                enemy.TakeDamage(myDamage);
 
                 ReAddToPool();
                 targetsHit++;

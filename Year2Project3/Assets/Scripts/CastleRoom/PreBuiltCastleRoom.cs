@@ -32,6 +32,14 @@ public abstract class PreBuiltCastleRoom : MonoBehaviour
 
     public void OpenUIButton()
     {
+        for (int i = 0; i < UIManager.instance.prebuiltCastleRooms.Length; i++)
+        {
+            if (UIManager.instance.prebuiltCastleRooms[i] != this)
+            {
+                UIManager.instance.prebuiltCastleRooms[i].CloseUIButton();
+            }
+        }
+
         uiOpenButton.SetActive(false);
         uiPanel.SetActive(true);
 
