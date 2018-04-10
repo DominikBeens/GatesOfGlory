@@ -11,7 +11,7 @@ public class Arrow : Projectile{
     private void Update()
     {
         if (rb.isKinematic == false){
-            myArrow.Rotate(Vector3.right, Time.deltaTime * arrowSpeed * distance);
+            myArrow.Rotate(Vector3.right, Time.deltaTime * arrowSpeed);
         }
     }
 }

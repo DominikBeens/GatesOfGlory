@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4540413710555210}
-  m_Layer: 9
+  m_Layer: 17
   m_Name: ArrowBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4310370798840298}
   - component: {fileID: 198968473627791282}
   - component: {fileID: 199491597251334094}
-  m_Layer: 9
+  m_Layer: 17
   m_Name: TrailParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 65956414916063276}
   - component: {fileID: 136415169259618892}
   - component: {fileID: 114138768075649926}
-  m_Layer: 9
+  m_Layer: 17
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4931401452840366}
   - component: {fileID: 33676961503844834}
   - component: {fileID: 23954254848583886}
-  m_Layer: 9
+  m_Layer: 17
   m_Name: BallistaProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1257314764173348}
   m_LocalRotation: {x: 0, y: 0.92387956, z: 0.38268343, w: 0}
-  m_LocalPosition: {x: -26.359789, y: 0.55, z: -1.4267168}
+  m_LocalPosition: {x: -26.185944, y: 0.19314222, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4392940091318684}
@@ -859,7 +859,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 6
+      scalar: 3
       minScalar: 10
       maxCurve:
         serializedVersion: 2
