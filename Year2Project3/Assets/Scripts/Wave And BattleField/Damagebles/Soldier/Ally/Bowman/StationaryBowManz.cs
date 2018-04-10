@@ -70,6 +70,7 @@ public class StationaryBowManz : Soldier {
                 targetTransform.GetComponent<Enemy>().RemoveCounter(this);
             }
             ObjectPooler.instance.AddToPool("Stationary Bowman", gameObject);
+            // hier dommenikker
             ResourceManager.instance.AddGold(ResourceManager.instance.normalEnemyGoldReward);
         }
     }
