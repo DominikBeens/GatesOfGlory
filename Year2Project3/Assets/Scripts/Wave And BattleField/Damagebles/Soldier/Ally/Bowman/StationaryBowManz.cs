@@ -5,6 +5,8 @@ using UnityEngine;
 public class StationaryBowManz : Soldier {
     public Transform bowPos;
     public float fireRate;
+    [HideInInspector]
+    public ArcherSpot mySpot;
 
     void OnTriggerEnter(Collider other) {
         if(targetTransform == null) {
@@ -69,8 +71,9 @@ public class StationaryBowManz : Soldier {
             if(targetTransform != null) {
                 targetTransform.GetComponent<Enemy>().RemoveCounter(this);
             }
-            ObjectPooler.instance.AddToPool("Stationary Bowman", gameObject);
             ResourceManager.instance.AddGold(ResourceManager.instance.normalEnemyGoldReward);
+            mySpot.RemoveArcher();
+            mySpot = null;
         }
     }
 }
