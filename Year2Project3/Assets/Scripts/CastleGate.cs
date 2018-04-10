@@ -89,7 +89,7 @@ public class CastleGate : CastleDeffensePoint
 
         myStats.health.currentValue -= damage;
         healthbarFill.fillAmount = (myStats.health.currentValue / myStats.health.baseValue);
-        if (myStats.health.currentValue < 0)
+        if (myStats.health.currentValue <= 0)
         {
             myGate.OpenGate();
             isOpen = true;

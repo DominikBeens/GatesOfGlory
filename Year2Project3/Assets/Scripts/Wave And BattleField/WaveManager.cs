@@ -208,7 +208,8 @@ public class WaveManager : MonoBehaviour
             GameObject newEnemy = ObjectPooler.instance.GrabFromPool(thisWave.atackStage[currentStage].soldiers[currentSoldier].Soldier, 
                 new Vector3(spwanPoints[thisWave.atackStage[currentStage].soldiers[currentSoldier].Side].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 2, Random.Range(-SpawnsetOff, SpawnsetOff)), spwanPoints[thisWave.atackStage[currentStage].soldiers[currentSoldier].Side].transform.rotation);
             Enemy enemyScript = newEnemy.GetComponent<Enemy>();
-            enemyScript.myStats.ChangeStats(HealthMultiplier, DamageMultiplier);
+            enemyScript.myStats.damage.currentValue = (DamageMultiplier * currentWave) * enemyScript.myStats.damage.baseValue;
+            enemyScript.myStats.health.currentValue = (DamageMultiplier * currentWave) * enemyScript.myStats.health.baseValue;
             enemyScript.agent.speed = Random.Range(1.75f, 2.25f);
             enemyScript.myAudiosource.pitch = Random.Range(0.75f, 1.25f);
             enemyScript.myAudiosource.volume = Random.Range(0.01f, 0.08f);
