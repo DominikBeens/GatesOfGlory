@@ -37966,6 +37966,7 @@ GameObject:
   - component: {fileID: 479663979}
   - component: {fileID: 479663981}
   - component: {fileID: 479663980}
+  - component: {fileID: 479663982}
   m_Layer: 10
   m_Name: FillLeft
   m_TagString: Untagged
@@ -38010,7 +38011,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 44d1a8c4487241a44b4e9ce95a56360c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be66f82a8348ecb4bb62eda9a07ccf07, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -38024,6 +38025,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 479663978}
+--- !u!95 &479663982
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 479663978}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a0b5807c1d9207a4f81559bc4d49b399, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &484503072
 GameObject:
   m_ObjectHideFlags: 0
@@ -48669,21 +48687,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114331849622710916, guid: 3bd37145902066d43b054e1bbc14787d,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 0.11764706
-      objectReference: {fileID: 0}
-    - target: {fileID: 114331849622710916, guid: 3bd37145902066d43b054e1bbc14787d,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114331849622710916, guid: 3bd37145902066d43b054e1bbc14787d,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 0.5882353
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3bd37145902066d43b054e1bbc14787d, type: 2}
   m_IsPrefabParent: 0
@@ -49488,16 +49491,6 @@ Prefab:
     - target: {fileID: 4799690232392838, guid: e3272da4b86edcb4983d347dab9d978b, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114952551819989886, guid: e3272da4b86edcb4983d347dab9d978b,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 0.11911753
-      objectReference: {fileID: 0}
-    - target: {fileID: 114952551819989886, guid: e3272da4b86edcb4983d347dab9d978b,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 0.5882353
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3272da4b86edcb4983d347dab9d978b, type: 2}
@@ -76842,7 +76835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Color: {r: 0.91764706, g: 0.03529412, b: 0.03529412, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -78829,6 +78822,7 @@ GameObject:
   - component: {fileID: 1278595348}
   - component: {fileID: 1278595347}
   - component: {fileID: 1278595346}
+  - component: {fileID: 1278595349}
   m_Layer: 10
   m_Name: FillRight
   m_TagString: Untagged
@@ -78855,14 +78849,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 44d1a8c4487241a44b4e9ce95a56360c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be66f82a8348ecb4bb62eda9a07ccf07, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
 --- !u!222 &1278595347
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -78887,6 +78881,23 @@ RectTransform:
   m_AnchoredPosition: {x: 73.05, y: 0.0000054240227}
   m_SizeDelta: {x: 146.11, y: 21.2}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1278595349
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1278595345}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a0b5807c1d9207a4f81559bc4d49b399, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &1280610514
 Prefab:
   m_ObjectHideFlags: 0
@@ -82876,6 +82887,7 @@ GameObject:
   - component: {fileID: 1302343632}
   - component: {fileID: 1302343634}
   - component: {fileID: 1302343633}
+  - component: {fileID: 1302343635}
   m_Layer: 0
   m_Name: HealthPanel
   m_TagString: Untagged
@@ -82941,6 +82953,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1302343631}
+--- !u!95 &1302343635
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1302343631}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4a019dd178d4b44a86ef19d33729105, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!4 &1315905317 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4307185954371124, guid: e3272da4b86edcb4983d347dab9d978b,
