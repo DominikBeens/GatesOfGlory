@@ -26,6 +26,7 @@ public class ArcherSpot : MonoBehaviour
     public void SetArcher()
     {
         myArcher = ObjectPooler.instance.GrabFromPool("shopitem archer", transform.position, transform.rotation);
+        myArcher.GetComponent<StationaryBowManz>().mySpot = this;
         setArcherParticle.Play();
         occupied = true;
     }
