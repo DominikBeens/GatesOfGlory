@@ -5,16 +5,18 @@ using UnityEngine;
 public class StationaryBowManz : Soldier {
     public Transform bowPos;
     public float fireRate;
+    [HideInInspector]
+    public ArcherSpot mySpot;
 
     void OnTriggerEnter(Collider other) {
         if(targetTransform == null) {
-            if(other.GetComponent<Enemy>() is EnemyBowman) {
-                targetTransform.gameObject.GetComponent<Enemy>().StartBattle(this);
-            }
             anim.SetBool("Attack", true);
             anim.SetBool("Idle", false);
-            print("HEllo");
             targetTransform = other.transform;
+            if(other.GetComponent<EnemyBowman>() != null) {
+            print("l");
+            targetTransform.gameObject.GetComponent<Enemy>().StartBattle(this);
+            }
             StopCoroutine(Attack());
             StartCoroutine(Attack());
         }
@@ -48,11 +50,13 @@ public class StationaryBowManz : Soldier {
             _currentArrow.GetChild(0).transform.position = bowPos.position;
             _currentArrow.GetChild(0).transform.rotation = Quaternion.Euler(new Vector3(-55, -45, 0));
 
-            if(targetTransform != null && targetTransform.tag == "Enemy" && targetTransform == _attackingCurrently) {
+            if(targetTransform.gameObject.activeSelf == true && targetTransform != null && targetTransform.tag == "Enemy" && targetTransform == _attackingCurrently) {
                 targetTransform.GetComponent<Enemy>().TakeDamage(myStats.damage.currentValue);
                 StartCoroutine(Attack());
             }
             else {
+                StopCoroutine(Attack());
+                targetTransform = null;
                 anim.SetBool("Attack", false);
                 anim.SetBool("Idle", false);
             }
@@ -67,8 +71,14 @@ public class StationaryBowManz : Soldier {
             if(targetTransform != null) {
                 targetTransform.GetComponent<Enemy>().RemoveCounter(this);
             }
+<<<<<<< HEAD
             ObjectPooler.instance.AddToPool("Stationary Bowman", gameObject);
+            // hier dommenikker
+=======
+>>>>>>> af9986049de20a86196db7c073981fd6ff6ddb41
             ResourceManager.instance.AddGold(ResourceManager.instance.normalEnemyGoldReward);
+            mySpot.RemoveArcher();
+            mySpot = null;
         }
     }
 }

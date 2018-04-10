@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 224593389721757802}
   - component: {fileID: 222295052229474806}
   - component: {fileID: 114331849622710916}
+  - component: {fileID: 95068771543192530}
   m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
@@ -698,6 +699,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 0.06, z: 1.5}
   m_Center: {x: 0, y: 0.03, z: 1}
+--- !u!95 &95068771543192530
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1776074253432612}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a368493a0532c914191115b22b7dec01, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95145462378920276
 Animator:
   serializedVersion: 3
@@ -809,7 +827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5955882, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.11764706, g: 0, b: 0.5882353, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

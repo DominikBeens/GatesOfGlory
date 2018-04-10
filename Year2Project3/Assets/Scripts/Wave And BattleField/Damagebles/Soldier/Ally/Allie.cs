@@ -89,6 +89,7 @@ public class Allie : Soldier {
             StartCoroutine(Attack());
         }
         else {
+            StopCoroutine(Attack());
             anim.SetBool("Attack", false);
             anim.SetBool("Idle", false);
         }
