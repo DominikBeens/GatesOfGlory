@@ -71,11 +71,6 @@ public class StationaryBowManz : Soldier {
             if(targetTransform != null) {
                 targetTransform.GetComponent<Enemy>().RemoveCounter(this);
             }
-<<<<<<< HEAD
-            ObjectPooler.instance.AddToPool("Stationary Bowman", gameObject);
-            // hier dommenikker
-=======
->>>>>>> af9986049de20a86196db7c073981fd6ff6ddb41
             ResourceManager.instance.AddGold(ResourceManager.instance.normalEnemyGoldReward);
             mySpot.RemoveArcher();
             mySpot = null;
