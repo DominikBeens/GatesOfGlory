@@ -22,7 +22,8 @@ public class CastleRoom_Heal : CastleRoom
     {
         base.SetupUI();
 
-        descriptionText.text = "Heals all allies for <color=green>" + healAmount.currentValue + "</color> hp.";
+        descriptionText.text = "Heals all allies for <color=green>" + healAmount.currentValue + "</color> hp.\n\n" +
+                               "(Will also heal/repair both gates at the end of each turn if level 5 or higher)";
 
         if (myLevel < myMaxLevel)
         {
