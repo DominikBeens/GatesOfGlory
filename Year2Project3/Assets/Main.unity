@@ -14676,6 +14676,7 @@ Transform:
   - {fileID: 1031883483}
   - {fileID: 825389973}
   - {fileID: 1708939563}
+  - {fileID: 240997043}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22401,6 +22402,52 @@ Transform:
   m_PrefabParentObject: {fileID: 4714714708807680, guid: 93a2b99a28284484a9feed17ab37596f,
     type: 2}
   m_PrefabInternal: {fileID: 905089238}
+--- !u!1 &240997042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 240997043}
+  - component: {fileID: 240997044}
+  m_Layer: 0
+  m_Name: LightSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &240997043
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 240997042}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 196632848}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &240997044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 240997042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5745fcf172d004e86cf9aa0a36e532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightsToChange:
+  - {fileID: 873089764}
+  - {fileID: 1721550098}
+  - {fileID: 1656287949}
+  intensityMultiplier: 1.25
+  maxSetting: 5
 --- !u!1 &244328477
 GameObject:
   m_ObjectHideFlags: 0
