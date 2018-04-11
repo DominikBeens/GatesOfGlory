@@ -14,25 +14,13 @@ public class CastleRoom_Ambush : CastleRoom
     public Stat damageAmount;
 
     [Header("Volley")]
-    public int volleyRows;
-    public int volleyColumns;
-    public float volleyDistOffset;
-    public float volleySpawnDelay;
-    public float randomVolleySpawnOffset;
+    public AmbushOptions volleyOptions;
 
     [Header("Meteor")]
-    public int meteorRows;
-    public int meteorColumns;
-    public float meteorDistOffset;
-    public float meteorSpawnDelay;
-    public float randomMeteorSpawnOffset;
+    public AmbushOptions meteorOptions;
 
     [Header("Spear")]
-    public int spearRows;
-    public int spearColumns;
-    public float spearDistOffset;
-    public float spearSpawnDelay;
-    public float randomSpearSpawnOffset;
+    public AmbushOptions spearOptions;
 
     [Header("Ambush Room Setup")]
     public Image cooldownFill;
@@ -51,6 +39,16 @@ public class CastleRoom_Ambush : CastleRoom
 
     private float currentCooldown = 0.95f;
 
+    [System.Serializable]
+    public struct AmbushOptions
+    {
+        public int rows;
+        public int columns;
+        public float distOffset;
+        public float spawnDelay;
+        public float spawnOffset;
+    }
+
     public override void Awake()
     {
         base.Awake();
@@ -67,7 +65,7 @@ public class CastleRoom_Ambush : CastleRoom
 
         descriptionText.text = "Ambushes the enemies with a strike from above.\n Deals " + "<color=green>" + damageAmount.currentValue + "</color> damage.";
 
-        if (myLevel < myMaxLevel)
+        if (info.myLevel < info.myMaxLevel)
         {
             upgradeStatsText.text = "Damage amount: " + damageAmount.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(damageAmount.increaseValue) + "</color>)" + "\n" +
                                     "Cooldown: " + useCooldown.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(useCooldown.increaseValue) + "</color>)";
@@ -78,12 +76,12 @@ public class CastleRoom_Ambush : CastleRoom
                                     "Cooldown: " + useCooldown.currentValue;
         }
 
-        if (myLevel == 4)
+        if (info.myLevel == 4)
         {
             nextLevelExtraUpgradePanel.SetActive(true);
             nextLevelExtraUpgradeText.text = "Next level will unlock the ambush: meteor strike";
         }
-        else if (myLevel == 9)
+        else if (info.myLevel == 9)
         {
             nextLevelExtraUpgradePanel.SetActive(true);
             nextLevelExtraUpgradeText.text = "Next level will unlock the ambush: spear rain";
@@ -94,12 +92,12 @@ public class CastleRoom_Ambush : CastleRoom
             nextLevelExtraUpgradeText.text = string.Empty;
         }
 
-        if (myLevel >= 5)
+        if (info.myLevel >= 5)
         {
             meteorStrikeButton.SetActive(true);
         }
 
-        if (myLevel >= 10)
+        if (info.myLevel >= 10)
         {
             spearRainButton.SetActive(true);
         }
@@ -135,17 +133,17 @@ public class CastleRoom_Ambush : CastleRoom
         {
             case 0:
 
-                StartCoroutine(ProjectileRain("ambush volley", volleyRows, volleyColumns, volleyDistOffset, volleySpawnDelay, randomVolleySpawnOffset, false, 2));
+                StartCoroutine(ProjectileRain("ambush volley", volleyOptions.rows, volleyOptions.columns, volleyOptions.distOffset, volleyOptions.spawnDelay, volleyOptions.spawnOffset, false, 2));
                 break;
 
             case 1:
 
-                StartCoroutine(ProjectileRain("ambush meteor", meteorRows, meteorColumns, meteorDistOffset, meteorSpawnDelay, randomMeteorSpawnOffset, true, 4));
+                StartCoroutine(ProjectileRain("ambush meteor", meteorOptions.rows, meteorOptions.columns, meteorOptions.distOffset, meteorOptions.spawnDelay, meteorOptions.spawnOffset, true, 4));
                 break;
 
             case 2:
 
-                StartCoroutine(ProjectileRain("ambush spear", spearRows, spearColumns, spearDistOffset, spearSpawnDelay, randomSpearSpawnOffset, false, 2));
+                StartCoroutine(ProjectileRain("ambush spear", spearOptions.rows, spearOptions.columns, spearOptions.distOffset, spearOptions.spawnDelay, spearOptions.spawnOffset, false, 2));
                 break;
         }
 
@@ -253,7 +251,7 @@ public class CastleRoom_Ambush : CastleRoom
 
     public override void Upgrade()
     {
-        if (!ResourceManager.instance.HasEnoughGold((int)myUpgradeCost.currentValue) || myLevel >= myMaxLevel)
+        if (!ResourceManager.instance.HasEnoughGold((int)info.myUpgradeCost.currentValue) || info.myLevel >= info.myMaxLevel)
         {
             return;
         }

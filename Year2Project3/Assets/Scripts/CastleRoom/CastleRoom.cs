@@ -44,7 +44,7 @@ public class CastleRoom : CastleBuild
 
     public override void SetupUI()
     {
-        myNameText.text = "Level <color=green>" + myLevel.ToString() + "</color> " + myName;
-        upgradeCostText.text = myUpgradeCost.currentValue.ToString();
+        myNameText.text = "Level <color=green>" + info.myLevel.ToString() + "</color> " + info.myName;
+        upgradeCostText.text = info.myUpgradeCost.currentValue.ToString();
     }
 }

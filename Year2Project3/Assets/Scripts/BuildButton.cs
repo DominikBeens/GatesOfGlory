@@ -22,12 +22,12 @@ public class BuildButton : MonoBehaviour
 
     private void Awake()
     {
-        buildCostText.text = myBuild.myBuildCost.ToString();
+        buildCostText.text = myBuild.info.myBuildCost.ToString();
     }
 
     public void SetSelectBuildText()
     {
-        selectWeaponText.text = myBuild.myName;
+        selectWeaponText.text = myBuild.info.myName;
     }
 
     public void ResetSelectBuildText()

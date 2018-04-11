@@ -94,7 +94,7 @@ public class WaveManager : MonoBehaviour
             {
                 if (CastleUpgradeManager.instance.allBuiltRooms[ii].roomType == CastleRoom.RoomType.Heal)
                 {
-                    if (CastleUpgradeManager.instance.allBuiltRooms[ii].myLevel >= 5)
+                    if (CastleUpgradeManager.instance.allBuiltRooms[ii].info.myLevel >= 5)
                     {
                         if (allCastleGates[i].locked)
                         {

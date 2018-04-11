@@ -4347,6 +4347,7 @@ MonoBehaviour:
   myBuilder: {fileID: 0}
   goldSpentOnThisObject: 0
   anim: {fileID: 95882562626727682}
+  info: {fileID: 11400000, guid: fbad573a344baca458f9f6a6f97f1e6c, type: 2}
   myName: Ballista
   myLevel: 1
   myMaxLevel: 15
@@ -4365,7 +4366,6 @@ MonoBehaviour:
   myNameText: {fileID: 114762807045581846}
   weaponType: 0
   autoFireToggle: {fileID: 114027583772236346}
-  autoFireLevelReq: 5
   autoFireLockedOverlay: {fileID: 1093520116058666}
   projectile: {fileID: 1024772973343442, guid: 6714d7ee2206ad2408a828f1ace35b81, type: 2}
   projectileSpawns:
@@ -4373,18 +4373,7 @@ MonoBehaviour:
   - {fileID: 4394690425985424}
   - {fileID: 4975060811817530}
   amountOfProjectiles: 1
-  damage:
-    baseValue: 30
-    currentValue: 30
-    increaseValue: 10
-  force:
-    baseValue: 1500
-    currentValue: 1500
-    increaseValue: 200
-  cooldown:
-    baseValue: 1
-    currentValue: 1
-    increaseValue: -0.05
+  stats: {fileID: 11400000, guid: 3ff231a7c9a74424f9f014b4f5f62ea6, type: 2}
   maxXRotation: 50
   minXRotation: -10
   rotationSpeed: 150

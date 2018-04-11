@@ -41,7 +41,7 @@ public class CastleBuilder : MonoBehaviour
         {
             if (availableBuilds[i].GetComponent<CastleWeapon>().weaponType == type)
             {
-                if (!ResourceManager.instance.HasEnoughGold(availableBuilds[i].GetComponent<CastleWeapon>().myBuildCost))
+                if (!ResourceManager.instance.HasEnoughGold(availableBuilds[i].GetComponent<CastleWeapon>().info.myBuildCost))
                 {
                     return;
                 }
@@ -74,7 +74,7 @@ public class CastleBuilder : MonoBehaviour
 
                 CastleUpgradeManager.instance.CloseAllUI(null);
 
-                ResourceManager.instance.RemoveGold(availableBuilds[i].GetComponent<CastleWeapon>().myBuildCost, true);
+                ResourceManager.instance.RemoveGold(availableBuilds[i].GetComponent<CastleWeapon>().info.myBuildCost, true);
                 return;
             }
         }
@@ -86,7 +86,7 @@ public class CastleBuilder : MonoBehaviour
         {
             if (availableBuilds[i].GetComponent<CastleRoom>().roomType == type)
             {
-                if (!ResourceManager.instance.HasEnoughGold(availableBuilds[i].GetComponent<CastleRoom>().myBuildCost))
+                if (!ResourceManager.instance.HasEnoughGold(availableBuilds[i].GetComponent<CastleRoom>().info.myBuildCost))
                 {
                     return;
                 }
@@ -119,7 +119,7 @@ public class CastleBuilder : MonoBehaviour
 
                 CastleUpgradeManager.instance.CloseAllUI(null);
 
-                ResourceManager.instance.RemoveGold(availableBuilds[i].GetComponent<CastleRoom>().myBuildCost, true);
+                ResourceManager.instance.RemoveGold(availableBuilds[i].GetComponent<CastleRoom>().info.myBuildCost, true);
                 return;
             }
         }

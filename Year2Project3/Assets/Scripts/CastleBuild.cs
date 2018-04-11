@@ -32,11 +32,7 @@ public class CastleBuild : MonoBehaviour
     private Canvas mainCanvas;
 
     [Header("Basic Properties")]
-    public string myName;
-    public int myLevel;
-    public int myMaxLevel;
-    public int myBuildCost;
-    public Stat myUpgradeCost;
+    public GeneralStats info;
 
     [Header("UI Panels")]
     public GameObject useUI;
@@ -68,7 +64,9 @@ public class CastleBuild : MonoBehaviour
         upgradePanel.SetActive(false);
         demolishPanel.SetActive(false);
 
-        goldSpentOnThisObject += myBuildCost;
+        goldSpentOnThisObject += info.myBuildCost;
+
+        info = Instantiate(info);
     }
 
     // Updates all UI elements with the right variables. Updates every time the player clicks on a build.
@@ -80,14 +78,14 @@ public class CastleBuild : MonoBehaviour
     // Upgrades the build if the player has enough gold.
     public virtual void Upgrade()
     {
-        myLevel++;
+        info.myLevel++;
 
-        ResourceManager.instance.RemoveGold((int)myUpgradeCost.currentValue, true);
+        ResourceManager.instance.RemoveGold((int)info.myUpgradeCost.currentValue, true);
 
-        goldSpentOnThisObject += (int)myUpgradeCost.currentValue;
-        myUpgradeCost.currentValue += myUpgradeCost.increaseValue;
+        goldSpentOnThisObject += (int)info.myUpgradeCost.currentValue;
+        info.myUpgradeCost.currentValue += info.myUpgradeCost.increaseValue;
 
-        if (myLevel >= myMaxLevel)
+        if (info.myLevel >= info.myMaxLevel)
         {
             buyUpgradeButton.interactable = false;
             upgradesMaxedOverlay.SetActive(true);

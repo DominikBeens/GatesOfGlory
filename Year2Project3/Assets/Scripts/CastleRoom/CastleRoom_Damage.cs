@@ -24,7 +24,7 @@ public class CastleRoom_Damage : CastleRoom
 
         descriptionText.text = "Strikes <color=green>" + amountOfEnemiesToDamage.currentValue + "</color> enemies for <color=green>" + damageAmount.currentValue + "</color> damage.";
 
-        if (myLevel < myMaxLevel)
+        if (info.myLevel < info.myMaxLevel)
         {
             upgradeStatsText.text = "Damage amount: " + damageAmount.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(damageAmount.increaseValue) + "</color>)" + "\n" +
                                     "Amount of targets: " + amountOfEnemiesToDamage.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(amountOfEnemiesToDamage.increaseValue) + "</color>)" + "\n" +
@@ -95,7 +95,7 @@ public class CastleRoom_Damage : CastleRoom
 
     public override void Upgrade()
     {
-        if (!ResourceManager.instance.HasEnoughGold((int)myUpgradeCost.currentValue) || myLevel >= myMaxLevel)
+        if (!ResourceManager.instance.HasEnoughGold((int)info.myUpgradeCost.currentValue) || info.myLevel >= info.myMaxLevel)
         {
             return;
         }

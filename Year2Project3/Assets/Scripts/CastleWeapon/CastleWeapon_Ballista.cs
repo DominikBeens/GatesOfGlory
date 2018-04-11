@@ -29,18 +29,18 @@ public class CastleWeapon_Ballista : CastleWeapon
     {
         base.SetupUI();
 
-        if (myLevel < myMaxLevel)
+        if (info.myLevel < info.myMaxLevel)
         {
-            upgradeStatsText.text = "Damage: " + damage.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(damage.increaseValue) + "</color>)\n" +
-                                    "Fire Rate: " + cooldown.currentValue.ToString("f2") + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(cooldown.increaseValue) + "</color>)";
+            upgradeStatsText.text = "Damage: " + stats.myDamage.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(stats.myDamage.increaseValue) + "</color>)\n" +
+                                    "Fire Rate: " + stats.myFireRate.currentValue.ToString("f2") + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(stats.myFireRate.increaseValue) + "</color>)";
         }
         else
         {
-            upgradeStatsText.text = "Damage: " + damage.currentValue + "\n" +
-                                    "Fire Rate: " + cooldown.currentValue.ToString("f2");
+            upgradeStatsText.text = "Damage: " + stats.myDamage.currentValue + "\n" +
+                                    "Fire Rate: " + stats.myFireRate.currentValue.ToString("f2");
         }
 
-        if (myLevel == (autoFireLevelReq - 1))
+        if (info.myLevel == (stats.autoFireLevelRequirement - 1))
         {
             autoFireNotification.SetActive(true);
         }
@@ -90,8 +90,8 @@ public class CastleWeapon_Ballista : CastleWeapon
                 newProjectile = ObjectPooler.instance.GrabFromPool("ballista projectile", projectileSpawns[0].position, projectileSpawns[0].rotation);
 
                 projectile = newProjectile.GetComponent<Projectile>();
-                projectile.myDamage = damage.currentValue;
-                projectile.Fire(force.currentValue, 15, ForceMode.Force);
+                projectile.myDamage = stats.myDamage.currentValue;
+                projectile.Fire(stats.myForce.currentValue, 15, ForceMode.Force);
                 break;
             case AmountOfProjectiles.Three:
 
@@ -100,8 +100,8 @@ public class CastleWeapon_Ballista : CastleWeapon
                     newProjectile = ObjectPooler.instance.GrabFromPool("ballista projectile", projectileSpawns[i].position, projectileSpawns[i].rotation);
 
                     projectile = newProjectile.GetComponent<Projectile>();
-                    projectile.myDamage = damage.currentValue;
-                    projectile.Fire(force.currentValue, 15, ForceMode.Force);
+                    projectile.myDamage = stats.myDamage.currentValue;
+                    projectile.Fire(stats.myForce.currentValue, 15, ForceMode.Force);
                 }
                 break;
         }
@@ -109,24 +109,24 @@ public class CastleWeapon_Ballista : CastleWeapon
 
     public override void Upgrade()
     {
-        if (!ResourceManager.instance.HasEnoughGold((int)myUpgradeCost.currentValue) || myLevel >= myMaxLevel)
+        if (!ResourceManager.instance.HasEnoughGold((int)info.myUpgradeCost.currentValue) || info.myLevel >= info.myMaxLevel)
         {
             return;
         }
 
         base.Upgrade();
 
-        damage.currentValue += damage.increaseValue;
-        force.currentValue += force.increaseValue;
-        cooldown.currentValue += cooldown.increaseValue;
-        anim.speed = 1 / cooldown.currentValue;
+        stats.myDamage.currentValue += stats.myDamage.increaseValue;
+        stats.myForce.currentValue += stats.myForce.increaseValue;
+        stats.myFireRate.currentValue += stats.myFireRate.increaseValue;
+        anim.speed = 1 / stats.myFireRate.currentValue;
 
-        if (myLevel >= myMaxLevel)
+        if (info.myLevel >= info.myMaxLevel)
         {
             buyUpgradeButton.interactable = false;
         }
 
-        if (myLevel >= autoFireLevelReq)
+        if (info.myLevel >= stats.autoFireLevelRequirement)
         {
             autoFireLockedOverlay.SetActive(false);
             autoFireToggle.interactable = true;

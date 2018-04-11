@@ -45,7 +45,7 @@ public class CastleRoom_Minions : CastleRoom
         //roomTypeText.text = "Type: <color=green>" + roomType + "</color>";
         roomMinionCostText.text = "Cost: <color=yellow>" + spawnCost.currentValue + "</color>";
 
-        if (myLevel < myMaxLevel)
+        if (info.myLevel < info.myMaxLevel)
         {
             upgradeStatsText.text = "Minions get a stat boost." + "\n" +
                                     "Spawn cost: " + spawnCost.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(spawnCost.increaseValue) + "</color>)" + "\n" +
@@ -108,11 +108,11 @@ public class CastleRoom_Minions : CastleRoom
         newMinion.GetComponent<AudioSource>().volume = Random.Range(0.01f, 0.08f);
         newMinion.transform.SetParent(null);
 
-        if (myLevel > 1)
+        if (info.myLevel > 1)
         {
             Damagebles minion = newMinion.GetComponent<Damagebles>();
-            minion.myStats.health.currentValue *= (myLevel * statMultiplier);
-            minion.myStats.damage.currentValue *= (myLevel * statMultiplier);
+            minion.myStats.health.currentValue *= (info.myLevel * statMultiplier);
+            minion.myStats.damage.currentValue *= (info.myLevel * statMultiplier);
         }
 
         WaveManager.instance.alliesInScene.Add(newMinion.GetComponent<Allie>());
@@ -126,7 +126,7 @@ public class CastleRoom_Minions : CastleRoom
 
     public override void Upgrade()
     {
-        if (!ResourceManager.instance.HasEnoughGold((int)myUpgradeCost.currentValue) || myLevel >= myMaxLevel)
+        if (!ResourceManager.instance.HasEnoughGold((int)info.myUpgradeCost.currentValue) || info.myLevel >= info.myMaxLevel)
         {
             return;
         }

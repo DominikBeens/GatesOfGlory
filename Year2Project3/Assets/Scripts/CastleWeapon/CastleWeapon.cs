@@ -17,7 +17,6 @@ public class CastleWeapon : CastleBuild
 
     [Header("Auto-Fire")]
     public Toggle autoFireToggle;
-    public int autoFireLevelReq;
     public GameObject autoFireLockedOverlay;
 
     protected bool shooting;
@@ -33,15 +32,14 @@ public class CastleWeapon : CastleBuild
     }
     public AmountOfProjectiles amountOfProjectiles;
 
-    [Header("Stats")]
-    public Stat damage;
-    public Stat force;
-    public Stat cooldown;
+    public WeaponStats stats;
     private float nextTimeToFire;
 
     public override void Awake()
     {
         base.Awake();
+
+        stats = Instantiate(stats);
     }
 
     public virtual void Update()
@@ -54,7 +52,7 @@ public class CastleWeapon : CastleBuild
             {
                 if (Time.time >= nextTimeToFire)
                 {
-                    nextTimeToFire = Time.time + cooldown.currentValue;
+                    nextTimeToFire = Time.time + stats.myFireRate.currentValue;
                     Shoot();
                 }
             }
@@ -68,8 +66,8 @@ public class CastleWeapon : CastleBuild
 
     public override void SetupUI()
     {
-        myNameText.text = "Level <color=green>" + myLevel.ToString() + "</color> " + myName;
-        upgradeCostText.text = myUpgradeCost.currentValue.ToString();
+        myNameText.text = "Level <color=green>" + info.myLevel.ToString() + "</color> " + info.myName;
+        upgradeCostText.text = info.myUpgradeCost.currentValue.ToString();
     }
 
     public virtual void Shoot()
@@ -89,7 +87,7 @@ public class CastleWeapon : CastleBuild
 
     public void ToggleAutoFire()
     {
-        if (myLevel < autoFireLevelReq)
+        if (info.myLevel < stats.autoFireLevelRequirement)
         {
             return;
         }

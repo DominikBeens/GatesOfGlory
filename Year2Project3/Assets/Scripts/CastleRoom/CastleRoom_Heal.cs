@@ -25,7 +25,7 @@ public class CastleRoom_Heal : CastleRoom
         descriptionText.text = "Heals all allies for <color=green>" + healAmount.currentValue + "</color> hp.\n\n" +
                                "(Will also heal/repair both gates at the end of each turn if level 5 or higher)";
 
-        if (myLevel < myMaxLevel)
+        if (info.myLevel < info.myMaxLevel)
         {
             upgradeStatsText.text = "Heal amount: " + healAmount.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(healAmount.increaseValue) + "</color>)" + "\n" +
                                     "Cooldown: " + useCooldown .currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(useCooldown.increaseValue) + "</color>)";
@@ -36,7 +36,7 @@ public class CastleRoom_Heal : CastleRoom
                                     "Cooldown: " + useCooldown.currentValue;
         }
 
-        if (myLevel == 4)
+        if (info.myLevel == 4)
         {
             nextLevelExtraUpgradePanel.SetActive(true);
         }
@@ -83,7 +83,7 @@ public class CastleRoom_Heal : CastleRoom
 
     public override void Upgrade()
     {
-        if (!ResourceManager.instance.HasEnoughGold((int)myUpgradeCost.currentValue) || myLevel >= myMaxLevel)
+        if (!ResourceManager.instance.HasEnoughGold((int)info.myUpgradeCost.currentValue) || info.myLevel >= info.myMaxLevel)
         {
             return;
         }
