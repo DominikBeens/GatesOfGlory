@@ -16,8 +16,9 @@ public class CastleWeapon : CastleBuild
     public WeaponType weaponType;
 
     [Header("Auto-Fire")]
+    public Toggle autoFireToggle;
     public int autoFireLevelReq;
-    public GameObject autoFireToggle;
+    public GameObject autoFireLockedOverlay;
 
     protected bool shooting;
     private bool autoFire;
@@ -88,6 +89,11 @@ public class CastleWeapon : CastleBuild
 
     public void ToggleAutoFire()
     {
+        if (myLevel < autoFireLevelReq)
+        {
+            return;
+        }
+
         autoFire = !autoFire;
     }
 

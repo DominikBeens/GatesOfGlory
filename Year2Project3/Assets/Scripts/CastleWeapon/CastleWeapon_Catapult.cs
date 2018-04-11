@@ -90,7 +90,8 @@ public class CastleWeapon_Catapult : CastleWeapon
 
         if (myLevel >= autoFireLevelReq)
         {
-            autoFireToggle.SetActive(true);
+            autoFireLockedOverlay.SetActive(false);
+            autoFireToggle.interactable = true;
         }
 
         SetupUI();

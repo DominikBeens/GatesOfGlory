@@ -32,13 +32,11 @@ public class CastleWeapon_Ballista : CastleWeapon
         if (myLevel < myMaxLevel)
         {
             upgradeStatsText.text = "Damage: " + damage.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(damage.increaseValue) + "</color>)\n" +
-                                    "Force: " + force.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(force.increaseValue) + "</color>)\n" +
                                     "Fire Rate: " + cooldown.currentValue.ToString("f2") + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(cooldown.increaseValue) + "</color>)";
         }
         else
         {
             upgradeStatsText.text = "Damage: " + damage.currentValue + "\n" +
-                                    "Force: " + force.currentValue + "\n" +
                                     "Fire Rate: " + cooldown.currentValue.ToString("f2");
         }
 
@@ -130,7 +128,8 @@ public class CastleWeapon_Ballista : CastleWeapon
 
         if (myLevel >= autoFireLevelReq)
         {
-            autoFireToggle.SetActive(true);
+            autoFireLockedOverlay.SetActive(false);
+            autoFireToggle.interactable = true;
         }
 
         SetupUI();
