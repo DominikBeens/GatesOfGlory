@@ -17,7 +17,8 @@ public class Projectile : MonoBehaviour
         CatapultProjectile,
         AmbushProjectile_Volley,
         AmbushProjectile_Meteor,
-        AttackProjectile_Arrow
+        AttackProjectile_Arrow,
+        CanonProjectile
     }
     public Type type;
 
@@ -42,8 +43,11 @@ public class Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         Renderer myRenderer = transform.GetChild(0).GetComponent<Renderer>();
-        myRenderer.material = new Material(myRenderer.material);
-        myMat = myRenderer.material;
+        if (myRenderer != null)
+        {
+            myRenderer.material = new Material(myRenderer.material);
+            myMat = myRenderer.material;
+        }
     }
 
     private void OnEnable()
@@ -134,7 +138,7 @@ public class Projectile : MonoBehaviour
             Enemy enemy = other.transform.GetComponent<Enemy>();
             if (enemy != null)
             {
-                if (type == Type.CatapultProjectile)
+                if (type == Type.CatapultProjectile || type == Type.CanonProjectile)
                 {
                     ObjectPooler.instance.GrabFromPool("meteor explode particle", transform.position, Quaternion.identity);
                 }
@@ -161,10 +165,13 @@ public class Projectile : MonoBehaviour
     {
         yield return new WaitForSeconds(destroyTime);
 
-        while (myMat.color.a > 0.1f)
+        if (myMat != null)
         {
-            myMat.color -= new Color(0, 0, 0, Time.deltaTime * destroyFadeSpeed);
-            yield return null;
+            while (myMat.color.a > 0.1f)
+            {
+                myMat.color -= new Color(0, 0, 0, Time.deltaTime * destroyFadeSpeed);
+                yield return null;
+            }
         }
 
         ReAddToPool();
@@ -194,6 +201,10 @@ public class Projectile : MonoBehaviour
             case Type.AttackProjectile_Arrow:
 
                 ObjectPooler.instance.AddToPool("Attacking Arrow", gameObject);
+                break;
+            case Type.CanonProjectile:
+
+                ObjectPooler.instance.AddToPool("canon projectile", gameObject);
                 break;
         }
     }
