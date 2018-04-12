@@ -18,10 +18,10 @@ public class EnemyBowman : Enemy {
 
     public override IEnumerator Attack() {
         yield return new WaitForSeconds(attackCooldown);
-        if(target == null){
-                        if(attackingSoldiers.Count > 0) {
-                for(int i = 0; i < attackingSoldiers.Count; i++) {
-                    if(attackingSoldiers[i].inFight == true) {
+        if (target == null) {
+            if (attackingSoldiers.Count > 0) {
+                for (int i = 0; i < attackingSoldiers.Count; i++) {
+                    if (attackingSoldiers[i].inFight == true) {
 
                         target = attackingSoldiers[i];
                         break;
@@ -33,6 +33,7 @@ public class EnemyBowman : Enemy {
         }
         float distance = Vector3.Distance(bowPos.position, target.transform.position);
         Transform _currentArrow = ObjectPooler.instance.GrabFromPool("Attacking Arrow", bowPos.position, Quaternion.Euler(new Vector3(0, 0, -45))).transform;
+        print(_currentArrow);
         _currentArrow.LookAt(target.transform);
         _currentArrow.GetChild(0).GetComponent<Arrow>().distance = distance;
         _currentArrow.position += _currentArrow.forward * distance / 2;

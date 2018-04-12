@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf8894ecfbba0e49978a086a1cc4f6b, type: 3}
   m_Name: Canon Info
   m_EditorClassIdentifier: 
-  myName: Canon (WIP)
+  myName: Canon
   myLevel: 1
   myMaxLevel: 15
-  myBuildCost: 300
+  myBuildCost: 100
   myUpgradeCost:
     baseValue: 8
     currentValue: 8

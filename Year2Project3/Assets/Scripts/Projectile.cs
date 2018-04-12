@@ -52,7 +52,10 @@ public class Projectile : MonoBehaviour
 
     private void OnEnable()
     {
-        myMat.color = new Color(myMat.color.r, myMat.color.g, myMat.color.b, 1);
+        if (myMat != null)
+        {
+            myMat.color = new Color(myMat.color.r, myMat.color.g, myMat.color.b, 1);
+        }
 
         canRotate = true;
         rb.isKinematic = false;
@@ -200,7 +203,14 @@ public class Projectile : MonoBehaviour
                 break;
             case Type.AttackProjectile_Arrow:
 
-                ObjectPooler.instance.AddToPool("Attacking Arrow", gameObject);
+                if (enemyArrow)
+                {
+                    ObjectPooler.instance.AddToPool("Attacking Arrow", gameObject);
+                }
+                else
+                {
+                    ObjectPooler.instance.AddToPool("Ally Arrows", gameObject);
+                }
                 break;
             case Type.CanonProjectile:
 

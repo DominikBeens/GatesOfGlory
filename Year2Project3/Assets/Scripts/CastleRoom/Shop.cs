@@ -16,6 +16,7 @@ public class Shop : PreBuiltCastleRoom
 
     [Header("Cost")]
     public int spikesCost;
+    public int spikeBallsCost;
     public int oilCost;
     public int archersCost;
 
@@ -68,6 +69,18 @@ public class Shop : PreBuiltCastleRoom
         ResourceManager.instance.RemoveGold(spikesCost, true);
         //StartCoroutine(PlaceObject("shopitem spears"));
         PlaceObject("shopitem spears");
+    }
+
+    public void BuySpikeBallsButton(Animator a)
+    {
+        if (!ResourceManager.instance.HasEnoughGold(spikeBallsCost))
+        {
+            return;
+        }
+
+        a.SetTrigger("Buy");
+        ResourceManager.instance.RemoveGold(spikeBallsCost, true);
+        PlaceObject("shopitem spikeballs");
     }
 
     public void BuyOilButton(Animator a)

@@ -24,7 +24,6 @@ public class CastleWeapon : CastleBuild
 
     [Header("Weapon Setup")]
     public AudioSource fireSound;
-    public GameObject projectile;
     public List<Transform> projectileSpawns = new List<Transform>();
     public enum AmountOfProjectiles
     {
