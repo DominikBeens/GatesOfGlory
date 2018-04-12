@@ -244,7 +244,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Attacking
-  m_Speed: 1.75
+  m_Speed: 0.75
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101013440232386822}
@@ -258,7 +258,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c731aaed7450aea4c921a75e34746205, type: 3}
+  m_Motion: {fileID: 7400000, guid: 6d32f69d5c4514e459950d20afdd0a13, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

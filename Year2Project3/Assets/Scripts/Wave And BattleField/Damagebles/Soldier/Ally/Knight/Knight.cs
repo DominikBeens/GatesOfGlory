@@ -5,7 +5,7 @@ using UnityEngine;
 public class Knight : Allie
 {
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if(targetTransform != null && targetTransform == other.transform) {
             targetTransform.gameObject.GetComponent<Enemy>().StartBattle(this);
@@ -13,6 +13,7 @@ public class Knight : Allie
             anim.SetBool("Idle", false);
             inFight = true;
             agent.isStopped = true;
+            StopAllCoroutines();
             StartCoroutine(Attack());
         }
     }

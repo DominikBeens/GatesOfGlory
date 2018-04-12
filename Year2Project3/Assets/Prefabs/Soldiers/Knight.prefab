@@ -801,7 +801,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1357994592998048}
   m_LocalRotation: {x: -0, y: -0.6111547, z: -0, w: -0.7915113}
-  m_LocalPosition: {x: -40.080757, y: 0.951, z: -0.45098782}
+  m_LocalPosition: {x: -26.522793, y: 0.55, z: -0.46221733}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4541833570988508}
@@ -1455,7 +1455,7 @@ MonoBehaviour:
       currentValue: 8
       increaseValue: 0
   agent: {fileID: 195017216862818112}
-  attackCooldown: 2
+  attackCooldown: 1
   targetTransform: {fileID: 0}
   anim: {fileID: 95305829706532222}
   inFight: 0
