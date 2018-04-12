@@ -63,6 +63,8 @@ public class CastleWeapon_Catapult : CastleWeapon
 
     public void FireProjectile()
     {
+        fireSound.pitch = Random.Range(0.6f,0.75f);
+        fireSound.Play();
         GameObject newProjectile = ObjectPooler.instance.GrabFromPool("catapult projectile", projectileSpawns[0].position, projectileSpawns[0].rotation);
 
         Projectile projectile = newProjectile.GetComponent<Projectile>();

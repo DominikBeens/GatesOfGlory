@@ -397,6 +397,7 @@ GameObject:
   - component: {fileID: 4330413198784336}
   - component: {fileID: 114845373663026214}
   - component: {fileID: 95882562626727682}
+  - component: {fileID: 82112795829126468}
   m_Layer: 0
   m_Name: Ballista
   m_TagString: Untagged
@@ -1500,6 +1501,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.72, y: 2.6, z: 1}
   m_Center: {x: -0.72, y: -0.25, z: 0}
+--- !u!82 &82112795829126468
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1341045461662804}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d64f8f95b99afe743a70f8392ab19ce9, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 0.9
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 15
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95020619000557562
 Animator:
   serializedVersion: 3
@@ -4348,14 +4429,6 @@ MonoBehaviour:
   goldSpentOnThisObject: 0
   anim: {fileID: 95882562626727682}
   info: {fileID: 11400000, guid: fbad573a344baca458f9f6a6f97f1e6c, type: 2}
-  myName: Ballista
-  myLevel: 1
-  myMaxLevel: 15
-  myBuildCost: 10
-  myUpgradeCost:
-    baseValue: 3
-    currentValue: 3
-    increaseValue: 1
   useUI: {fileID: 1892291787104280}
   upgradePanel: {fileID: 1913944214613282}
   demolishPanel: {fileID: 1326565597400396}
@@ -4367,6 +4440,7 @@ MonoBehaviour:
   weaponType: 0
   autoFireToggle: {fileID: 114027583772236346}
   autoFireLockedOverlay: {fileID: 1093520116058666}
+  fireSound: {fileID: 82112795829126468}
   projectile: {fileID: 1024772973343442, guid: 6714d7ee2206ad2408a828f1ace35b81, type: 2}
   projectileSpawns:
   - {fileID: 4262480147398422}

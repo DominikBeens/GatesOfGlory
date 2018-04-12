@@ -80,6 +80,9 @@ public class CastleWeapon_Ballista : CastleWeapon
 
     public void FireProjectile()
     {
+        fireSound.pitch = Random.Range(0.85f,1);
+        fireSound.Play();
+
         GameObject newProjectile;
         Projectile projectile;
 

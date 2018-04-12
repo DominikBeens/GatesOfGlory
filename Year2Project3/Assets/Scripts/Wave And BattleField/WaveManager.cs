@@ -17,6 +17,7 @@ public class WaveManager : MonoBehaviour
     public float DamageMultiplier;
     public int maxStageSize;
     public int waveHealth;
+    public AudioSource hornAudio;
 
     public static WaveManager instance;
     bool waveDone;
@@ -179,6 +180,7 @@ public class WaveManager : MonoBehaviour
 
         waveTimerAnim.SetTrigger("Close");
 
+        hornAudio.Play();
         ShowWaveNumber();
         HideWaveInfo();
         StartCoroutine(StageTimer());

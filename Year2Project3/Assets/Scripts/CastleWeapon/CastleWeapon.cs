@@ -23,6 +23,7 @@ public class CastleWeapon : CastleBuild
     private bool autoFire;
 
     [Header("Weapon Setup")]
+    public AudioSource fireSound;
     public GameObject projectile;
     public List<Transform> projectileSpawns = new List<Transform>();
     public enum AmountOfProjectiles

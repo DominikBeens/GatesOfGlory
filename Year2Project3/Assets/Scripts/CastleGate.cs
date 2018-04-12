@@ -8,6 +8,7 @@ public class CastleGate : CastleDeffensePoint
 
     private Throne throne;
 
+    public AudioSource myAudio;
     public Animator gateAnim;
     public Animator gateButtonAnim;
     public bool locked;
@@ -45,13 +46,19 @@ public class CastleGate : CastleDeffensePoint
         }
 
         float currentAnimationProgress = gateAnim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+        myAudio.Play();
 
         if (currentAnimationProgress < 1)
         {
+            myAudio.pitch = Random.Range(1.4f, 1.5f);
+            myAudio.Play();
+            myAudio.time = currentAnimationProgress;
             gateAnim.Play("GateOpen", 0, (1 - currentAnimationProgress));
         }
         else
         {
+            myAudio.pitch = Random.Range(1.4f, 1.5f);
+            myAudio.Play();
             gateAnim.Play("GateOpen");
         }
     }
@@ -67,10 +74,15 @@ public class CastleGate : CastleDeffensePoint
 
         if (currentAnimationProgress < 1)
         {
+            myAudio.pitch = Random.Range(1.4f, 1.5f);
+            myAudio.Play();
+            myAudio.time = currentAnimationProgress;
             gateAnim.Play("GateClose", 0, (1- currentAnimationProgress));
         }
         else
         {
+            myAudio.pitch = Random.Range(1.4f, 1.5f);
+            myAudio.Play();
             gateAnim.Play("GateClose");
         }
     }
