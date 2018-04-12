@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CursorManager : MonoBehaviour 
 {
@@ -47,6 +45,15 @@ public class CursorManager : MonoBehaviour
         if (cursorObject != null)
         {
             cursorObjectPos.position = mousePos;
+        }
+
+        RaycastHit hit;
+        if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 50))
+        {
+            if (hit.transform.gameObject.layer != 5)
+            {
+                CastleUpgradeManager.instance.CloseAllUI(null);
+            }
         }
     }
 
