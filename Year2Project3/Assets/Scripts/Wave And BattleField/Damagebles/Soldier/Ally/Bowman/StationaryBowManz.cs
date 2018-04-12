@@ -39,16 +39,16 @@ public class StationaryBowManz : Soldier {
 
     public IEnumerator Attack() {
         Transform _attackingCurrently = targetTransform;
-        yield return new WaitForSeconds(attackCooldown);
         if(targetTransform != null) {
             float distance = Vector3.Distance(bowPos.position, targetTransform.position);
-            Transform _currentArrow = ObjectPooler.instance.GrabFromPool("Attacking Arrow", bowPos.position, Quaternion.Euler(new Vector3(0, 0, 0))).transform;
+            Transform _currentArrow = ObjectPooler.instance.GrabFromPool("Staonairy arrows", bowPos.position, Quaternion.Euler(new Vector3(0, 0, 0))).transform;
             _currentArrow.LookAt(targetTransform);
             _currentArrow.GetChild(0).GetComponent<Arrow>().distance = distance;
             _currentArrow.position += _currentArrow.forward * distance / 2;
-            _currentArrow.GetChild(0).GetComponent<Arrow>().myArrow.position -= new Vector3(0, 0, 1.5f);
+            _currentArrow.GetChild(0).GetComponent<Arrow>().myArrow.position -= new Vector3(0, 0, 14f);
             _currentArrow.GetChild(0).transform.position = bowPos.position;
             _currentArrow.GetChild(0).transform.rotation = Quaternion.Euler(new Vector3(-55, -45, 0));
+        }
 
             if(targetTransform.gameObject.activeSelf == true && targetTransform != null && targetTransform.tag == "Enemy" && targetTransform == _attackingCurrently) {
                 targetTransform.GetComponent<Enemy>().TakeDamage(myStats.damage.currentValue);
@@ -60,7 +60,7 @@ public class StationaryBowManz : Soldier {
                 anim.SetBool("Attack", false);
                 anim.SetBool("Idle", false);
             }
-        }
+        yield return new WaitForSeconds(attackCooldown);
     }
 
     public override void TakeDamage(float damage) {
