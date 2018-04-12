@@ -46,15 +46,6 @@ public class CursorManager : MonoBehaviour
         {
             cursorObjectPos.position = mousePos;
         }
-
-        RaycastHit hit;
-        if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 50))
-        {
-            if (hit.transform.gameObject.layer != 5)
-            {
-                CastleUpgradeManager.instance.CloseAllUI(null);
-            }
-        }
     }
 
     public void ToggleCursorObject()
