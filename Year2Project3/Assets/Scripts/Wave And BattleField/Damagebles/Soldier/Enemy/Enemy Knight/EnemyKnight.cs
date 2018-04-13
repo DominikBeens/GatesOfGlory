@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyKnight : Enemy {
-    void OnCollisionStay(Collision collision) {
+    /*void OnCollisionStay(Collision collision) {
         if(collision.collider.tag == "Defense") {
             CastleGatePoint castleGatePoint = collision.transform.GetComponent<CastleGatePoint>();
 
@@ -16,7 +16,7 @@ public class EnemyKnight : Enemy {
             }
             agent.isStopped = true;
         }
-    }
+    }*/
 
     public override void TakeDamage(float damage) {
         myStats.health.currentValue -= damage;

@@ -60692,6 +60692,16 @@ MonoBehaviour:
       type: 2}
     poolSize: 100
     autoExpand: 1
+  - poolName: Ally Spearmen
+    poolPrefab: {fileID: 1302159069428048, guid: f9eddd513fdddbd4db4d2d048c67579b,
+      type: 2}
+    poolSize: 100
+    autoExpand: 1
+  - poolName: Enemy Spearman
+    poolPrefab: {fileID: 1696621235679564, guid: 689c9e29b7927ea4faf680b443882618,
+      type: 2}
+    poolSize: 100
+    autoExpand: 1
 --- !u!1 &827514873
 GameObject:
   m_ObjectHideFlags: 0
