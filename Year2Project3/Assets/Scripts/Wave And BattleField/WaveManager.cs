@@ -201,10 +201,9 @@ public class WaveManager : MonoBehaviour {
             GameObject newEnemy = null;
             Enemy enemyScript = null;
 
-            if(currentWave > 5 && Random.Range(1, 101) >= currentTerroristChance) {
+            if(currentWave > 5 && Random.Range(1, 101) <= currentTerroristChance) {
                 newEnemy = ObjectPooler.instance.GrabFromPool(terrorist, new Vector3(spwanPoints[Random.Range(0, 2)].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 2, Random.Range(-SpawnsetOff, SpawnsetOff)), spwanPoints[Random.Range(0, 2)].transform.rotation);
                 enemyScript = newEnemy.GetComponent<Enemy>();
-                enemyScript.myStats.damage.currentValue = (DamageMultiplier * currentWave) * enemyScript.myStats.damage.baseValue;
                 enemyScript.myStats.health.currentValue = (DamageMultiplier * currentWave) * enemyScript.myStats.health.baseValue;
 
                 enemyScript.agent.speed = Random.Range(1.75f, 2.25f);
@@ -213,6 +212,7 @@ public class WaveManager : MonoBehaviour {
                 newEnemy.transform.localScale *= Random.Range(0.9f, 1.1f);
 
                 currentTerroristChance = 0;
+                print("Gay");
                 yield return null;
             }
 
