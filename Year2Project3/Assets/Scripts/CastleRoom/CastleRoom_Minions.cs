@@ -20,6 +20,7 @@ public class CastleRoom_Minions : CastleRoom
     private int currentAmountToSpawn;
     private int knightsToSpawn;
     private int archersToSpawn;
+    private int spearmenToSpawn;
 
     [Header("UI")]
     public TextMeshProUGUI roomTypeText;
@@ -75,6 +76,9 @@ public class CastleRoom_Minions : CastleRoom
             case 1:
                 archersToSpawn += (int)amountToSpawnPerBuy.currentValue;
                 break;
+            case 2:
+                spearmenToSpawn += (int)amountToSpawnPerBuy.currentValue;
+                break;
         }
 
         currentAmountToSpawn += (int)amountToSpawnPerBuy.currentValue;
@@ -103,6 +107,11 @@ public class CastleRoom_Minions : CastleRoom
         {
             newMinion = ObjectPooler.instance.GrabFromPool("Ally Bowman", Vector3.zero + spawnOffset, Quaternion.Euler(Vector3.zero));
             archersToSpawn--;
+        }
+        else if (spearmenToSpawn > 0)
+        {
+            newMinion = ObjectPooler.instance.GrabFromPool("Ally Spearmen", Vector3.zero + spawnOffset, Quaternion.Euler(Vector3.zero));
+            spearmenToSpawn--;
         }
         newMinion.GetComponent<AudioSource>().pitch = Random.Range(0.75f, 1.25f);
         newMinion.GetComponent<AudioSource>().volume = Random.Range(0.01f, 0.08f);

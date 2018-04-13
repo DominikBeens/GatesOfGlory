@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Arrow : Projectile{
-    public float damage;
     public Transform myArrow;
     public float distance;
     public int arrowSpeed;
@@ -17,10 +16,6 @@ public class Arrow : Projectile{
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(type == Type.Stationary && other.tag == "Enemy"){
-            //other.GetComponent<Enemy>().TakeDamage(damage);
-        }
-
         if(hit) {
             return;
         }
@@ -50,8 +45,10 @@ public class Arrow : Projectile{
                 else if(type == Type.BallistaProjectile) {
                     ObjectPooler.instance.GrabFromPool("ballista hit particle", other.transform.position, transform.rotation);
                 }
-
+                print(enemy.myStats.health.currentValue);
+                print(myDamage);
                 enemy.TakeDamage(myDamage);
+                print(enemy.myStats.health.currentValue);
 
                 ReAddToPool();
                 targetsHit++;

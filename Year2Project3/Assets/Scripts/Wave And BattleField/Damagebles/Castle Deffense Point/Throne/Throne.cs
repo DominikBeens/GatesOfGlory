@@ -18,14 +18,6 @@ public class Throne : CastleDeffensePoint
     [Space(10)]
     public Image secondThroneHealthBarFill;
 
-    private void Update() {
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            TakeDamage(10);
-        }
-    }
-
     private void Start() {
         HPBar();
     }

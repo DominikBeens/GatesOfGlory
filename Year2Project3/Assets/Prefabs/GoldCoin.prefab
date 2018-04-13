@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4641113243877848}
   - component: {fileID: 54593438467339440}
-  - component: {fileID: 114828077464295616}
+  - component: {fileID: 114486651974859094}
   m_Layer: 15
   m_Name: GoldCoin
   m_TagString: Untagged
@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1918120417587034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.64921, y: 1.446, z: -1.3236237}
+  m_LocalPosition: {x: -17.530388, y: -0.002, z: 1.0448961}
   m_LocalScale: {x: 0.3, y: 0.04, z: 0.3}
   m_Children:
   - {fileID: 4762551146777362}
@@ -172,7 +172,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1.0000001}
   m_Center: {x: 0.00000005960464, y: 0, z: -0.00000008940696}
---- !u!114 &114828077464295616
+--- !u!114 &114486651974859094
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -180,12 +180,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1918120417587034}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a557db569064c7646896d07f772ed3ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 75344e41bd68551488ca36f6e96d2002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPoolName: gold
-  reAddType: 0
-  selfReAddTimer: 0
+  myRb: {fileID: 54593438467339440}
+  myCollider: {fileID: 65382047813968130}
+  myParticleObject: {fileID: 1313869121516548}
 --- !u!198 &198859156566468154
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -246,7 +246,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1246646722
+  randomSeed: 1004474269
   InitialModule:
     serializedVersion: 3
     enabled: 1

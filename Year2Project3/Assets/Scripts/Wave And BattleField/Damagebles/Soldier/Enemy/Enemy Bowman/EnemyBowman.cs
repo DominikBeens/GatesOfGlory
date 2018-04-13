@@ -36,7 +36,7 @@ public class EnemyBowman : Enemy {
         print(_currentArrow);
         _currentArrow.LookAt(target.transform);
         _currentArrow.GetChild(0).GetComponent<Arrow>().distance = distance;
-        _currentArrow.position += _currentArrow.forward * distance / 2;
+        _currentArrow.position += _currentArrow.forward * (distance / 2 - 5);
         _currentArrow.GetChild(0).GetComponent<Arrow>().myArrow.position -= new Vector3(0, _currentArrow.GetChild(0).GetComponent<Arrow>().minAmount, 0);
         _currentArrow.GetChild(0).transform.position = bowPos.position;
         _currentArrow.GetChild(0).transform.LookAt(targetTransform);

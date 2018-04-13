@@ -127,7 +127,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1675402503210078}
   m_LocalRotation: {x: 0, y: 0.92387956, z: 0.38268343, w: 0}
-  m_LocalPosition: {x: -31.057262, y: 0.55, z: 1.823431}
+  m_LocalPosition: {x: -29.547094, y: 0.55, z: 0.5668087}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4426200743095536}
@@ -200,8 +200,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2776797, y: 0.89661324, z: 0.49902683}
-  m_Center: {x: -0.109923005, y: 0.058529377, z: 0.24951342}
+  m_Size: {x: 9.596835, y: 0.45089075, z: 1}
+  m_Center: {x: -0.028051363, y: 0.037037265, z: -0.0000000014146004}
 --- !u!114 &114489857809822166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -224,10 +224,9 @@ MonoBehaviour:
   destroyTime: 1
   destroyFadeSpeed: 1
   trailParticle: {fileID: 1823519271474418}
-  damage: 0
   myArrow: {fileID: 4511489163938188}
   distance: 0
-  arrowSpeed: 20
+  arrowSpeed: 90
   minAmount: 2
 --- !u!136 &136948677387501616
 CapsuleCollider:

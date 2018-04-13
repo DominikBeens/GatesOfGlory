@@ -14,7 +14,7 @@ public class ResourceManager : MonoBehaviour
     public float goldSpawnInterval;
     private bool canDumpGold = true;
     private int goldToDump;
-    public List<GameObject> goldPrefabsInScene = new List<GameObject>();
+    public List<GoldCoin> goldPrefabsInScene = new List<GoldCoin>();
     public Animator goldAnim;
     public TextMeshProUGUI goldText;
 
@@ -44,6 +44,10 @@ public class ResourceManager : MonoBehaviour
         {
             RemoveGold(5, false);
         }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            RemoveGold(1, false);
+        }
 
         goldText.text = goldPrefabsInScene.Count.ToString();
 
@@ -72,19 +76,13 @@ public class ResourceManager : MonoBehaviour
 
         for (int i = 0; i < extraGoldToSpawn; i++)
         {
-            GameObject newGold = ObjectPooler.instance.GrabFromPool("gold", goldSpawn.transform.position, Quaternion.Euler(Random.Range(-360, 360), Random.Range(-360, 360), Random.Range(-360, 360)));
+            GameObject newGold = ObjectPooler.instance.GrabFromPool("gold", goldSpawn.transform.position, Random.rotation);
+            GoldCoin newCoin = newGold.GetComponent<GoldCoin>();
 
             int random = Random.Range(0, 2);
-            if (random == 0)
-            {
-                newGold.transform.GetChild(0).gameObject.SetActive(true);
-            }
-            else
-            {
-                newGold.transform.GetChild(0).gameObject.SetActive(false);
-            }
+            newCoin.myParticleObject.SetActive((random > 0) ? true : false);
 
-            goldPrefabsInScene.Add(newGold);
+            goldPrefabsInScene.Add(newCoin);
             Notary.goldAccumulated++;
         }
     }
@@ -95,14 +93,10 @@ public class ResourceManager : MonoBehaviour
 
         for (int i = 0; i < goldPrefabsInScene.Count; i++)
         {
-            Rigidbody rb = goldPrefabsInScene[i].GetComponent<Rigidbody>();
-
-            if (rb.isKinematic)
+            if (goldPrefabsInScene[i].myRb.isKinematic)
             {
-                Collider col = goldPrefabsInScene[i].GetComponentInChildren<Collider>();
-
-                rb.isKinematic = false;
-                col.enabled = true;
+                goldPrefabsInScene[i].myRb.isKinematic = false;
+                goldPrefabsInScene[i].myCollider.enabled = true;
 
                 goldToDump--;
 
@@ -120,39 +114,18 @@ public class ResourceManager : MonoBehaviour
             return;
         }
 
-        if (spentByPlayer)
-        {
-            Notary.goldSpent += amount;
-        }
-        else
-        {
-            Notary.goldStolen += amount;
-        }
+        Notary.goldSpent += spentByPlayer ? amount : 0;
+        Notary.goldStolen += spentByPlayer ? 0 : amount;
 
-        if (goldToDump >= amount)
-        {
-            goldToDump -= amount;
-            return;
-        }
-        else
-        {
-            if (goldToDump > 0)
-            {
-                goldToDump = 0;
-            }
-        }
-
+        goldToDump = (goldToDump >= amount) ? goldToDump -= amount : 0;
         int goldPrefabsToDelete = amount;
 
         for (int i = 0; i < goldPrefabsToDelete; i++)
         {
-            Rigidbody rb = goldPrefabsInScene[goldPrefabsInScene.Count - 1].GetComponent<Rigidbody>();
-            Collider col = goldPrefabsInScene[goldPrefabsInScene.Count - 1].GetComponentInChildren<Collider>();
+            goldPrefabsInScene[goldPrefabsInScene.Count - 1].myRb.isKinematic = true;
+            goldPrefabsInScene[goldPrefabsInScene.Count - 1].myCollider.enabled = false;
 
-            rb.isKinematic = true;
-            col.enabled = false;
-
-            ObjectPooler.instance.AddToPool("gold", goldPrefabsInScene[goldPrefabsInScene.Count - 1]);
+            ObjectPooler.instance.AddToPool("gold", goldPrefabsInScene[goldPrefabsInScene.Count - 1].gameObject);
             goldPrefabsInScene.RemoveAt(goldPrefabsInScene.Count - 1);
         }
     }

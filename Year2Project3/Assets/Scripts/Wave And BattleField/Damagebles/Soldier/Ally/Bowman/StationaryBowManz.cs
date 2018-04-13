@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class StationaryBowManz : Soldier {
     public Transform bowPos;
-    public float fireRate;
     [HideInInspector]
     public ArcherSpot mySpot;
 
@@ -43,19 +42,21 @@ public class StationaryBowManz : Soldier {
             float distance = Vector3.Distance(bowPos.position, targetTransform.position);
             Transform _currentArrow = ObjectPooler.instance.GrabFromPool("Staonairy arrows", bowPos.position, Quaternion.Euler(new Vector3(0, 0, 0))).transform;
             _currentArrow.LookAt(targetTransform);
-            _currentArrow.GetChild(0).GetComponent<Arrow>().distance = distance;
+            Arrow _currentArrowScript = _currentArrow.GetChild(0).GetComponent<Arrow>();
+            _currentArrowScript.distance = distance;
             _currentArrow.position += _currentArrow.forward * distance / 2;
-            _currentArrow.GetChild(0).GetComponent<Arrow>().myArrow.position -= new Vector3(0, 0, 14f);
+            _currentArrowScript.myArrow.position -= new Vector3(0, 0, 17f);
+            _currentArrowScript.myDamage = myStats.damage.currentValue;
             _currentArrow.GetChild(0).transform.position = bowPos.position;
             _currentArrow.GetChild(0).transform.rotation = Quaternion.Euler(new Vector3(-55, -45, 0));
         }
 
             if(targetTransform.gameObject.activeSelf == true && targetTransform != null && targetTransform.tag == "Enemy" && targetTransform == _attackingCurrently) {
                 targetTransform.GetComponent<Enemy>().TakeDamage(myStats.damage.currentValue);
-                StartCoroutine(Attack());
+                //StartCoroutine(Attack());
             }
             else {
-                StopCoroutine(Attack());
+                //StopCoroutine(Attack());
                 targetTransform = null;
                 anim.SetBool("Attack", false);
                 anim.SetBool("Idle", false);

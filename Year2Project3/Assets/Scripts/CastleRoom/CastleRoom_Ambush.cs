@@ -13,13 +13,9 @@ public class CastleRoom_Ambush : CastleRoom
     public Stat useCooldown;
     public Stat damageAmount;
 
-    [Header("Volley")]
+    [Header("Ambush Options")]
     public AmbushOptions volleyOptions;
-
-    [Header("Meteor")]
     public AmbushOptions meteorOptions;
-
-    [Header("Spear")]
     public AmbushOptions spearOptions;
 
     [Header("Ambush Room Setup")]
