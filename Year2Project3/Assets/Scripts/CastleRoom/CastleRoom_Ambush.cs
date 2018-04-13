@@ -32,6 +32,7 @@ public class CastleRoom_Ambush : CastleRoom
     public GameObject spearRainButton;
 
     private GameObject[] ambushSpawns;
+    private GameObject[] spearRainSpawns;
 
     private float currentCooldown = 0.95f;
 
@@ -53,6 +54,7 @@ public class CastleRoom_Ambush : CastleRoom
         mainCamManager = mainCam.GetComponent<CameraManager>();
 
         ambushSpawns = GameObject.FindGameObjectsWithTag("AmbushSpawn");
+        spearRainSpawns = GameObject.FindGameObjectsWithTag("SpearRainSpawn");
     }
 
     public override void SetupUI()
@@ -129,24 +131,24 @@ public class CastleRoom_Ambush : CastleRoom
         {
             case 0:
 
-                StartCoroutine(ProjectileRain("ambush volley", volleyOptions.rows, volleyOptions.columns, volleyOptions.distOffset, volleyOptions.spawnDelay, volleyOptions.spawnOffset, false, 2));
+                StartCoroutine(ProjectileRain("ambush volley", volleyOptions.rows, volleyOptions.columns, volleyOptions.distOffset, volleyOptions.spawnDelay, volleyOptions.spawnOffset, false, 2, ambushSpawns));
                 break;
 
             case 1:
 
-                StartCoroutine(ProjectileRain("ambush meteor", meteorOptions.rows, meteorOptions.columns, meteorOptions.distOffset, meteorOptions.spawnDelay, meteorOptions.spawnOffset, true, 4));
+                StartCoroutine(ProjectileRain("ambush meteor", meteorOptions.rows, meteorOptions.columns, meteorOptions.distOffset, meteorOptions.spawnDelay, meteorOptions.spawnOffset, true, 4, ambushSpawns));
                 break;
 
             case 2:
 
-                StartCoroutine(ProjectileRain("ambush spear", spearOptions.rows, spearOptions.columns, spearOptions.distOffset, spearOptions.spawnDelay, spearOptions.spawnOffset, false, 2));
+                StartCoroutine(ProjectileRain("ambush spear", spearOptions.rows, spearOptions.columns, spearOptions.distOffset, spearOptions.spawnDelay, spearOptions.spawnOffset, false, 2, spearRainSpawns));
                 break;
         }
 
         StopUsingButton();
     }
 
-    private IEnumerator ProjectileRain(string projectile, int rainRows, int rainColumns, float rainDistOffset, float rainSpawnDelay, float rainSpawnOffset, bool addTorque, float screenShakeAmount)
+    private IEnumerator ProjectileRain(string projectile, int rainRows, int rainColumns, float rainDistOffset, float rainSpawnDelay, float rainSpawnOffset, bool addTorque, float screenShakeAmount, GameObject[] spawns)
     {
         Vector3 zoomTo = new Vector3(0, 15, -25);
         mainCamManager.canMove = false;
@@ -165,28 +167,28 @@ public class CastleRoom_Ambush : CastleRoom
 
         for (int i = 0; i < rainRows; i++)
         {
-            for (int ii = 0; ii < ambushSpawns.Length; ii++)
+            for (int ii = 0; ii < spawns.Length; ii++)
             {
                 Vector3 spawnPos = new Vector3();
 
-                if (ambushSpawns[ii].transform.position.x < 0)
+                if (spawns[ii].transform.position.x < 0)
                 {
-                    spawnPos = new Vector3(ambushSpawns[ii].transform.position.x - (rainDistOffset * toSpawnLeft + GetRandomOffset(rainSpawnOffset)), ambushSpawns[ii].transform.position.y + GetRandomOffset(rainSpawnOffset), ambushSpawns[ii].transform.position.z);
+                    spawnPos = new Vector3(spawns[ii].transform.position.x - (rainDistOffset * toSpawnLeft + GetRandomOffset(rainSpawnOffset)), spawns[ii].transform.position.y + GetRandomOffset(rainSpawnOffset), ambushSpawns[ii].transform.position.z);
                     toSpawnLeft--;
                 }
                 else
                 {
-                    spawnPos = new Vector3(ambushSpawns[ii].transform.position.x + (rainDistOffset * toSpawnRight + GetRandomOffset(rainSpawnOffset)), ambushSpawns[ii].transform.position.y + GetRandomOffset(rainSpawnOffset), ambushSpawns[ii].transform.position.z);
+                    spawnPos = new Vector3(spawns[ii].transform.position.x + (rainDistOffset * toSpawnRight + GetRandomOffset(rainSpawnOffset)), spawns[ii].transform.position.y + GetRandomOffset(rainSpawnOffset), ambushSpawns[ii].transform.position.z);
                     toSpawnRight--;
                 }
 
-                GameObject newProjectile = SpawnProjectile(projectile, spawnPos, ambushSpawns[ii].transform.rotation, addTorque);
+                GameObject newProjectile = SpawnProjectile(projectile, spawnPos, spawns[ii].transform.rotation, addTorque);
 
                 Vector3 columnSpawnPos = new Vector3();
                 int columns = rainColumns;
                 for (int iii = 0; iii < rainColumns; iii++)
                 {
-                    if (ambushSpawns[ii].transform.position.x < 0)
+                    if (spawns[ii].transform.position.x < 0)
                     {
                         columnSpawnPos = new Vector3(newProjectile.transform.position.x + (0.2f * columns + GetRandomOffset(rainSpawnOffset)), newProjectile.transform.position.y + (2f * columns + GetRandomOffset(rainSpawnOffset)), newProjectile.transform.position.z);
                     }
@@ -195,7 +197,7 @@ public class CastleRoom_Ambush : CastleRoom
                         columnSpawnPos = new Vector3(newProjectile.transform.position.x - (0.2f * columns + GetRandomOffset(rainSpawnOffset)), newProjectile.transform.position.y + (2f * columns + GetRandomOffset(rainSpawnOffset)), newProjectile.transform.position.z);
                     }
 
-                    SpawnProjectile(projectile, columnSpawnPos, ambushSpawns[ii].transform.rotation, addTorque);
+                    SpawnProjectile(projectile, columnSpawnPos, spawns[ii].transform.rotation, addTorque);
 
                     columns--;
                 }
@@ -226,10 +228,10 @@ public class CastleRoom_Ambush : CastleRoom
         projectileComponent.myDamage = damageAmount.currentValue;
         projectileComponent.Fire(150, 0, ForceMode.Force);
 
-        //if (addTorque)
-        //{
-        //    newProjectile.GetComponent<Rigidbody>().AddTorque(newProjectile.transform.right * 150);
-        //}
+        if (addTorque)
+        {
+
+        }
 
         return newProjectile;
     }

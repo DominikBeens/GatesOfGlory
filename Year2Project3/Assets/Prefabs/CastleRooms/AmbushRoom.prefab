@@ -2866,7 +2866,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1370444586302360}
-  m_LocalRotation: {x: -0.31453466, y: 0.7169507, z: -0.61907667, w: -0.061593674}
+  m_LocalRotation: {x: -0.31453466, y: 0.7169507, z: -0.61907667, w: -0.061593667}
   m_LocalPosition: {x: -0.672, y: 0.822, z: -1.198}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
@@ -6989,11 +6989,11 @@ MonoBehaviour:
     spawnDelay: 0.5
     spawnOffset: 5
   spearOptions:
-    rows: 30
+    rows: 10
     columns: 2
     distOffset: 3
     spawnDelay: 0
-    spawnOffset: 6
+    spawnOffset: 1
   cooldownFill: {fileID: 114626224411293460}
   descriptionText: {fileID: 114796186760574084}
   camZoomSpeed: 3

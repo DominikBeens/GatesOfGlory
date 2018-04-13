@@ -11,18 +11,18 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1700321448599626}
   m_IsPrefabParent: 1
---- !u!1 &1134513520133630
+--- !u!1 &1214536152517488
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4998800891846390}
-  - component: {fileID: 33213642605912234}
-  - component: {fileID: 23440337818748014}
+  - component: {fileID: 4680747911779092}
+  - component: {fileID: 33201739006905588}
+  - component: {fileID: 23753218395407100}
   m_Layer: 0
-  m_Name: AmbushProjectile
+  m_Name: Spear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,10 +71,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1700321448599626}
   m_LocalRotation: {x: -0, y: -0.70710707, z: -0, w: 0.70710653}
-  m_LocalPosition: {x: -6.7040057, y: 1.084, z: -1.1815743}
+  m_LocalPosition: {x: -18.571, y: -0.011938646, z: 0.094}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4998800891846390}
+  - {fileID: 4680747911779092}
   - {fileID: 4268356964754908}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -92,25 +92,25 @@ Transform:
   m_Father: {fileID: 4206488892248438}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -180, y: 0, z: -0.000015258789}
---- !u!4 &4998800891846390
+--- !u!4 &4680747911779092
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1134513520133630}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 7}
+  m_GameObject: {fileID: 1214536152517488}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.235}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
   m_Father: {fileID: 4206488892248438}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23440337818748014
+--- !u!23 &23753218395407100
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1134513520133630}
+  m_GameObject: {fileID: 1214536152517488}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -119,7 +119,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: e008f8b3612bd6b468d26f0a93343f7c, type: 2}
+  - {fileID: 2100000, guid: 3ddedb834b6c9be4d865349cb13c3f38, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -139,13 +139,13 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33213642605912234
+--- !u!33 &33201739006905588
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1134513520133630}
-  m_Mesh: {fileID: 4300000, guid: 409981fe31030074fa75f8e9c46fcf3c, type: 3}
+  m_GameObject: {fileID: 1214536152517488}
+  m_Mesh: {fileID: 4300000, guid: 39b4ce68dad81144a9d0aaf584aea709, type: 3}
 --- !u!54 &54169607603426204
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -171,8 +171,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 0.45, z: 1}
-  m_Center: {x: 0, y: 0, z: 0.5}
+  m_Size: {x: 4, y: 0.45, z: 2.163248}
+  m_Center: {x: 0, y: 0, z: 1.600585}
 --- !u!114 &114048021618278790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,10 +186,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyArrow: 0
   rb: {fileID: 0}
-  type: 2
+  type: 7
   myDamage: 0
+  hit: 0
   freezeOnImpact: 1
   maxTargetsToHit: 1
+  targetsHit: 0
   destroyTime: 1
   destroyFadeSpeed: 1
   trailParticle: {fileID: 1749376364699174}
@@ -203,9 +205,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.11
-  m_Height: 3.5
+  m_Height: 2.52
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 1.94}
+  m_Center: {x: 0, y: 0, z: 1.63}
 --- !u!198 &198615043047397070
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -266,7 +268,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1703933768
+  randomSeed: 914325559
   InitialModule:
     serializedVersion: 3
     enabled: 1
