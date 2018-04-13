@@ -3,20 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyKnight : Enemy {
-    /*void OnCollisionStay(Collision collision) {
-        if(collision.collider.tag == "Defense") {
-            CastleGatePoint castleGatePoint = collision.transform.GetComponent<CastleGatePoint>();
-
-            if(castleGatePoint != null) {
-                if(castleGatePoint.myGate.isOpen) {
-                    FindNewTarget();
-                    agent.isStopped = false;
-                    return;
-                }
-            }
-            agent.isStopped = true;
-        }
-    }*/
 
     public override void TakeDamage(float damage) {
         myStats.health.currentValue -= damage;

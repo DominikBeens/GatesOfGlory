@@ -45,7 +45,7 @@ public class StationaryBowManz : Soldier {
             Arrow _currentArrowScript = _currentArrow.GetChild(0).GetComponent<Arrow>();
             _currentArrowScript.distance = distance;
             _currentArrow.position += _currentArrow.forward * distance / 2;
-            _currentArrowScript.myArrow.position -= new Vector3(0, 0, 17f);
+            _currentArrowScript.myArrow.position -= new Vector3(0, 0, 16f);
             _currentArrowScript.myDamage = myStats.damage.currentValue;
             _currentArrow.GetChild(0).transform.position = bowPos.position;
             _currentArrow.GetChild(0).transform.rotation = Quaternion.Euler(new Vector3(-55, -45, 0));

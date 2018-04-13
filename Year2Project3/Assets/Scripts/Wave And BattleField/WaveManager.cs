@@ -5,8 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.AI;
 using TMPro;
 
-public class WaveManager : MonoBehaviour
-{
+public class WaveManager : MonoBehaviour {
+    public string terrorist;
     public List<string> enemyTypes = new List<string>();
     public List<int> enemyAmountRight = new List<int>();
     public List<int> enemyAmountLeft = new List<int>();
@@ -32,6 +32,10 @@ public class WaveManager : MonoBehaviour
     public List<Enemy> enemiesInScene = new List<Enemy>();
     public List<Allie> alliesInScene = new List<Allie>();
 
+    public int baseTerroristChance;
+    public int terroristChanceIncrese;
+    int currentTerroristChance = 100;
+
     [Header("Scroll Animation")]
     public Animator scrollAnim;
     public TextMeshProUGUI waveText;
@@ -48,25 +52,20 @@ public class WaveManager : MonoBehaviour
     public TextMeshProUGUI waveInfoLeftText;
     public TextMeshProUGUI waveInfoRightText;
 
-    void Awake()
-    {
-        if (instance == null)
-        {
+    void Awake() {
+        if(instance == null) {
             instance = this;
         }
     }
 
-    void Start()
-    {
-        for (int i = 0; i < BattleManager.instance.newDeffensePoints.Count; i++)
-        {
+    void Start() {
+        for(int i = 0; i < BattleManager.instance.newDeffensePoints.Count; i++) {
             allCastleGates.Add(BattleManager.instance.newDeffensePoints[i].castleGate);
         }
     }
 
-    void Update()
-    {
-        if(Input.GetKeyDown("m")){
+    void Update() {
+        if(Input.GetKeyDown("m")) {
             currentWave++;
         }
     }
@@ -78,27 +77,21 @@ public class WaveManager : MonoBehaviour
     }
 
 
-    public void RemoveEnemyFromScene(Enemy _enemyToRemove){
+    public void RemoveEnemyFromScene(Enemy _enemyToRemove) {
         instance.enemiesInScene.Remove(_enemyToRemove);
         if(enemiesInScene.Count <= 0 && waveDone == true) {
             NextWave();
         }
-    } 
+    }
 
-    public void NextWave()
-    {
+    public void NextWave() {
         HealthMultiplier += 0.01f * waveSize;
         DamageMultiplier += 0.01f * waveSize;
-        for (int i = 0; i < BattleManager.instance.newDeffensePoints.Count; i++)
-        {
-            for (int ii = 0; ii < CastleUpgradeManager.instance.allBuiltRooms.Count; ii++)
-            {
-                if (CastleUpgradeManager.instance.allBuiltRooms[ii].roomType == CastleRoom.RoomType.Heal)
-                {
-                    if (CastleUpgradeManager.instance.allBuiltRooms[ii].info.myLevel >= 5)
-                    {
-                        if (allCastleGates[i].locked)
-                        {
+        for(int i = 0; i < BattleManager.instance.newDeffensePoints.Count; i++) {
+            for(int ii = 0; ii < CastleUpgradeManager.instance.allBuiltRooms.Count; ii++) {
+                if(CastleUpgradeManager.instance.allBuiltRooms[ii].roomType == CastleRoom.RoomType.Heal) {
+                    if(CastleUpgradeManager.instance.allBuiltRooms[ii].info.myLevel >= 5) {
+                        if(allCastleGates[i].locked) {
                             allCastleGates[i].locked = false;
                         }
 
@@ -152,25 +145,28 @@ public class WaveManager : MonoBehaviour
                 _newStage.soldiers.Add(newSoldier);
             }
             thisWave.atackStage.Add(_newStage);
+
             yield return null;
         }
+
+        if(currentTerroristChance < baseTerroristChance) {
+            currentTerroristChance = baseTerroristChance;
+        }
+
         ShowWaveInfo();
     }
 
-    IEnumerator WaveTimer()
-    {
+    IEnumerator WaveTimer() {
         waveTimerSlider.maxValue = wavePause;
         waveTimerAnim.SetTrigger("Open");
 
         float timeToWait = wavePause;
 
-        while (timeToWait > 0)
-        {
+        while(timeToWait > 0) {
             waveTimerSlider.value = (waveTimerSlider.maxValue - timeToWait);
             timeToWait -= Time.deltaTime;
 
-            if (skipWaiting)
-            {
+            if(skipWaiting) {
                 timeToWait = 0;
                 skipWaiting = false;
             }
@@ -186,77 +182,83 @@ public class WaveManager : MonoBehaviour
         StartCoroutine(StageTimer());
     }
 
-    IEnumerator StageTimer()
-    {
+    IEnumerator StageTimer() {
         yield return new WaitForSeconds(Random.Range(minStageWait, maxStageWait));
 
-        if (currentStage < thisWave.atackStage.Count)
-        {
+        if(currentStage < thisWave.atackStage.Count) {
             StartCoroutine(SoldierTimer());
         }
-        else
-        {
+        else {
             waveDone = true;
             currentStage = 0;
         }
     }
 
-    IEnumerator SoldierTimer()
-    {
+    IEnumerator SoldierTimer() {
         yield return new WaitForSeconds(Random.Range(minSoldierWait, maxSoldierWait));
 
-        if (currentSoldier < thisWave.atackStage[currentStage].soldiers.Count)
-        {
-            GameObject newEnemy = ObjectPooler.instance.GrabFromPool(thisWave.atackStage[currentStage].soldiers[currentSoldier].Soldier, 
-                new Vector3(spwanPoints[thisWave.atackStage[currentStage].soldiers[currentSoldier].Side].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 2, Random.Range(-SpawnsetOff, SpawnsetOff)), spwanPoints[thisWave.atackStage[currentStage].soldiers[currentSoldier].Side].transform.rotation);
-            Enemy enemyScript = newEnemy.GetComponent<Enemy>();
+        if(currentSoldier < thisWave.atackStage[currentStage].soldiers.Count) {
+            GameObject newEnemy = null;
+            Enemy enemyScript = null;
+
+            if(currentWave > 5 && Random.Range(1, 101) >= currentTerroristChance) {
+                newEnemy = ObjectPooler.instance.GrabFromPool(terrorist, new Vector3(spwanPoints[Random.Range(0, 2)].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 2, Random.Range(-SpawnsetOff, SpawnsetOff)), spwanPoints[Random.Range(0, 2)].transform.rotation);
+                enemyScript = newEnemy.GetComponent<Enemy>();
+                enemyScript.myStats.damage.currentValue = (DamageMultiplier * currentWave) * enemyScript.myStats.damage.baseValue;
+                enemyScript.myStats.health.currentValue = (DamageMultiplier * currentWave) * enemyScript.myStats.health.baseValue;
+
+                enemyScript.agent.speed = Random.Range(1.75f, 2.25f);
+                enemyScript.myAudiosource.pitch = Random.Range(0.75f, 1.25f);
+                enemyScript.myAudiosource.volume = Random.Range(0.01f, 0.08f);
+                newEnemy.transform.localScale *= Random.Range(0.9f, 1.1f);
+
+                currentTerroristChance = 0;
+                yield return null;
+            }
+
+            newEnemy = ObjectPooler.instance.GrabFromPool(thisWave.atackStage[currentStage].soldiers[currentSoldier].Soldier, new Vector3(spwanPoints[thisWave.atackStage[currentStage].soldiers[currentSoldier].Side].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 2, Random.Range(-SpawnsetOff, SpawnsetOff)), spwanPoints[thisWave.atackStage[currentStage].soldiers[currentSoldier].Side].transform.rotation);
+            enemyScript = newEnemy.GetComponent<Enemy>();
             enemyScript.myStats.damage.currentValue = (DamageMultiplier * currentWave) * enemyScript.myStats.damage.baseValue;
             enemyScript.myStats.health.currentValue = (DamageMultiplier * currentWave) * enemyScript.myStats.health.baseValue;
+
             enemyScript.agent.speed = Random.Range(1.75f, 2.25f);
             enemyScript.myAudiosource.pitch = Random.Range(0.75f, 1.25f);
             enemyScript.myAudiosource.volume = Random.Range(0.01f, 0.08f);
-            newEnemy.transform.localScale *= Random.Range(0.9f,1.1f);
+            newEnemy.transform.localScale *= Random.Range(0.9f, 1.1f);
             currentSoldier++;
             enemiesInScene.Add(enemyScript);
             StartCoroutine(SoldierTimer());
         }
-        else
-        {
+        else {
             currentSoldier = 0;
             currentStage++;
             StartCoroutine(StageTimer());
         }
     }
 
-    private void ShowWaveNumber()
-    {
+    private void ShowWaveNumber() {
         waveText.text = "Wave\n" + currentWave;
         UIManager.instance.waveText.text = currentWave.ToString();
         scrollAnim.SetTrigger("Open");
     }
 
-    public void SkipWaitingForNextWaveButton(){
+    public void SkipWaitingForNextWaveButton() {
         skipWaiting = true;
     }
 
-    private void ShowWaveInfo()
-    {
+    private void ShowWaveInfo() {
         waveInfoLeftText.text = "";
 
-        for (int i = 0; i < enemyAmountLeft.Count; i++)
-        {
-            if (enemyAmountLeft[i] > 0)
-            {
+        for(int i = 0; i < enemyAmountLeft.Count; i++) {
+            if(enemyAmountLeft[i] > 0) {
                 waveInfoLeftText.text += "<color=green>" + enemyAmountLeft[i] + "x</color> " + enemyTypes[i] + "\n";
             }
         }
 
         waveInfoRightText.text = "";
 
-        for (int i = 0; i < enemyAmountRight.Count; i++)
-        {
-            if (enemyAmountRight[i] > 0)
-            {
+        for(int i = 0; i < enemyAmountRight.Count; i++) {
+            if(enemyAmountRight[i] > 0) {
                 waveInfoRightText.text += "<color=green>" + enemyAmountRight[i] + "x</color> " + enemyTypes[i] + "\n";
             }
         }
@@ -264,8 +266,7 @@ public class WaveManager : MonoBehaviour
         waveInfoAnim.SetTrigger("Trigger");
     }
 
-    private void HideWaveInfo()
-    {
+    private void HideWaveInfo() {
         waveInfoAnim.SetTrigger("Trigger");
     }
 }
