@@ -217,7 +217,7 @@ public class WaveManager : MonoBehaviour
             enemyScript.myAudiosource.volume = Random.Range(0.01f, 0.08f);
             newEnemy.transform.localScale *= Random.Range(0.9f,1.1f);
             currentSoldier++;
-            enemiesInScene.Add(newEnemy.GetComponent<Enemy>());
+            enemiesInScene.Add(enemyScript);
             StartCoroutine(SoldierTimer());
         }
         else
