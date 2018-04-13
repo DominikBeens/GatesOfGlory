@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 208520861440523468}
   - component: {fileID: 114387678790898556}
   - component: {fileID: 65866222259143046}
+  - component: {fileID: 82297078735614144}
   m_Layer: 10
   m_Name: Gate
   m_TagString: Untagged
@@ -714,8 +715,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.06, z: 4}
-  m_Center: {x: -1.3, y: -0.05, z: 0}
+  m_Size: {x: 2.0012195, y: 3.2382908, z: 4}
+  m_Center: {x: -1.0493902, y: -1.6391454, z: -1.130542e-14}
 --- !u!65 &65876775334412746
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -728,6 +729,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.12, y: 4.014305, z: 3.8000002}
   m_Center: {x: 6.875213e-15, y: 1.9350739, z: 0.00047433376}
+--- !u!82 &82297078735614144
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1460424808220580}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8cf55f4913229e649826faab09a666c5, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.2
+  m_Pitch: 1.5
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 0.82
+  MinDistance: 5
+  MaxDistance: 20
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95173574679361334
 Animator:
   serializedVersion: 3
@@ -883,6 +964,7 @@ MonoBehaviour:
   attackingMe: []
   myGate: {fileID: 114387678790898556}
   healthbarFill: {fileID: 114952551819989886}
+  myAudio: {fileID: 82297078735614144}
   gateAnim: {fileID: 95173574679361334}
   gateButtonAnim: {fileID: 95186546376900790}
   locked: 0

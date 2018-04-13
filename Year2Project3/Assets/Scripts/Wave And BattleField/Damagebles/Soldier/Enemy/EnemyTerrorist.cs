@@ -9,7 +9,7 @@ public class EnemyTerrorist : Enemy {
 
         if(myStats.health.currentValue <= 0) {
             ObjectPooler.instance.AddToPool("Enemy Terrorist", gameObject);
-            ResourceManager.instance.AddGold(1000); // edit plz
+            ResourceManager.instance.AddGold(ResourceManager.instance.terroristGoldReward);
         }
     }
 
@@ -17,6 +17,7 @@ public class EnemyTerrorist : Enemy {
         if(collision.transform == targetTransform) {
             targetTransform.GetComponent<CastleDeffensePoint>().attackingMe.Add(this);
             collision.gameObject.GetComponent<Damagebles>().TakeDamage(myStats.damage.currentValue);
+            ObjectPooler.instance.GrabFromPool("terrorist kaboom", new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);
             ObjectPooler.instance.AddToPool("Enemy Terrorist", gameObject);
         }
     }

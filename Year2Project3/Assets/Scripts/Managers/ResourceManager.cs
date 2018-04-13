@@ -20,6 +20,7 @@ public class ResourceManager : MonoBehaviour
 
     [Header("Enemy Kill Rewards")]
     public int normalEnemyGoldReward;
+    public int terroristGoldReward;
 
     private void Awake()
     {

@@ -87,9 +87,14 @@ public class CastleGate : CastleDeffensePoint
         }
     }
 
-    public void AnimationEventGate()
+    public void AnimationEventGateOpen()
     {
-        isOpen = !isOpen;
+        isOpen = true;
+    }
+
+    public void AnimationEventGateClose()
+    {
+        isOpen = false;
     }
 
     public override void TakeDamage(float damage)

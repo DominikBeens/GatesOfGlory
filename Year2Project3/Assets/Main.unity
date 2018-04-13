@@ -11050,7 +11050,7 @@ Transform:
   - {fileID: 1440218161}
   - {fileID: 1464018849}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &140390466 stripped
 Transform:
@@ -34029,7 +34029,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4691026775985068, guid: e7fdb75e1f916df4e971917b112bf8b5, type: 2}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 114593524550238828, guid: e7fdb75e1f916df4e971917b112bf8b5,
         type: 2}
@@ -51003,7 +51003,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4433073466367980, guid: c304939f7dd57f54baea33fb78f101ad, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114204559385459044, guid: c304939f7dd57f54baea33fb78f101ad,
         type: 2}
@@ -51221,36 +51221,6 @@ Prefab:
     - target: {fileID: 4799690232392838, guid: e3272da4b86edcb4983d347dab9d978b, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114387678790898556, guid: e3272da4b86edcb4983d347dab9d978b,
-        type: 2}
-      propertyPath: myAudio
-      value: 
-      objectReference: {fileID: 1755812013}
-    - target: {fileID: 65866222259143046, guid: e3272da4b86edcb4983d347dab9d978b,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 3.2382908
-      objectReference: {fileID: 0}
-    - target: {fileID: 65866222259143046, guid: e3272da4b86edcb4983d347dab9d978b,
-        type: 2}
-      propertyPath: m_Center.y
-      value: -1.6391454
-      objectReference: {fileID: 0}
-    - target: {fileID: 65866222259143046, guid: e3272da4b86edcb4983d347dab9d978b,
-        type: 2}
-      propertyPath: m_Center.z
-      value: -1.130542e-14
-      objectReference: {fileID: 0}
-    - target: {fileID: 65866222259143046, guid: e3272da4b86edcb4983d347dab9d978b,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 2.0012195
-      objectReference: {fileID: 0}
-    - target: {fileID: 65866222259143046, guid: e3272da4b86edcb4983d347dab9d978b,
-        type: 2}
-      propertyPath: m_Center.x
-      value: -1.0493902
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3272da4b86edcb4983d347dab9d978b, type: 2}
@@ -60707,6 +60677,11 @@ MonoBehaviour:
       type: 2}
     poolSize: 1
     autoExpand: 1
+  - poolName: terrorist kaboom
+    poolPrefab: {fileID: 1700544120560418, guid: 9de5133ecdb33c64588e32076e178a07,
+      type: 2}
+    poolSize: 1
+    autoExpand: 1
 --- !u!1 &827514873
 GameObject:
   m_ObjectHideFlags: 0
@@ -60824,7 +60799,7 @@ Transform:
   - {fileID: 1572199004}
   - {fileID: 1393916170}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &837259468 stripped
 Transform:
@@ -72326,6 +72301,7 @@ MonoBehaviour:
   goldAnim: {fileID: 699881760}
   goldText: {fileID: 1350554987}
   normalEnemyGoldReward: 1
+  terroristGoldReward: 5
 --- !u!1 &1032468874
 GameObject:
   m_ObjectHideFlags: 0
@@ -73185,7 +73161,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4073991845621218, guid: bc823322d15c79841b512669496ebcf7, type: 2}
       propertyPath: m_RootOrder
-      value: 24
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 1434178165393004, guid: bc823322d15c79841b512669496ebcf7, type: 2}
       propertyPath: m_StaticEditorFlags
@@ -130132,86 +130108,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1460424808220580, guid: e3272da4b86edcb4983d347dab9d978b,
     type: 2}
   m_PrefabInternal: {fileID: 738355183}
---- !u!82 &1755812013
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1755812006}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8cf55f4913229e649826faab09a666c5, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.2
-  m_Pitch: 1.5
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 0.82
-  MinDistance: 5
-  MaxDistance: 20
-  Pan2D: 0
-  rolloffMode: 1
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1.1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!1 &1756324269 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1505172716348248, guid: ef4c36e92b049924ca220915681c7057,
@@ -130695,7 +130591,7 @@ Transform:
   - {fileID: 1604484359}
   - {fileID: 981165379}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1791385971 stripped
 Transform:
@@ -145822,7 +145718,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4862206895275182, guid: f2f9211427532d845bd68bda99626a93, type: 2}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 114138668541169632, guid: f2f9211427532d845bd68bda99626a93,
         type: 2}
@@ -146020,7 +145916,7 @@ Transform:
   - {fileID: 1445762030}
   - {fileID: 1154835439}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2039167318
 MonoBehaviour:
