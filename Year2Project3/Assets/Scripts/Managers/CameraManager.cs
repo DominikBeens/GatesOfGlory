@@ -15,10 +15,13 @@ public class CameraManager : MonoBehaviour
     private Vector3 offset;
 
     public bool secondaryCamera;
+    private Transform mainCam;
 
     [Header("Speed")]
     public float smoothSpeed;
+    private float baseMoveSpeed;
     public float moveSpeed;
+    public float sprintSpeed;
 
     [Header("Move Restrictions")]
     public float camMoveRangeX;
@@ -44,6 +47,10 @@ public class CameraManager : MonoBehaviour
         offset = transform.position - target.position;
 
         fov = cam.fieldOfView;
+
+        baseMoveSpeed = moveSpeed;
+
+        mainCam = Camera.main.transform;
     }
 
     private void Update()
@@ -54,6 +61,8 @@ public class CameraManager : MonoBehaviour
             {
                 MoveCam();
             }
+
+            moveSpeed = Input.GetButton("Sprint") ? sprintSpeed : baseMoveSpeed;
         }
 
         transform.LookAt(target);
@@ -66,13 +75,18 @@ public class CameraManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        // Lerping camera position.
-        transform.position = Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * smoothSpeed);
+        // If this is a secondary camera, set its transform to be the same as the main camera.
+        // Else, lerp this camera towards the target plus the offset.
 
         if (secondaryCamera)
         {
-            transform.position = cam.transform.position;
-            transform.rotation = cam.transform.rotation;
+            transform.position = mainCam.position;
+            transform.rotation = mainCam.rotation;
+        }
+        else
+        {
+            // Lerping camera position.
+            transform.position = Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * smoothSpeed);
         }
     }
 

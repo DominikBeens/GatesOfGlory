@@ -14,6 +14,7 @@ public abstract class PreBuiltCastleRoom : MonoBehaviour
     public Animator anim;
     [Space(10)]
     public OutlineOnMouseOver outline;
+    public TestLOD lodGroup;
 
     public virtual void Awake()
     {
@@ -57,6 +58,11 @@ public abstract class PreBuiltCastleRoom : MonoBehaviour
         if (outline != null)
         {
             outline.canShowOutline = true;
+        }
+
+        if (lodGroup != null)
+        {
+            lodGroup.TogglePlayerMouseHover(false);
         }
     }
 

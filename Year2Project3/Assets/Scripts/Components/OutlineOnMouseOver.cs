@@ -54,4 +54,9 @@ public class OutlineOnMouseOver : MonoBehaviour
             outlineMats[i].SetFloat("_Thickness", 0);
         }
     }
+
+    private void OnDisable()
+    {
+        OnMouseExit();
+    }
 }
