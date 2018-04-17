@@ -68,6 +68,10 @@ public class WaveManager : MonoBehaviour {
         if(Input.GetKeyDown("m")) {
             currentWave++;
         }
+        if(enemiesInScene.Count <= 0 && waveDone == true) {
+            waveDone = false;
+            NextWave();
+        }
     }
 
     [System.Serializable]
@@ -79,7 +83,8 @@ public class WaveManager : MonoBehaviour {
 
     public void RemoveEnemyFromScene(Enemy _enemyToRemove) {
         instance.enemiesInScene.Remove(_enemyToRemove);
-        if(enemiesInScene.Count <= 0 && waveDone == true) {
+        if(enemiesInScene.Count <= 0 && waveDone == true){
+            waveDone = false;
             NextWave();
         }
     }
@@ -102,7 +107,6 @@ public class WaveManager : MonoBehaviour {
         }
 
         currentWave++;
-        waveDone = false;
         StartCoroutine(WaveTimer());
         StartCoroutine(GeneradeWave());
     }
@@ -189,6 +193,8 @@ public class WaveManager : MonoBehaviour {
             StartCoroutine(SoldierTimer());
         }
         else {
+            Debug.Log("k2");
+
             waveDone = true;
             currentStage = 0;
         }
@@ -207,12 +213,8 @@ public class WaveManager : MonoBehaviour {
                 enemyScript.myStats.health.currentValue = (DamageMultiplier * currentWave) * enemyScript.myStats.health.baseValue;
 
                 enemyScript.agent.speed = Random.Range(1.75f, 2.25f);
-                enemyScript.myAudiosource.pitch = Random.Range(0.75f, 1.25f);
                 enemyScript.myAudiosource.volume = Random.Range(0.01f, 0.08f);
                 newEnemy.transform.localScale *= Random.Range(0.9f, 1.1f);
-
-                currentTerroristChance = 0;
-                print("Gay");
                 yield return null;
             }
 
@@ -230,6 +232,10 @@ public class WaveManager : MonoBehaviour {
             StartCoroutine(SoldierTimer());
         }
         else {
+            if(currentStage >= thisWave.atackStage.Count) {
+                Debug.Log("k");
+                waveDone = true;
+            }
             currentSoldier = 0;
             currentStage++;
             StartCoroutine(StageTimer());

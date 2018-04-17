@@ -26,6 +26,7 @@ public class Enemy : Soldier {
     }
 
     public void RemoveCounter(Soldier _attacking) {
+        StopCoroutine(Attack());
         attackingSoldiers.Remove(_attacking);
         if(attackingSoldiers.Count == maxAttacking - 1) {
             BattleManager.instance.freeEnemys.Add(gameObject);

@@ -11,8 +11,8 @@ public class EnemyBowman : Enemy {
 
         if(myStats.health.currentValue <= 0) {
             StopAllCoroutines();
-            ObjectPooler.instance.AddToPool("Enemy Bowman", gameObject);
             ResourceManager.instance.AddGold(ResourceManager.instance.normalEnemyGoldReward);
+            ObjectPooler.instance.AddToPool("Enemy Bowman", gameObject);
         }
     }
 
