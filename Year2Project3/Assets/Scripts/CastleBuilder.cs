@@ -143,9 +143,14 @@ public class CastleBuilder : MonoBehaviour
 
         CastleUpgradeManager.instance.CloseAllUI(null);
 
-        ObjectPooler.instance.GrabFromPool("demolish particle", myBuildedObject.transform.position, Quaternion.identity);
         myBuildedObject.anim.SetTrigger("Destroy");
+        Invoke("SpawnDemolishParticle", 0.5f);
         Invoke("DestroyMyBuildedObject", myBuildedObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+    }
+
+    private void SpawnDemolishParticle()
+    {
+        ObjectPooler.instance.GrabFromPool("demolish particle", myBuildedObject.transform.position, Quaternion.identity);
     }
 
     private void DestroyMyBuildedObject()

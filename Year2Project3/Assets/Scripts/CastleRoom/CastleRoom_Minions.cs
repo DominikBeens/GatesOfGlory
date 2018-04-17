@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class CastleRoom_Minions : CastleRoom
@@ -15,12 +16,21 @@ public class CastleRoom_Minions : CastleRoom
     public float spawnInterval;
     public float spawnPointOffsetRandomizer;
     public float statMultiplier;
+    public float buttonClickTimer;
 
     private bool canSpawn = true;
     private int currentAmountToSpawn;
+
     private int knightsToSpawn;
     private int archersToSpawn;
     private int spearmenToSpawn;
+
+    private float buyKnightsTimer = 1;
+    public Image buyKnightsTimerFill;
+    private float buyArchersTimer = 1;
+    public Image buyArchersTimerFill;
+    private float buySpearmenTimer = 1;
+    public Image buySpearmenTimerFill;
 
     [Header("UI")]
     public TextMeshProUGUI roomTypeText;
@@ -37,6 +47,15 @@ public class CastleRoom_Minions : CastleRoom
                 StartCoroutine(SpawnMinions());
             }
         }
+
+        buyKnightsTimer = (buyKnightsTimer < 1) ? buyKnightsTimer += 1 / buttonClickTimer * Time.deltaTime : 1;
+        buyKnightsTimerFill.fillAmount = buyKnightsTimer;
+
+        buyArchersTimer = (buyArchersTimer < 1) ? buyArchersTimer += 1 / buttonClickTimer * Time.deltaTime : 1;
+        buyArchersTimerFill.fillAmount = buyArchersTimer;
+
+        buySpearmenTimer = (buySpearmenTimer < 1) ? buySpearmenTimer += 1 / buttonClickTimer * Time.deltaTime : 1;
+        buySpearmenTimerFill.fillAmount = buySpearmenTimer;
     }
 
     public override void SetupUI()
@@ -48,9 +67,10 @@ public class CastleRoom_Minions : CastleRoom
 
         if (info.myLevel < info.myMaxLevel)
         {
-            upgradeStatsText.text = "Minions get a stat boost." + "\n" +
-                                    "Spawn cost: " + spawnCost.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(spawnCost.increaseValue) + "</color>)" + "\n" +
-                                    "Spawns per buy: " + amountToSpawnPerBuy.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(amountToSpawnPerBuy.increaseValue) + "</color>)";
+            upgradeStatsText.text = "All minions get a <color=green>" + ((info.myLevel * statMultiplier) * 100) + "%</color>" + " stat boost." + "\n" +
+                                    "Stats include: health and damage.";
+            //"Spawn cost: " + spawnCost.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(spawnCost.increaseValue) + "</color>)" + "\n" +
+            //"Spawns per buy: " + amountToSpawnPerBuy.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(amountToSpawnPerBuy.increaseValue) + "</color>)";
         }
         else
         {
@@ -66,21 +86,38 @@ public class CastleRoom_Minions : CastleRoom
             return;
         }
 
-        ResourceManager.instance.RemoveGold((int)spawnCost.currentValue, true);
-
         switch (type)
         {
             case 0:
+                if (buyKnightsTimer < 1)
+                {
+                    return;
+                }
+
+                buyKnightsTimer = 0;
                 knightsToSpawn += (int)amountToSpawnPerBuy.currentValue;
                 break;
             case 1:
+                if (buyArchersTimer < 1)
+                {
+                    return;
+                }
+
+                buyArchersTimer = 0;
                 archersToSpawn += (int)amountToSpawnPerBuy.currentValue;
                 break;
             case 2:
+                if (buySpearmenTimer < 1)
+                {
+                    return;
+                }
+
+                buySpearmenTimer = 0;
                 spearmenToSpawn += (int)amountToSpawnPerBuy.currentValue;
                 break;
         }
 
+        ResourceManager.instance.RemoveGold((int)spawnCost.currentValue, true);
         currentAmountToSpawn += (int)amountToSpawnPerBuy.currentValue;
     }
 
