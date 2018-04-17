@@ -213,6 +213,7 @@ public class WaveManager : MonoBehaviour {
                 enemyScript.agent.speed = Random.Range(1.75f, 2.25f);
                 enemyScript.myAudiosource.volume = Random.Range(0.01f, 0.08f);
                 newEnemy.transform.localScale *= Random.Range(0.9f, 1.1f);
+                currentTerroristChance = 0;
                 yield return null;
             }
 

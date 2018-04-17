@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Ballista Stats
   m_EditorClassIdentifier: 
   myDamage:
-    baseValue: 30
-    currentValue: 30
-    increaseValue: 10
+    baseValue: 50
+    currentValue: 50
+    increaseValue: 15
   myForce:
     baseValue: 1500
     currentValue: 1500
@@ -22,5 +22,5 @@ MonoBehaviour:
   myFireRate:
     baseValue: 1
     currentValue: 1
-    increaseValue: -0.05
+    increaseValue: -0.04
   autoFireLevelRequirement: 5

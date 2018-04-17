@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CursorManager : MonoBehaviour 
+public class CursorManager : MonoBehaviour
 {
 
     public static CursorManager instance;
@@ -13,6 +13,8 @@ public class CursorManager : MonoBehaviour
 
     public GameObject cursorObject;
     private Transform cursorObjectPos;
+
+    public LayerMask closeUIRaycastMask;
 
     private void Awake()
     {
@@ -46,6 +48,19 @@ public class CursorManager : MonoBehaviour
         {
             cursorObjectPos.position = mousePos;
         }
+
+        //if (Input.GetButtonDown("Fire1"))
+        //{
+        //    RaycastHit hit;
+        //    if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 50, closeUIRaycastMask))
+        //    {
+        //        print(hit.transform.gameObject.layer);
+        //        if (hit.transform.gameObject.layer == 18)
+        //        {
+        //            CastleUpgradeManager.instance.CloseAllUI(null);
+        //        }
+        //    }
+        //}
     }
 
     public void ToggleCursorObject()
