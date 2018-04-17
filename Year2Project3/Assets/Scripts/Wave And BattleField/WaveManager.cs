@@ -193,8 +193,6 @@ public class WaveManager : MonoBehaviour {
             StartCoroutine(SoldierTimer());
         }
         else {
-            Debug.Log("k2");
-
             waveDone = true;
             currentStage = 0;
         }
