@@ -11,7 +11,9 @@ public class CastleRoom_Minions : CastleRoom
     public Transform minionSpawnPoint;
 
     [Header("Minion Room Stats")]
-    public Stat spawnCost;
+    public Stat knightSpawnCost;
+    public Stat archerSpawnCost;
+    public Stat spearmanSpawnCost;
     public Stat amountToSpawnPerBuy;
     public float spawnInterval;
     public float spawnPointOffsetRandomizer;
@@ -34,7 +36,9 @@ public class CastleRoom_Minions : CastleRoom
 
     [Header("UI")]
     public TextMeshProUGUI roomTypeText;
-    public TextMeshProUGUI roomMinionCostText;
+    public TextMeshProUGUI knightCostText;
+    public TextMeshProUGUI archerCostText;
+    public TextMeshProUGUI spearmanCostText;
 
     public override void Update()
     {
@@ -62,8 +66,9 @@ public class CastleRoom_Minions : CastleRoom
     {
         base.SetupUI();
 
-        //roomTypeText.text = "Type: <color=green>" + roomType + "</color>";
-        roomMinionCostText.text = "Cost: <color=yellow>" + spawnCost.currentValue + "</color>";
+        knightCostText.text = "Cost: <color=yellow>" + knightSpawnCost.currentValue + "</color>";
+        archerCostText.text = "Cost: <color=yellow>" + archerSpawnCost.currentValue + "</color>";
+        spearmanCostText.text = "Cost: <color=yellow>" + spearmanSpawnCost.currentValue + "</color>";
 
         if (info.myLevel < info.myMaxLevel)
         {
@@ -74,21 +79,19 @@ public class CastleRoom_Minions : CastleRoom
         }
         else
         {
-            upgradeStatsText.text = "Spawn cost: " + spawnCost.currentValue + "\n" +
-                                    "Spawns per buy: " + amountToSpawnPerBuy.currentValue;
+            upgradeStatsText.text = "All upgrades maxed";
         }
     }
 
     public void BuyMinionsButton(int type)
     {
-        if (!ResourceManager.instance.HasEnoughGold((int)spawnCost.currentValue))
-        {
-            return;
-        }
-
         switch (type)
         {
             case 0:
+                if (!ResourceManager.instance.HasEnoughGold((int)knightSpawnCost.currentValue))
+                {
+                    return;
+                }
                 if (buyKnightsTimer < 1)
                 {
                     return;
@@ -96,8 +99,13 @@ public class CastleRoom_Minions : CastleRoom
 
                 buyKnightsTimer = 0;
                 knightsToSpawn += (int)amountToSpawnPerBuy.currentValue;
+                ResourceManager.instance.RemoveGold((int)knightSpawnCost.currentValue, true);
                 break;
             case 1:
+                if (!ResourceManager.instance.HasEnoughGold((int)archerSpawnCost.currentValue))
+                {
+                    return;
+                }
                 if (buyArchersTimer < 1)
                 {
                     return;
@@ -105,8 +113,13 @@ public class CastleRoom_Minions : CastleRoom
 
                 buyArchersTimer = 0;
                 archersToSpawn += (int)amountToSpawnPerBuy.currentValue;
+                ResourceManager.instance.RemoveGold((int)archerSpawnCost.currentValue, true);
                 break;
             case 2:
+                if (!ResourceManager.instance.HasEnoughGold((int)spearmanSpawnCost.currentValue))
+                {
+                    return;
+                }
                 if (buySpearmenTimer < 1)
                 {
                     return;
@@ -114,10 +127,10 @@ public class CastleRoom_Minions : CastleRoom
 
                 buySpearmenTimer = 0;
                 spearmenToSpawn += (int)amountToSpawnPerBuy.currentValue;
+                ResourceManager.instance.RemoveGold((int)spearmanSpawnCost.currentValue, true);
                 break;
         }
 
-        ResourceManager.instance.RemoveGold((int)spawnCost.currentValue, true);
         currentAmountToSpawn += (int)amountToSpawnPerBuy.currentValue;
     }
 
@@ -179,7 +192,6 @@ public class CastleRoom_Minions : CastleRoom
 
         base.Upgrade();
 
-        spawnCost.currentValue += spawnCost.increaseValue;
         amountToSpawnPerBuy.currentValue += amountToSpawnPerBuy.increaseValue;
 
         SetupUI();

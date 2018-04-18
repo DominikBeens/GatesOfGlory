@@ -16,8 +16,6 @@ public class ArcherSpot : MonoBehaviour
 
     private GameObject myArcher;
 
-    public ParticleSystem setArcherParticle;
-
     private void Awake()
     {
         shop = FindObjectOfType<Shop>();
@@ -27,7 +25,7 @@ public class ArcherSpot : MonoBehaviour
     {
         myArcher = ObjectPooler.instance.GrabFromPool("shopitem archer", transform.position, transform.rotation);
         myArcher.GetComponent<StationaryBowManz>().mySpot = this;
-        setArcherParticle.Play();
+        ObjectPooler.instance.GrabFromPool("buy stationary archer particle", transform.position, transform.rotation);
         occupied = true;
     }
 
@@ -36,6 +34,8 @@ public class ArcherSpot : MonoBehaviour
         ObjectPooler.instance.AddToPool("shopitem archer", myArcher);
         myArcher = null;
         occupied = false;
+
+        ObjectPooler.instance.GrabFromPool("demolish particle", transform.position, transform.rotation);
 
         shop.archerButtonMaxOverlay.SetActive(false);
         shop.archerButton.interactable = true;

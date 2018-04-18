@@ -31,6 +31,7 @@ public class Projectile : MonoBehaviour
     public bool hit;
 
     public bool freezeOnImpact;
+    public bool instaExplode;
     [Space(10)]
     public int maxTargetsToHit;
     public int targetsHit;
@@ -86,6 +87,21 @@ public class Projectile : MonoBehaviour
     {
         if (collision.transform.tag == "Enemy" || collision.transform.tag == "Ally")
         {
+            return;
+        }
+
+        if (instaExplode)
+        {
+            if (type == Type.CatapultProjectile || type == Type.CanonProjectile)
+            {
+                ObjectPooler.instance.GrabFromPool("meteor explode particle", transform.position, Quaternion.identity);
+            }
+            else if (type == Type.BallistaProjectile)
+            {
+                ObjectPooler.instance.GrabFromPool("ballista hit particle", transform.position, transform.rotation);
+            }
+
+            ReAddToPool();
             return;
         }
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CastleBuilder : MonoBehaviour 
+public class CastleBuilder : MonoBehaviour
 {
 
     public enum Type
@@ -27,6 +27,11 @@ public class CastleBuilder : MonoBehaviour
     public GameObject buildButton;
     public GameObject useButton;
 
+    [Header("Weapon Spawns")]
+    public Transform ballistaSpawn;
+    public Transform canonSpawn;
+    public Transform catapultSpawn;
+
     public void InteractButton()
     {
         if (GameManager.instance.gameState == GameManager.GameState.Playing)
@@ -46,7 +51,24 @@ public class CastleBuilder : MonoBehaviour
                     return;
                 }
 
-                GameObject newBuild = Instantiate(availableBuilds[i], transform.position, Quaternion.identity);
+                Vector3 spawn = Vector3.zero;
+                switch (type)
+                {
+                    case CastleWeapon.WeaponType.Ballista:
+
+                        spawn = ballistaSpawn.position;
+                        break;
+                    case CastleWeapon.WeaponType.Canon:
+
+                        spawn = canonSpawn.position;
+                        break;
+                    case CastleWeapon.WeaponType.Catapult:
+
+                        spawn = catapultSpawn.position;
+                        break;
+                }
+
+                GameObject newBuild = Instantiate(availableBuilds[i], spawn, Quaternion.identity);
                 newBuild.transform.SetParent(transform);
 
                 CastleWeapon castleWeaponComponent = newBuild.GetComponent<CastleWeapon>();
