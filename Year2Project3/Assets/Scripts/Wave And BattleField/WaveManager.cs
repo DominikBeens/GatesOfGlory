@@ -71,6 +71,7 @@ public class WaveManager : MonoBehaviour {
         if(enemiesInScene.Count <= 0 && waveDone == true) {
             waveDone = false;
             NextWave();
+            ResourceManager.instance.AddGold(10);
         }
     }
 
