@@ -76,9 +76,6 @@ public class ResourceManager : MonoBehaviour
             GameObject newGold = ObjectPooler.instance.GrabFromPool("gold", goldSpawn.transform.position, Random.rotation);
             GoldCoin newCoin = newGold.GetComponent<GoldCoin>();
 
-            int random = Random.Range(0, 2);
-            newCoin.myParticleObject.SetActive((random > 0) ? true : false);
-
             goldPrefabsInScene.Add(newCoin);
             Notary.goldAccumulated++;
         }
@@ -94,6 +91,7 @@ public class ResourceManager : MonoBehaviour
             {
                 goldPrefabsInScene[i].myRb.isKinematic = false;
                 goldPrefabsInScene[i].myCollider.enabled = true;
+                goldPrefabsInScene[i].StartRBTimer();
 
                 goldToDump--;
 

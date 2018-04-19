@@ -84,10 +84,6 @@ public class WaveManager : MonoBehaviour {
 
     public void RemoveEnemyFromScene(Enemy _enemyToRemove) {
         instance.enemiesInScene.Remove(_enemyToRemove);
-        if(enemiesInScene.Count <= 0 && waveDone == true){
-            waveDone = false;
-            NextWave();
-        }
     }
 
     public void NextWave() {

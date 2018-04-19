@@ -14,8 +14,6 @@ public class CursorManager : MonoBehaviour
     public GameObject cursorObject;
     private Transform cursorObjectPos;
 
-    public LayerMask closeUIRaycastMask;
-
     private void Awake()
     {
         if (instance == null)
@@ -49,18 +47,14 @@ public class CursorManager : MonoBehaviour
             cursorObjectPos.position = mousePos;
         }
 
-        //if (Input.GetButtonDown("Fire1"))
-        //{
-        //    RaycastHit hit;
-        //    if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 50, closeUIRaycastMask))
-        //    {
-        //        print(hit.transform.gameObject.layer);
-        //        if (hit.transform.gameObject.layer == 18)
-        //        {
-        //            CastleUpgradeManager.instance.CloseAllUI(null);
-        //        }
-        //    }
-        //}
+        if (Input.GetButtonDown("Fire1"))
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 50))
+            {
+                print(hit.transform.gameObject.layer);
+            }
+        }
     }
 
     public void ToggleCursorObject()
