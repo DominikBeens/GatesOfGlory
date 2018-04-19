@@ -47,14 +47,14 @@ public class CursorManager : MonoBehaviour
             cursorObjectPos.position = mousePos;
         }
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 50))
-            {
-                print(hit.transform.gameObject.layer);
-            }
-        }
+        //if (Input.GetButtonDown("Fire1"))
+        //{
+        //    RaycastHit hit;
+        //    if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 50))
+        //    {
+        //        print(hit.transform.gameObject.layer);
+        //    }
+        //}
     }
 
     public void ToggleCursorObject()

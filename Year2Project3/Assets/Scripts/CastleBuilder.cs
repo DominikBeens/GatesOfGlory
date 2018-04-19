@@ -20,6 +20,7 @@ public class CastleBuilder : MonoBehaviour
     public Side side;
 
     public CastleBuild myBuildedObject;
+    private ModelToSprite_LOD myBuildedObjectLODGroup;
 
     public List<GameObject> availableBuilds = new List<GameObject>();
 
@@ -119,6 +120,7 @@ public class CastleBuilder : MonoBehaviour
                 CastleRoom castleRoomComponent = newBuild.GetComponent<CastleRoom>();
                 castleRoomComponent.myBuilder = this;
                 myBuildedObject = castleRoomComponent;
+                myBuildedObjectLODGroup = castleRoomComponent.lodGroup;
 
                 ObjectPooler.instance.GrabFromPool("build particle", myBuildedObject.transform.position, Quaternion.identity);
 
@@ -181,5 +183,13 @@ public class CastleBuilder : MonoBehaviour
         myBuildedObject = null;
 
         buildButton.SetActive(true);
+    }
+
+    public void ToggleRoomLODOnMouseOver(bool b)
+    {
+        if (myBuildedObjectLODGroup != null)
+        {
+            myBuildedObjectLODGroup.TogglePlayerMouseHover(b);
+        }
     }
 }

@@ -27,13 +27,13 @@ public class CastleRoom_Damage : CastleRoom
         if (info.myLevel < info.myMaxLevel)
         {
             upgradeStatsText.text = "Damage amount: " + damageAmount.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(damageAmount.increaseValue) + "</color>)" + "\n" +
-                                    "Amount of targets: " + amountOfEnemiesToDamage.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(amountOfEnemiesToDamage.increaseValue) + "</color>)" + "\n" +
+                                    "Amount of targets: " + Mathf.RoundToInt(amountOfEnemiesToDamage.currentValue) + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(amountOfEnemiesToDamage.increaseValue) + "</color>)" + "\n" +
                                     "Cooldown: " + useCooldown.currentValue + " (<color=green>" + CastleUpgradeManager.instance.CheckPositiveOrNegative(useCooldown.increaseValue) + "</color>)";
         }
         else
         {
             upgradeStatsText.text = "Damage amount: " + damageAmount.currentValue + "\n" +
-                                    "Amount of targets: " + amountOfEnemiesToDamage.currentValue + "\n" +
+                                    "Amount of targets: " + Mathf.RoundToInt(amountOfEnemiesToDamage.currentValue) + "\n" +
                                     "Cooldown: " + useCooldown.currentValue;
         }
     }

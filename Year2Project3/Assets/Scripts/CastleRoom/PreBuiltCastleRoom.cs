@@ -14,7 +14,7 @@ public abstract class PreBuiltCastleRoom : MonoBehaviour
     public Animator anim;
     [Space(10)]
     public OutlineOnMouseOver outline;
-    public TestLOD lodGroup;
+    public ModelToSprite_LOD lodGroup;
 
     public virtual void Awake()
     {
