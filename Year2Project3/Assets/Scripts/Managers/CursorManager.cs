@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CursorManager : MonoBehaviour
 {
@@ -47,18 +49,34 @@ public class CursorManager : MonoBehaviour
             cursorObjectPos.position = mousePos;
         }
 
-        //if (Input.GetButtonDown("Fire1"))
-        //{
-        //    RaycastHit hit;
-        //    if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 50))
-        //    {
-        //        print(hit.transform.gameObject.layer);
-        //    }
-        //}
+        if (Input.GetButtonDown("Fire1"))
+        {
+            RaycastWorldUI();
+        }
     }
 
     public void ToggleCursorObject()
     {
         cursorObjectPos.gameObject.SetActive(!cursorObjectPos.gameObject.activeSelf);
+    }
+
+    private void RaycastWorldUI()
+    {
+        PointerEventData pointerData = new PointerEventData(EventSystem.current)
+        {
+            position = Input.mousePosition
+        };
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
+
+        if (results.Count == 0)
+        {
+            CastleUpgradeManager.instance.CloseAllUI(null);
+        }
+        else
+        {
+            results.Clear();
+        }
     }
 }

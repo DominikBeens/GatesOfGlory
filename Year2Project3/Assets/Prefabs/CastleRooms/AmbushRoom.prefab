@@ -3024,7 +3024,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1370444586302360}
-  m_LocalRotation: {x: -0.31453463, y: 0.71695065, z: -0.6190766, w: -0.061593644}
+  m_LocalRotation: {x: -0.31453466, y: 0.7169507, z: -0.61907667, w: -0.061593648}
   m_LocalPosition: {x: -0.672, y: 0.822, z: -1.198}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
@@ -7255,7 +7255,7 @@ MonoBehaviour:
   damageAmount:
     baseValue: 100
     currentValue: 100
-    increaseValue: 150
+    increaseValue: 175
   volleyOptions:
     rows: 40
     columns: 3
