@@ -15,7 +15,6 @@ public class Enemy : Soldier {
 
     void Start() {
         MyStart();
-        targetTransform = BattleManager.instance.EnemyGetTarget(transform.position.x);
         FindNewTarget();
         agent.SetDestination(targetTransform.position);
         BattleManager.instance.freeEnemys.Add(gameObject);
@@ -76,8 +75,11 @@ public class Enemy : Soldier {
     }
 
     public virtual void FindNewTarget() {
-        if(targetTransform == null) {
+        if(targetTransform == null && BattleManager.instance != null) {
             targetTransform = BattleManager.instance.EnemyGetTarget(transform.position.x);
+            if(targetTransform == null){
+                return;
+            }
             agent.SetDestination(targetTransform.position);
             anim.SetBool("Attack", false);
             attackingCastle = false;

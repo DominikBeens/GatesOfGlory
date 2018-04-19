@@ -16,7 +16,7 @@ public class Soldier : Damagebles{
         MyStart();
     }
 
-    public void MyStart() {
+    public virtual void MyStart() {
         agent.speed = Random.Range(1.75f, 2.25f);
         myAudiosource.pitch = Random.Range(0.75f, 1.25f);
         myAudiosource.volume = Random.Range(0.01f, 0.08f);
