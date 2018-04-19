@@ -28,37 +28,4 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 1;
     }
-
-    private void Update()
-    {
-        if (Input.GetButtonDown("Cancel"))
-        {
-            if (UIManager.instance != null)
-            {
-                UIManager.instance.PauseButton();
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            ToggleTimeScale();
-        }
-    }
-
-    private void ToggleTimeScale()
-    {
-        if (Time.timeScale == 1)
-        {
-            Time.timeScale = 4;
-        }
-        else
-        {
-            Time.timeScale = 1;
-        }
-    }
 }

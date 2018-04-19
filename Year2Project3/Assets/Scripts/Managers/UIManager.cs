@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Playables;
 
-public class UIManager : MonoBehaviour 
+public class UIManager : MonoBehaviour
 {
 
     public static UIManager instance;
@@ -92,6 +92,21 @@ public class UIManager : MonoBehaviour
             notEnoughGoldDisplayTimer = 0;
             notEnoughGoldIcon.SetActive(false);
             Cursor.visible = CursorManager.instance.CursorVisibilityStandard;
+        }
+
+        if (Input.GetButtonDown("Cancel"))
+        {
+            PauseButton();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            ToggleTimeScale();
         }
     }
 
@@ -210,5 +225,17 @@ public class UIManager : MonoBehaviour
     public void DisplayNotEnoughGoldIcon()
     {
         notEnoughGoldDisplayTimer = notEnoughGoldIconDisplayTime;
+    }
+
+    private void ToggleTimeScale()
+    {
+        if (Time.timeScale == 1)
+        {
+            Time.timeScale = 4;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
 }

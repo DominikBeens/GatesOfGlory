@@ -217,14 +217,17 @@ MonoBehaviour:
   rb: {fileID: 0}
   type: 4
   myDamage: 0
+  hit: 0
   freezeOnImpact: 1
+  instaExplode: 0
   maxTargetsToHit: 1
+  targetsHit: 0
   destroyTime: 1
   destroyFadeSpeed: 1
   trailParticle: {fileID: 1605669040419556}
   myArrow: {fileID: 4540413710555210}
   distance: 0
-  arrowSpeed: 20
+  arrowSpeed: 70
   minAmount: 2
 --- !u!136 &136415169259618892
 CapsuleCollider:
