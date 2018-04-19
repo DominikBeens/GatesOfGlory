@@ -31,7 +31,7 @@ public class StationaryBowManz : Soldier {
     }
 
     void OnCollisionStay(Collision collision) {
-        if(targetTransform == null) {
+        if(targetTransform == null || targetTransform.gameObject.activeSelf == false) {
             targetTransform = collision.gameObject.transform;
         }
     }

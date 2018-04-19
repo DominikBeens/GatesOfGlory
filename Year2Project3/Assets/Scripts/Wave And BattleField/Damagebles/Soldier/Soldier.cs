@@ -10,6 +10,18 @@ public class Soldier : Damagebles{
     public Transform targetTransform;
     public Animator anim;
     public bool inFight;
+    public AudioSource myAudiosource;
+
+    void Start() {
+        MyStart();
+    }
+
+    public void MyStart() {
+        agent.speed = Random.Range(1.75f, 2.25f);
+        myAudiosource.pitch = Random.Range(0.75f, 1.25f);
+        myAudiosource.volume = Random.Range(0.01f, 0.08f);
+        transform.localScale *= Random.Range(0.9f, 1.1f);
+    }
 
     public override void TakeDamage(float damage){
         myStats.health.currentValue -= damage;

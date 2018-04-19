@@ -995,7 +995,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1696621235679564}
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: -23.909645, y: 0.265, z: 0.40332508}
+  m_LocalPosition: {x: -36.066185, y: 0.55, z: -1.3299577}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4361655653434918}
@@ -1433,11 +1433,11 @@ MonoBehaviour:
   targetTransform: {fileID: 0}
   anim: {fileID: 95245609673720676}
   inFight: 0
+  myAudiosource: {fileID: 82314115160271250}
   attackingSoldiers: []
   maxAttacking: 2
   attackingCastle: 0
   target: {fileID: 0}
-  myAudiosource: {fileID: 82314115160271250}
   slowed: 0
 --- !u!137 &137774854634065156
 SkinnedMeshRenderer:

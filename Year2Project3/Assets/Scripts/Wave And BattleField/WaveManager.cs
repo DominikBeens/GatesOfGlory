@@ -222,10 +222,6 @@ public class WaveManager : MonoBehaviour {
             enemyScript.myStats.damage.currentValue = (DamageMultiplier * currentWave) * enemyScript.myStats.damage.baseValue;
             enemyScript.myStats.health.currentValue = (DamageMultiplier * currentWave) * enemyScript.myStats.health.baseValue;
 
-            enemyScript.agent.speed = Random.Range(1.75f, 2.25f);
-            enemyScript.myAudiosource.pitch = Random.Range(0.75f, 1.25f);
-            enemyScript.myAudiosource.volume = Random.Range(0.01f, 0.08f);
-            newEnemy.transform.localScale *= Random.Range(0.9f, 1.1f);
             currentSoldier++;
             enemiesInScene.Add(enemyScript);
             StartCoroutine(SoldierTimer());

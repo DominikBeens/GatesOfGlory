@@ -9,12 +9,12 @@ public class Enemy : Soldier {
     public int maxAttacking;
     public bool attackingCastle;
     public Damagebles target;
-    public AudioSource myAudiosource;
 
     [HideInInspector]
     public bool slowed;
 
     void Start() {
+        MyStart();
         targetTransform = BattleManager.instance.EnemyGetTarget(transform.position.x);
         FindNewTarget();
         agent.SetDestination(targetTransform.position);
@@ -139,5 +139,10 @@ public class Enemy : Soldier {
 
     private void OnDisable() {
         WaveManager.instance.RemoveEnemyFromScene(this);
+    }
+
+    private void OnEnable() {
+        FindNewTarget();
+        agent.SetDestination(targetTransform.position);
     }
 }
