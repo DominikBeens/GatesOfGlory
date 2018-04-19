@@ -1632,12 +1632,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myStats:
     health:
-      baseValue: 75
-      currentValue: 75
+      baseValue: 175
+      currentValue: 175
       increaseValue: 0
     damage:
-      baseValue: 7
-      currentValue: 7
+      baseValue: 12
+      currentValue: 12
       increaseValue: 0
   agent: {fileID: 195985851031835828}
   attackCooldown: 2
@@ -1767,7 +1767,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.2
-  m_Speed: 2
+  m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 200
