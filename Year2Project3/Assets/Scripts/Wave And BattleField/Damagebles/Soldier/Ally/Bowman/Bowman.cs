@@ -53,23 +53,23 @@ public class Bowman : Allie {
         Transform _attackingCurrently = targetTransform;
         yield return new WaitForSeconds(attackCooldown);
 
-        float distance = Vector3.Distance(bowPos.position, targetTransform.position);
-        Transform _currentArrow = ObjectPooler.instance.GrabFromPool("Ally Arrows", bowPos.position, Quaternion.Euler(new Vector3(0, 0, 0))).transform;
-        _currentArrow.LookAt(targetTransform);
-        _currentArrow.GetChild(0).GetComponent<Arrow>().distance = distance;
-        _currentArrow.position += _currentArrow.forward * distance / 2;
-        _currentArrow.GetChild(0).GetComponent<Arrow>().myArrow.position -= new Vector3(0, _currentArrow.GetChild(0).GetComponent<Arrow>().minAmount, 0);
-        _currentArrow.GetChild(0).transform.position = bowPos.position;
-        _currentArrow.GetChild(0).transform.rotation = Quaternion.Euler(new Vector3(-55, -45, 0));
-
         if(targetTransform != null && targetTransform.tag == "Enemy" && targetTransform == _attackingCurrently) {
             targetTransform.GetComponent<Enemy>().TakeDamage(myStats.damage.currentValue);
             StartCoroutine(Attack());
+            float distance = Vector3.Distance(bowPos.position, targetTransform.position);
+            Transform _currentArrow = ObjectPooler.instance.GrabFromPool("Ally Arrows", bowPos.position, Quaternion.Euler(new Vector3(0, 0, 0))).transform;
+            _currentArrow.LookAt(targetTransform);
+            _currentArrow.GetChild(0).GetComponent<Arrow>().distance = distance;
+            _currentArrow.position += _currentArrow.forward * distance / 2;
+            _currentArrow.GetChild(0).GetComponent<Arrow>().myArrow.position -= new Vector3(0, _currentArrow.GetChild(0).GetComponent<Arrow>().minAmount, 0);
+            _currentArrow.GetChild(0).transform.position = bowPos.position;
+            _currentArrow.GetChild(0).transform.rotation = Quaternion.Euler(new Vector3(-55, -45, 0));
         }
         else {
             anim.SetBool("Attack", false);
             anim.SetBool("Idle", false);
         }
+
     }
 
     public override void TakeDamage(float damage) {
