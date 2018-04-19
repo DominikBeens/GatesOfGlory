@@ -56,20 +56,11 @@ public class Enemy : Soldier {
     public void StartBattle(Damagebles _target) {
         anim.SetBool("Attack", true);
         target = _target;
-        if(_target != null) {
-            transform.LookAt(_target.transform);
-        }
-        else {
-            /*if(transform.position.x > 0) {
-                transform.localEulerAngles = new Vector3(0, -90, 0);
-            }
-            else {
-                transform.localEulerAngles = new Vector3(0, 90, 0);
-            }*/
-        }
-        transform.LookAt(targetTransform);
         agent.isStopped = true;
         StartCoroutine(Attack());
+        if(_target != null) {
+            transform.LookAt(targetTransform);
+        }
     }
 
     public void StopBattle() {

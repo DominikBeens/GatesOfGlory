@@ -8,6 +8,10 @@ public class CastleDeffensePoint : Damagebles {
     public CastleGate myGate;
     public Image healthbarFill;
 
+    public virtual void DirectDamage(float damage) {
+        TakeDamage(damage);
+    }
+
     public override void TakeDamage(float damage){
         myStats.health.currentValue -= damage;
 

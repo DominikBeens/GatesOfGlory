@@ -15,14 +15,9 @@ public class EnemyTerrorist : Enemy {
 
     void OnCollisionEnter(Collision collision) {
         if(collision.transform == targetTransform) {
-            targetTransform.GetComponent<CastleDeffensePoint>().attackingMe.Add(this);
-            collision.gameObject.GetComponent<Damagebles>().TakeDamage(myStats.damage.currentValue);
+            collision.gameObject.GetComponent<CastleDeffensePoint>().DirectDamage(myStats.damage.currentValue);
             ObjectPooler.instance.GrabFromPool("terrorist kaboom", new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);
             ObjectPooler.instance.AddToPool("Enemy Terrorist", gameObject);
         }
-    }
-
-    private void OnCollisionStay(Collision collision) {
-        
     }
 }
