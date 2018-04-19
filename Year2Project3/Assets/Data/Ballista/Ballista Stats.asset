@@ -16,11 +16,11 @@ MonoBehaviour:
     currentValue: 50
     increaseValue: 15
   myForce:
-    baseValue: 1500
-    currentValue: 1500
-    increaseValue: 200
+    baseValue: 1200
+    currentValue: 1200
+    increaseValue: 100
   myFireRate:
     baseValue: 1
     currentValue: 1
-    increaseValue: -0.04
+    increaseValue: -0.03
   autoFireLevelRequirement: 5

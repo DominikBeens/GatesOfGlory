@@ -24,9 +24,9 @@ public class Throne : CastleDeffensePoint
 
     public override void TakeDamage(float damage)
     {
-        if (ResourceManager.instance.goldPrefabsInScene.Count >= Mathf.RoundToInt(damage / 10))
+        if (ResourceManager.instance.goldPrefabsInScene.Count > 0)
         {
-            ResourceManager.instance.RemoveGold(Mathf.RoundToInt(damage / 10), false);
+            ResourceManager.instance.RemoveGold(1, false);
         }
         else if(ResourceManager.instance.goldPrefabsInScene.Count > 0)
         {

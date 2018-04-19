@@ -39,15 +39,11 @@ public class ResourceManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            AddGold(100);
+            AddGold(50);
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
             RemoveGold(5, false);
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            RemoveGold(1, false);
         }
 
         goldText.text = goldPrefabsInScene.Count.ToString();
