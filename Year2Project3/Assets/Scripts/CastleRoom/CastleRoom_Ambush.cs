@@ -23,7 +23,6 @@ public class CastleRoom_Ambush : CastleRoom
     public TextMeshProUGUI descriptionText;
     private Transform cameraTarget;
     public float camZoomSpeed;
-    private CameraManager mainCamManager;
 
     [Header("Upgrades")]
     public TextMeshProUGUI nextLevelExtraUpgradeText;
@@ -35,6 +34,8 @@ public class CastleRoom_Ambush : CastleRoom
     private GameObject[] spearRainSpawns;
 
     private float currentCooldown = 0.95f;
+
+    private CameraManager[] cams;
 
     [System.Serializable]
     public struct AmbushOptions
@@ -51,10 +52,11 @@ public class CastleRoom_Ambush : CastleRoom
         base.Awake();
 
         cameraTarget = GameObject.FindWithTag("CameraTarget").transform;
-        mainCamManager = mainCam.GetComponent<CameraManager>();
 
         ambushSpawns = GameObject.FindGameObjectsWithTag("AmbushSpawn");
         spearRainSpawns = GameObject.FindGameObjectsWithTag("SpearRainSpawn");
+
+        cams = FindObjectsOfType<CameraManager>();
     }
 
     public override void SetupUI()
@@ -151,7 +153,11 @@ public class CastleRoom_Ambush : CastleRoom
     private IEnumerator ProjectileRain(string projectile, int rainRows, int rainColumns, float rainDistOffset, float rainSpawnDelay, float rainSpawnOffset, bool addTorque, float screenShakeAmount, GameObject[] spawns)
     {
         Vector3 zoomTo = new Vector3(0, 15, -25);
-        mainCamManager.canMove = false;
+
+        for (int i = 0; i < cams.Length; i++)
+        {
+            cams[i].canMove = false;
+        }
 
         while (Vector3.Distance(cameraTarget.position, zoomTo) > 0.1f)
         {
@@ -217,7 +223,10 @@ public class CastleRoom_Ambush : CastleRoom
         }
 
         cameraTarget.position = zoomTo;
-        mainCamManager.canMove = true;
+        for (int i = 0; i < cams.Length; i++)
+        {
+            cams[i].canMove = true;
+        }
     }
 
     private GameObject SpawnProjectile(string projectile, Vector3 position, Quaternion rotation, bool addTorque)

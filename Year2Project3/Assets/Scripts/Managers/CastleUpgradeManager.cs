@@ -14,8 +14,8 @@ public class CastleUpgradeManager : MonoBehaviour
 
     public GameObject castleWeaponUI;
     public GameObject castleRoomUI;
-    public CastleUpgrader weaponUpgrader;
-    public CastleUpgrader roomUpgrader;
+    private CastleUpgrader weaponUpgrader;
+    private CastleUpgrader roomUpgrader;
 
     public List<CastleWeapon> allBuiltWeapons = new List<CastleWeapon>();
     public List<CastleRoom> allBuiltRooms = new List<CastleRoom>();
