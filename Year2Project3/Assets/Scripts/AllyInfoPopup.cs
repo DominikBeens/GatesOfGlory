@@ -12,19 +12,17 @@ public class AllyInfoPopup : MonoBehaviour
     private Allie target;
     private Transform mainCam;
 
-    public Animator anim;
     public Transform pointerParent;
     public GameObject pointerObject;
 
     private int listIndex;
-    private bool panelActive;
-
-    public float closePanelMouseDistance;
 
     [SerializeField]
     private TextMeshProUGUI healthText;
     [SerializeField]
     private TextMeshProUGUI damageText;
+    [SerializeField]
+    private TextMeshProUGUI selectedText;
 
     private void Awake()
     {
@@ -50,17 +48,19 @@ public class AllyInfoPopup : MonoBehaviour
 
             pointerParent.transform.position = target.transform.position;
             pointerParent.transform.LookAt(mainCam);
-        }
 
-        if (panelActive)
-        {
-            float mouseDistance = Vector3.Distance(healthText.transform.position, Input.mousePosition);
-
-            if (mouseDistance > closePanelMouseDistance)
+            if (target.myStats.health.currentValue <= 0)
             {
-                anim.ResetTrigger("Show");
-                anim.SetTrigger("Hide");
-                panelActive = false;
+                target = null;
+            }
+        }
+        else
+        {
+            if (selectedText.text != "No Minion Selected")
+            {
+                selectedText.text = "No Minion Selected";
+                healthText.text = "???";
+                damageText.text = "???";
             }
         }
     }
@@ -68,8 +68,12 @@ public class AllyInfoPopup : MonoBehaviour
     public void SetTarget(Allie ally)
     {
         target = ally;
+
         pointerObject.SetActive(false);
         pointerObject.SetActive(true);
+
+        string s = target.gameObject.name;       
+        selectedText.text = s.Substring(0, s.Length - 7);
     }
 
     public void SelectNextTarget(bool increase)
@@ -109,6 +113,7 @@ public class AllyInfoPopup : MonoBehaviour
         }
 
         SetTarget(WaveManager.instance.alliesInScene[listIndex]);
+
         #region OLD SHIT
         //float myX = target.transform.position.x;
 
@@ -144,12 +149,5 @@ public class AllyInfoPopup : MonoBehaviour
         //float closest = distances.Keys.Min();
         //SetTarget(distances[closest]);
         #endregion
-    }
-
-    public void SetPanelActive()
-    {
-        anim.ResetTrigger("Hide");
-        anim.SetTrigger("Show");
-        panelActive = true;
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public abstract class EffectZone : MonoBehaviour 
+public abstract class EffectZone : MonoBehaviour
 {
 
     private Transform mainCam;
@@ -43,12 +43,18 @@ public abstract class EffectZone : MonoBehaviour
     {
         if (canEffect)
         {
-            statsPopupPanel.SetActive(true);
+            if (statsPopupPanel != null)
+            {
+                statsPopupPanel.SetActive(true);
+            }
         }
     }
 
     private void OnMouseExit()
     {
-        statsPopupPanel.SetActive(false);
+        if (statsPopupPanel != null)
+        {
+            statsPopupPanel.SetActive(false);
+        }
     }
 }
