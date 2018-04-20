@@ -876,6 +876,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 115
   m_IsActive: 1
+--- !u!1 &1205698089671730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4660867772239020}
+  - component: {fileID: 33433098214966814}
+  - component: {fileID: 23291407477781076}
+  m_Layer: 0
+  m_Name: HangingSign
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1212104862899284
 GameObject:
   m_ObjectHideFlags: 1
@@ -1193,6 +1210,7 @@ GameObject:
   - component: {fileID: 114989808868816080}
   - component: {fileID: 95782548801753418}
   - component: {fileID: 114927844526020956}
+  - component: {fileID: 114276457521528058}
   m_Layer: 5
   m_Name: ShopButton (2)
   m_TagString: Untagged
@@ -1661,6 +1679,7 @@ GameObject:
   - component: {fileID: 114028703871327434}
   - component: {fileID: 95568873609076362}
   - component: {fileID: 114395508570332604}
+  - component: {fileID: 114489966962744516}
   m_Layer: 5
   m_Name: ShopButton (1)
   m_TagString: Untagged
@@ -1711,6 +1730,7 @@ GameObject:
   - component: {fileID: 114358424666390972}
   - component: {fileID: 95980856847321052}
   - component: {fileID: 114708108281811390}
+  - component: {fileID: 114754537088706666}
   m_Layer: 5
   m_Name: ShopButton (3)
   m_TagString: Untagged
@@ -2845,6 +2865,7 @@ GameObject:
   - component: {fileID: 114234232967534548}
   - component: {fileID: 95713470125763156}
   - component: {fileID: 114789409461670176}
+  - component: {fileID: 114187104828666644}
   m_Layer: 5
   m_Name: ShopButton
   m_TagString: Untagged
@@ -3547,7 +3568,7 @@ Transform:
   - {fileID: 4337270303841208}
   - {fileID: 4344163803014556}
   m_Father: {fileID: 4130273936013298}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4104563815170714
 Transform:
@@ -3602,6 +3623,7 @@ Transform:
   - {fileID: 224085505105826796}
   - {fileID: 224994686859178984}
   - {fileID: 4639401744144456}
+  - {fileID: 4660867772239020}
   - {fileID: 4100362771661670}
   - {fileID: 4683700301791834}
   m_Father: {fileID: 0}
@@ -5028,6 +5050,19 @@ Transform:
   m_Father: {fileID: 4639401744144456}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4660867772239020
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1205698089671730}
+  m_LocalRotation: {x: 2.3181454e-13, y: -1, z: 0.00000008146034, w: 0.0000029504295}
+  m_LocalPosition: {x: 0, y: 4.234, z: -1.2360001}
+  m_LocalScale: {x: 0.008021198, y: 0.008021197, z: 0.008021197}
+  m_Children: []
+  m_Father: {fileID: 4130273936013298}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: -180.00002, z: 0}
 --- !u!4 &4669989687349124
 Transform:
   m_ObjectHideFlags: 1
@@ -5096,7 +5131,7 @@ Transform:
   - {fileID: 4326332431207772}
   - {fileID: 4166920427898410}
   m_Father: {fileID: 4130273936013298}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4695975005175620
 Transform:
@@ -6132,6 +6167,40 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 4719ca0e7c28d4148b7ed08d923a0ed0, type: 2}
   - {fileID: 2100000, guid: 577cdc3dbfa655e4a86eb018fca21470, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!23 &23291407477781076
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1205698089671730}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 0b07abb46d0c4314fb87b172ca328196, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7938,6 +8007,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1445993395989370}
   m_Mesh: {fileID: 4300000, guid: 92303ca519950594bac026c9f95835c4, type: 3}
+--- !u!33 &33433098214966814
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1205698089671730}
+  m_Mesh: {fileID: 4300000, guid: 09793af9dd77007469f8ed189c02fb15, type: 3}
 --- !u!33 &33450554013974176
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -8759,11 +8835,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114797255300631530}
-        m_MethodName: BuyOilButton
+        m_MethodName: BuyItemButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 95568873609076362}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_ObjectArgument: {fileID: 114489966962744516}
+          m_ObjectArgumentAssemblyTypeName: ShopItemButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8837,7 +8913,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 5
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a372cddacb694c2489be188466a1d800, type: 2}
   m_sharedMaterial: {fileID: 21913952429635500, guid: a372cddacb694c2489be188466a1d800,
@@ -8905,7 +8981,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 114080597060315830}
-    characterCount: 1
+    characterCount: 2
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -8985,6 +9061,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114187104828666644
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1832668561888174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af81621a8d9820d48a6009afd97d8f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myItem:
+    itemPoolName: shopitem spears
+    itemCost: 5
+  myAnim: {fileID: 95713470125763156}
+  myCostText: {fileID: 114080597060315830}
 --- !u!114 &114204896930134932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9170,11 +9262,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114797255300631530}
-        m_MethodName: BuySpikesButton
+        m_MethodName: BuyItemButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 95713470125763156}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_ObjectArgument: {fileID: 114187104828666644}
+          m_ObjectArgumentAssemblyTypeName: ShopItemButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9182,6 +9274,22 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114276457521528058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1340898499478002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af81621a8d9820d48a6009afd97d8f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myItem:
+    itemPoolName: shopitem archer
+    itemCost: 12
+  myAnim: {fileID: 95782548801753418}
+  myCostText: {fileID: 114404256766961534}
 --- !u!114 &114358424666390972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9222,11 +9330,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114797255300631530}
-        m_MethodName: BuySpikeBallsButton
+        m_MethodName: BuyItemButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 95980856847321052}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_ObjectArgument: {fileID: 114754537088706666}
+          m_ObjectArgumentAssemblyTypeName: ShopItemButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9393,7 +9501,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 7
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a372cddacb694c2489be188466a1d800, type: 2}
   m_sharedMaterial: {fileID: 21913952429635500, guid: a372cddacb694c2489be188466a1d800,
@@ -9461,7 +9569,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 114390541519092810}
-    characterCount: 1
+    characterCount: 2
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -9696,6 +9804,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114489966962744516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1482849910290278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af81621a8d9820d48a6009afd97d8f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myItem:
+    itemPoolName: shopitem oil
+    itemCost: 6
+  myAnim: {fileID: 95568873609076362}
+  myCostText: {fileID: 114765262126748406}
 --- !u!114 &114491696507799528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10369,6 +10493,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114754537088706666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1487196919417960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af81621a8d9820d48a6009afd97d8f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myItem:
+    itemPoolName: shopitem spikeballs
+    itemCost: 7
+  myAnim: {fileID: 95980856847321052}
+  myCostText: {fileID: 114390541519092810}
 --- !u!114 &114765262126748406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10388,7 +10528,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 6
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a372cddacb694c2489be188466a1d800, type: 2}
   m_sharedMaterial: {fileID: 21913952429635500, guid: a372cddacb694c2489be188466a1d800,
@@ -10456,7 +10596,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 114765262126748406}
-    characterCount: 1
+    characterCount: 2
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -10597,10 +10737,6 @@ MonoBehaviour:
   lodGroup: {fileID: 114639618544530388}
   camZoomSpeed: 5
   selectedShopItemText: {fileID: 114501985445159366}
-  spikesCost: 5
-  spikeBallsCost: 7
-  oilCost: 6
-  archersCost: 12
   archerButton: {fileID: 114989808868816080}
   archerButtonMaxOverlay: {fileID: 1283811452504162}
   shopButtonCostOverlays:
@@ -10881,8 +11017,8 @@ MonoBehaviour:
         m_MethodName: BuyArcherButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 95782548801753418}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_ObjectArgument: {fileID: 114276457521528058}
+          m_ObjectArgumentAssemblyTypeName: ShopItemButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -49984,7 +50120,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1436020162631088}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -1.78}
+  m_LocalPosition: {x: 0, y: 0, z: -1.122}
   m_LocalScale: {x: 0.0150000155, y: 0.015, z: 1.0000012}
   m_Children:
   - {fileID: 224849163751956584}

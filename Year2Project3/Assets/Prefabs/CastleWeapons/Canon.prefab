@@ -794,6 +794,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4873326288835218}
+  - component: {fileID: 65910430842697384}
+  - component: {fileID: 114726958688017334}
   m_Layer: 0
   m_Name: Canon
   m_TagString: Untagged
@@ -2062,7 +2064,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1440039422198354}
-  m_LocalRotation: {x: -0.33321783, y: 0.7091426, z: 0.5977084, w: 0.1697859}
+  m_LocalRotation: {x: -0.33321786, y: 0.7091427, z: 0.59770846, w: 0.16978592}
   m_LocalPosition: {x: 0.015604513, y: 0.101055466, z: 0.041549265}
   m_LocalScale: {x: 0.9999995, y: 1.0000008, z: 1.0000002}
   m_Children:
@@ -2546,6 +2548,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: f63c95138c8344b4795b9b8937319112, type: 2}
+  - {fileID: 2100000, guid: eacbb1226f52fba46ab83e8e0a5f0d02, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2580,6 +2583,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: f63c95138c8344b4795b9b8937319112, type: 2}
+  - {fileID: 2100000, guid: eacbb1226f52fba46ab83e8e0a5f0d02, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2614,6 +2618,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: f63c95138c8344b4795b9b8937319112, type: 2}
+  - {fileID: 2100000, guid: eacbb1226f52fba46ab83e8e0a5f0d02, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2716,6 +2721,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1421099467728804}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65910430842697384
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1487664918558272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &82262977450249610
 AudioSource:
   m_ObjectHideFlags: 1
@@ -3787,6 +3804,7 @@ MonoBehaviour:
   goldSpentOnThisObject: 0
   anim: {fileID: 0}
   info: {fileID: 11400000, guid: dfe83310494cbbe4ba545d4c28a7f0c4, type: 2}
+  outline: {fileID: 114726958688017334}
   useUI: {fileID: 1590644331775422}
   upgradePanel: {fileID: 1878289466575798}
   demolishPanel: {fileID: 1342788017264340}
@@ -4986,6 +5004,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114726958688017334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1487664918558272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf91207331ebc434ca3c7b0b9a2ea66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMat: {fileID: 2100000, guid: eacbb1226f52fba46ab83e8e0a5f0d02, type: 2}
+  outlineThickness: -6
+  canShowOutline: 1
 --- !u!114 &114738741940930852
 MonoBehaviour:
   m_ObjectHideFlags: 1

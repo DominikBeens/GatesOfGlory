@@ -14,12 +14,6 @@ public class Shop : PreBuiltCastleRoom
 
     public TextMeshProUGUI selectedShopItemText;
 
-    [Header("Cost")]
-    public int spikesCost;
-    public int spikeBallsCost;
-    public int oilCost;
-    public int archersCost;
-
     public Button archerButton;
     public GameObject archerButtonMaxOverlay;
     private ArcherSpot[] archerSpots;
@@ -58,52 +52,27 @@ public class Shop : PreBuiltCastleRoom
         a.SetTrigger("Close");
     }
 
-    public void BuySpikesButton(Animator a)
+    public void BuyItemButton(ShopItemButton shopItemButton)
     {
-        if (!ResourceManager.instance.HasEnoughGold(spikesCost))
+        if (!ResourceManager.instance.HasEnoughGold(shopItemButton.myItem.itemCost))
         {
             return;
         }
 
-        a.SetTrigger("Buy");
-        ResourceManager.instance.RemoveGold(spikesCost, true);
-        //StartCoroutine(PlaceObject("shopitem spears"));
-        PlaceObject("shopitem spears");
+        shopItemButton.myAnim.SetTrigger("Buy");
+        ResourceManager.instance.RemoveGold(shopItemButton.myItem.itemCost, true);
+        PlaceObject(shopItemButton.myItem.itemPoolName);
     }
 
-    public void BuySpikeBallsButton(Animator a)
+    public void BuyArcherButton(ShopItemButton shopItemButton)
     {
-        if (!ResourceManager.instance.HasEnoughGold(spikeBallsCost))
+        if (!ResourceManager.instance.HasEnoughGold(shopItemButton.myItem.itemCost))
         {
             return;
         }
-
-        a.SetTrigger("Buy");
-        ResourceManager.instance.RemoveGold(spikeBallsCost, true);
-        PlaceObject("shopitem spikeballs");
-    }
-
-    public void BuyOilButton(Animator a)
-    {
-        if (!ResourceManager.instance.HasEnoughGold(oilCost))
-        {
-            return;
-        }
-
-        a.SetTrigger("Buy");
-        ResourceManager.instance.RemoveGold(oilCost, true);
-        PlaceObject("shopitem oil");
-    }
-
-    public void BuyArcherButton(Animator a)
-    {
-        if (!ResourceManager.instance.HasEnoughGold(archersCost))
-        {
-            return;
-        }
-
-        a.SetTrigger("Buy");
-        ResourceManager.instance.RemoveGold(archersCost, true);
+        
+        shopItemButton.myAnim.SetTrigger("Buy");
+        ResourceManager.instance.RemoveGold(shopItemButton.myItem.itemCost, true);
         CloseUIButton();
 
         bool lookingForArcherLeft = true;
@@ -138,24 +107,6 @@ public class Shop : PreBuiltCastleRoom
             }
         }
     }
-
-    //private IEnumerator PlaceObject(string obj)
-    //{
-    //    CloseUIButton();
-
-    //    Vector3 zoomTo = new Vector3(0, 5, cameraTarget.position.z);
-    //    mainCamManager.canMove = false;
-
-    //    while (Vector3.Distance(cameraTarget.position, zoomTo) > 0.1f)
-    //    {
-    //        cameraTarget.position = Vector3.Lerp(cameraTarget.position, zoomTo, Time.deltaTime * camZoomSpeed);
-    //        yield return null;
-    //    }
-
-    //    UIManager.instance.placeObjectUI.SetActive(true);
-    //    mainCamManager.canMove = true;
-    //    ObjectPooler.instance.GrabFromPool(obj, transform.position, Quaternion.identity);
-    //}
 
     private void PlaceObject(string obj)
     {

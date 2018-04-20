@@ -33,6 +33,7 @@ public class CastleBuild : MonoBehaviour
 
     [Header("Basic Properties")]
     public GeneralStats info;
+    public OutlineOnMouseOver outline;
 
     [Header("UI Panels")]
     public GameObject useUI;
@@ -164,12 +165,23 @@ public class CastleBuild : MonoBehaviour
         useUI.SetActive(true);
 
         CastleUpgradeManager.instance.CloseAllUI(this);
+
+        if (outline != null)
+        {
+            outline.canShowOutline = false;
+            outline.OnMouseExit();
+        }
     }
 
     // Stop using this build.
     public virtual void StopUsingButton()
     {
         StartCoroutine(EventStopUsing());
+
+        if (outline != null)
+        {
+            outline.canShowOutline = true;
+        }
     }
 
     // Closes all UI and resets a few variables.

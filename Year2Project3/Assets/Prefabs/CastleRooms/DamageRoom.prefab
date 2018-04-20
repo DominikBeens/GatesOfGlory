@@ -15479,6 +15479,7 @@ MonoBehaviour:
   goldSpentOnThisObject: 0
   anim: {fileID: 0}
   info: {fileID: 11400000, guid: c7618bcc87fa52b44917273455a5efdd, type: 2}
+  outline: {fileID: 114269634430176672}
   useUI: {fileID: 1033886384500450}
   upgradePanel: {fileID: 1518687130626672}
   demolishPanel: {fileID: 1928081812601698}
@@ -15488,7 +15489,6 @@ MonoBehaviour:
   upgradeCostText: {fileID: 114979737954875872}
   myNameText: {fileID: 114063834219647506}
   roomType: 5
-  outline: {fileID: 114269634430176672}
   lodGroup: {fileID: 114965511528544588}
   useCooldown:
     baseValue: 15
@@ -15497,7 +15497,7 @@ MonoBehaviour:
   damageAmount:
     baseValue: 45
     currentValue: 45
-    increaseValue: 20
+    increaseValue: 30
   amountOfEnemiesToDamage:
     baseValue: 3
     currentValue: 3

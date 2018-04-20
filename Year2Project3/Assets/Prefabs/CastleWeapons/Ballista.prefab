@@ -1193,7 +1193,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1341045461662804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -20.305614, y: 0, z: 16.812584}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4849280128097946}
@@ -4317,6 +4317,7 @@ MonoBehaviour:
   goldSpentOnThisObject: 0
   anim: {fileID: 95882562626727682}
   info: {fileID: 11400000, guid: fbad573a344baca458f9f6a6f97f1e6c, type: 2}
+  outline: {fileID: 114518188646761774}
   useUI: {fileID: 1892291787104280}
   upgradePanel: {fileID: 1913944214613282}
   demolishPanel: {fileID: 1326565597400396}

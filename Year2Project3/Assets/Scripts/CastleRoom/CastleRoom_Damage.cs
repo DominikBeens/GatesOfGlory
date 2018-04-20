@@ -22,7 +22,7 @@ public class CastleRoom_Damage : CastleRoom
     {
         base.SetupUI();
 
-        descriptionText.text = "Strikes <color=green>" + amountOfEnemiesToDamage.currentValue + "</color> enemies for <color=green>" + damageAmount.currentValue + "</color> damage.";
+        descriptionText.text = "Strikes <color=green>" + Mathf.RoundToInt(amountOfEnemiesToDamage.currentValue) + "</color> enemies for <color=green>" + damageAmount.currentValue + "</color> damage.";
 
         if (info.myLevel < info.myMaxLevel)
         {

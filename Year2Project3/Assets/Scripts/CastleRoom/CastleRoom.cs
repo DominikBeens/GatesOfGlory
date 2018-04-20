@@ -19,13 +19,7 @@ public class CastleRoom : CastleBuild
     }
     public RoomType roomType;
     [Space(10)]
-    public OutlineOnMouseOver outline;
     public ModelToSprite_LOD lodGroup;
-
-    public override void Awake()
-    {
-        base.Awake();
-    }
 
     public virtual void Update()
     {
@@ -40,34 +34,13 @@ public class CastleRoom : CastleBuild
 
     }
 
-    public override void Upgrade()
-    {
-        base.Upgrade();
-    }
-
     public override void StartUsing()
     {
         base.StartUsing();
 
-        if (outline != null)
-        {
-            outline.canShowOutline = false;
-            outline.OnMouseExit();
-        }
-
         if (lodGroup != null)
         {
             lodGroup.TogglePlayerMouseHover(false);
-        }
-    }
-
-    public override void StopUsingButton()
-    {
-        base.StopUsingButton();
-
-        if (outline != null)
-        {
-            outline.canShowOutline = true;
         }
     }
 
