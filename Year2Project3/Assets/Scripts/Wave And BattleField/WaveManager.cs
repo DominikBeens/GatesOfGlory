@@ -65,6 +65,21 @@ public class WaveManager : MonoBehaviour {
     }
 
     void Update() {
+        if(Input.GetKeyDown("1")) {
+            SpawnEnemy("Enemy Knight");
+        }
+        if(Input.GetKeyDown("2")) {
+            SpawnEnemy("Enemy Bowman");
+        }
+        if(Input.GetKeyDown("3")) {
+            SpawnEnemy("Enemy Spearman");
+        }
+        if(Input.GetKeyDown("4")) {
+            SpawnEnemy("Enemy Giant");
+        }
+        if(Input.GetKeyDown("5")) {
+            SpawnEnemy("Enemy Terrorist");
+        }
         if(Input.GetKeyDown("m")) {
             currentWave++;
         }
@@ -73,6 +88,13 @@ public class WaveManager : MonoBehaviour {
             NextWave();
             ResourceManager.instance.AddGold(10);
         }
+    }
+
+    void SpawnEnemy(string enemyToSpawn) {
+        GameObject newEnemy = ObjectPooler.instance.GrabFromPool(enemyToSpawn, new Vector3(spwanPoints[0].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 2, Random.Range(-SpawnsetOff, SpawnsetOff)), spwanPoints[0].transform.rotation);
+        Enemy enemyScript = newEnemy.GetComponent<Enemy>();
+        enemyScript.myStats.damage.currentValue = (DamageMultiplier * currentWave) * enemyScript.myStats.damage.baseValue;
+        enemyScript.myStats.health.currentValue = (DamageMultiplier * currentWave) * enemyScript.myStats.health.baseValue;
     }
 
     [System.Serializable]

@@ -30,7 +30,7 @@ public class EnemyBowman : Enemy {
             _currentArrow.GetChild(0).transform.position = bowPos.position;
             _currentArrow.GetChild(0).transform.LookAt(targetTransform);
             _currentArrow.GetChild(0).transform.localEulerAngles += new Vector3(-70, 0, 0);
-            StopAllCoroutines();
+            StopCoroutine(Attack());
             StartCoroutine(Attack());
             target.TakeDamage(myStats.damage.currentValue);
         }
@@ -38,12 +38,13 @@ public class EnemyBowman : Enemy {
             if(attackingSoldiers.Count > 0) {
                 for(int i = 0; i < attackingSoldiers.Count; i++) {
                     if(attackingSoldiers[i].inFight == true) {
-
+                        StopCoroutine(Attack());
                         target = attackingSoldiers[i];
                         break;
                     }
                 }
             }
+            StopCoroutine(Attack());
             StopBattle();
         }
     }

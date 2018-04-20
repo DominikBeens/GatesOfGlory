@@ -66,6 +66,7 @@ public class Bowman : Allie {
             _currentArrow.GetChild(0).transform.rotation = Quaternion.Euler(new Vector3(-55, -45, 0));
         }
         else {
+            StopCoroutine(Attack());
             anim.SetBool("Attack", false);
             anim.SetBool("Idle", false);
         }

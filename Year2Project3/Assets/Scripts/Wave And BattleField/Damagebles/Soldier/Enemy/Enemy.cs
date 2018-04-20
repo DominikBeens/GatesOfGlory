@@ -53,6 +53,7 @@ public class Enemy : Soldier {
     }
 
     public void StartBattle(Damagebles _target) {
+        StopCoroutine(Attack());
         anim.SetBool("Attack", true);
         target = _target;
         agent.isStopped = true;
@@ -68,6 +69,7 @@ public class Enemy : Soldier {
         }
         else {
             anim.SetBool("Attack", false);
+            StopCoroutine(Attack());
             target = null;
             agent.isStopped = false;
             FindNewTarget();
@@ -85,6 +87,7 @@ public class Enemy : Soldier {
                 if(targetTransform != newTarget) {
                     anim.SetBool("Attack", false);
                     StopCoroutine(Attack());
+                    target = null;
                     targetTransform = newTarget;
                     agent.SetDestination(targetTransform.position);
                     attackingCastle = false;
@@ -125,7 +128,6 @@ public class Enemy : Soldier {
                     }
                 }
                 StopBattle();
-
             }
             else {
                 StopAllCoroutines();
@@ -136,6 +138,7 @@ public class Enemy : Soldier {
     }
 
     private void OnDisable() {
+        StopCoroutine(Attack());
         WaveManager.instance.RemoveEnemyFromScene(this);
     }
 
