@@ -149,7 +149,7 @@ public class WaveManager : MonoBehaviour {
             for(int s = 0; s < stageSize; s++) {
                 NewSoldier newSoldier = new NewSoldier();
 
-                int currentSoldier = Mathf.Clamp(Mathf.RoundToInt(Mathf.Clamp(currentWave / 7.5f, 0, enemyTypes.Count - 1) - Random.Range(0, enemyTypes.Count)), 0, enemyTypes.Count - 1);
+                int currentSoldier = Mathf.Clamp(Mathf.RoundToInt(Mathf.Clamp(currentWave / 5f, 0, enemyTypes.Count - 1) - Random.Range(0, enemyTypes.Count)), 0, enemyTypes.Count - 1);
 
                 if(currentWave > 3) {
                     newSoldier.Side = Random.Range(0, 2);
