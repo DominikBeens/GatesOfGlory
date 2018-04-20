@@ -7,6 +7,7 @@ using TMPro;
 
 public class WaveManager : MonoBehaviour {
     public string terrorist;
+    bool terroristBool;
     public List<string> enemyTypes = new List<string>();
     public List<int> enemyAmountRight = new List<int>();
     public List<int> enemyAmountLeft = new List<int>();
@@ -198,10 +199,12 @@ public class WaveManager : MonoBehaviour {
         }
 
         waveTimerAnim.SetTrigger("Close");
-
         hornAudio.Play();
         ShowWaveNumber();
         HideWaveInfo();
+        if(currentWave > 5 && Random.Range(1, 101) <= currentTerroristChance) {
+            terroristBool = true;
+        }
         StartCoroutine(StageTimer());
     }
 
@@ -224,7 +227,8 @@ public class WaveManager : MonoBehaviour {
             GameObject newEnemy = null;
             Enemy enemyScript = null;
 
-            if(currentWave > 5 && Random.Range(1, 101) <= currentTerroristChance) {
+            if(terroristBool) {
+                terroristBool = false;
                 newEnemy = ObjectPooler.instance.GrabFromPool(terrorist, new Vector3(spwanPoints[Random.Range(0, 2)].transform.position.x + Random.Range(-SpawnsetOff, SpawnsetOff), 2, Random.Range(-SpawnsetOff, SpawnsetOff)), spwanPoints[Random.Range(0, 2)].transform.rotation);
                 enemyScript = newEnemy.GetComponent<Enemy>();
                 enemyScript.myStats.health.currentValue = (DamageMultiplier * currentWave) * enemyScript.myStats.health.baseValue;
