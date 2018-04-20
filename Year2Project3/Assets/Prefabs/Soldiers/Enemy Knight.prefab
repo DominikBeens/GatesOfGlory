@@ -1451,11 +1451,11 @@ MonoBehaviour:
   targetTransform: {fileID: 0}
   anim: {fileID: 95447981567200460}
   inFight: 0
+  myAudiosource: {fileID: 82070850190840286}
   attackingSoldiers: []
-  maxAttacking: 2
+  maxAttacking: 5
   attackingCastle: 0
   target: {fileID: 0}
-  myAudiosource: {fileID: 82070850190840286}
   slowed: 0
 --- !u!137 &137427581721321286
 SkinnedMeshRenderer:

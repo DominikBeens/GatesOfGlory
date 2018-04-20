@@ -1763,11 +1763,11 @@ MonoBehaviour:
   targetTransform: {fileID: 0}
   anim: {fileID: 95153122204031010}
   inFight: 0
+  myAudiosource: {fileID: 82162788758268966}
   attackingSoldiers: []
-  maxAttacking: 2
+  maxAttacking: 5
   attackingCastle: 0
   target: {fileID: 0}
-  myAudiosource: {fileID: 82162788758268966}
   slowed: 0
   bowPos: {fileID: 4230197911339806}
   fireRate: 0.5

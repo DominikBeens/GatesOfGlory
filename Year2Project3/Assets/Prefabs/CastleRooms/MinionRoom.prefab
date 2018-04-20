@@ -9593,6 +9593,7 @@ MonoBehaviour:
   goldSpentOnThisObject: 0
   anim: {fileID: 0}
   info: {fileID: 11400000, guid: 96bc5a16991d1c1409296c0a28999e0e, type: 2}
+  outline: {fileID: 114501954673717328}
   useUI: {fileID: 1544753736834150}
   upgradePanel: {fileID: 1792789951630432}
   demolishPanel: {fileID: 1651483591867090}
@@ -9602,7 +9603,6 @@ MonoBehaviour:
   upgradeCostText: {fileID: 114333855464637488}
   myNameText: {fileID: 114771465130788118}
   roomType: 0
-  outline: {fileID: 114501954673717328}
   lodGroup: {fileID: 114016755833795268}
   minionSpawnPoint: {fileID: 4625714402741780}
   knightSpawnCost:
@@ -9623,7 +9623,7 @@ MonoBehaviour:
     increaseValue: 0
   spawnInterval: 0.35
   spawnPointOffsetRandomizer: 1
-  statMultiplier: 1.85
+  statMultiplier: 1.05
   buttonClickTimer: 0.5
   buyKnightsTimerFill: {fileID: 114848923805724328}
   buyArchersTimerFill: {fileID: 114899547061020922}
