@@ -13,7 +13,8 @@ public class AllyInfoPopup : MonoBehaviour
     private Transform mainCam;
 
     public Animator anim;
-    public Animator pointerAnim;
+    public Transform pointerParent;
+    public GameObject pointerObject;
 
     private int listIndex;
     private bool panelActive;
@@ -37,6 +38,7 @@ public class AllyInfoPopup : MonoBehaviour
         }
 
         mainCam = Camera.main.transform;
+        pointerObject.SetActive(false);
     }
 
     private void Update()
@@ -46,8 +48,8 @@ public class AllyInfoPopup : MonoBehaviour
             healthText.text = ((int)target.myStats.health.currentValue).ToString();
             damageText.text = ((int)target.myStats.damage.currentValue).ToString();
 
-            transform.position = target.transform.position;
-            transform.LookAt(mainCam);
+            pointerParent.transform.position = target.transform.position;
+            pointerParent.transform.LookAt(mainCam);
         }
 
         if (panelActive)
@@ -66,6 +68,8 @@ public class AllyInfoPopup : MonoBehaviour
     public void SetTarget(Allie ally)
     {
         target = ally;
+        pointerObject.SetActive(false);
+        pointerObject.SetActive(true);
     }
 
     public void SelectNextTarget(bool increase)
@@ -105,12 +109,6 @@ public class AllyInfoPopup : MonoBehaviour
         }
 
         SetTarget(WaveManager.instance.alliesInScene[listIndex]);
-
-        if (!pointerAnim.GetCurrentAnimatorStateInfo(0).IsName("Open"))
-        {
-            pointerAnim.SetTrigger("Open");
-        }
-
         #region OLD SHIT
         //float myX = target.transform.position.x;
 

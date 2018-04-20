@@ -17,6 +17,8 @@ public class ObjectPlacer : MonoBehaviour
     private GameObject placeAvailabilityTrigger;
     [SerializeField]
     private EffectZone effectZone;
+    [SerializeField]
+    private GameObject optionalObjectToSetActive;
 
     private List<Transform> badCollisions = new List<Transform>();
 
@@ -98,6 +100,11 @@ public class ObjectPlacer : MonoBehaviour
         if (effectZone != null)
         {
             effectZone.canEffect = true;
+        }
+
+        if (optionalObjectToSetActive != null)
+        {
+            optionalObjectToSetActive.SetActive(true);
         }
     }
 }
