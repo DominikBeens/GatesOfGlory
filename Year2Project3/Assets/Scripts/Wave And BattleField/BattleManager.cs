@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleManager : MonoBehaviour {
-    public float soldierOffset;
-
     public List<DefensePoint> newDeffensePoints = new List<DefensePoint>();
     List<DefensePoint> RightDeffensePoints = new List<DefensePoint>();
     List<DefensePoint> LeftDeffensePoints = new List<DefensePoint>();
+    public List<Enemy> freeEnemys = new List<Enemy>();
+
+    public float soldierOffset;
     public Transform throne;
     public float maxEnemySearch, minEnemySearch;
     public static BattleManager instance;
-    public List<GameObject> freeEnemys = new List<GameObject>();
 
     void Awake() {
         instance = this;
@@ -169,7 +169,7 @@ public class BattleManager : MonoBehaviour {
             return (_myCurrentTarget);
         }
         else if(freeEnemys.Count > 0) {
-            GameObject _nextEnemt = GetClosest(_max, _min, _me);
+            Enemy _nextEnemt = GetClosest(_max, _min);
             if(_nextEnemt != null) {
                 return (_nextEnemt.transform);
             }
@@ -178,14 +178,14 @@ public class BattleManager : MonoBehaviour {
         return (_bestGate);
     }
 
-    GameObject GetClosest(float maxDistance, float minDistance, Allie _me) {
-        GameObject closest = null;
-        foreach(GameObject t in freeEnemys) {
+    Enemy GetClosest(float maxDistance, float minDistance) {
+        Enemy closest = null;
+        foreach(Enemy t in freeEnemys) {
             if(t != null && t.transform.position.x < maxDistance && t.transform.position.x > minDistance) {
                 if(closest == null) {
                     closest = t;
                 }
-                else if(t.transform.position.x > closest.transform.position.x) {
+                else if(t.attackingSoldiers.Count < closest.attackingSoldiers.Count || t.attackingSoldiers.Count == closest.attackingSoldiers.Count && t.transform.position.x > closest.transform.position.x) {
                     closest = t;
                 }
             }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 
-public class Soldier : Damagebles{
+public class Soldier : Damagebles {
     public NavMeshAgent agent;
     public float attackCooldown;
     public Transform targetTransform;
@@ -17,12 +17,14 @@ public class Soldier : Damagebles{
     }
 
     public virtual void MyStart() {
-        agent.speed = Random.Range(1.75f, 2.25f);
+        if(agent != null) {
+            agent.speed = Random.Range(1.75f, 2.25f);
+        }
         myAudiosource.pitch = Random.Range(0.75f, 1.25f);
         myAudiosource.volume = Random.Range(0.01f, 0.08f);
         transform.localScale *= Random.Range(0.9f, 1.1f);
     }
 
-    public override void TakeDamage(float damage){
+    public override void TakeDamage(float damage) {
     }
 }

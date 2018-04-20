@@ -7,8 +7,14 @@ public class StationaryBowManz : Soldier {
     [HideInInspector]
     public ArcherSpot mySpot;
 
+    private void Start() {
+        anim.SetBool("Attack", false);
+        anim.SetBool("Idle", true);
+        MyStart();
+    }
+
     void OnTriggerEnter(Collider other) {
-        if(targetTransform == null) {
+        if(targetTransform == null || targetTransform.gameObject.activeSelf == false) {
             anim.SetBool("Attack", true);
             anim.SetBool("Idle", false);
             targetTransform = other.transform;

@@ -17,7 +17,7 @@ public class Enemy : Soldier {
         MyStart();
         FindNewTarget();
         agent.SetDestination(targetTransform.position);
-        BattleManager.instance.freeEnemys.Add(gameObject);
+        BattleManager.instance.freeEnemys.Add(this);
     }
 
     void Update() {
@@ -28,7 +28,7 @@ public class Enemy : Soldier {
         StopCoroutine(Attack());
         attackingSoldiers.Remove(_attacking);
         if(attackingSoldiers.Count == maxAttacking - 1) {
-            BattleManager.instance.freeEnemys.Add(gameObject);
+            BattleManager.instance.freeEnemys.Add(this);
         }
         else if(attackingSoldiers.Count <= 0) {
             FindNewTarget();
@@ -48,7 +48,7 @@ public class Enemy : Soldier {
         attackingSoldiers.Add(_attacking);
         if(attackingSoldiers.Count >= maxAttacking) {
             target = _attacking;
-            BattleManager.instance.freeEnemys.Remove(gameObject);
+            BattleManager.instance.freeEnemys.Remove(this);
         }
     }
 
