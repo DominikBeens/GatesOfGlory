@@ -63,7 +63,7 @@ public class Bowman : Allie {
             _currentArrow.position += _currentArrow.forward * distance / 2;
             _currentArrow.GetChild(0).GetComponent<Arrow>().myArrow.position -= new Vector3(0, _currentArrow.GetChild(0).GetComponent<Arrow>().minAmount, 0);
             _currentArrow.GetChild(0).transform.position = bowPos.position;
-            _currentArrow.GetChild(0).transform.rotation = Quaternion.Euler(new Vector3(-55, -45, 0));
+            _currentArrow.GetChild(0).transform.rotation = bowPos.rotation;
         }
         else {
             StopCoroutine(Attack());

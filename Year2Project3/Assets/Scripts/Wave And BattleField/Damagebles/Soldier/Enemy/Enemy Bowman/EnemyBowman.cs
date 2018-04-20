@@ -29,7 +29,7 @@ public class EnemyBowman : Enemy {
             _currentArrow.GetChild(0).GetComponent<Arrow>().myArrow.position -= new Vector3(0, _currentArrow.GetChild(0).GetComponent<Arrow>().minAmount, 0);
             _currentArrow.GetChild(0).transform.position = bowPos.position;
             _currentArrow.GetChild(0).transform.LookAt(targetTransform);
-            _currentArrow.GetChild(0).transform.localEulerAngles += new Vector3(-70, 0, 0);
+            _currentArrow.GetChild(0).transform.rotation = bowPos.rotation;
             StopCoroutine(Attack());
             StartCoroutine(Attack());
             target.TakeDamage(myStats.damage.currentValue);
