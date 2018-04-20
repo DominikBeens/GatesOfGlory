@@ -24,9 +24,5 @@ public class Soldier : Damagebles{
     }
 
     public override void TakeDamage(float damage){
-        myStats.health.currentValue -= damage;
-        if(myStats.health.currentValue <= 0){
-            //Destroy(gameObject);
-        }
     }
 }

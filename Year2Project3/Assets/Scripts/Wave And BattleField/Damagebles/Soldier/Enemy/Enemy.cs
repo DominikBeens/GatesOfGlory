@@ -75,34 +75,39 @@ public class Enemy : Soldier {
     }
 
     public virtual void FindNewTarget() {
-        if(targetTransform == null && BattleManager.instance != null) {
-            targetTransform = BattleManager.instance.EnemyGetTarget(transform.position.x);
-            if(targetTransform == null){
-                return;
+        if(agent != null) {
+            if(targetTransform != null) {
+                if(targetTransform.tag == "Ally") {
+                    agent.SetDestination(targetTransform.position);
+                    return;
+                }
+                Transform newTarget = BattleManager.instance.EnemyGetTarget(transform.position.x);
+                if(targetTransform != newTarget) {
+                    anim.SetBool("Attack", false);
+                    StopCoroutine(Attack());
+                    targetTransform = newTarget;
+                    agent.SetDestination(targetTransform.position);
+                    attackingCastle = false;
+                    if(attackingSoldiers.Count <= 0) {
+                        agent.isStopped = false;
+                    }
+                }
             }
-            agent.SetDestination(targetTransform.position);
-            anim.SetBool("Attack", false);
-            attackingCastle = false;
-            StopCoroutine(Attack());
-            if(attackingSoldiers.Count <= 0) {
-                agent.isStopped = false;
+            else {
+                targetTransform = BattleManager.instance.EnemyGetTarget(transform.position.x);
+                if(targetTransform == null) {
+                    return;
+                }
+                agent.SetDestination(targetTransform.position);
+                anim.SetBool("Attack", false);
+                attackingCastle = false;
+                StopCoroutine(Attack());
+                if(attackingSoldiers.Count <= 0) {
+                    agent.isStopped = false;
+                }
             }
         }
-        else if(targetTransform.tag == "Ally") {
-            agent.SetDestination(targetTransform.position);
-            return;
-        }
-        Transform newTarget = BattleManager.instance.EnemyGetTarget(transform.position.x);
-        if(targetTransform != newTarget) {
-            anim.SetBool("Attack", false);
-            StopCoroutine(Attack());
-            targetTransform = newTarget;
-            agent.SetDestination(targetTransform.position);
-            attackingCastle = false;
-            if(attackingSoldiers.Count <= 0) {
-                agent.isStopped = false;
-            }
-        }
+
     }
 
     public virtual IEnumerator Attack() {

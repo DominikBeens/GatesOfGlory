@@ -12,6 +12,10 @@ public class Allie : Soldier {
     }
 
     void Update() {
+        if(targetTransform.tag == "Enemy" && agent.isStopped == false) {
+            agent.SetDestination(targetTransform.position);
+            anim.SetBool("Idle", false);
+        }
         GetNewTarget();
     }
 
@@ -54,10 +58,6 @@ public class Allie : Soldier {
                     anim.SetBool("Idle", false);
                 }
             }
-            else if(targetTransform.tag == "Enemy" && agent.isStopped == false) {
-                agent.SetDestination(targetTransform.position);
-                anim.SetBool("Idle", false);
-            }
         }
         else {
             Transform newTarget = BattleManager.instance.AllyGetTarget(transform.position.x, this, targetTransform);
@@ -95,7 +95,7 @@ public class Allie : Soldier {
         }
     }
 
-    private void OnDestroy() {
+    private void OnDisable() {
         WaveManager.instance.alliesInScene.Remove(this);
     }
 }

@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class EnemyTerrorist : Enemy {
 
+    void Start() {
+        MyStart();
+        FindNewTarget();
+        agent.SetDestination(targetTransform.position);
+    }
+
     public override void TakeDamage(float damage) {
         myStats.health.currentValue -= damage;
 
         if(myStats.health.currentValue <= 0) {
             ObjectPooler.instance.AddToPool("Enemy Terrorist", gameObject);
-            Debug.Log("I Die");
             ResourceManager.instance.AddGold(ResourceManager.instance.terroristGoldReward);
         }
     }
