@@ -36,6 +36,7 @@ public class CastleRoom_Ambush : CastleRoom
     private float currentCooldown = 0.95f;
 
     private CameraManager[] cams;
+    private Camera[] camComponents;
 
     [System.Serializable]
     public struct AmbushOptions
@@ -57,6 +58,7 @@ public class CastleRoom_Ambush : CastleRoom
         spearRainSpawns = GameObject.FindGameObjectsWithTag("SpearRainSpawn");
 
         cams = FindObjectsOfType<CameraManager>();
+        camComponents = FindObjectsOfType<Camera>();
     }
 
     public override void SetupUI()
@@ -162,7 +164,11 @@ public class CastleRoom_Ambush : CastleRoom
         while (Vector3.Distance(cameraTarget.position, zoomTo) > 0.1f)
         {
             cameraTarget.position = Vector3.Lerp(cameraTarget.position, zoomTo, Time.deltaTime * camZoomSpeed);
-            mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, 60, Time.deltaTime * (camZoomSpeed * 5));
+
+            for (int i = 0; i < camComponents.Length; i++)
+            {
+                camComponents[i].fieldOfView = Mathf.Lerp(camComponents[i].fieldOfView, 60, Time.deltaTime * (camZoomSpeed * 5));
+            }
             yield return null;
         }
 
