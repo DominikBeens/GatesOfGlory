@@ -15,10 +15,7 @@ public class UIManager : MonoBehaviour
     [HideInInspector]
     public PreBuiltCastleRoom[] prebuiltCastleRooms;
 
-    [Header("Game Over")]
-    public GameObject gameOverPanel;
-    public Animator screenFadeAnim;
-    public Animator gameOverAnimator;
+    private Animator mainCamAnim;
 
     [Header("Pause")]
     public GameObject pausePanel;
@@ -29,21 +26,17 @@ public class UIManager : MonoBehaviour
     public Image waveHealthFill;
     public TextMeshProUGUI waveHealthText;
 
-    [Header("Other")]
-    public GameObject gameInfoPanel;
-    public GameObject waveTimerPanel;
+    [Header("Timeline Directors")]
     public PlayableDirector startGameTLDirector;
-    public GameObject castleWeapons;
-    public GameObject castleRooms;
-    public GameObject startCinematicProps;
-    public GameObject gameOverCinematicProps;
-    public GameObject crown;
-    public GameObject placeObjectUI;
+    public PlayableDirector gameOverTLDirector;
 
     [Header("Not Enough Gold Icon")]
     public GameObject notEnoughGoldIcon;
     public float notEnoughGoldIconDisplayTime;
     private float notEnoughGoldDisplayTimer;
+
+    [Header("Other")]
+    public GameObject placeObjectUI;
 
     private void Awake()
     {
@@ -53,6 +46,7 @@ public class UIManager : MonoBehaviour
         }
 
         mainCam = Camera.main;
+        mainCamAnim = mainCam.GetComponent<Animator>();
         prebuiltCastleRooms = FindObjectsOfType<PreBuiltCastleRoom>();
 
         if (GameManager.instance.showStartGameAnimation)
@@ -61,11 +55,9 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            gameOverAnimator.enabled = false;
+            //gameOverAnimator.enabled = false;
             canPause = true;
 
-            gameInfoPanel.SetActive(true);
-            waveTimerPanel.SetActive(true);
             startGameTLDirector.enabled = false;
 
             GameManager.instance.gameState = GameManager.GameState.Playing;
@@ -121,28 +113,15 @@ public class UIManager : MonoBehaviour
         CameraManager mainCamManager = mainCam.GetComponent<CameraManager>();
         mainCamManager.enabled = false;
 
-        castleWeapons.SetActive(false);
-        castleRooms.SetActive(false);
-        startCinematicProps.SetActive(true);
-
-        gameInfoPanel.SetActive(false);
-        waveTimerPanel.SetActive(false);
-
-        gameOverAnimator.enabled = true;
+        mainCamAnim.enabled = true;
 
         yield return new WaitForSeconds(11);
 
-        gameOverAnimator.enabled = false;
+        mainCamAnim.enabled = false;
         mainCamManager.enabled = true;
         canPause = true;
 
-        gameInfoPanel.SetActive(true);
-        waveTimerPanel.SetActive(true);
         startGameTLDirector.enabled = false;
-
-        castleWeapons.SetActive(true);
-        castleRooms.SetActive(true);
-        startCinematicProps.SetActive(false);
 
         if (CursorManager.instance.CursorVisibilityStandard)
         {
@@ -162,31 +141,22 @@ public class UIManager : MonoBehaviour
     {
         CastleUpgradeManager.instance.CloseAllUI(null);
         canPause = false;
-        CursorManager.instance.ToggleCursorObject();
         GameManager.instance.gameState = GameManager.GameState.Cinematic;
 
         CameraManager mainCamManager = mainCam.GetComponent<CameraManager>();
         mainCamManager.enabled = false;
 
-        screenFadeAnim.SetTrigger("Fade");
+        gameOverTLDirector.Play();
 
         yield return new WaitForSeconds(1.2f);
 
-        gameInfoPanel.SetActive(false);
-        waveTimerPanel.SetActive(false);
-        castleWeapons.SetActive(false);
-        castleRooms.SetActive(false);
-        gameOverCinematicProps.SetActive(true);
-        crown.SetActive(false);
+        CursorManager.instance.ToggleCursorObject();
+        mainCamAnim.enabled = true;
         mainCam.fieldOfView = 60;
-        gameOverAnimator.enabled = true;
-        gameOverAnimator.SetTrigger("End");
 
-        yield return new WaitForSeconds(0.1f);
-        yield return new WaitForSeconds(gameOverAnimator.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(9f);
 
         Time.timeScale = 0;
-        gameOverPanel.SetActive(true);
     }
 
     public void RestartButton()
